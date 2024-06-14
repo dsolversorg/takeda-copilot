@@ -77,7 +77,7 @@ function Loading({
               ? (
                 <div>
                   <p>
-                    O Digital Person funciona melhor em um ambiente silencioso,
+                    Sou a Katia uma Pessoa Digital, eu funciono melhor em um ambiente silencioso,
                     quando você está próximo ao microfone e a câmera ligada.
                   </p>
                   <p>
@@ -88,7 +88,7 @@ function Loading({
               : (
                 <div>
                   <p>
-                    A Pessoa Digital funciona melhor com o microfone ligado.
+                    Sou a Katia uma Pessoa Digital, eu funciono melhor com o microfone ligado.
                     Habilite seu microfone a qualquer momento durante a experiência
                     clicando no ícone do microfone e concedendo as permissões.
                   </p>
@@ -159,7 +159,7 @@ function Loading({
   };
   const history = useHistory();
   useEffect(() => {
-    if (skip === true && connected === true) history.push('/metadoctors-dev');
+    if (skip === true && connected === true) history.push('/takeda-copilot');
   }, [connected, skip]);
 
   return (

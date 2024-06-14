@@ -37,7 +37,7 @@ function Landing({ className }) {
   };
   const history = useHistory();
   useEffect(() => {
-    if (skip === true && connected === true) history.push('/metadoctors-dev');
+    if (skip === true && connected === true) history.push('/takeda-copilot');
   }, [connected, skip]);
 
   return (
@@ -49,14 +49,14 @@ function Landing({ className }) {
             <div className="col-12 col-lg-6">
               <div className="row" style={{ marginBottom: '9px' }}>
                 <div>
-                  <h1 className="fw-bol">Sou uma Pessoa Digital Hiper-realista, criada pela Digital Solvers com o propósito de trazer vida para a Inteligência Artificial Generativa.</h1>
+                  <h1 className="fw-bol">Sou a Katia uma Pessoa Digital Hiper-realista, criada pela Digital Solvers com o propósito de trazer vida para a Inteligência Artificial Generativa.</h1>
                 </div>
               </div>
               <div className="row">
                 <div>
                   <h4 className="fw-light" style={{ marginBottom: '31px' }}>
                     Sou um especialista
-                    <b> metaDoctors-DEV </b>
+                    <b> takeda-copilot </b>
                     ,
                     faça-me perguntas e farei meu melhor para respondê-las.
                   </h4>

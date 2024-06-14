@@ -19,8 +19,8 @@ jobs:
 
       - name: Get Secrets
         env:
-          REACT_APP_API_KEY: ${{ secrets.API_KEY_METADOCTORS_DEv }}
-          REACT_APP_TOKEN_URL: ${{ secrets.API_KEY_METADOCTORS_DEV }}
+          REACT_APP_API_KEY: ${{ secrets.API_KEY_TAKEDA_COPILOT }}
+          REACT_APP_TOKEN_URL: ${{ secrets.API_KEY_TAKEDA_COPILOT }}
         run: |
           echo REACT_APP_API_KEY="$REACT_APP_API_KEY" >> env
           echo REACT_APP_TOKEN_URL="$REACT_APP_TOKEN_URL" >> env
@@ -43,7 +43,7 @@ jobs:
       - name: Sync to s3 bucket
         env:
           AWS_S3_BUCKET: sites.pessoadigital.digitalsolvers.com
-          CUSTOMER: metadoctors-dev
+          CUSTOMER: takeda-copilot
         run: |
           cp build/index.html build/$CUSTOMER
-          aws s3 sync build/ s3://$AWS_S3_BUCKET/metadoctors-dev
+          aws s3 sync build/ s3://$AWS_S3_BUCKET/takeda-copilot

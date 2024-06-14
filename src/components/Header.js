@@ -29,7 +29,7 @@ function Header({
             </div>
             <div>
               {/* right align */}
-              <div className={`${connected && !loading && pathname === '/metadoctors-dev' ? '' : 'd-none'}`}>
+              <div className={`${connected && !loading && pathname === '/takeda-copilot' ? '' : 'd-none'}`}>
                 <Controls />
               </div>
             </div>
