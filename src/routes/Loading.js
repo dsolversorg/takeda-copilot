@@ -77,7 +77,8 @@ function Loading({
               ? (
                 <div>
                   <p>
-                    Sou a Katia uma Pessoa Digital, eu funciono melhor em um ambiente silencioso, quando você está próximo ao microfone e a câmera ligada.
+                    Sou a Katia uma Pessoa Digital, eu funciono melhor em um ambiente silencioso,
+                    quando você está próximo ao microfone e a câmera ligada.
                   </p>
                   <p>
                     Fale claramente e em respostas curtas.
