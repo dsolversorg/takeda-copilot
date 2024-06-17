@@ -62,7 +62,7 @@ function Landing({ className }) {
                   </h4>
                 </div>
               </div>
-              <div className="row" style={{ marginBottom: '16px' }}>
+              <div className="row" style={{ marginBottom: '14px' }}>
                 <div>
                   <div className="form-check form-switch">
                     <label
@@ -76,7 +76,7 @@ function Landing({ className }) {
                         type="checkbox"
                         role="switch"
                         id="micPermSwitch"
-                        onChange={() => dispatch(setRequestedMediaPerms({ mic: mic }))}
+                        onChange={() => dispatch(setRequestedMediaPerms({ mic: !mic }))}
                         checked={mic}
                       />
                       <div className="d-block ms-2">
@@ -100,7 +100,7 @@ function Landing({ className }) {
                         type="checkbox"
                         role="switch"
                         id="micPermSwitch"
-                        onChange={() => dispatch(setRequestedMediaPerms({ camera: camera }))}
+                        onChange={() => dispatch(setRequestedMediaPerms({ camera: !camera }))}
                         checked={camera}
                       />
                       <div className="d-block ms-2">
@@ -110,7 +110,7 @@ function Landing({ className }) {
                   </div>
                 </div>
               </div>
-              <div className="row" style={{ marginBottom: '10px' }}>
+              <div className="row" style={{ marginBottom: '14px' }}>
                 {!connected && (
                   <div
                     className="button-start button--disabled m-2 "
