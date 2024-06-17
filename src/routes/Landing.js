@@ -71,9 +71,9 @@ function Landing({ className }) {
                     >
                       <input
                         className={`shadow form-check-input mic-switch switch ${
-                          mic ? 'status-checked' : 'status-unchecked'
+                          mic ? true : false
                         }`}
-                        type=""
+                        type="checkbox"
                         role="switch"
                         id="micPermSwitch"
                         onChange={() => dispatch(setRequestedMediaPerms({ mic: !mic }))}
@@ -97,7 +97,7 @@ function Landing({ className }) {
                         className={`shadow form-check-input video-switch switch ${
                           camera ? 'status-checked' : 'status-unchecked'
                         }`}
-                        type=""
+                        type="checkbox"
                         role="switch"
                         id="micPermSwitch"
                         onChange={() => dispatch(setRequestedMediaPerms({ camera: !camera }))}
