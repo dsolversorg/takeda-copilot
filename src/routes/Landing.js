@@ -69,7 +69,7 @@ function Landing({ className }) {
                       className="form-check-label d-flex align-items-center"
                       htmlFor="micPermSwitch"
                     >
-                      <input
+                      //<input
                         className={`shadow form-check-input mic-switch switch ${
                           mic ? 'status-checked' : 'status-unchecked'
                         }`}
@@ -80,7 +80,7 @@ function Landing({ className }) {
                         checked={mic}
                       />
                       <div className="d-block ms-2">
-                        Use seu microfone para que eu possa te ouvir.
+                        //Use seu microfone para que eu possa te ouvir.
                       </div>
                     </label>
                   </div>
@@ -93,7 +93,7 @@ function Landing({ className }) {
                       className="form-check-label d-flex align-items-center"
                       htmlFor="cameraPermSwitch"
                     >
-                      <input
+                      //<input
                         className={`shadow form-check-input video-switch switch ${
                           camera ? 'status-checked' : 'status-unchecked'
                         }`}
@@ -104,7 +104,7 @@ function Landing({ className }) {
                         checked={camera}
                       />
                       <div className="d-block ms-2">
-                        Deixe sua câmera ligada, pois reajo as suas expressões.
+                        //Deixe sua câmera ligada, pois reajo as suas expressões.
                       </div>
                     </label>
                   </div>
