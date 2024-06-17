@@ -12,7 +12,7 @@ import micFill from '../img/mic-fill.svg';
 import videoFill from '../img/camera-video-fill.svg';
 
 function Landing({ className }) {
-  const { mic, camera } = useSelector(({ sm }) => sm.requestedMediaPerms);
+  const { mic, camera, micOn } = useSelector(({ sm }) => sm.requestedMediaPerms);
   const dispatch = useDispatch();
 
   const {
@@ -71,7 +71,7 @@ function Landing({ className }) {
                     >
                       <input
                         className={`shadow form-check-input mic-switch switch ${
-                          mic ? true : false
+                          micOn ? false : mic
                         }`}
                         type="checkbox"
                         role="switch"
@@ -80,7 +80,7 @@ function Landing({ className }) {
                         checked={mic}
                       />
                       <div className="d-block ms-2">
-                        //Use seu microfone para que eu possa te ouvir.
+                        Use seu microfone para que eu possa te ouvir.
                       </div>
                     </label>
                   </div>
@@ -104,7 +104,7 @@ function Landing({ className }) {
                         checked={camera}
                       />
                       <div className="d-block ms-2">
-                        //Deixe sua câmera ligada, pois reajo as suas expressões.
+                        Deixe sua câmera ligada, pois reajo as suas expressões.
                       </div>
                     </label>
                   </div>
