@@ -56,13 +56,13 @@ function Landing({ className }) {
                 <div>
                   <h4 className="fw-light" style={{ marginBottom: '31px' }}>
                     Sou um especialista
-                    <b> takeda-copilot </b>
+                    <b> em Dengue </b>
                     ,
                     faça-me perguntas e farei meu melhor para respondê-las.
                   </h4>
                 </div>
               </div>
-              <div className="row" style={{ marginBottom: '16px' }}>
+              /*<div className="row" style={{ marginBottom: '16px' }}>
                 <div>
                   <div className="form-check form-switch">
                     <label
@@ -85,8 +85,8 @@ function Landing({ className }) {
                     </label>
                   </div>
                 </div>
-              </div>
-              <div className="row" style={{ marginBottom: '20px' }}>
+              </div>*/
+              /*<div className="row" style={{ marginBottom: '20px' }}>
                 <div>
                   <div className="form-check form-switch">
                     <label
@@ -109,7 +109,7 @@ function Landing({ className }) {
                     </label>
                   </div>
                 </div>
-              </div>
+              </div>*/
               <div className="row" style={{ marginBottom: '10px' }}>
                 {!connected && (
                   <div

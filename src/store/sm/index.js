@@ -21,13 +21,13 @@ const initialState = {
     ? {
       ...JSON.parse(sessionStorage.getItem('requestedMediaPerms')),
       // media perms might have been altered before reload, so set false so we check again
-      cameraDenied: false,
-      micDenied: false,
+      cameraDenied: true,
+      micDenied: true,
     }
     : {
       mic: false,
       micDenied: false,
-      camera: true,
+      camera: false,
       cameraDenied: false,
     },
   tosAccepted: false,
