@@ -69,11 +69,11 @@ function Landing({ className }) {
                       className="form-check-label d-flex align-items-center"
                       htmlFor="micPermSwitch"
                     >
-                      //<input
+                      <input
                         className={`shadow form-check-input mic-switch switch ${
                           mic ? 'status-checked' : 'status-unchecked'
                         }`}
-                        type="checkbox"
+                        type=""
                         role="switch"
                         id="micPermSwitch"
                         onChange={() => dispatch(setRequestedMediaPerms({ mic: !mic }))}
@@ -93,11 +93,11 @@ function Landing({ className }) {
                       className="form-check-label d-flex align-items-center"
                       htmlFor="cameraPermSwitch"
                     >
-                      //<input
+                      <input
                         className={`shadow form-check-input video-switch switch ${
                           camera ? 'status-checked' : 'status-unchecked'
                         }`}
-                        type="checkbox"
+                        type=""
                         role="switch"
                         id="micPermSwitch"
                         onChange={() => dispatch(setRequestedMediaPerms({ camera: !camera }))}
