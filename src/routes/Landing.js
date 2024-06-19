@@ -75,9 +75,8 @@ function Landing({ className }) {
                     className={`${connected ? 'button-start' : 'button-start button-start--disabled'} m-2`}
                     type="button"
                     disabled={!connected}
-                    onChange={() => dispatch(setRequestedMediaPerms({ mic: true } && { camera: true }))}
-                    checked={camera?mic:true}
-                    onClick={redirectToVideoOnConnect}
+                    onChange={() => dispatch(setRequestedMediaPerms({ mic: true, camera: true }))}
+                    onClick={redirectToVideoOnConnect && camera && mic}
                   >
                     Converse comigo
                   </button>
