@@ -7,15 +7,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import breakpoints from '../utils/breakpoints';
 import Header from '../components/Header';
 import { landingBackgroundImage, landingBackgroundColor } from '../config';
-import { setRequestedMediaPerms, createScene } from '../store/sm';
+import { createScene } from '../store/sm';
 
 function Landing({ className }) {
+  const { camera = true, mic = true } = useSelector(({ sm }) => sm.requestedMediaPerms);
   const dispatch = useDispatch();
-
-  const {
-    camera = dispatch(setRequestedMediaPerms({ camera: true })),
-    mic = dispatch(setRequestedMediaPerms({ mic: true })),
-  } = useSelector(({ sm }) => sm.requestedMediaPerms);
 
   const {
     connected,
@@ -37,9 +33,10 @@ function Landing({ className }) {
   const redirectToVideoOnConnect = () => {
     setSkip(true);
   };
-  const history = useHistory();
+  //const history = useHistory();
+  const { pathname } = useLocation();
   useEffect(() => {
-    if (skip === true && connected === true) history.push('/takeda-copilot');
+    if (skip === true && connected === true) pathname === '/takeda-copilot';
   }, [connected, skip]);
 
   return (
