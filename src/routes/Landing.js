@@ -12,7 +12,7 @@ import micFill from '../img/mic-fill.svg';
 import videoFill from '../img/camera-video-fill.svg';
 
 function Landing({ className }) {
-  const { mic, camera, micOn } = useSelector(({ sm }) => sm.requestedMediaPerms);
+  const { camera, micOn } = useSelector(({ sm }) => sm.requestedMediaPerms);
   const dispatch = useDispatch();
 
   const {
