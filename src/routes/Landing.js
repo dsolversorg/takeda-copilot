@@ -33,10 +33,9 @@ function Landing({ className }) {
   const redirectToVideoOnConnect = () => {
     setSkip(true);
   };
-  //const history = useHistory();
-  const { pathname } = useLocation();
+  const history = useHistory();
   useEffect(() => {
-    if (skip === true && connected === true) pathname === '/takeda-copilot';
+    if (skip === true && connected === true) history.push('/takeda-copilot');
   }, [connected, skip]);
 
   return (
