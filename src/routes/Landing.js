@@ -10,11 +10,12 @@ import { landingBackgroundImage, landingBackgroundColor } from '../config';
 import { setRequestedMediaPerms, createScene } from '../store/sm';
 
 function Landing({ className }) {
+  const dispatch = useDispatch();
+
   const {
     camera = dispatch(setRequestedMediaPerms({ camera: true })),
     mic = dispatch(setRequestedMediaPerms({ mic: true })),
   } = useSelector(({ sm }) => sm.requestedMediaPerms);
-  const dispatch = useDispatch();
 
   const {
     connected,
