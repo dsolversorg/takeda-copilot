@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import breakpoints from '../utils/breakpoints';
 import Header from '../components/Header';
 import { landingBackgroundImage, landingBackgroundColor } from '../config';
-import { createScene } from '../store/sm';
+import { setRequestedMediaPerms, createScene } from '../store/sm';
 
 function Landing({ className }) {
   const { camera = true, mic = true } = useSelector(({ sm }) => sm.requestedMediaPerms);
@@ -75,7 +75,7 @@ function Landing({ className }) {
                     className={`${connected ? 'button-start' : 'button-start button-start--disabled'} m-2`}
                     type="button"
                     disabled={!connected}
-                    onClick={[redirectToVideoOnConnect, dispatch(setRequestedMediaPerms({ mic: true, camera: true }))]}
+                    onClick={() => { redirectToVideoOnConnect, dispatch(setRequestedMediaPerms({ mic: mic, camera: camera }))} }
                   >
                     Converse comigo
                   </button>
