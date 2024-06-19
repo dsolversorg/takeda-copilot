@@ -7,12 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import breakpoints from '../utils/breakpoints';
 import Header from '../components/Header';
 import { landingBackgroundImage, landingBackgroundColor } from '../config';
-import { setRequestedMediaPerms, createScene } from '../store/sm';
-import micFill from '../img/mic-fill.svg';
-import videoFill from '../img/camera-video-fill.svg';
-
 function Landing({ className }) {
-  const { camera, mic } = useSelector(({ sm }) => sm.requestedMediaPerms);
   const dispatch = useDispatch();
 
   const {
