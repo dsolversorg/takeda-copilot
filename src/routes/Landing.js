@@ -71,13 +71,13 @@ function Landing({ className }) {
                     >
                       <input
                         className={`shadow form-check-input mic-switch switch ${
-                          micOn ? false : mic
+                          micOn ? 'status-checked' : 'status-unchecked'
                         }`}
                         type="checkbox"
                         role="switch"
                         id="micPermSwitch"
-                        onChange={() => dispatch(setRequestedMediaPerms({ mic: !mic }))}
-                        checked={mic}
+                        onChange={() => dispatch(setRequestedMediaPerms({ micOn: !micOn }))}
+                        checked={micOn}
                       />
                       <div className="d-block ms-2">
                         Use seu microfone para que eu possa te ouvir.
