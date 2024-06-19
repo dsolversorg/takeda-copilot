@@ -77,7 +77,7 @@ function Landing({ className }) {
                     disabled={!connected}
                     onClick={redirectToVideoOnConnect ? mic : true}
                   >
-                    Converse comigo
+                    Iniciando Assistente Virtual
                   </button>
                 )}
               </div>
