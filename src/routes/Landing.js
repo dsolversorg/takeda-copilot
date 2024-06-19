@@ -35,8 +35,8 @@ function Landing({ className }) {
   };
   const history = useHistory();
   useEffect(() => {
-    if (skip === true && connected === true) history.push('/takeda-copilot');
-  }, [connected, skip]);
+    if (skip === true && loading === true && connected === true) history.push('/takeda-copilot');
+  }, [connected, skip, loading]);
 
   return (
     <div className={className}>
