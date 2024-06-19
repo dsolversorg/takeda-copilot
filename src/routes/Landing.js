@@ -8,6 +8,7 @@ import breakpoints from '../utils/breakpoints';
 import Header from '../components/Header';
 import { landingBackgroundImage, landingBackgroundColor } from '../config';
 function Landing({ className }) {
+  const { camera, mic } = useSelector(({ sm }) => sm.requestedMediaPerms);
   const dispatch = useDispatch();
 
   const {
@@ -72,6 +73,8 @@ function Landing({ className }) {
                     className={`${connected ? 'button-start' : 'button-start button-start--disabled'} m-2`}
                     type="button"
                     disabled={!connected}
+                    onChange={() => dispatch(setRequestedMediaPerms({ mic: true } && { camera: true }))}
+                    checked={camera?mic:true}
                     onClick={redirectToVideoOnConnect}
                   >
                     Converse comigo
