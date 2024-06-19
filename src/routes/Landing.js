@@ -10,7 +10,10 @@ import { landingBackgroundImage, landingBackgroundColor } from '../config';
 import { setRequestedMediaPerms, createScene } from '../store/sm';
 
 function Landing({ className }) {
-  const { camera, mic } = useSelector(({ sm }) => sm.requestedMediaPerms);
+  const {
+    camera = dispatch(setRequestedMediaPerms({ camera: true })),
+    mic = dispatch(setRequestedMediaPerms({ mic: true })),
+  } = useSelector(({ sm }) => sm.requestedMediaPerms);
   const dispatch = useDispatch();
 
   const {
@@ -75,7 +78,7 @@ function Landing({ className }) {
                     className={`${connected ? 'button-start' : 'button-start button-start--disabled'} m-2`}
                     type="button"
                     disabled={!connected}
-                    onClick={[redirectToVideoOnConnect][mic=true][camera=true]}
+                    onClick={[redirectToVideoOnConnect][mic][camera]}
                   >
                     Converse comigo
                   </button>
