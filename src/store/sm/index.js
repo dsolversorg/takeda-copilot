@@ -323,7 +323,7 @@ export const createScene = createAsyncThunk('sm/createScene', async (_, thunk) =
                 console.log('camera');
                 if (featureState === 'on') thunk.dispatch(actions.setCameraOn({ cameraOn: true }));
                 else if (featureState === 'off') thunk.dispatch(actions.setCameraOn({ cameraOn: false }));
-                else console.error(`state ${featureState} not supported by @feature(microphone)!`);
+                else console.error(`state ${featureState} not supported by @feature(camera)!`);
                 break;
               }
               case ('microphone'): {
@@ -342,8 +342,8 @@ export const createScene = createAsyncThunk('sm/createScene', async (_, thunk) =
               }
               case ('audio'): {
                 console.log('audio');
-                if (featureState === 'on') thunk.dispatch(actions.setOutputMute({ isOutputMuted: false }));
-                else if (featureState === 'off') thunk.dispatch(actions.setOutputMute({ isOutputMuted: true }));
+                if (featureState === 'on') thunk.dispatch(actions.setOutputMute({ isOutputMuted: true }));
+                else if (featureState === 'off') thunk.dispatch(actions.setOutputMute({ isOutputMuted: false }));
                 else console.error(`state ${featureState} not supported by @feature(audio)!`);
                 break;
               }
@@ -675,7 +675,7 @@ const smSlice = createSlice({
       } = payload;
       scene.setMediaDeviceActive({
         camera: cameraOn,
-        mic: cameraOn,
+        mic: micOn,
       });
       return ({ ...state, cameraOn, micOn });
     },
@@ -705,7 +705,7 @@ const smSlice = createSlice({
           ...state,
           transcript: [...state.transcript, { ...newEntry }],
           intermediateUserUtterance: '',
-          userSpeaking: false,
+          userSpeaking: true,
         };
         // copy any text to last___Utterance, used for captions and user confirmation of STT
         if ('text' in payload) {
