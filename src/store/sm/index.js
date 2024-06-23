@@ -705,7 +705,7 @@ const smSlice = createSlice({
           ...state,
           transcript: [...state.transcript, { ...newEntry }],
           intermediateUserUtterance: '',
-          userSpeaking: true,
+          userSpeaking: false,
         };
         // copy any text to last___Utterance, used for captions and user confirmation of STT
         if ('text' in payload) {
