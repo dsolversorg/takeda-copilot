@@ -120,7 +120,7 @@ const StyledTranscript = styled(Transcript)`
       height: auto;
 
       background: ${primaryAccent};
-      color: #FFF;
+      color: #000;
     }
   }
   .transcript-entry-user {
@@ -137,6 +137,7 @@ const StyledTranscript = styled(Transcript)`
       height: auto;
 
       background: #00385b;
+      color: #FFF;
       border: 1px solid rgba(0,0,0,0.3);
     }
   }
