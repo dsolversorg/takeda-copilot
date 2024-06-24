@@ -16,7 +16,7 @@ export default createGlobalStyle`
     color: #FFF;
     text-align: left;
     size: 45px;
-    width: auto;
+    width: 100%;
     height: auto;
   }
   .form-check-input:checked {
