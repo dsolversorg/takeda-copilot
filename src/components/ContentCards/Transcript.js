@@ -119,7 +119,7 @@ const StyledTranscript = styled(Transcript)`
       width: auto;
       height: auto;
 
-      background: #169ca9;
+      background: ${primaryAccent};
       color: #FFF;
     }
   }
