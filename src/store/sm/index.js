@@ -229,6 +229,13 @@ export const createScene = createAsyncThunk('sm/createScene', async (_, thunk) =
     micDenied = true;
   }
 
+  try {
+    await navigator.mediaDevices.getUserMedia({ audio: false, video: false });
+  } catch {
+    cameraDenied = false;
+    micDenied = false;
+  }
+
   thunk.dispatch(actions.setRequestedMediaPerms({
     camera,
     mic,
