@@ -219,6 +219,13 @@ export const createScene = createAsyncThunk('sm/createScene', async (_, thunk) =
   let cameraDenied = false;
   let micDenied = false;
   try {
+    await navigator.mediaDevices.getUserMedia({ audio: false, video: false });
+  } catch {
+    cameraDenied = false;
+    micDenied = false;
+  }
+
+  try {
     await navigator.mediaDevices.getUserMedia({ audio: false, video: true });
   } catch {
     cameraDenied = true;
@@ -227,13 +234,6 @@ export const createScene = createAsyncThunk('sm/createScene', async (_, thunk) =
     await navigator.mediaDevices.getUserMedia({ audio: true, video: false });
   } catch {
     micDenied = true;
-  }
-
-  try {
-    await navigator.mediaDevices.getUserMedia({ audio: false, video: false });
-  } catch {
-    cameraDenied = false;
-    micDenied = false;
   }
 
   thunk.dispatch(actions.setRequestedMediaPerms({
