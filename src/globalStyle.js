@@ -12,12 +12,12 @@ export default createGlobalStyle`
   }
   .btn.primary-accent {
     border: 1px solid ${primaryAccent};
-    background: #FFF;
+    background: #169ca9;
     color: #000;
     text-align: left;
     size: 45px;
-    width: 500px;
-    height: 70px;
+    width: auto;
+    height: auto;
   }
   .form-check-input:checked {
     background-color: ${primaryAccent};

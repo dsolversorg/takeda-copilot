@@ -80,7 +80,7 @@ Transcript.propTypes = {
 };
 
 const StyledTranscript = styled(Transcript)`
-  width: auto;
+  width: 100%;
 
   .transcript-list-group {
     flex-shrink: 1;
@@ -101,6 +101,7 @@ const StyledTranscript = styled(Transcript)`
       color: #B2B2B2;
       padding-bottom: 0.2rem;
       width: auto;
+      height: auto;
     }
   }
 
@@ -118,7 +119,7 @@ const StyledTranscript = styled(Transcript)`
       width: auto;
       height: auto;
 
-      background: ${primaryAccent};
+      background: #169ca9;
       color: #FFF;
     }
   }
@@ -135,7 +136,7 @@ const StyledTranscript = styled(Transcript)`
       width: auto;
       height: auto;
 
-      background: #FFF;
+      background: #00385b;
       border: 1px solid rgba(0,0,0,0.3);
     }
   }
