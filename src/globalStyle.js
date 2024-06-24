@@ -15,7 +15,7 @@ export default createGlobalStyle`
     background: #169ca9;
     color: #FFF;
     text-align: left;
-    size: 150px;
+    size: 100%;
     width: 100%;
     height: auto;
   }
