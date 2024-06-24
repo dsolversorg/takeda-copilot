@@ -120,7 +120,7 @@ const StyledTranscript = styled(Transcript)`
       height: auto;
 
       background: ${primaryAccent};
-      color: #000;
+      color: #FFF;
     }
   }
   .transcript-entry-user {

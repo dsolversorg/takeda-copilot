@@ -13,7 +13,7 @@ export default createGlobalStyle`
   .btn.primary-accent {
     border: 1px solid ${primaryAccent};
     background: #169ca9;
-    color: #000;
+    color: #FFF;
     text-align: left;
     size: 45px;
     width: auto;
