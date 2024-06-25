@@ -44,8 +44,8 @@ const initialState = {
   },
   // default value is null, this lets us catch stuff like missing API keys
   error: startupErr,
-  micOn: false,
-  cameraOn: false,
+  micOn: true,
+  cameraOn: true,
   isOutputMuted: false,
   videoHeight: window.innerHeight,
   videoWidth: window.innerWidth,
@@ -219,7 +219,7 @@ export const createScene = createAsyncThunk('sm/createScene', async (_, thunk) =
   let cameraDenied = false;
   let micDenied = false;
   try {
-    await navigator.mediaDevices.getUserMedia({ audio: false, video: false });
+    await navigator.mediaDevices.getUserMedia({ micDenied: false, cameraDenied: false });
   } catch {
     cameraDenied = false;
     micDenied = false;
@@ -229,11 +229,13 @@ export const createScene = createAsyncThunk('sm/createScene', async (_, thunk) =
     await navigator.mediaDevices.getUserMedia({ audio: false, video: true });
   } catch {
     cameraDenied = true;
+    micDenied = false;
   }
   try {
     await navigator.mediaDevices.getUserMedia({ audio: true, video: false });
   } catch {
     micDenied = true;
+    cameraDenied = false;
   }
 
   thunk.dispatch(actions.setRequestedMediaPerms({
