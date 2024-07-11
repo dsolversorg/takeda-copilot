@@ -21,7 +21,7 @@ function Header({
             <div>
               {/* left align */}
               <Link to={logoLink}>
-                <img src="https://i.postimg.cc/Jz8nT88c/logo-DS-01.png" className="logo position-relative" alt={logoAltText} />
+                <img src="https://i.postimg.cc/MpthtcR9/logo-conheca-branco.png" className="logo position-relative" alt={logoAltText} />
               </Link>
             </div>
             <div>
