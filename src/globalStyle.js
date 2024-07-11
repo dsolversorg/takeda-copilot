@@ -15,9 +15,9 @@ export default createGlobalStyle`
     background: #169ca9;
     color: #FFF;
     text-align: left;
-    size: 100%;
-    width: 100%;
-    height: auto;
+    size: 50;
+    width: 200px;
+    height: 80;
   }
   .form-check-input:checked {
     background-color: ${primaryAccent};
