@@ -128,7 +128,7 @@ function Controls({
     ReactTooltip.rebuild();
   });
 
-  const iconSize = 50;
+  const iconSize = 45;
 
   const [showContextMenu, setShowContextMenu] = useState(false);
 
@@ -307,11 +307,11 @@ Controls.propTypes = { className: PropTypes.string.isRequired };
 
 export default styled(Controls)`
   .context-controls {
-    position: absolute;
+    position: fixed;
     z-index: 100;
     background: rgba(0,0,0,0.3);
-    left: 0;
-    top: 0;
+    bottom: 0;
+    right: 0;
 
     &>div {
       width: 100vw;
