@@ -128,7 +128,7 @@ function Controls({
     ReactTooltip.rebuild();
   });
 
-  const iconSize = 40;
+  const iconSize = 24;
 
   const [showContextMenu, setShowContextMenu] = useState(false);
 
@@ -397,7 +397,7 @@ export default styled(Controls)`
   .alert-modal {
     position: fixed;
     z-index: 1000;
-    display: inline;
+    display: flex;
     bottom: 0;
     right: 0;
     justify-content: center;
