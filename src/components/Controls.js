@@ -395,11 +395,13 @@ export default styled(Controls)`
     }
   }
   .alert-modal {
-    position: absolute;
+    position: fixed;
     z-index: 1000;
     display: flex;
     top: 0;
     left: 0;
+    right: 0;
+    bottom: 50;
     justify-content: center;
     align-items: center;
     width: 100vw;
