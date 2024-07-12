@@ -399,7 +399,7 @@ export default styled(Controls)`
     z-index: 1000;
     display: flex;
     bottom: 0;
-    right: 20px;
+    right: 0;
     justify-content: center;
     align-items: center;
     width: 100vw;
