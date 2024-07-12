@@ -209,7 +209,7 @@ function Controls({
           >
             <ChatSquareTextFill
               size={iconSize}
-              color={showTranscript ? primaryAccent : '#B3B3B3'}
+              color={showTranscript ? primaryAccent : '#030000'}
               style={{ border: highlightChat ? 'red 2px solid' : '' }}
             />
           </button>
