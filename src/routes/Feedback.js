@@ -294,7 +294,7 @@ export default styled(Feedback)`
   .tutorial-icon-dp {
     background-image: url(${landingBackgroundImage});
     background-size: cover;
-    background-position: top center;
+    background-position: button center;
   }
   .alert-modal {
     position: absolute;
