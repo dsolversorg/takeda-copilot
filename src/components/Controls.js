@@ -395,11 +395,9 @@ export default styled(Controls)`
     }
   }
   .alert-modal {
-    position: fixed;
+    position: absolute;
     z-index: 1000;
     display: flex;
-    top: 0;
-    left: 0;
     right: 0;
     bottom: 50;
     justify-content: center;
