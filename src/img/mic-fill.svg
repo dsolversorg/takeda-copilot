@@ -1,4 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#000" class="bi bi-mic-fill" viewBox="0 0 16 16">
-  <path d="M5 3a3 3 0 0 1 6 0v5a3 3 0 0 1-6 0V3z"/>
-  <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 22 29" class="bi bi-mic-fill" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" fit="" preserveAspectRatio="xMidYMid meet" focusable="false">
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(1.000000, 1.000000)" stroke="#FFFFFF" stroke-width="2">
+            <path d="M19,12 C19,17.523 15.523,22 10,22 C4.477,22 1,17.523 1,12" opacity="0.56" stroke-linecap="round"></path>
+            <path d="M10,0 C7.790861,0 6,1.790861 6,4 L6,13 C6,15.209139 7.790861,17 10,17 C12.209139,17 14,15.209139 14,13 L14,4 C14,1.790861 12.209139,0 10,0 Z" opacity="0.5"></path>
+            <path d="M5,27 L15,27" opacity="0.56" stroke-linecap="round"></path>
+            <path d="M10,22 L10,27" opacity="0.5" stroke-linecap="round"></path>
+            <path d="M0,2 L21,23" stroke-linecap="round"></path>
+        </g>
+    </g>
 </svg>
