@@ -122,7 +122,7 @@ export default styled(Landing)`
     background: ${landingBackgroundImage ? `url(${landingBackgroundImage})` : ''} ${landingBackgroundColor ? `${landingBackgroundColor};` : ''};
     background-size: auto 50%;
     background-repeat: no-repeat;
-    background-position: bottom center;
+    background-position: top center;
     z-index: 2;
 
 
