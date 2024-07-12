@@ -128,7 +128,7 @@ function Controls({
     ReactTooltip.rebuild();
   });
 
-  const iconSize = 80;
+  const iconSize = 50;
 
   const [showContextMenu, setShowContextMenu] = useState(false);
 
@@ -209,7 +209,7 @@ function Controls({
           >
             <ChatSquareTextFill
               size={iconSize}
-              color={showTranscript ? primaryAccent : '#B3B3B3'}
+              color={showTranscript ? primaryAccent : '#000'}
               style={{ border: highlightChat ? 'red 2px solid' : '' }}
             />
           </button>
@@ -262,7 +262,7 @@ function Controls({
             onClick={() => setShowContextMenu(!showContextMenu)}
           >
             {showContextMenu ? (
-              <X size={iconSize} color="#fff" />
+              <X size={iconSize} color="#000" />
             ) : (
               <ThreeDotsVertical size={iconSize} style={{ border: highlightMenu ? 'red 2px solid' : '' }} />
             )}
