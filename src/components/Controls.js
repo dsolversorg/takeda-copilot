@@ -128,7 +128,7 @@ function Controls({
     ReactTooltip.rebuild();
   });
 
-  const iconSize = 50;
+  const iconSize = 80;
 
   const [showContextMenu, setShowContextMenu] = useState(false);
 
