@@ -395,15 +395,14 @@ export default styled(Controls)`
     }
   }
   .alert-modal {
-    position: fixed;
+    position: sticky;
     z-index: 1000;
     display: flex;
     bottom: 0;
-    right: 0;
     justify-content: center;
     align-items: center;
     width: 100vw;
-    min-height: 100vh;
+    height: 40px;
     background: rgba(0,0,0,0.3);
   }
   .alert-modal-card {
