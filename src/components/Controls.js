@@ -427,9 +427,8 @@ export default styled(Controls)`
   }
 
   .d-flex{
-    position: sticky;
+    position: absolute;
     bottom: 0;
-    right: 0;
     width: 100%;
     height: 40px; /* Leva em consideração a altura do rodapé */
   }
