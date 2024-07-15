@@ -117,8 +117,8 @@ function Controls({
   //   } return false;
   // }, [connected]);
 
-  // bind transcrpt open and mute func to each other, so that
-  // when we open the transcript we mute the mic
+  // vincular transcrição aberta e mute func entre si, para que
+  // quando abrimos a transcrição, silenciamos o microfone
   const toggleKeyboardInput = () => {
     dispatch(setShowTranscript(!showTranscript));
     dispatch(setMicOn({ micOn: showTranscript }));
@@ -351,17 +351,20 @@ export default styled(Controls)`
       }
     }
   }
+
   .context-controls-trigger {
     position: relative;
     border: 1px solid red;
     z-index: 105;
   }
+
   .control-icon {
     border: none;
     background: none;
 
     padding: .4rem;
   }
+
   .form-control {
     opacity: 0.8;
     &:focus {
@@ -373,6 +376,7 @@ export default styled(Controls)`
     opacity: 1;
     transition: opacity 0.1s;
   }
+
   .interrupt-active {
     opacity: 0;
   }
@@ -403,9 +407,10 @@ export default styled(Controls)`
       z-index: 20;
     }
   }
+
   .alert-modal {
     position: absolute;
-    z-index: 10;
+    z-index: 1000;
     display: flex;
     bottom: 0;
     left: 0;
@@ -420,5 +425,11 @@ export default styled(Controls)`
     background: #FFF;
     padding-bottom: 2.5rem; /* altura do rodapé */
     border-radius: 5px;
+  }
+
+  .d-flex{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
   }
 `;
