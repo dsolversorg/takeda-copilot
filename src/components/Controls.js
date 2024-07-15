@@ -405,7 +405,7 @@ export default styled(Controls)`
   }
   .alert-modal {
     position: absolute;
-    z-index: 1000;
+    z-index: 10;
     display: flex;
     bottom: 0;
     left: 0;
