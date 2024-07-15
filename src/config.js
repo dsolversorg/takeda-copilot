@@ -6,7 +6,7 @@ export const transparentHeader = true;
 export const headerHeight = '4.2rem';
 export const logo = 'https://i.postimg.cc/MpthtcR9/logo-conheca-branco.png';
 export const logoAltText = 'logo-conheca-branco';
-export const logoLink = '/';
+export const logoLink = '/takeda-copilot';
 
 // background image is positioned in a way that is best for pictures of the persona's face.
 // adjust spacing as necessary in Landing.js for different images

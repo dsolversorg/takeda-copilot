@@ -417,7 +417,7 @@ export default styled(Controls)`
     justify-content: center;
     align-items: center;
     width: 100vw;
-    min-height: calc(100vh - 40px); /* Leva em consideração a altura do cabeçalho e do rodapé */
+    min-height: 100vh; /* Leva em consideração a altura do cabeçalho e do rodapé */
     background: rgba(0,0,0,0.3);
   }
   .alert-modal-card {
@@ -431,7 +431,6 @@ export default styled(Controls)`
     bottom: 0;
     right: 0;
     width: 100%;
-    overflow: auto; /* Permite a rolagem do conteúdo caso exceda o tamanho da tela */
-    padding-bottom: 40px; /* Leva em consideração a altura do rodapé */
+    height: 40px; /* Leva em consideração a altura do rodapé */
   }
 `;

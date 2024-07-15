@@ -44,7 +44,7 @@ Header.propTypes = {
 };
 
 export default styled(Header)`
-  position: fixed;
+  position: relative;
   z-index: 20;
   top: 0;
   width: 100%;
