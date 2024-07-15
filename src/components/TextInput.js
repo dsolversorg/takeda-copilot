@@ -57,7 +57,7 @@ export default styled(TextInput)`
     color: rgba(0,0,0,0.4);
     padding: 20px;
     text-align: center;
-    position: fixed;
+    position: relative;
     bottom: 0;
     left: 0;
     right: 0;    
