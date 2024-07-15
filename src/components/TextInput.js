@@ -55,6 +55,9 @@ export default styled(TextInput)`
     border-left: none;
     background: #FFF;
     color: rgba(0,0,0,0.4);
+  }
+
+  .input-group{
     padding: 20px;
     text-align: center;
     position: relative;
