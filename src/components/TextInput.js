@@ -55,5 +55,11 @@ export default styled(TextInput)`
     border-left: none;
     background: #FFF;
     color: rgba(0,0,0,0.4);
+    padding: 20px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;    
   }
 `;
