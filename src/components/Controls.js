@@ -427,9 +427,11 @@ export default styled(Controls)`
   }
 
   .d-flex{
-    position: absolute;
+    padding: 20px;
+    text-align: center;
+    position: fixed;
     bottom: 0;
-    width: 100%;
-    height: 40px; /* Leva em consideração a altura do rodapé */
+    left: 0;
+    right: 0;
   }
 `;
