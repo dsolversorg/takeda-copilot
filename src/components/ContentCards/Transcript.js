@@ -99,14 +99,14 @@ const StyledTranscript = styled(Transcript)`
     small {
       display: block;
       color: #B2B2B2;
-      padding-bottom: 0.2rem;
+      padding-bottom: 2rem;
       width: auto;
       height: auto;
     }
   }
 
   .transcript-entry-content {
-    padding: 24px 20px;
+    padding: 40px 20px;
   }
 
   .transcript-entry-persona {
