@@ -417,8 +417,9 @@ export default styled(Controls)`
     justify-content: center;
     align-items: center;
     width: 100vw;
-    min-height: 100vh;
-    height: 2.5rem;
+    min-height: calc(100vh - 40px); /* Leva em consideração a altura do cabeçalho e do rodapé */
+    overflow: auto; /* Permite a rolagem do conteúdo caso exceda o tamanho da tela */
+    padding-bottom: 40px; /* Leva em consideração a altura do rodapé */
     background: rgba(0,0,0,0.3);
   }
   .alert-modal-card {
@@ -430,7 +431,8 @@ export default styled(Controls)`
   .d-flex{
     position: sticky;
     bottom: 0;
-    width: 100vw;
+    right: 0;
+    width: 50%;
     height: 40px; /* Define a altura do rodapé */
   }
 `;
