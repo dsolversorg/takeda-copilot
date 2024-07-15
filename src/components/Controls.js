@@ -407,17 +407,18 @@ export default styled(Controls)`
     position: absolute;
     z-index: 1000;
     display: flex;
-    top: 0;
+    bottom: 0;
     left: 0;
     justify-content: center;
     align-items: center;
     width: 100vw;
     min-height: 100vh;
+    height: 2.5rem;
     background: rgba(0,0,0,0.3);
   }
   .alert-modal-card {
     background: #FFF;
-    padding: 1.3rem;
+    padding-bottom: 2.5rem; /* altura do rodapé */
     border-radius: 5px;
   }
 `;
