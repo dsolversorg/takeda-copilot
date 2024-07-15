@@ -418,8 +418,6 @@ export default styled(Controls)`
     align-items: center;
     width: 100vw;
     min-height: calc(100vh - 40px); /* Leva em consideração a altura do cabeçalho e do rodapé */
-    overflow: auto; /* Permite a rolagem do conteúdo caso exceda o tamanho da tela */
-    padding-bottom: 40px; /* Leva em consideração a altura do rodapé */
     background: rgba(0,0,0,0.3);
   }
   .alert-modal-card {
@@ -432,7 +430,8 @@ export default styled(Controls)`
     position: sticky;
     bottom: 0;
     right: 0;
-    width: 50%;
-    height: 40px; /* Define a altura do rodapé */
+    width: 100%;
+    overflow: auto; /* Permite a rolagem do conteúdo caso exceda o tamanho da tela */
+    padding-bottom: 40px; /* Leva em consideração a altura do rodapé */
   }
 `;

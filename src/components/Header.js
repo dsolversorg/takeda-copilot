@@ -44,7 +44,7 @@ Header.propTypes = {
 };
 
 export default styled(Header)`
-  position: relative;
+  position: fixed;
   z-index: 20;
   top: 0;
   width: 100%;
@@ -56,7 +56,7 @@ export default styled(Header)`
   .logo {
     margin-top: 20px;
 
-    /* height constrain logo image */
+    /* imagem do logotipo com restrição de altura */
     // height: calc(0.4 * ${headerHeight});
     // width: auto;
     height: auto;
