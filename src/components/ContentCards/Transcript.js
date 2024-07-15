@@ -87,6 +87,7 @@ const StyledTranscript = styled(Transcript)`
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
+    overflow-x: hiden;
     scrollbar-width: none;
 
     &::-webkit-scrollbar {
@@ -106,7 +107,7 @@ const StyledTranscript = styled(Transcript)`
   }
 
   .transcript-entry-content {
-    padding: 40px 20px;
+    padding: 40px 30px;
   }
 
   .transcript-entry-persona {

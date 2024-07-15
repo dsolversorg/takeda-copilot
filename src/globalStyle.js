@@ -5,7 +5,7 @@ export const primaryAccent = '#169ca9';
 export default createGlobalStyle`
   body {
     height: 100vh;
-    overflow: scroll;
+    overflow: hiden;
   }
   svg {
     vertical-align: -0.125em;
