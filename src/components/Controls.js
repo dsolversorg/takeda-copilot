@@ -167,55 +167,10 @@ function Controls({
           </div>
         </div>
       ) : null}
+
       <div className="d-flex">
         <div>
-          {/* mute dp sound */}
-          <button
-            type="button"
-            className="control-icon"
-            aria-label="Alternar áudio"
-            data-tip="Alternar áudio"
-            onClick={() => dispatch(setOutputMute({ isOutputMuted: !isOutputMuted }))}
-          >
-            {isOutputMuted ? (
-              <VolumeMuteFill size={iconSize} style={{ border: highlightMute ? 'red 2px solid' : '' }} />
-            ) : (
-              <VolumeUpFill size={iconSize} color={primaryAccent} style={{ border: highlightMute ? 'red 2px solid' : '' }} />
-            )}
-          </button>
-        </div>
-        <div>
-          {/* skip through whatever dp is currently speaking */}
-          <button
-            type="button"
-            className="control-icon"
-            disabled={speechState !== 'speaking'}
-            onClick={() => dispatch(stopSpeaking())}
-            data-tip="Pular fala"
-            aria-label="Pular fala"
-          >
-            <SkipEndFill size={iconSize} style={{ border: highlightSkip ? 'red 2px solid' : '' }} />
-          </button>
-        </div>
-        <div>
-          {/* show transcript */}
-          <button
-            type="button"
-            className="control-icon"
-            aria-label="Alternar Transcrição"
-            data-tip="Alternar Transcrição"
-            onClick={toggleKeyboardInput}
-            disabled={transcript.length <= 0}
-          >
-            <ChatSquareTextFill
-              size={iconSize}
-              color={showTranscript ? primaryAccent : '#000'}
-              style={{ border: highlightChat ? 'red 2px solid' : '' }}
-            />
-          </button>
-        </div>
-        <div>
-          {/* toggle user mic */}
+          {/* alternar microfone do usuário */}
           <button
             type="button"
             className="control-icon"
@@ -231,8 +186,9 @@ function Controls({
             )}
           </button>
         </div>
+
         <div>
-          {/* toggle user camera */}
+          {/* alternar câmera do usuário */}
           <button
             type="button"
             className="control-icon"
@@ -252,7 +208,58 @@ function Controls({
             )}
           </button>
         </div>
+
+        <div>
+          {/* pule o que quer que o dp esteja falando no momento */}
+          <button
+            type="button"
+            className="control-icon"
+            disabled={speechState !== 'speaking'}
+            onClick={() => dispatch(stopSpeaking())}
+            data-tip="Pular fala"
+            aria-label="Pular fala"
+          >
+            <SkipEndFill size={iconSize} style={{ border: highlightSkip ? 'red 2px solid' : '' }} />
+          </button>
+        </div>
+
+        <div>
+          {/* silenciar som dp */}
+          <button
+            type="button"
+            className="control-icon"
+            aria-label="Alternar áudio"
+            data-tip="Alternar áudio"
+            onClick={() => dispatch(setOutputMute({ isOutputMuted: !isOutputMuted }))}
+          >
+            {isOutputMuted ? (
+              <VolumeMuteFill size={iconSize} style={{ border: highlightMute ? 'red 2px solid' : '' }} />
+            ) : (
+              <VolumeUpFill size={iconSize} color={primaryAccent} style={{ border: highlightMute ? 'red 2px solid' : '' }} />
+            )}
+          </button>
+        </div>
+
+        <div>
+          {/* mostrar transcrição */}
+          <button
+            type="button"
+            className="control-icon"
+            aria-label="Alternar Transcrição"
+            data-tip="Alternar Transcrição"
+            onClick={toggleKeyboardInput}
+            disabled={transcript.length <= 0}
+          >
+            <ChatSquareTextFill
+              size={iconSize}
+              color={showTranscript ? primaryAccent : '#B3B3B3'}
+              style={{ border: highlightChat ? 'red 2px solid' : '' }}
+            />
+          </button>
+        </div>
+
         <div className="context-control-parent">
+          {/* menu mais opções */}
           <button
             className="control-icon context-controls-trigger"
             type="button"
@@ -262,7 +269,7 @@ function Controls({
             onClick={() => setShowContextMenu(!showContextMenu)}
           >
             {showContextMenu ? (
-              <X size={iconSize} color="#000" />
+              <X size={iconSize} color="#fff" />
             ) : (
               <ThreeDotsVertical size={iconSize} style={{ border: highlightMenu ? 'red 2px solid' : '' }} />
             )}
@@ -395,14 +402,15 @@ export default styled(Controls)`
     }
   }
   .alert-modal {
-    position: sticky;
+    position: absolute;
     z-index: 1000;
     display: flex;
-    bottom: 0;
+    top: 0;
+    left: 0;
     justify-content: center;
     align-items: center;
     width: 100vw;
-    height: 40px;
+    min-height: 100vh;
     background: rgba(0,0,0,0.3);
   }
   .alert-modal-card {
