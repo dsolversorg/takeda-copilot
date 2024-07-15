@@ -130,6 +130,8 @@ function Controls({
 
   const iconSize = 24;
 
+  const MenuiconSize = 35;
+
   const [showContextMenu, setShowContextMenu] = useState(false);
 
   const originalShareCopy = 'Copiar link';
@@ -180,9 +182,9 @@ function Controls({
             onClick={() => dispatch(setMicOn({ micOn: !micOn }))}
           >
             {micOn ? (
-              <MicFill size={iconSize} color={primaryAccent} style={{ border: highlightMic ? 'red 2px solid' : '' }} />
+              <MicFill size={MenuiconSize} color={primaryAccent} style={{ border: highlightMic ? 'red 2px solid' : '' }} />
             ) : (
-              <MicMuteFill size={iconSize} style={{ border: highlightMic ? 'red 2px solid' : '' }} />
+              <MicMuteFill size={MenuiconSize} style={{ border: highlightMic ? 'red 2px solid' : '' }} />
             )}
           </button>
         </div>
@@ -199,12 +201,12 @@ function Controls({
           >
             {cameraOn ? (
               <CameraVideoFill
-                size={iconSize}
+                size={MenuiconSize}
                 color={primaryAccent}
                 style={{ border: highlightCamera ? 'red 2px solid' : '' }}
               />
             ) : (
-              <CameraVideoOffFill size={iconSize} style={{ border: highlightCamera ? 'red 2px solid' : '' }} />
+              <CameraVideoOffFill size={MenuiconSize} style={{ border: highlightCamera ? 'red 2px solid' : '' }} />
             )}
           </button>
         </div>
@@ -219,7 +221,7 @@ function Controls({
             data-tip="Pular fala"
             aria-label="Pular fala"
           >
-            <SkipEndFill size={iconSize} style={{ border: highlightSkip ? 'red 2px solid' : '' }} />
+            <SkipEndFill size={MenuiconSize} style={{ border: highlightSkip ? 'red 2px solid' : '' }} />
           </button>
         </div>
 
@@ -233,9 +235,9 @@ function Controls({
             onClick={() => dispatch(setOutputMute({ isOutputMuted: !isOutputMuted }))}
           >
             {isOutputMuted ? (
-              <VolumeMuteFill size={iconSize} style={{ border: highlightMute ? 'red 2px solid' : '' }} />
+              <VolumeMuteFill size={MenuiconSize} style={{ border: highlightMute ? 'red 2px solid' : '' }} />
             ) : (
-              <VolumeUpFill size={iconSize} color={primaryAccent} style={{ border: highlightMute ? 'red 2px solid' : '' }} />
+              <VolumeUpFill size={MenuiconSize} color={primaryAccent} style={{ border: highlightMute ? 'red 2px solid' : '' }} />
             )}
           </button>
         </div>
@@ -251,7 +253,7 @@ function Controls({
             disabled={transcript.length <= 0}
           >
             <ChatSquareTextFill
-              size={iconSize}
+              size={MenuiconSize}
               color={showTranscript ? primaryAccent : '#B3B3B3'}
               style={{ border: highlightChat ? 'red 2px solid' : '' }}
             />
