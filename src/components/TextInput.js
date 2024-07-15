@@ -56,13 +56,4 @@ export default styled(TextInput)`
     background: #FFF;
     color: rgba(0,0,0,0.4);
   }
-
-  .input-group{
-    padding: 20px;
-    text-align: center;
-    position: relative;
-    bottom: 0;
-    left: 0;
-    right: 0;    
-  }
 `;

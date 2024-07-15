@@ -427,7 +427,7 @@ export default styled(Controls)`
   }
 
   .d-flex{
-    padding: 5px;
+    padding: 0px;
     text-align: center;
     position: fixed;
     bottom: 0;

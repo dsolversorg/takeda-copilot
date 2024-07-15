@@ -6,14 +6,14 @@ import ContentCardSwitch from '../ContentCardSwitch';
 import { primaryAccent } from '../../globalStyle';
 
 function Transcript({ className, transcript }) {
-  // scroll to bottom of transcript whenever it updates
+  // role até o final da transcrição sempre que ela for atualizada
   let scrollRef;
   const [isMounting, setIsMounting] = useState(true);
   useEffect(() => {
     setIsMounting(false);
     return () => setIsMounting(true);
   });
-  // state value is arbitrary, we just need it to change to trigger the effect hook
+  // o valor do estado é arbitrário, só precisamos alterá-lo para acionar o gancho de efeito
   const [triggerScrollIntoView, setTriggerScroll] = useState(false);
   useEffect(() => {
     scrollRef.scrollIntoView({ behavior: isMounting ? 'auto' : 'smooth' });
@@ -23,7 +23,7 @@ function Transcript({ className, transcript }) {
   const transcriptDisplay = transcript.map(({
     source, text, card, timestamp,
   }, index) => {
-    // we don't want to wrap cards in a bubble, return as is w/ a key added
+    // não queremos embrulhar os cartões em uma bolha, retorne como estão com uma chave adicionada
     if (card) {
       return (
         <ContentCardSwitch
@@ -59,11 +59,11 @@ function Transcript({ className, transcript }) {
           ? transcriptDisplay
           : (
             <li className="list-group-item">
-              No items to show, say something!
+              Não há itens para mostrar, diga alguma coisa!
             </li>
           )}
-        {/* height added because safari doesn't display zero height elems,
-        so the scroll behavior doesn't work */}
+        {/* altura adicionada porque o safari não exibe elementos de altura zero,
+        então o comportamento de rolagem não funciona */}
         <div ref={(el) => { scrollRef = el; }} style={{ clear: 'both', height: '1px' }} />
       </div>
     </div>
