@@ -55,10 +55,5 @@ export default styled(TextInput)`
     border-left: none;
     background: #FFF;
     color: rgba(0,0,0,0.4);
-    bottom: 60px;
-  }
-
-  .input-group{
-    bottom: 60px;
   }
 `;
