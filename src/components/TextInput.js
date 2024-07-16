@@ -55,16 +55,10 @@ export default styled(TextInput)`
     border-left: none;
     background: #FFF;
     color: rgba(0,0,0,0.4);
-    position: relative
-    width: 1%;
     bottom: 60px;
   }
 
   .input-group{
-    flex: 1 1 auto;
-    min-width: 0;
-    position: relative
-    width: 1%;
     bottom: 60px;
   }
 `;
