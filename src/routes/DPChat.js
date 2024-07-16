@@ -106,7 +106,7 @@ function DPChat({
         </div>
         {/* middle row */}
         <div
-          className="rolagem row d-flex justify-content-end align-items-center flex-grow-1 ps-3 pe-3"
+          className="row d-flex justify-content-end align-items-center flex-grow-1 ps-3 pe-3"
           style={{ overflow: 'scroll' }}
           ref={ccDisplaRef}
         >
@@ -176,7 +176,8 @@ export default styled(DPChat)`
     }
   }
 
-  .rolagem{
+  .row{
     overflow-x: hiden;
+    --bs-gutter-y: 2rem;
   }
 `;

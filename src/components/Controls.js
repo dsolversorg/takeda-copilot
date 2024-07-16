@@ -433,5 +433,6 @@ export default styled(Controls)`
     bottom: 0;
     left: 0;
     right: 0;
+    width: 50px;
   }
 `;
