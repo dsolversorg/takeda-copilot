@@ -178,6 +178,7 @@ export default styled(DPChat)`
 
   .row{
     overflow-x: hiden;
-    --bs-gutter-y: 2rem;
+    overflow-y: hiden;
+    --bs-gutter-y: 0.1rem;
   }
 `;
