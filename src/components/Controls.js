@@ -28,7 +28,7 @@ import {
 import mic from '../img/mic.svg';
 import micFill from '../img/mic-fill.svg';
 import breakpoints from '../utils/breakpoints';
-import { primaryAccent } from '../globalStyle';
+import { seconderyAccent } from '../globalStyle';
 import FeedbackModal from './FeedbackModal';
 
 const volumeMeterHeight = 24;
@@ -181,7 +181,7 @@ function Controls({
               disabled={requestedMediaPerms.micDenied === true}
               onClick={() => dispatch(setMicOn({ micOn: !micOn }))}
             >
-              <MicFill size={MenuiconSize} color={primaryAccent} style={{ border: highlightMic ? 'red 2px solid' : '' }} />
+              <MicFill size={MenuiconSize} color={seconderyAccent} style={{ border: highlightMic ? 'red 2px solid' : '' }} />
 
             </button>
           )
@@ -194,7 +194,7 @@ function Controls({
                 disabled={requestedMediaPerms.micDenied === true}
                 onClick={() => dispatch(setMicOn({ micOn: !micOn }))}
               >
-                <MicMuteFill size={MenuiconSize} color={primaryAccent} style={{ border: highlightMic ? 'red 2px solid' : '' }} />
+                <MicMuteFill size={MenuiconSize} color={seconderyAccent} style={{ border: highlightMic ? 'red 2px solid' : '' }} />
               </button>
             )}
         </div>
@@ -212,7 +212,7 @@ function Controls({
             >
               <CameraVideoFill
                 size={MenuiconSize}
-                color={primaryAccent}
+                color={seconderyAccent}
                 style={{ border: highlightCamera ? 'red 2px solid' : '' }}
               />
             </button>
@@ -225,7 +225,7 @@ function Controls({
               disabled={requestedMediaPerms.cameraDenied === true}
               onClick={() => dispatch(setCameraOn({ cameraOn: !cameraOn }))}
             >
-              <CameraVideoOffFill size={MenuiconSize} color={primaryAccent} style={{ border: highlightCamera ? 'red 2px solid' : '' }} />
+              <CameraVideoOffFill size={MenuiconSize} color={seconderyAccent} style={{ border: highlightCamera ? 'red 2px solid' : '' }} />
 
             </button>
           )}
@@ -257,7 +257,7 @@ function Controls({
               data-tip="Alternar áudio"
               onClick={() => dispatch(setOutputMute({ isOutputMuted: !isOutputMuted }))}
             >
-              <VolumeMuteFill size={MenuiconSize} color={primaryAccent} style={{ border: highlightMute ? 'red 2px solid' : '' }} />
+              <VolumeMuteFill size={MenuiconSize} color={seconderyAccent} style={{ border: highlightMute ? 'red 2px solid' : '' }} />
             </button>
           ) : (
             <button
@@ -267,7 +267,7 @@ function Controls({
               data-tip="Alternar áudio"
               onClick={() => dispatch(setOutputMute({ isOutputMuted: !isOutputMuted }))}
             >
-              <VolumeUpFill size={MenuiconSize} color={primaryAccent} style={{ border: highlightMute ? 'red 2px solid' : '' }} />
+              <VolumeUpFill size={MenuiconSize} color={seconderyAccent} style={{ border: highlightMute ? 'red 2px solid' : '' }} />
             </button>
           )}
         </div>
@@ -285,7 +285,7 @@ function Controls({
             >
               <ChatSquareTextFill
                 size={MenuiconSize}
-                color={primaryAccent}
+                color={seconderyAccent}
               />
             </button>
           ) : (
@@ -296,7 +296,7 @@ function Controls({
               data-tip="Alternar Transcrição"
               onClick={toggleKeyboardInput}
             >
-              <X size={MenuiconSize} color={primaryAccent} style={{ border: highlightChat ? 'red 2px solid' : '' }} />
+              <X size={MenuiconSize} color={seconderyAccent} style={{ border: highlightChat ? 'red 2px solid' : '' }} />
             </button>
           )}
 
