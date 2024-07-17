@@ -72,7 +72,7 @@ function Header({
                   {showContextMenu ? (
                     <X size={iconSize} color="#fff" />
                   ) : (
-                    <ThreeDotsVertical size={iconSize} color="#fff" style={{ border: highlightMenu ? 'red 2px solid' : '' }} />
+                    <ThreeDotsVertical size={iconSize} color="#fff" />
                   )}
                 </button>
                 {showContextMenu ? (
