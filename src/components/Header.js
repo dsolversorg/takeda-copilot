@@ -40,9 +40,9 @@ function Header({
   const [showContextMenu, setShowContextMenu] = useState(false);
   const iconSize = 24;
 
-  const {
-    highlightMenu,
-  } = useSelector((state) => ({ ...state.sm }));
+  // const {
+  //   highlightMenu,
+  // } = useSelector((state) => ({ ...state.sm }));
 
   return (
     <div className={`${className}`}>
