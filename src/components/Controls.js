@@ -51,7 +51,6 @@ function Controls({
     highlightChat,
     highlightCamera,
     highlightSkip,
-    highlightMenu,
   } = useSelector((state) => ({ ...state.sm }));
 
   const dispatch = useDispatch();
@@ -127,11 +126,7 @@ function Controls({
     ReactTooltip.rebuild();
   });
 
-  const iconSize = 24;
-
   const MenuiconSize = 35;
-
-  const [showContextMenu, setShowContextMenu] = useState(false);
 
   const originalShareCopy = 'Copiar link';
   const [shareCopy, setShareCopy] = useState(originalShareCopy);
@@ -301,53 +296,7 @@ function Controls({
           )}
 
         </div>
-        <div className="context-control-parent">
-          {/* menu mais opções */}
-          <button
-            className="control-icon context-controls-trigger"
-            type="button"
-            aria-label="Mais opções"
-            data-tip="Mais opções"
-            id="dpChatDropdown"
-            onClick={() => setShowContextMenu(!showContextMenu)}
-          >
-            {showContextMenu ? (
-              <X size={iconSize} color="#fff" />
-            ) : (
-              <ThreeDotsVertical size={iconSize} color="#fff" style={{ border: highlightMenu ? 'red 2px solid' : '' }} />
-            )}
-          </button>
-          {showContextMenu ? (
-            <div className="context-controls shadow">
-              <div className="d-flex justify-content-end align-items-start">
-                <ul>
-                  <li>
-                    <button
-                      className="btn-unstyled "
-                      type="button"
-                      onClick={() => dispatch(disconnect())}
-                    >
-                      <Escape size={18} />
-                      {' '}
-                      Encerrar sessão
-                    </button>
-                  </li>
-                  <li>
-                    <button
-                      className="btn-unstyled"
-                      type="button"
-                      onClick={() => shareDP()}
-                    >
-                      <Share size={18} />
-                      {' '}
-                      {shareCopy}
-                    </button>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          ) : null}
-        </div>
+        
       </div>
     </div>
   );

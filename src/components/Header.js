@@ -5,10 +5,27 @@ import { Link } from 'react-router-dom';
 import {
   logoAltText, transparentHeader, headerHeight, logoLink,
 } from '../config';
+import {
+  disconnect,
+} from '../store/sm/index';
+import {
+  Escape,
+  Share,
+  ThreeDotsVertical,
+  X,
+} from 'react-bootstrap-icons';
 
 function Header({
   className,
 }) {
+
+  const [showContextMenu, setShowContextMenu] = useState(false);
+  const iconSize = 24;
+
+  const {
+    highlightMenu,
+  } = useSelector((state) => ({ ...state.sm }));
+
   return (
     <div className={`${className}`}>
       <div className="container">
@@ -24,7 +41,53 @@ function Header({
               {/* middle align */}
             </div>
             <div>
-              {/* right align */}
+              <div className="context-control-parent">
+                {/* menu mais opções */}
+                <button
+                  className="control-icon context-controls-trigger"
+                  type="button"
+                  aria-label="Mais opções"
+                  data-tip="Mais opções"
+                  id="dpChatDropdown"
+                  onClick={() => setShowContextMenu(!showContextMenu)}
+                >
+                  {showContextMenu ? (
+                    <X size={iconSize} color="#fff" />
+                  ) : (
+                    <ThreeDotsVertical size={iconSize} color="#fff" style={{ border: highlightMenu ? 'red 2px solid' : '' }} />
+                  )}
+                </button>
+                {showContextMenu ? (
+                  <div className="context-controls shadow">
+                    <div className="d-flex justify-content-end align-items-start">
+                      <ul>
+                        <li>
+                          <button
+                            className="btn-unstyled "
+                            type="button"
+                            onClick={() => dispatch(disconnect())}
+                          >
+                            <Escape size={18} />
+                            {' '}
+                            Encerrar sessão
+                          </button>
+                        </li>
+                        <li>
+                          <button
+                            className="btn-unstyled"
+                            type="button"
+                            onClick={() => shareDP()}
+                          >
+                            <Share size={18} />
+                            {' '}
+                            {shareCopy}
+                          </button>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                ) : null}
+              </div>
             </div>
           </div>
         </div>
