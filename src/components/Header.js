@@ -18,7 +18,7 @@ import {
 
 function Header({
   className,
-}) {
+}){
 
   const dispatch = useDispatch();
   const originalShareCopy = 'Copiar link';
