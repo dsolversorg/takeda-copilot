@@ -151,7 +151,7 @@ function Controls({
   };
 
   return (
-    <div className={className}>
+    <div className={className} >
       {showFeedback ? (
         <div className="alert-modal">
           <div className="alert-modal-card container">
@@ -169,13 +169,13 @@ function Controls({
         </div>
       ) : null}
 
-      <div className="d-flex">
+      <div className="d-flex espace">
         <div>
           {/* alternar microfone do usuário */}
           {micOn ? (
             <button
               type="button"
-              className="control-icon mic"
+              className="control-icon icon"
               aria-label="Alternar Microfone"
               data-tip="Alternar Microfone"
               disabled={requestedMediaPerms.micDenied === true}
@@ -188,7 +188,7 @@ function Controls({
             : (
               <button
                 type="button"
-                className="control-icon micMute"
+                className="control-icon iconcMute"
                 aria-label="Alternar Microfone"
                 data-tip="Alternar Microfone"
                 disabled={requestedMediaPerms.micDenied === true}
@@ -201,24 +201,34 @@ function Controls({
 
         <div>
           {/* alternar câmera do usuário */}
-          <button
-            type="button"
-            className="control-icon"
-            aria-label="Alternar Câmera"
-            data-tip="Alternar Câmera"
-            disabled={requestedMediaPerms.cameraDenied === true}
-            onClick={() => dispatch(setCameraOn({ cameraOn: !cameraOn }))}
-          >
-            {cameraOn ? (
+          {cameraOn ? (
+            <button
+              type="button"
+              className="control-icon icon"
+              aria-label="Alternar Câmera"
+              data-tip="Alternar Câmera"
+              disabled={requestedMediaPerms.cameraDenied === true}
+              onClick={() => dispatch(setCameraOn({ cameraOn: !cameraOn }))}
+            >
               <CameraVideoFill
                 size={MenuiconSize}
                 color={primaryAccent}
                 style={{ border: highlightCamera ? 'red 2px solid' : '' }}
               />
-            ) : (
+            </button>
+          ) : (
+            <button
+              type="button"
+              className="control-icon iconMute"
+              aria-label="Alternar Câmera"
+              data-tip="Alternar Câmera"
+              disabled={requestedMediaPerms.cameraDenied === true}
+              onClick={() => dispatch(setCameraOn({ cameraOn: !cameraOn }))}
+            >
               <CameraVideoOffFill size={MenuiconSize} style={{ border: highlightCamera ? 'red 2px solid' : '' }} />
-            )}
-          </button>
+
+            </button>
+          )}
         </div>
 
         <div>
@@ -435,7 +445,7 @@ export default styled(Controls)`
     border-radius: 5px;
   }
 
-  .mic{
+  .icon{
     background-color: #09c8c8;
     border-radius: 40px;
     padding: 1rem;
@@ -444,13 +454,17 @@ export default styled(Controls)`
     }
   }
 
-  .micMute{
+  .iconMute{
     background-color: #f2695c;
     border-radius: 40px;
     padding: 1rem;
     &:hover{
       background-color: #bc493e;
     }
+  }
+
+  .espace{
+    gap: 20px;
   }
 
 `;
