@@ -81,7 +81,7 @@ function Header({
                       <ul>
                         <li>
                           <button
-                            className="btn-unstyled "
+                            className="btn-unstyled"
                             type="button"
                             onClick={() => dispatch(disconnect())}
                           >
@@ -127,6 +127,20 @@ export default styled(Header)`
   &>.row {
     height: ${headerHeight};
   }
+
+  .control-icon {
+    border: none;
+    background: none;
+
+    padding: .4rem;
+  }
+
+  .context-controls-trigger {
+    position: relative;
+    border: 1px solid red;
+    z-index: 105;
+  }
+
   .logo {
     margin-top: 20px;
 
