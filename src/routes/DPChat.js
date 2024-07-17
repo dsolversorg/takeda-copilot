@@ -117,9 +117,9 @@ function DPChat({
               <ContentCardDisplay />
             </div>
           </div>
-          <div>
-            <TextInput />
-          </div>
+        </div>
+        <div>
+          <TextInput />
         </div>
         {/* bottom row */}
         <div>
