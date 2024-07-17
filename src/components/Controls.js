@@ -296,7 +296,7 @@ function Controls({
               data-tip="Alternar Transcrição"
               onClick={toggleKeyboardInput}
             >
-             <X size={MenuiconSize} color={primaryAccent} style={{ border: highlightChat ? 'red 2px solid' : '' }} />
+              <X size={MenuiconSize} color={primaryAccent} style={{ border: highlightChat ? 'red 2px solid' : '' }} />
             </button>
           )}
 
