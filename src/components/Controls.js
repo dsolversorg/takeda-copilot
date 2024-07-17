@@ -46,7 +46,6 @@ function Controls({
     speechState,
     showTranscript,
     requestedMediaPerms,
-    highlightMic,
     highlightMute,
     highlightChat,
     highlightCamera,
@@ -181,9 +180,9 @@ function Controls({
             onClick={() => dispatch(setMicOn({ micOn: !micOn }))}
           >
             {micOn ? (
-              <MicFill size={MenuiconSize} color={primaryAccent} className="mic"/>
+              <MicFill size={MenuiconSize} color={primaryAccent} className="mic" />
             ) : (
-              <MicMuteFill size={MenuiconSize} className="micMute"/>
+              <MicMuteFill size={MenuiconSize} className="micMute" />
             )}
           </button>
         </div>
