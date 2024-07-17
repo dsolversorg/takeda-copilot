@@ -181,9 +181,9 @@ function Controls({
             onClick={() => dispatch(setMicOn({ micOn: !micOn }))}
           >
             {micOn ? (
-              <MicFill size={MenuiconSize} color={primaryAccent} className="mic" style={{ border: highlightMic ? 'red 2px solid' : '' }} />
+              <MicFill size={MenuiconSize} color={primaryAccent} className="mic"/>
             ) : (
-              <MicMuteFill size={MenuiconSize} className="micMute" style={{ border: highlightMic ? 'red 2px solid' : '' }} />
+              <MicMuteFill size={MenuiconSize} className="micMute"/>
             )}
           </button>
         </div>
