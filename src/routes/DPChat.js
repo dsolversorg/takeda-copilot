@@ -15,7 +15,7 @@ import {
 } from '../config';
 import TextInput from '../components/TextInput';
 import STTFeedback from '../components/STTFeedback';
-import Controls from './Controls';
+import Controls from '../components/Controls';
 import { Link, useLocation } from 'react-router-dom';
 
 function DPChat({
