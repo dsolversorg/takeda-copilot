@@ -445,7 +445,7 @@ export default styled(Controls)`
   }
 
   .micMute{
-    background-color: ##f2695c;
+    background-color: #f2695c;
     border-radius: 40px;
     padding: 1rem;
     &:hover{
