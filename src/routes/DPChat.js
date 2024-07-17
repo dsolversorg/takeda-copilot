@@ -134,22 +134,13 @@ function DPChat({
               <STTFeedback />
             </div>
           </div>
-          {showTranscript === true || micOn === false ? (
-            <div className="row justify-content-start">
-              <div className="col-md-8 col-lg-5 p-3">
-                <div className={`contControl ${connected && !loading && pathname === '/takeda-copilot' ? '' : 'd-none'}`}>
-                  <Controls />
-                </div>
+          <div className="row justify-content-start">
+            <div className="col-md-8 col-lg-5 p-3">
+              <div className={`contControl ${connected && !loading && pathname === '/takeda-copilot' ? '' : 'd-none'}`}>
+                <Controls />
               </div>
             </div>
-          ) :
-            (<div className="row justify-content-start">
-              <div className="col-md-8 col-lg-5 p-3">
-                <div className={`contControl ${connected && !loading && pathname === '/takeda-copilot' ? '' : 'd-none'}`}>
-                  <Controls />
-                </div>
-              </div>
-            </div>)}
+          </div>
         </div>
       </div>
       {connected ? <PersonaVideo /> : null}
