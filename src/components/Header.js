@@ -6,7 +6,7 @@ import { Link, useLocation } from 'react-router-dom';
 import {
   logoAltText, transparentHeader, headerHeight, logoLink,
 } from '../config';
-import Controls from './Controls';
+
 
 function Header({
   className,
