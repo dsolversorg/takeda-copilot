@@ -194,7 +194,7 @@ function Controls({
                 disabled={requestedMediaPerms.micDenied === true}
                 onClick={() => dispatch(setMicOn({ micOn: !micOn }))}
               >
-                <MicMuteFill size={MenuiconSize} style={{ border: highlightMic ? 'red 2px solid' : '' }} />
+                <MicMuteFill size={MenuiconSize} color={primaryAccent} style={{ border: highlightMic ? 'red 2px solid' : '' }} />
               </button>
             )}
         </div>
@@ -225,7 +225,7 @@ function Controls({
               disabled={requestedMediaPerms.cameraDenied === true}
               onClick={() => dispatch(setCameraOn({ cameraOn: !cameraOn }))}
             >
-              <CameraVideoOffFill size={MenuiconSize} style={{ border: highlightCamera ? 'red 2px solid' : '' }} />
+              <CameraVideoOffFill size={MenuiconSize} color={primaryAccent} style={{ border: highlightCamera ? 'red 2px solid' : '' }} />
 
             </button>
           )}
@@ -233,50 +233,73 @@ function Controls({
 
         <div>
           {/* pule o que quer que o dp esteja falando no momento */}
-          <button
-            type="button"
-            className="control-icon"
-            disabled={speechState !== 'speaking'}
-            onClick={() => dispatch(stopSpeaking())}
-            data-tip="Pular fala"
-            aria-label="Pular fala"
-          >
-            <SkipEndFill size={MenuiconSize} style={{ border: highlightSkip ? 'red 2px solid' : '' }} />
-          </button>
+          {speechState !== 'speaking' ? (
+            <button
+              type="button"
+              className="control-icon icon"
+              onClick={() => dispatch(stopSpeaking())}
+              data-tip="Pular fala"
+              aria-label="Pular fala"
+            >
+              <SkipEndFill size={MenuiconSize} style={{ border: highlightSkip ? 'red 2px solid' : '' }} />
+            </button>
+          ) : null}
+
         </div>
 
         <div>
           {/* silenciar som dp */}
-          <button
-            type="button"
-            className="control-icon"
-            aria-label="Alternar áudio"
-            data-tip="Alternar áudio"
-            onClick={() => dispatch(setOutputMute({ isOutputMuted: !isOutputMuted }))}
-          >
-            {isOutputMuted ? (
-              <VolumeMuteFill size={MenuiconSize} style={{ border: highlightMute ? 'red 2px solid' : '' }} />
-            ) : (
+          {isOutputMuted ? (
+            <button
+              type="button"
+              className="control-icon icon"
+              aria-label="Alternar áudio"
+              data-tip="Alternar áudio"
+              onClick={() => dispatch(setOutputMute({ isOutputMuted: !isOutputMuted }))}
+            >
+              <VolumeMuteFill size={MenuiconSize} color={primaryAccent} style={{ border: highlightMute ? 'red 2px solid' : '' }} />
+            </button>
+          ) : (
+            <button
+              type="button"
+              className="control-icon iconMute"
+              aria-label="Alternar áudio"
+              data-tip="Alternar áudio"
+              onClick={() => dispatch(setOutputMute({ isOutputMuted: !isOutputMuted }))}
+            >
               <VolumeUpFill size={MenuiconSize} color={primaryAccent} style={{ border: highlightMute ? 'red 2px solid' : '' }} />
-            )}
-          </button>
+            </button>
+          )}
         </div>
 
         <div>
           {/* mostrar transcrição */}
-          <button
-            type="button"
-            className="control-icon"
-            aria-label="Alternar Transcrição"
-            data-tip="Alternar Transcrição"
-            onClick={toggleKeyboardInput}
-          >
-            <ChatSquareTextFill
-              size={MenuiconSize}
-              color={showTranscript ? primaryAccent : '#B3B3B3'}
-              style={{ border: highlightChat ? 'red 2px solid' : '' }}
-            />
-          </button>
+          {showTranscript ? (
+            <button
+              type="button"
+              className="control-icon"
+              aria-label="Alternar Transcrição"
+              data-tip="Alternar Transcrição"
+              onClick={toggleKeyboardInput}
+            >
+              <ChatSquareTextFill
+                size={MenuiconSize}
+                color={primaryAccent}
+                style={{ border: highlightChat ? 'red 2px solid' : '' }}
+              />
+            </button>
+          ) : (
+            <button
+              type="button"
+              className="control-icon"
+              aria-label="Alternar Transcrição"
+              data-tip="Alternar Transcrição"
+              onClick={toggleKeyboardInput}
+            >
+              <X size={MenuiconSize} color={primaryAccent} style={{ border: highlightChat ? 'red 2px solid' : '' }} />
+            </button>
+          )}
+
         </div>
 
         <div className="context-control-parent">
@@ -292,7 +315,7 @@ function Controls({
             {showContextMenu ? (
               <X size={iconSize} color="#fff" />
             ) : (
-              <ThreeDotsVertical size={iconSize} style={{ border: highlightMenu ? 'red 2px solid' : '' }} />
+              <ThreeDotsVertical size={iconSize} color="#fff" style={{ border: highlightMenu ? 'red 2px solid' : '' }} />
             )}
           </button>
           {showContextMenu ? (
