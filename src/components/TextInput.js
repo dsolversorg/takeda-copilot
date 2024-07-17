@@ -56,4 +56,14 @@ export default styled(TextInput)`
     background: #FFF;
     color: rgba(0,0,0,0.4);
   }
+
+  .input-group {
+    width: 40%;
+  }
+
+  .formCont {
+    display: flex;
+    justify-content: flex-end;
+    width: 98%;
+  }
 `;
