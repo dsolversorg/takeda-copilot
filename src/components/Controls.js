@@ -181,11 +181,10 @@ function Controls({
               disabled={requestedMediaPerms.micDenied === true}
               onClick={() => dispatch(setMicOn({ micOn: !micOn }))}
             >
-
               <MicFill size={MenuiconSize} color={primaryAccent} style={{ border: highlightMic ? 'red 2px solid' : '' }} />
 
             </button>)
-           : (
+            : (
               <button
                 type="button"
                 className="control-icon micMute"
@@ -195,8 +194,7 @@ function Controls({
                 onClick={() => dispatch(setMicOn({ micOn: !micOn }))}
               >
                 <MicMuteFill size={MenuiconSize} className="micMute" style={{ border: highlightMic ? 'red 2px solid' : '' }} />
-              </button>
-            )}
+              </button>)}
         </div>
 
         <div>
