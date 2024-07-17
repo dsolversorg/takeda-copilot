@@ -108,11 +108,11 @@ function DPChat({
         </div>
         {/* middle row */}
         <div
-          className="row d-flex justify-content-end align-items-center flex-grow-1 ps-3 pe-3"
+          className="row d-flex align-items-end justify-content-between flex-grow-1 ps-3 pe-3"
           style={{ overflow: 'scroll' }}
           ref={ccDisplaRef}
         >
-          <div className={`${connected && !loading && pathname === '/takeda-copilot' ? '' : 'd-none'}`}>
+          <div className={`contControl ${connected && !loading && pathname === '/takeda-copilot' ? '' : 'd-none'}`}>
             <Controls />
           </div>
 
@@ -186,5 +186,10 @@ export default styled(DPChat)`
     overflow-x: hiden;
     overflow-y: hiden;
     --bs-gutter-y: 0.1rem;
+  }
+
+  .contControl{
+    width: 350px;
+    max-width: 100%;
   }
 `;
