@@ -183,7 +183,8 @@ function Controls({
             >
               <MicFill size={MenuiconSize} color={primaryAccent} style={{ border: highlightMic ? 'red 2px solid' : '' }} />
 
-            </button>)
+            </button>
+          )
             : (
               <button
                 type="button"
@@ -194,7 +195,9 @@ function Controls({
                 onClick={() => dispatch(setMicOn({ micOn: !micOn }))}
               >
                 <MicMuteFill size={MenuiconSize} className="micMute" style={{ border: highlightMic ? 'red 2px solid' : '' }} />
-              </button>)}
+              </button>
+            )
+          }
         </div>
 
         <div>
