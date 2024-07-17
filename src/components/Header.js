@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {
   logoAltText, transparentHeader, headerHeight, logoLink,
 } from '../config';
