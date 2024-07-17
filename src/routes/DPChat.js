@@ -25,8 +25,6 @@ function DPChat({
     loading,
     disconnected,
     error,
-    showTranscript,
-    micOn,
     isOutputMuted,
   } = useSelector(({ sm }) => ({ ...sm }));
   const { pathname } = useLocation();
