@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
-export const primaryAccent = '#169ca9';
+export const primaryAccent = '#fff';
 
 export default createGlobalStyle`
   body {

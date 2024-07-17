@@ -181,9 +181,9 @@ function Controls({
             onClick={() => dispatch(setMicOn({ micOn: !micOn }))}
           >
             {micOn ? (
-              <MicFill size={MenuiconSize} color={primaryAccent} style={{ border: highlightMic ? 'red 2px solid' : '' }} />
+              <MicFill size={MenuiconSize} color={primaryAccent} className="mic" style={{ border: highlightMic ? 'red 2px solid' : '' }} />
             ) : (
-              <MicMuteFill size={MenuiconSize} style={{ border: highlightMic ? 'red 2px solid' : '' }} />
+              <MicMuteFill size={MenuiconSize} className="micMute" style={{ border: highlightMic ? 'red 2px solid' : '' }} />
             )}
           </button>
         </div>
@@ -422,6 +422,28 @@ export default styled(Controls)`
     background: #FFF;
     padding-bottom: 2.5rem; /* altura do rodapé */
     border-radius: 5px;
+  }
+
+  .mic{
+    background-color: #09c8c8;
+    border-radius: 40px;
+    padding: 1rem;
+    width: 4rem;
+    height: 4rem;
+    &:hover{
+      background-color: #05a0a0;
+    }
+  }
+
+  micMute{
+    background-color: ##f2695c;
+    border-radius: 40px;
+    padding: 1rem;
+    width: 4rem;
+    height: 4rem;
+    &:hover{
+      background-color: #bc493e;
+    }
   }
 
  
