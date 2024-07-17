@@ -11,8 +11,6 @@ import Controls from './Controls';
 function Header({
   className,
 }) {
-  const { pathname } = useLocation();
-  const { connected, loading } = useSelector(({ sm }) => ({ ...sm }));
   return (
     <div className={`${className}`}>
       <div className="container">
@@ -29,9 +27,7 @@ function Header({
             </div>
             <div>
               {/* right align */}
-              <div className={`${connected && !loading && pathname === '/takeda-copilot' ? '' : 'd-none'}`}>
-                <Controls />
-              </div>
+              
             </div>
           </div>
         </div>
