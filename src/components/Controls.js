@@ -233,7 +233,7 @@ function Controls({
 
         <div>
           {/* pule o que quer que o dp esteja falando no momento */}
-          {speechState !== 'speaking' ? (
+          {!speechState !== 'speaking' ? (
             <button
               type="button"
               className="control-icon icon"
@@ -285,7 +285,7 @@ function Controls({
               <ChatSquareTextFill
                 size={MenuiconSize}
                 color={primaryAccent}
-                style={{ border: highlightChat ? 'red 2px solid' : '' }}
+                style={{ padding: '17px 17px 10px 17px' }}
               />
             </button>
           ) : (
