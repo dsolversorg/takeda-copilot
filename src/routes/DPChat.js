@@ -143,6 +143,12 @@ function DPChat({
                 <Controls />
               </div>
             </div>
+            <div>
+              {/* aling center */}
+            </div>
+            <div>
+              {/* aling end */}
+            </div>
           </div>
         </div>
       </div>
