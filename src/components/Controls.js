@@ -252,7 +252,7 @@ function Controls({
           {isOutputMuted ? (
             <button
               type="button"
-              className="control-icon icon"
+              className="control-icon iconMute"
               aria-label="Alternar áudio"
               data-tip="Alternar áudio"
               onClick={() => dispatch(setOutputMute({ isOutputMuted: !isOutputMuted }))}
@@ -262,7 +262,7 @@ function Controls({
           ) : (
             <button
               type="button"
-              className="control-icon iconMute"
+              className="control-icon icon"
               aria-label="Alternar áudio"
               data-tip="Alternar áudio"
               onClick={() => dispatch(setOutputMute({ isOutputMuted: !isOutputMuted }))}
@@ -274,10 +274,10 @@ function Controls({
 
         <div>
           {/* mostrar transcrição */}
-          {showTranscript ? (
+          {!showTranscript ? (
             <button
               type="button"
-              className="control-icon"
+              className="control-icon icon"
               aria-label="Alternar Transcrição"
               data-tip="Alternar Transcrição"
               onClick={toggleKeyboardInput}
@@ -291,17 +291,16 @@ function Controls({
           ) : (
             <button
               type="button"
-              className="control-icon"
+              className="control-icon iconMute"
               aria-label="Alternar Transcrição"
               data-tip="Alternar Transcrição"
               onClick={toggleKeyboardInput}
             >
-              <X size={MenuiconSize} color={primaryAccent} style={{ border: highlightChat ? 'red 2px solid' : '' }} />
+             <X size={MenuiconSize} color={primaryAccent} style={{ border: highlightChat ? 'red 2px solid' : '' }}ˇ/>
             </button>
           )}
 
         </div>
-
         <div className="context-control-parent">
           {/* menu mais opções */}
           <button
