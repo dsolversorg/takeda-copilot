@@ -108,17 +108,17 @@ function DPChat({
         </div>
         {/* middle row */}
         <div
-          className="row d-flex align-items-end justify-content-between flex-grow-1 ps-3 pe-3"
+          className="row d-flex justify-content-end align-items-center flex-grow-1 ps-3 pe-3"
           style={{ overflow: 'scroll' }}
           ref={ccDisplaRef}
         >
-          <div className={`contControl ${connected && !loading && pathname === '/takeda-copilot' ? '' : 'd-none'}`}>
-            <Controls />
-          </div>
 
           <div className="col col-md-5 d-flex align-items-end align-items-md-center" style={{ height: `${ccDisplayHeight}px` || 'auto' }}>
             <div>
               <ContentCardDisplay />
+            </div>
+            <div>
+              <TextInput />
             </div>
           </div>
         </div>
@@ -139,7 +139,9 @@ function DPChat({
           {showTranscript === true || micOn === false ? (
             <div className="row justify-content-center">
               <div className="col-md-8 col-lg-5 p-3">
-                <TextInput />
+                <div className={`contControl ${connected && !loading && pathname === '/takeda-copilot' ? '' : 'd-none'}`}>
+                  <Controls />
+                </div>
               </div>
             </div>
           ) : null}
