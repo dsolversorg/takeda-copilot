@@ -137,7 +137,6 @@ export default styled(Header)`
 
   .context-controls-trigger {
     position: relative;
-    border: 1px solid red;
     z-index: 105;
   }
 
