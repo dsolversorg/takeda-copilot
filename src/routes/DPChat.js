@@ -26,6 +26,7 @@ function DPChat({
     disconnected,
     error,
     isOutputMuted,
+    showTranscript
   } = useSelector(({ sm }) => ({ ...sm }));
   const { pathname } = useLocation();
 
@@ -115,9 +116,11 @@ function DPChat({
             </div>
           </div>
         </div>
-        <div>
-          <TextInput />
-        </div>
+        {showTranscript ?
+          <div>
+            <TextInput />
+          </div> : null
+        }
         {/* bottom row */}
         <div>
           {isOutputMuted ? (
