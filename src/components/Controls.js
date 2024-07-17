@@ -6,12 +6,9 @@ import {
   CameraVideoFill,
   CameraVideoOffFill,
   ChatSquareTextFill,
-  Escape,
   MicFill,
   MicMuteFill,
-  Share,
   SkipEndFill,
-  ThreeDotsVertical,
   VolumeMuteFill,
   VolumeUpFill,
   X,
@@ -20,7 +17,6 @@ import ReactTooltip from 'react-tooltip';
 import {
   stopSpeaking,
   setShowTranscript,
-  disconnect,
   setOutputMute,
   setMicOn,
   setCameraOn,
@@ -127,23 +123,6 @@ function Controls({
   });
 
   const MenuiconSize = 35;
-
-  const originalShareCopy = 'Copiar link';
-  const [shareCopy, setShareCopy] = useState(originalShareCopy);
-
-  const shareDP = async () => {
-    const url = window.location;
-    try {
-      await navigator.share({ url });
-    } catch {
-      const type = 'text/plain';
-      const blob = new Blob([url], { type });
-      const data = [new window.ClipboardItem({ [type]: blob })];
-      navigator.clipboard.write(data);
-      setShareCopy('Link copied!');
-      setTimeout(() => setShareCopy(originalShareCopy), 3000);
-    }
-  };
 
   return (
     <div className={className}>
@@ -296,7 +275,7 @@ function Controls({
           )}
 
         </div>
-        
+
       </div>
     </div>
   );

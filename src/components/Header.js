@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   logoAltText, transparentHeader, headerHeight, logoLink,
 } from '../config';
@@ -18,6 +20,25 @@ import {
 function Header({
   className,
 }) {
+
+  const dispatch = useDispatch();
+  const [shareCopy, setShareCopy] = useState(originalShareCopy);
+
+  const originalShareCopy = 'Copiar link';
+
+  const shareDP = async () => {
+    const url = window.location;
+    try {
+      await navigator.share({ url });
+    } catch {
+      const type = 'text/plain';
+      const blob = new Blob([url], { type });
+      const data = [new window.ClipboardItem({ [type]: blob })];
+      navigator.clipboard.write(data);
+      setShareCopy('Link copied!');
+      setTimeout(() => setShareCopy(originalShareCopy), 3000);
+    }
+  };
 
   const [showContextMenu, setShowContextMenu] = useState(false);
   const iconSize = 24;
