@@ -233,7 +233,7 @@ function Controls({
 
         <div>
           {/* pule o que quer que o dp esteja falando no momento */}
-          {speechState == 'speaking' ? (
+          {speechState === 'speaking' ? (
             <button
               type="button"
               className="control-icon icon"
