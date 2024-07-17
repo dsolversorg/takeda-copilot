@@ -4,26 +4,25 @@ import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  logoAltText, transparentHeader, headerHeight, logoLink,
-} from '../config';
-import {
-  disconnect,
-} from '../store/sm/index';
-import {
   Escape,
   Share,
   ThreeDotsVertical,
   X,
 } from 'react-bootstrap-icons';
+import {
+  logoAltText, transparentHeader, headerHeight, logoLink,
+} from '../config';
+import {
+  disconnect,
+} from '../store/sm/index';
 
 function Header({
   className,
 }) {
 
   const dispatch = useDispatch();
-  const [shareCopy, setShareCopy] = useState(originalShareCopy);
-
   const originalShareCopy = 'Copiar link';
+  const [shareCopy, setShareCopy] = useState(originalShareCopy);
 
   const shareDP = async () => {
     const url = window.location;
