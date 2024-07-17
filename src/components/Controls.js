@@ -196,8 +196,7 @@ function Controls({
               >
                 <MicMuteFill size={MenuiconSize} className="micMute" style={{ border: highlightMic ? 'red 2px solid' : '' }} />
               </button>
-            )
-          }
+            )}
         </div>
 
         <div>
@@ -440,8 +439,6 @@ export default styled(Controls)`
     background-color: #09c8c8;
     border-radius: 40px;
     padding: 1rem;
-    width: 4rem;
-    height: 4rem;
     &:hover{
       background-color: #05a0a0;
     }
@@ -451,8 +448,6 @@ export default styled(Controls)`
     background-color: ##f2695c;
     border-radius: 40px;
     padding: 1rem;
-    width: 4rem;
-    height: 4rem;
     &:hover{
       background-color: #bc493e;
     }
