@@ -188,7 +188,7 @@ function Controls({
             : (
               <button
                 type="button"
-                className="control-icon iconcMute"
+                className="control-icon iconMute"
                 aria-label="Alternar Microfone"
                 data-tip="Alternar Microfone"
                 disabled={requestedMediaPerms.micDenied === true}
