@@ -29,7 +29,9 @@ function Header({
             </div>
             <div>
               {/* right align */}
-              
+              <div className={`${connected && !loading && pathname === '/takeda-copilot' ? '' : 'd-none'}`}>
+                <Controls />
+              </div>
             </div>
           </div>
         </div>

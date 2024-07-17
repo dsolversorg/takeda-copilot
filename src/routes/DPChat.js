@@ -28,7 +28,6 @@ function DPChat({
     micOn,
     isOutputMuted,
   } = useSelector(({ sm }) => ({ ...sm }));
-  const { pathname } = useLocation();
 
   const dispatch = useDispatch();
 
@@ -111,10 +110,6 @@ function DPChat({
           style={{ overflow: 'scroll' }}
           ref={ccDisplaRef}
         >
-          <div className={`${connected && !loading && pathname === '/takeda-copilot' ? '' : 'd-none'}`}>
-            <Controls />
-          </div>
-
           <div className="col col-md-5 d-flex align-items-end align-items-md-center" style={{ height: `${ccDisplayHeight}px` || 'auto' }}>
             <div>
               <ContentCardDisplay />
