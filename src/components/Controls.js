@@ -151,7 +151,7 @@ function Controls({
   };
 
   return (
-    <div className={className} >
+    <div className={className}>
       {showFeedback ? (
         <div className="alert-modal">
           <div className="alert-modal-card container">
