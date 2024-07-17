@@ -19,7 +19,7 @@ function TextInput({ className }) {
 
   return (
     <div className={className}>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="formCont">
         <div className="input-group">
           <input
             value={textInput}
