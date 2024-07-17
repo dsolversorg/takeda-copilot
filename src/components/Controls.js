@@ -45,7 +45,6 @@ function Controls({
     isOutputMuted,
     speechState,
     showTranscript,
-    transcript,
     requestedMediaPerms,
     highlightMic,
     highlightMute,
