@@ -108,7 +108,7 @@ function DPChat({
         </div>
         {/* middle row */}
         <div
-          className="row d-flex justify-content-end align-items-center flex-grow-1 ps-3 pe-3"
+          className="contChat row d-flex justify-content-end align-items-center flex-grow-1 ps-3 pe-3"
           ref={ccDisplaRef}
         >
           <div className="col col-md-5 d-flex align-items-end align-items-md-center" style={{ height: `${ccDisplayHeight}px` || 'auto' }}>
@@ -182,8 +182,11 @@ export default styled(DPChat)`
     }
   }
 
+  .contChat{
+    overflow-y: scroll;
+  }
+
   .row{
-    overflow: scroll;
     overflow-x: hiden;
     overflow-y: hiden;
     --bs-gutter-y: 0.1rem;
