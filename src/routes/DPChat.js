@@ -116,12 +116,13 @@ function DPChat({
             </div>
           </div>
         </div>
-        {showTranscript ? (
-          <div>
-            <TextInput />
-          </div>
-        ) : null
-        }
+        <div>
+          {showTranscript ? (
+            <div>
+              <TextInput />
+            </div>
+          ) : null}
+        </div>
         {/* bottom row */}
         <div>
           {isOutputMuted ? (
