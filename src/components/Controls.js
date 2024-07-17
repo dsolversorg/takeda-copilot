@@ -250,7 +250,6 @@ function Controls({
             aria-label="Alternar Transcrição"
             data-tip="Alternar Transcrição"
             onClick={toggleKeyboardInput}
-            disabled={transcript.length <= 0}
           >
             <ChatSquareTextFill
               size={MenuiconSize}
