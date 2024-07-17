@@ -194,7 +194,7 @@ function Controls({
                 disabled={requestedMediaPerms.micDenied === true}
                 onClick={() => dispatch(setMicOn({ micOn: !micOn }))}
               >
-                <MicMuteFill size={MenuiconSize} className="micMute" style={{ border: highlightMic ? 'red 2px solid' : '' }} />
+                <MicMuteFill size={MenuiconSize} style={{ border: highlightMic ? 'red 2px solid' : '' }} />
               </button>
             )}
         </div>
@@ -444,7 +444,7 @@ export default styled(Controls)`
     }
   }
 
-  micMute{
+  .micMute{
     background-color: ##f2695c;
     border-radius: 40px;
     padding: 1rem;
@@ -453,5 +453,4 @@ export default styled(Controls)`
     }
   }
 
- 
 `;
