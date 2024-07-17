@@ -7,7 +7,6 @@ import {
   logoAltText, transparentHeader, headerHeight, logoLink,
 } from '../config';
 
-
 function Header({
   className,
 }) {
@@ -27,7 +26,6 @@ function Header({
             </div>
             <div>
               {/* right align */}
-              
             </div>
           </div>
         </div>
