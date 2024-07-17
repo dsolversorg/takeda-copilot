@@ -426,4 +426,13 @@ export default styled(Controls)`
     border-radius: 5px;
   }
 
+  .d-flex{
+    padding: 0px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 50px;
+  }
 `;
