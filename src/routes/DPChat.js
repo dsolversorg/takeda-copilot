@@ -124,7 +124,7 @@ function DPChat({
           ref={ccDisplaRef}
         >
           <div className="col col-md-5 d-flex align-items-end align-items-md-center" style={{ height: `${ccDisplayHeight}px` || 'auto' }}>
-            <div>
+            <div className="chat">
               <ContentCardDisplay />
             </div>
           </div>
@@ -205,6 +205,10 @@ DPChat.propTypes = {
 export default styled(DPChat)`
   height: 100vh;
 
+  &>.row {
+    width: 0;
+  }
+
   .video-overlay {
     overflow: hidden;
     position: absolute;
@@ -258,6 +262,7 @@ export default styled(DPChat)`
   .contWid{
     width: 90%;
     margin-bottom: 20px;
+    margin-top: 20px;
   }
 
   .control-icon {
@@ -283,6 +288,10 @@ export default styled(DPChat)`
     &:hover{
       background-color: #05a0a0;
     }
+  }
+
+  .chat{
+    width: 98%;
   }
 }
 `;
