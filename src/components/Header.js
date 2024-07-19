@@ -77,7 +77,7 @@ function Header({
                 </button>
                 {showContextMenu ? (
                   <div className="context-controls shadow">
-                    <div className="blue d-flex justify-content-end align-items-start">
+                    <div className="blue">
                       <button
                         className="control-icon context-controls-trigger"
                         type="button"
