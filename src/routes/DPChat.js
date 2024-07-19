@@ -205,7 +205,7 @@ DPChat.propTypes = {
 export default styled(DPChat)`
   height: 100vh;
 
-  &>.row {
+  .row>* {
     width: 0;
   }
 
