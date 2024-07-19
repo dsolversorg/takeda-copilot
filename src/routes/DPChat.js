@@ -161,7 +161,7 @@ function DPChat({
             </div>
             <div>
               {/* aling end */}
-              <div>
+              <div className="endCont">
                 {/* mostrar transcrição */}
                 {!showTranscript ? (
                   <button
@@ -220,6 +220,10 @@ export default styled(DPChat)`
     flex-direction: column;
   }
 
+  .endCont{
+    width: 90px;
+  }
+
   .vertical-fit-container {
     flex: 0 1 auto;
     overflow-y: scroll;
@@ -253,6 +257,7 @@ export default styled(DPChat)`
   
   .contWid{
     width: 90%;
+    margin-bottom: 20px;
   }
 
   .control-icon {
