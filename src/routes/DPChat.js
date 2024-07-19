@@ -159,7 +159,7 @@ function DPChat({
             <div>
               {/* aling center */}
             </div>
-            <div className="row endCont">
+            <div className="endCont">
               {/* aling end */}
               <div>
                 {/* mostrar transcrição */}
@@ -204,6 +204,10 @@ DPChat.propTypes = {
 
 export default styled(DPChat)`
   height: 100vh;
+
+  .endCont .row>* {
+    width: 0;
+  }
 
   .video-overlay {
     overflow: hidden;
