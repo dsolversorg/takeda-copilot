@@ -137,7 +137,7 @@ function DPChat({
           ) : null}
         </div>
         {/* bottom row */}
-        <div className="row contBottom">
+        <div className="contBottom">
           {isOutputMuted ? (
             <div className="row">
               <div className="col text-center">
@@ -159,7 +159,7 @@ function DPChat({
             <div>
               {/* aling center */}
             </div>
-            <div className="endCont">
+            <div className="row endCont">
               {/* aling end */}
               <div>
                 {/* mostrar transcrição */}
