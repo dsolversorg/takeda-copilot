@@ -159,9 +159,9 @@ function DPChat({
             <div>
               {/* aling center */}
             </div>
-            <div>
+            <div className="endCont">
               {/* aling end */}
-              <div className="endCont">
+              <div>
                 {/* mostrar transcrição */}
                 {!showTranscript ? (
                   <button
