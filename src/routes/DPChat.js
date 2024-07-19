@@ -137,7 +137,7 @@ function DPChat({
           ) : null}
         </div>
         {/* bottom row */}
-        <div className="contBottom">
+        <div className="row contBottom">
           {isOutputMuted ? (
             <div className="row">
               <div className="col text-center">
@@ -204,10 +204,6 @@ DPChat.propTypes = {
 
 export default styled(DPChat)`
   height: 100vh;
-
-  .row>* {
-    width: 0;
-  }
 
   .video-overlay {
     overflow: hidden;
