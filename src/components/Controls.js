@@ -5,18 +5,15 @@ import PropTypes from 'prop-types';
 import {
   CameraVideoFill,
   CameraVideoOffFill,
-  ChatSquareTextFill,
   MicFill,
   MicMuteFill,
   SkipEndFill,
   VolumeMuteFill,
   VolumeUpFill,
-  X,
 } from 'react-bootstrap-icons';
 import ReactTooltip from 'react-tooltip';
 import {
   stopSpeaking,
-  setShowTranscript,
   setOutputMute,
   setMicOn,
   setCameraOn,
@@ -40,11 +37,9 @@ function Controls({
     cameraOn,
     isOutputMuted,
     speechState,
-    showTranscript,
     requestedMediaPerms,
     highlightMic,
     highlightMute,
-    highlightChat,
     highlightCamera,
     highlightSkip,
   } = useSelector((state) => ({ ...state.sm }));
@@ -113,10 +108,6 @@ function Controls({
 
   // vincular transcrição aberta e mute func entre si, para que
   // quando abrimos a transcrição, silenciamos o microfone
-  const toggleKeyboardInput = () => {
-    dispatch(setShowTranscript(!showTranscript));
-    dispatch(setMicOn({ micOn: showTranscript }));
-  };
 
   useEffect(() => {
     ReactTooltip.rebuild();
@@ -245,37 +236,6 @@ function Controls({
             </button>
           )}
         </div>
-
-        <div>
-          {/* mostrar transcrição */}
-          {!showTranscript ? (
-            <button
-              type="button"
-              className="control-icon icon"
-              aria-label="Alternar Transcrição"
-              data-tip="Alternar Transcrição"
-              onClick={toggleKeyboardInput}
-              style={{ padding: '17px 17px 10px 17px' }}
-            >
-              <ChatSquareTextFill
-                size={MenuiconSize}
-                color={seconderyAccent}
-              />
-            </button>
-          ) : (
-            <button
-              type="button"
-              className="control-icon iconMute"
-              aria-label="Alternar Transcrição"
-              data-tip="Alternar Transcrição"
-              onClick={toggleKeyboardInput}
-            >
-              <X size={MenuiconSize} color={seconderyAccent} style={{ border: highlightChat ? 'red 2px solid' : '' }} />
-            </button>
-          )}
-
-        </div>
-
       </div>
     </div>
   );

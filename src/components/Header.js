@@ -46,8 +46,8 @@ function Header({
 
   return (
     <div className={`${className}`}>
-      <div className="container">
-        <div className="row">
+      <div className="cont">
+        <div className="row boxCont">
           <div className="d-flex align-items-center justify-content-between">
             <div>
               {/* left align */}
@@ -140,6 +140,15 @@ export default styled(Header)`
 
   &>.row {
     height: ${headerHeight};
+  }
+
+  .cont{
+    display: flex;
+    justify-content: center;
+  }
+
+  .boxCont{
+    width: 90%;
   }
 
   .shadow{

@@ -1,6 +1,10 @@
 import React, { createRef, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import {
+  ChatSquareTextFill,
+  X,
+} from 'react-bootstrap-icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
 import PersonaVideo from '../components/PersonaVideo';
@@ -16,6 +20,11 @@ import {
 import TextInput from '../components/TextInput';
 import STTFeedback from '../components/STTFeedback';
 import Controls from '../components/Controls';
+import { seconderyAccent } from '../globalStyle';
+import {
+  setShowTranscript,
+  setMicOn,
+} from '../store/sm/index';
 
 function DPChat({
   className,
@@ -27,12 +36,20 @@ function DPChat({
     error,
     isOutputMuted,
     showTranscript,
+    highlightChat,
   } = useSelector(({ sm }) => ({ ...sm }));
   const { pathname } = useLocation();
 
   const dispatch = useDispatch();
 
   const history = useHistory();
+
+  const MenuiconSize = 35;
+
+  const toggleKeyboardInput = () => {
+    dispatch(setShowTranscript(!showTranscript));
+    dispatch(setMicOn({ micOn: showTranscript }));
+  };
 
   if (disconnected === true) {
     if (disconnectPage) {
@@ -148,6 +165,35 @@ function DPChat({
             </div>
             <div>
               {/* aling end */}
+              <div>
+                {/* mostrar transcrição */}
+                {!showTranscript ? (
+                  <button
+                    type="button"
+                    className="control-icon icon"
+                    aria-label="Alternar Transcrição"
+                    data-tip="Alternar Transcrição"
+                    onClick={toggleKeyboardInput}
+                    style={{ padding: '17px 17px 10px 17px' }}
+                  >
+                    <ChatSquareTextFill
+                      size={MenuiconSize}
+                      color={seconderyAccent}
+                    />
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    className="control-icon iconMute"
+                    aria-label="Alternar Transcrição"
+                    data-tip="Alternar Transcrição"
+                    onClick={toggleKeyboardInput}
+                  >
+                    <X size={MenuiconSize} color={seconderyAccent} style={{ border: highlightChat ? 'red 2px solid' : '' }} />
+                  </button>
+                )}
+
+              </div>
             </div>
           </div>
         </div>
@@ -202,5 +248,31 @@ export default styled(DPChat)`
   .contControl{
     width: 350px;
     max-width: 100%;
+  }
+
+  .control-icon {
+    border: none;
+    background: none;
+
+    padding: .4rem;
+  }
+
+   .iconMute{
+      background-color: #f2695c;
+      border-radius: 40px;
+      padding: 1rem;
+      &:hover{
+        background-color: #bc493e;
+      }
+    }
+    
+    .icon{
+      background-color: #09c8c8;
+      border-radius: 40px;
+      padding: 1rem;
+      &:hover{
+        background-color: #05a0a0;
+      }
+    }
   }
 `;
