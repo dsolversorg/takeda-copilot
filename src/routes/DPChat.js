@@ -137,7 +137,7 @@ function DPChat({
           ) : null}
         </div>
         {/* bottom row */}
-        <div>
+        <div className="contBottom">
           {isOutputMuted ? (
             <div className="row">
               <div className="col text-center">
@@ -150,8 +150,8 @@ function DPChat({
               <STTFeedback />
             </div>
           </div>
-          <div className="row justify-content-start">
-            <div className="col-md-8 col-lg-5 p-3 d-flex justify-content-center aling-itens-center">
+          <div className="row justify-content-between align-items-center contWid">
+            <div className="d-flex justify-content-center aling-itens-center">
               <div className={`contControl ${connected && !loading && pathname === '/takeda-copilot' ? '' : 'd-none'}`}>
                 <Controls />
               </div>
@@ -246,6 +246,16 @@ export default styled(DPChat)`
     max-width: 100%;
   }
 
+  .contBottom{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .contWid{
+    width: 90%;
+  }
+
   .control-icon {
     border: none;
     background: none;
@@ -253,22 +263,22 @@ export default styled(DPChat)`
     padding: .4rem;
   }
 
-   .iconMute{
-      background-color: #f2695c;
-      border-radius: 40px;
-      padding: 1rem;
-      &:hover{
-        background-color: #bc493e;
-      }
-    }
-    
-    .icon{
-      background-color: #09c8c8;
-      border-radius: 40px;
-      padding: 1rem;
-      &:hover{
-        background-color: #05a0a0;
-      }
+  .iconMute{
+    background-color: #f2695c;
+    border-radius: 40px;
+    padding: 1rem;
+    &:hover{
+      background-color: #bc493e;
     }
   }
+    
+  .icon{
+    background-color: #09c8c8;
+    border-radius: 40px;
+    padding: 1rem;
+    &:hover{
+      background-color: #05a0a0;
+    }
+  }
+}
 `;
