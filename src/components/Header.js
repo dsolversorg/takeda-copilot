@@ -77,7 +77,7 @@ function Header({
                 </button>
                 {showContextMenu ? (
                   <div className="context-controls shadow">
-                    <div className="d-flex justify-content-end align-items-start">
+                    <div className="blue d-flex justify-content-end align-items-start">
                       <button
                         className="control-icon context-controls-trigger"
                         type="button"
@@ -92,14 +92,14 @@ function Header({
                           null
                         )}
                       </button>
-                      <ul>
+                      <ul role='list' className='list'>
                         <li>
                           <button
                             className="btn-unstyled"
                             type="button"
                             onClick={() => dispatch(disconnect())}
                           >
-                            <Escape size={18} />
+                            <Escape size={20} />
                             {' '}
                             Encerrar sessão
                           </button>
@@ -110,7 +110,7 @@ function Header({
                             type="button"
                             onClick={() => shareDP()}
                           >
-                            <Share size={18} />
+                            <Share size={20} />
                             {' '}
                             {shareCopy}
                           </button>
@@ -143,13 +143,39 @@ export default styled(Header)`
   }
 
   .shadow{
-    height: 98vh;
+    height: 100vh;
     display: flex;
-    width: 19%;
+    width: 101vw;
     position: absolute;
     z-index: 99;
-    left: 80%;
-    background-color: #06a0a0;
+    left: 0%;
+    top: 0px;
+    background-color: rgb(0 0 0 / 43%);
+    justify-content: flex-end;
+  }
+  .blue{
+    background-color: #15bda0;
+    width: 20%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    /* gap: 0px; */
+    flex-direction: column;
+  }
+  .list{
+    list-style-type: none;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+  .btn-unstyled{
+    color: #fff;
+    height: 75px;
+    width: 100%;
+    font-size: 20px;
+    &hover:{
+      background-color: #0e8e78;
+    }
   }
 
   .control-icon {
