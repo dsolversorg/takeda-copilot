@@ -59,7 +59,7 @@ function Header({
               {/* middle align */}
             </div>
             <div>
-              <div className="context-control-parent">
+              <div className="context-control-parent d-flex flex-direction-row-reverse">
                 {/* menu mais opções */}
                 <button
                   className="control-icon context-controls-trigger"
