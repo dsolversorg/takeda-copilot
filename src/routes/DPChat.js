@@ -11,7 +11,7 @@ import PersonaVideo from '../components/PersonaVideo';
 import Captions from '../components/Captions';
 import ContentCardDisplay from '../components/ContentCardDisplay';
 import {
-  disconnect, setVideoDimensions,
+  disconnect, setVideoDimensions, setShowTranscript, setMicOn,
 } from '../store/sm/index';
 import Header from '../components/Header';
 import {
@@ -21,10 +21,6 @@ import TextInput from '../components/TextInput';
 import STTFeedback from '../components/STTFeedback';
 import Controls from '../components/Controls';
 import { seconderyAccent } from '../globalStyle';
-import {
-  setShowTranscript,
-  setMicOn,
-} from '../store/sm/index';
 
 function DPChat({
   className,
