@@ -173,7 +173,8 @@ export default styled(Header)`
     height: 75px;
     width: 100%;
     font-size: 20px;
-    &hover:{
+
+    &:hover {
       background-color: #0e8e78;
     }
   }
