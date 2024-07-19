@@ -92,7 +92,7 @@ function Header({
                           null
                         )}
                       </button>
-                      <ul role='list' className='list'>
+                      <ul className='list'>
                         <li>
                           <button
                             className="btn-unstyled"
