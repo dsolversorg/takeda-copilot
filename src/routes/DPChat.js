@@ -170,7 +170,6 @@ function DPChat({
                     aria-label="Alternar Transcrição"
                     data-tip="Alternar Transcrição"
                     onClick={toggleKeyboardInput}
-                    style={{ padding: '17px 17px 10px 17px' }}
                   >
                     <ChatSquareTextFill
                       size={MenuiconSize}
