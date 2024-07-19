@@ -59,7 +59,7 @@ function Header({
               {/* middle align */}
             </div>
             <div>
-              <div className="context-control-parent d-flex flex-direction-row-reverse">
+              <div className="context-control-parent d-flex ">
                 {/* menu mais opções */}
                 <button
                   className="control-icon context-controls-trigger"
@@ -138,6 +138,7 @@ export default styled(Header)`
   .context-controls-trigger {
     position: relative;
     z-index: 105;
+    flex-direction: row-reverse;
   }
 
   .logo {
