@@ -70,7 +70,7 @@ function Header({
                   onClick={() => setShowContextMenu(!showContextMenu)}
                 >
                   {showContextMenu ? (
-                    <X size={iconSize} color="#fff" />
+                    null
                   ) : (
                     <ThreeDotsVertical size={iconSize} color="#fff" />
                   )}
@@ -78,6 +78,20 @@ function Header({
                 {showContextMenu ? (
                   <div className="context-controls shadow">
                     <div className="d-flex justify-content-end align-items-start">
+                      <button
+                        className="control-icon context-controls-trigger"
+                        type="button"
+                        aria-label="Mais opções"
+                        data-tip="Mais opções"
+                        id="dpChatDropdown"
+                        onClick={() => setShowContextMenu(!showContextMenu)}
+                      >
+                        {showContextMenu ? (
+                          <X size={iconSize} color="#fff" />
+                        ) : (
+                          null
+                        )}
+                      </button>
                       <ul>
                         <li>
                           <button
@@ -126,6 +140,16 @@ export default styled(Header)`
 
   &>.row {
     height: ${headerHeight};
+  }
+
+  .shadow{
+    height: 98vh;
+    display: flex;
+    width: 19%;
+    position: absolute;
+    z-index: 99;
+    left: 80%;
+    background-color: #06a0a0;
   }
 
   .control-icon {
