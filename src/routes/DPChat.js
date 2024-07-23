@@ -174,6 +174,7 @@ function DPChat({
                     <ChatSquareTextFill
                       size={MenuiconSize}
                       color={seconderyAccent}
+                      className="size"
                     />
                   </button>
                 ) : (
@@ -184,7 +185,7 @@ function DPChat({
                     data-tip="Alternar Transcrição"
                     onClick={toggleKeyboardInput}
                   >
-                    <X size={MenuiconSize} color={seconderyAccent} style={{ border: highlightChat ? 'red 2px solid' : '' }} />
+                    <X size={MenuiconSize} className="size" color={seconderyAccent} style={{ border: highlightChat ? 'red 2px solid' : '' }} />
                   </button>
                 )}
 
@@ -252,8 +253,8 @@ export default styled(DPChat)`
     width: 350px;
     max-width: 100%;
 
-     @media (min-width: 500px){
-      width: 350px;
+    @media (max-width: 500px){
+      width: 260px;
     }
   }
 
@@ -298,6 +299,13 @@ export default styled(DPChat)`
 
   .chat{
     width: 98%;
+  }
+
+  .size{
+    @media (max-width: 500px){
+      width: 20px !important;
+      height: 20px !important;
+    }
   }
 }
 `;
