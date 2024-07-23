@@ -108,7 +108,6 @@ const StyledCaptions = styled(Captions)`
 
     margin-top: 10px;
     width: auto;
-    height: 70px;
     transition: height 0.3s;
   }
 `;

@@ -252,12 +252,7 @@ export default styled(DPChat)`
   }
 
   .contControl{
-    width: 350px;
-    max-width: 100%;
-
-    @media (max-width: 500px){
-      width: 260px;
-    }
+    width: 100%;
   }
 
   .contBottom{
