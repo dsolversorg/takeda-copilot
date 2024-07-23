@@ -355,6 +355,7 @@ export default styled(Controls)`
     background-color: #09c8c8;
     border-radius: 40px;
     padding: 1rem;
+    margin-right: 10px;
     &:hover{
       background-color: #05a0a0;
     }
@@ -364,13 +365,10 @@ export default styled(Controls)`
     background-color: #f2695c;
     border-radius: 40px;
     padding: 1rem;
+    margin-right: 10px;
     &:hover{
       background-color: #bc493e;
     }
-  }
-
-  .espace{
-    gap: 20px;
   }
 
   .size{
