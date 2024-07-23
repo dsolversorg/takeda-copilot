@@ -227,6 +227,8 @@ export default styled(DPChat)`
 
   .endCont{
     width: 90px;
+    display: flex;
+    justify-content: center;
   }
 
   .vertical-fit-container {
