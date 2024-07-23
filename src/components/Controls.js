@@ -175,7 +175,7 @@ function Controls({
               disabled={requestedMediaPerms.cameraDenied === true}
               onClick={() => dispatch(setCameraOn({ cameraOn: !cameraOn }))}
             >
-              <CameraVideoFill size={MenuiconSize} color={seconderyAccent} style={{ border: highlightCamera ? 'red 2px solid' : '' }} className="size"/>
+              <CameraVideoFill size={MenuiconSize} color={seconderyAccent} style={{ border: highlightCamera ? 'red 2px solid' : '' }} className="size" />
             </button>
           ) : (
             <button
