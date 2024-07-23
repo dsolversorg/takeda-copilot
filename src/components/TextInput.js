@@ -59,11 +59,22 @@ export default styled(TextInput)`
 
   .input-group {
     width: 40%;
+
+    @media (max-width: 700px){
+      width: 90%;
+    }
   }
 
   .formCont {
     display: flex;
     justify-content: flex-end;
     width: 98%;
+
+     @media (max-width: 700px){
+      display: flex;
+      -webkit-box-pack: end;
+      width: 100%;
+      justify-content: center;
+    }
   }
 `;
