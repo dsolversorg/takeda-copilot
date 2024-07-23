@@ -146,7 +146,7 @@ function Controls({
               disabled={requestedMediaPerms.micDenied === true}
               onClick={() => dispatch(setMicOn({ micOn: !micOn }))}
             >
-              <MicFill size={MenuiconSize} color={seconderyAccent} style={{ border: highlightMic ? 'red 2px solid' : '' }} />
+              <MicFill size={MenuiconSize} className="size" color={seconderyAccent} style={{ border: highlightMic ? 'red 2px solid' : '' }} />
 
             </button>
           )
@@ -159,7 +159,7 @@ function Controls({
                 disabled={requestedMediaPerms.micDenied === true}
                 onClick={() => dispatch(setMicOn({ micOn: !micOn }))}
               >
-                <MicMuteFill size={MenuiconSize} color={seconderyAccent} style={{ border: highlightMic ? 'red 2px solid' : '' }} />
+                <MicMuteFill size={MenuiconSize} className="size" color={seconderyAccent} style={{ border: highlightMic ? 'red 2px solid' : '' }} />
               </button>
             )}
         </div>
@@ -178,7 +178,8 @@ function Controls({
               <CameraVideoFill
                 size={MenuiconSize}
                 color={seconderyAccent}
-                style={{ border: highlightCamera ? 'red 2px solid' : '' }}
+                style={{ border: highlightCamera ? 'red 2px solid' : '' }} 
+                className="size"
               />
             </button>
           ) : (
@@ -190,7 +191,7 @@ function Controls({
               disabled={requestedMediaPerms.cameraDenied === true}
               onClick={() => dispatch(setCameraOn({ cameraOn: !cameraOn }))}
             >
-              <CameraVideoOffFill size={MenuiconSize} color={seconderyAccent} style={{ border: highlightCamera ? 'red 2px solid' : '' }} />
+              <CameraVideoOffFill size={MenuiconSize} className="size" color={seconderyAccent} style={{ border: highlightCamera ? 'red 2px solid' : '' }} />
 
             </button>
           )}
@@ -206,7 +207,7 @@ function Controls({
               data-tip="Pular fala"
               aria-label="Pular fala"
             >
-              <SkipEndFill size={MenuiconSize} style={{ border: highlightSkip ? 'red 2px solid' : '' }} />
+              <SkipEndFill size={MenuiconSize} className="size" style={{ border: highlightSkip ? 'red 2px solid' : '' }} />
             </button>
           ) : null}
 
@@ -222,7 +223,7 @@ function Controls({
               data-tip="Alternar áudio"
               onClick={() => dispatch(setOutputMute({ isOutputMuted: !isOutputMuted }))}
             >
-              <VolumeMuteFill size={MenuiconSize} color={seconderyAccent} style={{ border: highlightMute ? 'red 2px solid' : '' }} />
+              <VolumeMuteFill size={MenuiconSize} className="size" color={seconderyAccent} style={{ border: highlightMute ? 'red 2px solid' : '' }} />
             </button>
           ) : (
             <button
@@ -232,7 +233,7 @@ function Controls({
               data-tip="Alternar áudio"
               onClick={() => dispatch(setOutputMute({ isOutputMuted: !isOutputMuted }))}
             >
-              <VolumeUpFill size={MenuiconSize} color={seconderyAccent} style={{ border: highlightMute ? 'red 2px solid' : '' }} />
+              <VolumeUpFill size={MenuiconSize} className="size" color={seconderyAccent} style={{ border: highlightMute ? 'red 2px solid' : '' }} />
             </button>
           )}
         </div>
@@ -377,4 +378,10 @@ export default styled(Controls)`
     gap: 20px;
   }
 
+  .size{
+    @media (min-width: 500px){
+      width: 20px !important;
+      height: 20px !important;
+    }
+  }
 `;

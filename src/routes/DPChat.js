@@ -251,12 +251,17 @@ export default styled(DPChat)`
   .contControl{
     width: 350px;
     max-width: 100%;
+
+     @media (min-width: 500px){
+      width: 350px;
+    }
   }
 
   .contBottom{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
   }
   
   .contWid{
