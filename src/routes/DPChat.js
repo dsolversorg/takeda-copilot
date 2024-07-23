@@ -146,7 +146,7 @@ function DPChat({
             </div>
           ) : null}
           <div className="row">
-            <div className="d-flex justify-content-center m-2">
+            <div className="d-flex justify-content-center m-2 legend">
               <STTFeedback />
             </div>
           </div>
@@ -241,8 +241,18 @@ export default styled(DPChat)`
     }
   }
 
+  .legend{
+    @media (max-width: 500px){
+      align-items: center;
+      word-break: break-all;
+    }
+  }
+
   .contChat{
     overflow-y: scroll;
+    @media (max-width: 500px){
+      word-break: break-all;
+    }
   }
 
   .row{
