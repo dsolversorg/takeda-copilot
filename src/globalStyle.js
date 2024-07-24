@@ -17,7 +17,7 @@ export default createGlobalStyle`
     color: #FFF;
     text-align: left;
     size: 120px;
-    @media (min-width: ${breakpoints.md}px) {
+    @media (max-width: 500px){
       width: 350px;
       height: auto;
     }
