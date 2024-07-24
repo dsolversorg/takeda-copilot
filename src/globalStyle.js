@@ -12,12 +12,12 @@ export default createGlobalStyle`
     vertical-align: -0.125em;
   }
   .btn.primary-accent {
+    border: 1px solid ${primaryAccent};
+    background: #169ca9;
+    color: #FFF;
+    text-align: left;
+    size: 120px;
     @media (min-width: 576px){
-      border: 1px solid ${primaryAccent};
-      background: #169ca9;
-      color: #FFF;
-      text-align: left;
-      size: 120px;
       width: 350px;
       height: auto;
     }
