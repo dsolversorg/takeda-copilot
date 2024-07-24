@@ -160,8 +160,8 @@ export default styled(Landing)`
   }
 
   .container{
-    @media (margin-left: auto){
-      margin-left: 50px;  
+    @media (margin-left: 50px){
+      margin-left: auto;  
     }
   }
 
