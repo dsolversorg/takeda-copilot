@@ -161,7 +161,7 @@ export default styled(Landing)`
 
   .container{
     @media (min-width: ${breakpoints.lg}px) {
-      margin-left: 50px;  
+      margin-left: 70px;  
     }
   }
 
