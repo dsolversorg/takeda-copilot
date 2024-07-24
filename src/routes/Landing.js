@@ -160,7 +160,7 @@ export default styled(Landing)`
   }
 
   .landing-container {
-    margin-top: 20px;
+    margin-left: 100px;
     padding-top: 1rem;
     display: flex;
 
