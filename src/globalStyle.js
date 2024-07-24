@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import breakpoints from '../utils/breakpoints';
 
 export const primaryAccent = '#169ca9';
 export const seconderyAccent = '#fff';
@@ -17,7 +18,7 @@ export default createGlobalStyle`
     color: #FFF;
     text-align: left;
     size: 120px;
-    @media (max-width: 500px){
+    @media (min-width: ${breakpoints.sm}px) {
       width: 350px;
       height: auto;
     }
