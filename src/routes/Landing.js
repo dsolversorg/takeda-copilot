@@ -159,8 +159,11 @@ export default styled(Landing)`
     color: #ABABAB;
   }
 
+  .container{
+    margin-left: 100px;  
+  }
+
   .landing-container {
-    margin-left: 100px;
     padding-top: 1rem;
     display: flex;
 
