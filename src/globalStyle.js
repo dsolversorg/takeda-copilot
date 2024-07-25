@@ -9,11 +9,20 @@ export default createGlobalStyle`
     margin: 0;
     padding: 0;
   }
+  * {
+  outline: 1px solid red;
+  }  
   body {
     height: 100vh;
     overflow: hiden;
     padding-top: env(safe-area-inset-top);
     padding-bottom: env(safe-area-inset-bottom);
+  }
+  html, body {
+      height: 100%;
+  }
+  body {
+      min-height: 100vh;
   }
   svg {
     vertical-align: -0.125em;
