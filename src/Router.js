@@ -98,4 +98,8 @@ function App() {
   );
 }
 
-export default App;
+export default styled(App)`
+  .error-modal{
+    z-index: 1;
+  }
+`;
