@@ -1,5 +1,4 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import ReactGA from 'react-ga4';
 import React, { useEffect, useState } from 'react';
