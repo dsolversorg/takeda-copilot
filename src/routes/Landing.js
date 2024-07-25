@@ -47,7 +47,7 @@ function Landing({ className }) {
             <div className="col-12 col-lg-6">
               <div className="row" style={{ marginBottom: '9px' }}>
                 <div>
-                  <h1 className="fw-bol">Sou a Katia uma Pessoa Digital Hiper-realista, criada pela Digital Solvers com o propósito de trazer vida para a Inteligência Artificial Generativa.</h1>
+                  <h1 className="fw-bol">Sou a Katia uma Pessoa Digital Hiper-realista, criada pela Takeda, com o propósito de esclarecer dúvidas sobre a vacina da Dengue Qdenga.</h1>
                 </div>
               </div>
               <div className="row">
