@@ -100,7 +100,8 @@ function App() {
 }
 
 export default styled(App)`
-  .error-modal-card{
+  .error-modal .error-modal-card{
     z-index: 1;
+    position: relative;
   }
 `;
