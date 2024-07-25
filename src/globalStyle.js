@@ -4,9 +4,16 @@ export const primaryAccent = '#169ca9';
 export const seconderyAccent = '#fff';
 
 export default createGlobalStyle`
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
   body {
     height: 100vh;
     overflow: hiden;
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
   }
   svg {
     vertical-align: -0.125em;
