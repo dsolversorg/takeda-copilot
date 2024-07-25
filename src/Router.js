@@ -66,7 +66,7 @@ function App() {
                   Desculpe pelo transtorno
                 </p>
                 <div className="d-flex justify-content-center mb-4">
-                  <Link to="/takeda-copilot" className="btn btn-dark me-2">Reconectar</Link>
+                  <Link to="/" className="btn btn-dark me-2">Reconectar</Link>
                   <Link to="/" className="btn btn-outline-dark">Retornar para a página inicial</Link>
                 </div>
                 <div className="d-flex justify-content-center">
@@ -100,7 +100,7 @@ function App() {
 }
 
 export default styled(App)`
-  .error-modal{
+  .error-modal-card{
     z-index: 1;
   }
 `;
