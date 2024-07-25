@@ -293,7 +293,7 @@ export default styled(Loading)`
   .tutorial-icon-dp {
     background-image: url(${landingBackgroundImage});
     background-size: cover;
-    background-position: button center;
+    background-position: button top;
   }
   .open-dot {
     border: 2px solid #3C3C3C;

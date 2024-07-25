@@ -268,6 +268,6 @@ export default styled(FeedbackModal)`
   .tutorial-icon-dp {
     background-image: url(${landingBackgroundImage});
     background-size: cover;
-    background-position: button center;
+    background-position: button top;
   }
 `;
