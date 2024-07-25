@@ -100,7 +100,7 @@ function App() {
 }
 
 export default styled(App)`
-  .error-modal .error-modal-card{
+  .d-flex{
     z-index: 1;
     position: relative;
   }
