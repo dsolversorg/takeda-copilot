@@ -306,6 +306,10 @@ export default styled(DPChat)`
     &:hover{
       background-color: #05a0a0;
     }
+    @media (max-width: 500px){
+      height: 60px;
+      width: 60px;
+    }
   }
 
   .chat{

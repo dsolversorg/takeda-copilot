@@ -101,6 +101,7 @@ function ContentCardSwitch({
         data={{ id, ...data }}
         triggerRemoval={removeElem}
         inTranscript={inTranscript}
+        className="d-flex flex-direction-column"
         transcriptIndex={index}
         triggerScrollIntoView={triggerScrollIntoView}
       />
