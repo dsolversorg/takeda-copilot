@@ -21,12 +21,4 @@ Markdown.propTypes = {
   }).isRequired,
 };
 
-export default styled(Markdown)`
-  @media (min-width: 120px){
-    .card-body{
-      font-size: 1rem;
-      background: rgb(22, 156, 169);
-      width: 400px;
-    }
-  }  
-`;
+export default Markdown;
