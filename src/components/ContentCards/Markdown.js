@@ -22,10 +22,11 @@ Markdown.propTypes = {
 };
 
 export default styled(Markdown)`
-  width: 400px;
-  font-size: 14px;
-  
-  .card-body{
-    width: auto;
-  }
+  @media (min-width: 120px){
+    .card, card-body, h2, h2{
+      font-size: 2rem;
+      background: transparent;
+      background: none;
+    }
+  }  
 `;
