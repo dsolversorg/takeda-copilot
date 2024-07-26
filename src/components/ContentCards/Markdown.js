@@ -24,6 +24,6 @@ Markdown.propTypes = {
 export default styled(Markdown)`
   .card{
     width: 400px;
-    font-size: 1.3rem;
+    font-size: 14px;
   }
 `;
