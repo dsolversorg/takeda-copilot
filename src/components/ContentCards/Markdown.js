@@ -23,10 +23,10 @@ Markdown.propTypes = {
 
 export default styled(Markdown)`
   @media (min-width: 120px){
-    .card, card-body, h2, h2{
-      font-size: 2rem;
-      background: transparent;
-      background: none;
+    .card-body{
+      font-size: 1rem;
+      background: rgb(22, 156, 169);
+      width: 400px;
     }
   }  
 `;
