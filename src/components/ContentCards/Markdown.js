@@ -22,7 +22,7 @@ Markdown.propTypes = {
 };
 
 export default styled(Markdown)`
-  .card{
+  .card-body{
     width: 400px;
     font-size: 14px;
   }
