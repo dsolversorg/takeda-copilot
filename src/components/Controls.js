@@ -369,6 +369,10 @@ export default styled(Controls)`
     &:hover{
       background-color: #bc493e;
     }
+    @media (max-width: 500px){
+      height: 60px;
+      width: 60px;
+    }
   }
 
   .size{
