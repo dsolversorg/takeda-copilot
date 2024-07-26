@@ -92,7 +92,7 @@ function ContentCardSwitch({
     <div
       onClick={removeOnClick ? removeElem : null}
       onKeyPress={removeOnClick ? removeElem : null}
-      className="m-2"
+      className="m-2 d-flex flex-direction-column"
       data-sm-content={id}
     >
       {/* elements that are interactive but shouldn't be removed immediately
@@ -101,7 +101,6 @@ function ContentCardSwitch({
         data={{ id, ...data }}
         triggerRemoval={removeElem}
         inTranscript={inTranscript}
-        className="d-flex flex-direction-column"
         transcriptIndex={index}
         triggerScrollIntoView={triggerScrollIntoView}
       />
