@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 function Markdown({ data }) {
@@ -20,4 +21,9 @@ Markdown.propTypes = {
   }).isRequired,
 };
 
-export default Markdown;
+export default styled(Markdown)`
+  .card{
+    width: 400px;
+    font-size: 1.3rem;
+  }
+`;
