@@ -7,8 +7,8 @@ function Markdown({ data }) {
   const { text } = data;
 
   return (
-    <div className={className}>
-      <div className="cartao">
+    <div className="card">
+      <div className="card-body">
         <ReactMarkdown>{text}</ReactMarkdown>
       </div>
     </div>
