@@ -9,7 +9,7 @@ const AUTH_MODE = parseInt(process.env.REACT_APP_PERSONA_AUTH_MODE, 10) || 0;
 const API_KEY = process.env.REACT_APP_API_KEY || '';
 const TOKEN_ISSUER = process.env.REACT_APP_TOKEN_URL;
 const PERSONA_ID = '1';
-// CAMERA_ID commented out because CUE manages camera
+// CAMERA_ID foi comentado porque CUE gerencia a câmera
 // const CAMERA_ID = 'CloseUp';
 
 let startupErr = null;
@@ -20,7 +20,7 @@ const initialState = {
   requestedMediaPerms: sessionStorage.getItem('requestedMediaPerms')
     ? {
       ...JSON.parse(sessionStorage.getItem('requestedMediaPerms')),
-      // media perms might have been altered before reload, so set false so we check again
+      // as permissões de mídia podem ter sido alteradas antes de recarregar, então defina false para verificarmos novamente
       cameraDenied: false,
       micDenied: false,
     }
@@ -34,7 +34,7 @@ const initialState = {
   connected: false,
   disconnected: false,
   sessionID: '',
-  // use startedAt to measure if someone starts a session and then walks away
+  // use startAt para medir se alguém inicia uma sessão e depois vai embora
   startedAt: Date.now(),
   presumeTimeout: false,
   loading: false,
@@ -42,7 +42,7 @@ const initialState = {
     name: '',
     percentageLoaded: 0,
   },
-  // default value is null, this lets us catch stuff like missing API keys
+  // o valor padrão é nulo, isso nos permite capturar coisas como chaves de API ausentes
   error: startupErr,
   micOn: true,
   cameraOn: true,
@@ -52,7 +52,7 @@ const initialState = {
   transcript: [],
   activeCards: [],
   speechState: 'idle',
-  // NLP gives us results as it processes final user utterance
+  // A PNL nos dá resultados à medida que processa a expressão final do usuário
   intermediateUserUtterance: '',
   userSpeaking: false,
   lastUserUtterance: '',
@@ -72,7 +72,7 @@ const initialState = {
       turn: '',
       context: {
         FacePresent: 0,
-        PersonaTurn_IsAttentive: 0,
+        PersonaTurn_IsAttentive: 1,
         PersonaTurn_IsTalking: null,
         Persona_Turn_Confusion: null,
         Persona_Turn_Negativity: null,
@@ -97,12 +97,12 @@ const initialState = {
       roundTripTime: null,
     },
   },
-  // default to 1 because these values are used to compute an aspect ratio,
-  // so if for some reason the camera is disabled, it will default to a square (1:1)
+  // o padrão é 1 porque esses valores são usados ​​para calcular uma proporção de aspecto,
+  // então, se por algum motivo a câmera for desativada, o padrão será um quadrado (1:1)
   cameraWidth: 1,
   cameraHeight: 1,
   showTranscript: false,
-  // enable and disable features for each new session
+  // ativar e desativar recursos para cada nova sessão
   config: {
     autoClearCards: true,
   },
@@ -115,15 +115,15 @@ const initialState = {
   highlightSkip: false,
 };
 
-// host actions object since we need the types to be available for
-// async calls later, e.g. handling messages from persona
+// objeto de ações de host, pois precisamos que os tipos estejam disponíveis para
+// chamadas assíncronas mais tarde, por ex. lidar com mensagens de persona
 let actions;
 let persona = null;
 let scene = null;
 
 /**
- * Animate the camera to the desired settings.
- * See utils/camera.js for help with calculating these.
+ * Anime a câmera com as configurações desejadas.
+ * Consulte utils/camera.js para obter ajuda com o cálculo.
  *
  * options {
  *   tiltDeg: 0,
@@ -148,27 +148,27 @@ export const animateCamera = createAsyncThunk('sm/animateCamera', (/* { options,
   // });
 });
 
-// handles both manual disconnect or automatic timeout due to inactivity
+// lida com desconexão manual ou tempo limite automático devido à inatividade
 export const disconnect = createAsyncThunk('sm/disconnect', async (args, thunk) => {
   const { loading } = thunk.getState();
   if (scene && loading === false) scene.disconnect();
-  // wait 500ms so dispatch logic has time to run and communicate w/ persona server
+  // espere 500 ms para que a lógica de despacho tenha tempo de executar e se comunicar com o servidor persona
   setTimeout(() => {
     thunk.dispatch(actions.disconnect());
   }, 1);
 });
 
 export const createScene = createAsyncThunk('sm/createScene', async (_, thunk) => {
-  /* CREATE SCENE */
+  /* CRIAR CENA */
   if (scene !== null) {
     return console.error('warning! you attempted to create a new scene, when one already exists!');
   }
-  // request permissions from user and create instance of Scene and ask for webcam/mic permissions
+  // rsolicite permissões do usuário e crie uma instância da cena e solicite permissões de webcam/microfone
   const { requestedMediaPerms } = thunk.getState().sm;
   const { mic, camera } = requestedMediaPerms;
 
-  // pull out logging config from environment variables
-  // we might want to set different values for dev and prod
+  // retire a configuração de log das variáveis ​​de ambiente
+  // podemos querer definir valores diferentes para dev e prod
   const {
     REACT_APP_SMWEBSDK_SESSION_LOGGING_ENABLED: sessionLoggingEnabled,
     REACT_APP_SMWEBSDK_SESSION_LOGGING_LEVEL: sessionLoggingLevel,
@@ -179,15 +179,15 @@ export const createScene = createAsyncThunk('sm/createScene', async (_, thunk) =
   try {
     const sceneOpts = {
       videoElement: proxyVideo,
-      // audio only toggle, but this is set automatically if user denies camera permissions.
-      // change value if your application needs to have an explicit audio-only mode.
+      // alternância apenas de áudio, mas isso é definido automaticamente se o usuário negar permissões de câmera.
+      // altere o valor se seu aplicativo precisar ter um modo somente áudio explícito.
       audioOnly: false,
-      // requested permissions
+      // permissões solicitadas
       requestedMediaDevices: {
         microphone: mic,
         camera,
       },
-      // required permissions. we can run in a typing only mode, so none is fine
+      // permissões necessárias. podemos executar apenas no modo de digitação, então nada está bem
       requiredMediaDevices: {
         microphone: false,
         camera: false,
@@ -203,7 +203,7 @@ export const createScene = createAsyncThunk('sm/createScene', async (_, thunk) =
         },
       },
       sendMetadata: {
-        // send url updates for react app as PAGE_METADATA intents to NLP
+        // enviar atualizações de URL para o aplicativo react como intenções PAGE_METADATA para PNL
         pageUrl: false,
       },
       stopSpeakingWhenNotVisible: true,
@@ -214,8 +214,8 @@ export const createScene = createAsyncThunk('sm/createScene', async (_, thunk) =
     return thunk.rejectWithValue(e);
   }
 
-  // check to see if user has denied permissions
-  // if so, proceed typing only but set mic/cameraDenied to true
+  // verifique se o usuário negou permissões
+  // em caso afirmativo, continue digitando apenas, mas defina mic/cameraDenied como true
   let cameraDenied = false;
   let micDenied = false;
   try {
@@ -245,29 +245,29 @@ export const createScene = createAsyncThunk('sm/createScene', async (_, thunk) =
     micDenied,
   }));
 
-  // reflect mic and camera status in redux store
+  // reflete o status do microfone e da câmera na loja redux
   thunk.dispatch(actions.setMediaDevices({
     micOn: micDenied ? false : mic,
     cameraOn: cameraDenied ? false : camera,
   }));
 
-  /* BIND HANDLERS */
-  // connection state /progress handler
+  /* MANIPULADORES DE LIGAÇÃO */
+  // estado da conexão/manipulador de progresso
   scene.connectionState.onConnectionStateUpdated.addListener(
     (connectionStateData) => {
       thunk.dispatch(actions.setConnectionState({ ...connectionStateData }));
     },
   );
-  // disconnect handler
+  // manipulador de desconexão
   scene.onDisconnected = () => thunk.dispatch(disconnect());
-  // store a ref to the smwebsdk onmessage so that we can
-  // use the callback while also calling the internal version
+  // armazene uma referência no smwebsdk onmessage para que possamos
+  // use o retorno de chamada enquanto chama a versão interna
   const smwebsdkOnMessage = scene.onMessage.bind(scene);
 
   const { sm } = thunk.getState();
   const { autoClearCards } = sm.config;
   scene.conversation.autoClearCards = autoClearCards;
-  // handle content cards that come in via content card API
+  //lidar com cartões de conteúdo que chegam por meio da API de cartão de conteúdo
   scene.conversation.onCardChanged.addListener((activeCards) => {
     thunk.dispatch(actions.setActiveCards({ activeCards }));
     thunk.dispatch(actions.addConversationResult({
@@ -277,20 +277,20 @@ export const createScene = createAsyncThunk('sm/createScene', async (_, thunk) =
   });
 
   scene.onMessage = (message) => {
-    // removing this will break smwebsdk eventing, call smwebsdk's message handler
+    // remover isso interromperá o evento smwebsdk, chame o manipulador de mensagens do smwebsdk
     smwebsdkOnMessage(message);
     switch (message.name) {
-      // handles output from TTS (what user said)
+      // lida com a saída do TTS (o que o usuário disse)
       case ('recognizeResults'): {
         const output = message.body.results[0];
-        // sometimes we get an empty message, catch and log
+        // às vezes recebemos uma mensagem vazia, capturamos e registramos
         if (!output) {
           console.warn('undefined output!', message.body);
           return false;
         }
         const { transcript: text } = output.alternatives[0];
-        // we get multiple recognizeResults messages, so only add the final one to transcript
-        // but keep track of intermediate one to show the user what they're saying
+        // recebemos várias mensagens de resultados de reconhecimento, então adicione apenas a última à transcrição
+        // mas acompanhe o intermediário para mostrar ao usuário o que ele está dizendo
         if (output.final === false) {
           return thunk.dispatch(actions.setIntermediateUserUtterance({
             text,
@@ -302,7 +302,7 @@ export const createScene = createAsyncThunk('sm/createScene', async (_, thunk) =
         }));
       }
 
-      // handles output from NLP (what DP is saying)
+      // lida com a saída da PNL (o que DP está dizendo)
       case ('personaResponse'): {
         const { currentSpeech } = message.body;
         thunk.dispatch(actions.addConversationResult({
@@ -312,14 +312,14 @@ export const createScene = createAsyncThunk('sm/createScene', async (_, thunk) =
         break;
       }
 
-      // handle speech markers
+      // lidar com marcadores de fala
       case ('speechMarker'): {
         const { name: speechMarkerName } = message.body;
         switch (speechMarkerName) {
-          // @showCards() and @hideCards() no longer triggers a speech marker
-          // not needed w/ content card API
+          // @showCards() e @hideCards() não acionam mais um marcador de fala
+          // não é necessário com API de cartão de conteúdo
           case ('cinematic'): {
-            // fired when CUE changes camera angles
+            // disparado quando o CUE muda os ângulos da câmera
             break;
           }
           case ('feature'): {
@@ -367,11 +367,11 @@ export const createScene = createAsyncThunk('sm/createScene', async (_, thunk) =
             break;
           }
           case ('marker'): {
-            // custom speech marker handler
+            // manipulador de marcador de fala personalizado
             const { arguments: markerArgs } = message.body;
             markerArgs.forEach((a) => {
               switch (a) {
-                // "easter egg" speech marker, prints ASCII "summoned meatball" to console
+                // marcador de fala "ovo de páscoa", imprime "almôndega convocada" em ASCII para consolar
                 case ('triggerMeatball'): {
                   console.log(meatballString);
                   break;
@@ -433,24 +433,24 @@ export const createScene = createAsyncThunk('sm/createScene', async (_, thunk) =
       }
 
       case ('updateContentAwareness'): {
-        // fired when content awareness changes
-        // eg an element w/ data-sm-content enters/exits DOM
+        //disparado quando o reconhecimento do conteúdo muda
+        // por exemplo, um elemento com data-sm-content entra/sai do DOM
         break;
       }
       case ('conversationSend'): {
-        // fired when the user manually types in some input
-        // we handle this elsewhere so we don't need to handle this event
+        // disparado quando o usuário digita manualmente alguma entrada
+        // nós lidamos com isso em outro lugar, então não precisamos lidar com este evento
         break;
       }
 
-      // state messages contain a lot of things, including user emotions,
-      // call stats, and persona state
+      // mensagens de estado contêm muitas coisas, incluindo emoções do usuário,
+      // estatísticas de chamadas e estado da personalidade
       case ('state'): {
         const { body } = message;
         if ('persona' in body) {
           const personaState = body.persona[1];
 
-          // handle changes to persona speech state ie idle, animating, speaking
+          // lidar com mudanças no estado de fala da persona, ou seja, inativo, animado, falando
           if ('speechState' in personaState) {
             const { speechState } = personaState;
             const action = actions.setSpeechState({ speechState });
@@ -458,8 +458,8 @@ export const createScene = createAsyncThunk('sm/createScene', async (_, thunk) =
           }
 
           if ('users' in personaState) {
-            // handle various numeric values such as user emotion or
-            // probability that the user is talking
+            // lidar com vários valores numéricos, como emoção do usuário ou
+            // probabilidade de o usuário estar falando
             const userState = personaState.users[0];
 
             if ('emotion' in userState) {
@@ -496,14 +496,14 @@ export const createScene = createAsyncThunk('sm/createScene', async (_, thunk) =
         break;
       }
 
-      // activation events are some kind of emotional metadata
+      // eventos de ativação são algum tipo de metadados emocionais
       case ('activation'): {
         // console.warn('activation handler not yet implemented', message);
         break;
       }
 
-      // animateToNamedCamera events are triggered whenever we change the camera angle.
-      // left unimplemented for now since there is only one named camera (closeUp)
+      // Os eventos animateToNamedCamera são acionados sempre que alteramos o ângulo da câmera.
+      // deixado sem implementação por enquanto, pois há apenas uma câmera nomeada (closeUp)
       case ('animateToNamedCamera'): {
         // console.warn('animateToNamedCamera handler not yet implemented', message);
         break;
@@ -524,12 +524,12 @@ export const createScene = createAsyncThunk('sm/createScene', async (_, thunk) =
     return true;
   };
 
-  // create instance of Persona class w/ scene instance
+  // criar instância da classe Persona com instância de cena
   persona = new Persona(scene, PERSONA_ID);
 
-  /* CONNECT TO PERSONA */
+  /* CONECTE-SE À PESSOA */
   try {
-    // get signed JWT from token server so we can connect to Persona server
+    // obter JWT assinado do servidor de token para que possamos nos conectar ao servidor Persona
     let jwt = null;
     let url = null;
     if (AUTH_MODE === 1) {
@@ -540,7 +540,7 @@ export const createScene = createAsyncThunk('sm/createScene', async (_, thunk) =
       url = res.url;
     }
 
-    // connect to Persona server
+    // conectar-se ao servidor Persona
     const retryOptions = {
       maxRetries: 20,
       delayMs: 500,
@@ -557,41 +557,41 @@ export const createScene = createAsyncThunk('sm/createScene', async (_, thunk) =
         }
       }
     }
-    // pass session ID to state so we can coordinate analytics w/ session data
+    // passar o ID da sessão para o estado para que possamos coordenar as análises com os dados da sessão
     thunk.dispatch(actions.setSessionID({ sessionID }));
-    // we can't disable logging until after the connection is established
-    // logging is pretty crowded, not recommended to enable
-    // unless you need to debug emotional data from webcam
+    // não podemos desativar o registro até que a conexão seja estabelecida
+    // o registro está muito lotado, não é recomendado ativar
+    // a menos que você precise depurar dados emocionais da webcam
     scene.session().setLogging(false);
 
-    // set video dimensions
+    // definir dimensões do vídeo
     const { videoWidth, videoHeight } = thunk.getState().sm;
-    // calc resolution w/ device pixel ratio
+    // resolução de cálculo com proporção de pixels do dispositivo
     const deviceWidth = Math.round(videoWidth * window.devicePixelRatio);
     const deviceHeight = Math.round(videoHeight * window.devicePixelRatio);
     scene.sendVideoBounds(deviceWidth, deviceHeight);
 
-    // create proxy of webcam video feed if user has granted us permission
+    // crie proxy de feed de vídeo da webcam se o usuário nos tiver concedido permissão
 
-    // since we can't store the userMediaStream in the store since it's not serializable,
-    // we use an external proxy for video streams
+    // já que não podemos armazenar o userMediaStream na loja, pois não é serializável,
+    // usamos um proxy externo para streams de vídeo
     const { userMediaStream: stream } = scene.session();
 
     if (cameraDenied === false) thunk.dispatch(actions.setCameraState({ cameraOn: false }));
-    // pass dispatch before calling setUserMediaStream so proxy can send dimensions to store
+    // passe o despacho antes de chamar setUserMediaStream para que o proxy possa enviar dimensões para armazenar
     mediaStreamProxy.passDispatch(thunk.dispatch);
     mediaStreamProxy.setUserMediaStream(stream, cameraDenied);
     mediaStreamProxy.enableToggle(scene);
 
-    // fulfill promise, reducer sets state to indicate loading and connection are complete
+    // cumpra a promessa, o redutor define o estado para indicar que o carregamento e a conexão estão completos
     return thunk.fulfillWithValue();
   } catch (err) {
     return thunk.rejectWithValue(err);
   }
 });
 
-// send plain text to the persona.
-// usually used for typed input or UI elems that trigger a certain phrase
+// envie texto simples para a persona.
+// geralmente usado para entrada digitada ou elementos de interface do usuário que acionam uma determinada frase
 export const sendTextMessage = createAsyncThunk('sm/sendTextMessage', async ({ text }, thunk) => {
   if (text === '') return thunk.rejectWithValue('submitted empty string!');
   if (scene !== null && persona !== null) {
@@ -658,11 +658,11 @@ const smSlice = createSlice({
       activeCards: payload.activeCards || [],
     }),
     stopSpeaking: () => {
-      if (!persona) console.error('persona not initiated!');
+      if (!persona) console.error('persona não iniciada!');
       else persona.stopSpeaking();
     },
     setMicOn: (state, { payload }) => {
-      if (!scene) return console.error('scene not initiated!');
+      if (!scene) return console.error('cena não iniciada!');
       const { micOn } = payload;
       scene.setMediaDeviceActive({
         microphone: micOn,
@@ -670,7 +670,7 @@ const smSlice = createSlice({
       return ({ ...state, micOn });
     },
     setCameraOn: (state, { payload }) => {
-      if (!scene) return console.error('scene not initiated!');
+      if (!scene) return console.error('cena não iniciada!');
       const { cameraOn } = payload;
       scene.setMediaDeviceActive({
         camera: cameraOn,
@@ -678,7 +678,7 @@ const smSlice = createSlice({
       return ({ ...state, cameraOn });
     },
     setMediaDevices: (state, { payload }) => {
-      if (!scene) return console.error('scene not initiated!');
+      if (!scene) return console.error('cena não iniciada!');
       const {
         cameraOn, micOn,
       } = payload;
@@ -707,7 +707,7 @@ const smSlice = createSlice({
       if (payload.text !== '' || 'card' in payload !== false) {
         const { source } = payload;
         const newEntry = { source, timestamp: new Date(Date.now()).toISOString() };
-        // handle entering either text or card into transcript array
+        // lidar com a inserção de texto ou cartão na matriz de transcrição
         if ('text' in payload) newEntry.text = payload.text;
         if ('card' in payload) newEntry.card = payload.card;
         const out = {
@@ -716,14 +716,14 @@ const smSlice = createSlice({
           intermediateUserUtterance: '',
           userSpeaking: false,
         };
-        // copy any text to last___Utterance, used for captions and user confirmation of STT
+        // copie qualquer texto para last___Enunciado, usado para legendas e confirmação do usuário do STT
         if ('text' in payload) {
           out[
             payload.source === 'user' ? 'lastUserUtterance' : 'lastPersonaUtterance'
           ] = payload.text;
         }
         return out;
-      } return console.warn('addConversationResult: ignoring empty string');
+      } return console.warn('addConversationResult: ignorando string vazia');
     },
     setSpeechState: (state, { payload }) => ({
       ...state,
@@ -756,8 +756,8 @@ const smSlice = createSlice({
     }),
     setVideoDimensions: (state, { payload }) => {
       const { videoWidth, videoHeight } = payload;
-      // update video dimensions in persona
-      // calc resolution w/ device pixel ratio
+      // atualizar as dimensões do vídeo pessoalmente
+      // resolução de cálculo com proporção de pixels do dispositivo
       const deviceWidth = Math.round(videoWidth * window.devicePixelRatio);
       const deviceHeight = Math.round(videoHeight * window.devicePixelRatio);
       scene.sendVideoBounds(deviceWidth, deviceHeight);
@@ -767,18 +767,18 @@ const smSlice = createSlice({
       scene = null;
       persona = null;
       const { error } = state;
-      // pull last timestamp from transcript
+      // extraia o último carimbo de data/hora da transcrição
       const { transcript, startedAt } = state;
-      // on disconnect the persona will add additional entries to the transcript.
-      // grab the time of the last user message.
+      // ao desconectar, a persona adicionará entradas adicionais à transcrição.
+      // pegue a hora da última mensagem do usuário.
       const lastUserMessage = transcript.filter((item) => item.source === 'user');
       const lastTranscriptItem = lastUserMessage[lastUserMessage.length - 1];
       const timestamp = lastTranscriptItem?.timestamp || new Date(startedAt);
       const timeDiff = new Date(Date.now()) - Date.parse(timestamp);
-      // if over 4 minutes old (min timeout thresh. is 5), presume the user timed out
-      const presumeTimeout = timeDiff > 240000;
+      // se tiver mais de 4 minutos (o limite mínimo de tempo limite é 5), presuma que o tempo limite do usuário expirou
+      const presumeTimeout = timeDiff > 300;
       return {
-        // completely reset SM state on disconnect, except for errors
+        // redefinir completamente o estado do SM ao desconectar, exceto por erros
         ...initialState,
         disconnected: true,
         error,
@@ -788,7 +788,7 @@ const smSlice = createSlice({
     },
     keepAlive: () => {
       if (scene) scene.keepAlive();
-      else console.error('can\'t call keepAlive, scene is not initiated!');
+      else console.error('não é possível chamar keepAlive, a cena não foi iniciada!');
     },
     sendEvent: (state, { payload }) => {
       const { eventName, payload: eventPayload, kind } = payload;
@@ -820,9 +820,9 @@ const smSlice = createSlice({
       try {
         scene.disconnect();
       } catch {
-        console.error('no scene to disconnect! continuing...');
+        console.error('nenhuma cena para desconectar! continuando...');
       }
-      // if we call this immediately the disconnect call might not complete
+      // se chamarmos isso imediatamente, a chamada de desconexão poderá não ser concluída
       setTimeout(() => {
         scene = null;
         persona = null;

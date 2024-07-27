@@ -42,8 +42,7 @@ Link.propTypes = {
 
 export default styled(Link)`
   width: 20rem;
-  background: transparent;
-  
+ 
   img {
     width: auto;
     height: auto;

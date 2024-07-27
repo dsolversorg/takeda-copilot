@@ -21,6 +21,4 @@ Markdown.propTypes = {
   }).isRequired,
 };
 
-export default styled(Markdown)`
-  background: transparent;
-`;
+export default Markdown;
