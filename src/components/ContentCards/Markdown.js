@@ -22,9 +22,10 @@ Markdown.propTypes = {
 };
 
 export default styled(Markdown)`
-  .cartao{
-      font-size: 1rem;
-      background: rgb(22, 156, 169);
+  background: transparent;
+
+  ReactMarkdown{
+      font-size: 4rem;
   }
 
 `;
