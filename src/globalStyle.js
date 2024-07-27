@@ -28,10 +28,10 @@ export default createGlobalStyle`
     border: 1px solid ${primaryAccent};
     background: #169ca9;
     color: #FFF;
-    text-align: left;
-    size: 120px;
-    @media (min-width: 576px){
-      width: 350px;
+    text-align: center;
+    font-size: 30px;
+    @media (min-width: 1000px){
+      width: 600px;
       height: auto;
     }
   }
@@ -42,6 +42,17 @@ export default createGlobalStyle`
   .btn-unstyled {
     border: none;
     background: none;
+  }
+  .card{
+    border: 1px solid ${primaryAccent};
+    background: #169ca9;
+    color: #FFF;
+    text-align: center;
+    font-size: 30px;
+    @media (min-width: 1000px){
+      width: 600px;
+      height: auto;
+    }  
   }
   .error-modal {
     position: absolute;

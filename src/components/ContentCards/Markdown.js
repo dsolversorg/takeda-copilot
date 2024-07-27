@@ -23,10 +23,4 @@ Markdown.propTypes = {
 
 export default styled(Markdown)`
   background: transparent;
-
-  .cartao{
-      font-size: 4rem;
-      background: transparent;
-  }
-
 `;
