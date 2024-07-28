@@ -315,6 +315,12 @@ export default styled(DPChat)`
   .chat{
     width: 100%;
   }
+  @media screen and (min-width: 1200px) {
+    .chat{
+      width: 100%;
+      x: 0;
+    }  
+  }
 
   .size{
     @media (max-width: 500px){

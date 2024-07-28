@@ -30,7 +30,7 @@ export default createGlobalStyle`
     background: #169ca9;
     color: #FFF;
     text-align: center;
-    width: auto;
+    width: 200px;
     height: auto;
     font-size: 15px;
   }
