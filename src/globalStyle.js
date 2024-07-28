@@ -29,10 +29,10 @@ export default createGlobalStyle`
     background: #169ca9;
     color: #FFF;
     text-align: center;
+    font-size: 30px;
     @media (min-width: 500px){
       width: 600px;
       height: auto;
-      font-size: 30px;
     }
   }
   .form-check-input:checked {
