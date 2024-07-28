@@ -40,7 +40,7 @@ export default createGlobalStyle`
       background: #169ca9;
       color: #FFF;
       text-align: center;
-      width: 600px;
+      width: 400px;
       height: auto;
       font-size: 30px;
     }
@@ -71,7 +71,7 @@ export default createGlobalStyle`
       background: #169ca9;
       color: #FFF;
       text-align: center;
-      width: 600px;
+      width: 400px;
       height: auto;
       font-size: 30px;
     }
@@ -86,7 +86,7 @@ export default createGlobalStyle`
     display: flex;
     align-items: center;
     justify-content: center;
-
+    z-index: 1;
     background: rgba(0,0,0,0.2);
 
     .error-modal-card {

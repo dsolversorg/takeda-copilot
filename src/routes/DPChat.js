@@ -204,7 +204,7 @@ DPChat.propTypes = {
 };
 
 export default styled(DPChat)`
-  height: 100vh;
+  height: 80vh;
 
   .endCont .row>* {
     width: 0;
@@ -224,24 +224,6 @@ export default styled(DPChat)`
     display: flex;
     flex-direction: column;
   }
-  @media screen and (min-width: 800px) {
-    .video-overlay {
-      overflow: hidden;
-      position: absolute;
-      top: 0;
-      right: 0;
-      left: 0;
-
-      z-index: 10;
-
-      width: 100%;
-      height: 70vh;
-      display: flex;
-      flex-direction: column;
-    }
-  }
-
-
   .endCont{
     width: 90px;
     display: flex;
