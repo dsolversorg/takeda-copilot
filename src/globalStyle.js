@@ -16,26 +16,36 @@ export default createGlobalStyle`
     padding-bottom: env(safe-area-inset-bottom);
   }
   html, body {
-      height: auto;
+      height: 100%;
   }
   body {
-      min-height: auto;
+      min-height: 100vh;
   }
   svg {
     vertical-align: -0.125em;
   }
+
   .btn.primary-accent {
     border: 1px solid ${primaryAccent};
     background: #169ca9;
     color: #FFF;
     text-align: center;
+    width: 600px;
+    height: auto;
     font-size: 30px;
-    @media (min-width: 500px){
-      width: 600px;
+  }
+  @media screen and (min-width: 600px) {
+    .btn.primary-accent {
+      border: 1px solid ${primaryAccent};
+      background: #169ca9;
+      color: #FFF;
+      text-align: center;
+      width: auto;
       height: auto;
       font-size: 15px;
     }
   }
+  
   .form-check-input:checked {
     background-color: ${primaryAccent};
     border-color: ${primaryAccent};
@@ -44,18 +54,29 @@ export default createGlobalStyle`
     border: none;
     background: none;
   }
+
   .card{
     border: 1px solid ${primaryAccent};
     background: #169ca9;
     color: #FFF;
     text-align: center;
     font-size: 30px;
-    @media (min-width: 500px){
-      width: 600px;
-      height: auto;
-      font-size: 15px;      
-    }  
+    width: 600px;
+    height: auto;
+    font-size: 15px;      
   }
+  @media screen and (min-width: 600px) {
+    .card{
+      border: 1px solid ${primaryAccent};
+      background: #169ca9;
+      color: #FFF;
+      text-align: center;
+      width: auto;
+      height: auto;
+      font-size: 15px;
+    }
+  }
+
   .error-modal {
     position: absolute;
     top: 0;
