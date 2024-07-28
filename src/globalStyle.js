@@ -30,7 +30,7 @@ export default createGlobalStyle`
     background: #169ca9;
     color: #FFF;
     text-align: center;
-    width: 600px;
+    width: 300px;
     height: auto;
     font-size: 15px;
   }
@@ -40,19 +40,10 @@ export default createGlobalStyle`
       background: #169ca9;
       color: #FFF;
       text-align: center;
-      width: 300px;
+      width: 600px;
       height: auto;
       font-size: 30px;
     }
-  }
-  
-  .form-check-input:checked {
-    background-color: ${primaryAccent};
-    border-color: ${primaryAccent};
-  }
-  .btn-unstyled {
-    border: none;
-    background: none;
   }
 
   .card{
@@ -71,10 +62,19 @@ export default createGlobalStyle`
       background: #169ca9;
       color: #FFF;
       text-align: center;
-      width: 400px;
+      width: 600px;
       height: auto;
       font-size: 30px;
     }
+  }  
+  
+  .form-check-input:checked {
+    background-color: ${primaryAccent};
+    border-color: ${primaryAccent};
+  }
+  .btn-unstyled {
+    border: none;
+    background: none;
   }
 
   .error-modal {
