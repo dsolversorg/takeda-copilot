@@ -224,7 +224,7 @@ export default styled(DPChat)`
     display: flex;
     flex-direction: column;
   }
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 800px) {
     .video-overlay {
       overflow: hidden;
       position: absolute;
@@ -235,7 +235,7 @@ export default styled(DPChat)`
       z-index: 10;
 
       width: 100%;
-      height: 90vh;
+      height: 70vh;
       display: flex;
       flex-direction: column;
     }
