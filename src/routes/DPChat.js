@@ -204,7 +204,7 @@ DPChat.propTypes = {
 };
 
 export default styled(DPChat)`
-  height: 80vh;
+  height: 100vh;
 
   .endCont .row>* {
     width: 0;
@@ -257,7 +257,7 @@ export default styled(DPChat)`
   .row{
     overflow-x: hiden;
     overflow-y: hiden;
-    --bs-gutter-y: 0.1rem;
+    --bs-gutter-y: 0.2rem;
   }
 
   .contControl{

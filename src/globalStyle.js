@@ -40,7 +40,7 @@ export default createGlobalStyle`
       background: #169ca9;
       color: #FFF;
       text-align: center;
-      width: 400px;
+      width: 300px;
       height: auto;
       font-size: 30px;
     }
