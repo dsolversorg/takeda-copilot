@@ -220,10 +220,27 @@ export default styled(DPChat)`
     z-index: 10;
 
     width: 100%;
-    height: 80vh;
+    height: 95vh;
     display: flex;
     flex-direction: column;
   }
+  @media screen and (min-width: 800px) {    
+    .video-overlay {
+      overflow: hidden;
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+
+      z-index: 10;
+
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
   .endCont{
     width: 90px;
     display: flex;
@@ -313,12 +330,6 @@ export default styled(DPChat)`
 
   .chat{
     width: 100%;
-  }
-  @media screen and (min-width: 1200px) {
-    .chat{
-      width: 100%;
-      x: 0;
-    }  
   }
 
   .size{
