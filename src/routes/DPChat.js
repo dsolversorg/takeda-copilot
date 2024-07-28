@@ -51,7 +51,7 @@ function DPChat({
     if (disconnectPage) {
       history.push(disconnectRoute);
     } else history.push('/');
-  } else if (error !== null) history.push('/loading?error=true');
+  } else if (error !== null) history.push('/disconnected?error=true');
   // usually this will be triggered when the user refreshes
   else if (connected !== true) history.push('/');
 
@@ -313,7 +313,7 @@ export default styled(DPChat)`
   }
 
   .chat{
-    width: 98%;
+    width: 100%;
   }
 
   .size{

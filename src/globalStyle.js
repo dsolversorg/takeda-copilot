@@ -30,19 +30,19 @@ export default createGlobalStyle`
     background: #169ca9;
     color: #FFF;
     text-align: center;
-    width: 600px;
+    width: auto;
     height: auto;
-    font-size: 30px;
+    font-size: 15px;
   }
-  @media screen and (min-width: 600px) {
+  @media screen and (min-width: 800px) {
     .btn.primary-accent {
       border: 1px solid ${primaryAccent};
       background: #169ca9;
       color: #FFF;
       text-align: center;
-      width: auto;
+      width: 600px;
       height: auto;
-      font-size: 15px;
+      font-size: 30px;
     }
   }
   
@@ -61,19 +61,19 @@ export default createGlobalStyle`
     color: #FFF;
     text-align: center;
     font-size: 30px;
-    width: 600px;
+    width: auto;
     height: auto;
     font-size: 15px;      
   }
-  @media screen and (min-width: 600px) {
+  @media screen and (min-width: 800px) {
     .card{
       border: 1px solid ${primaryAccent};
       background: #169ca9;
       color: #FFF;
       text-align: center;
-      width: auto;
+      width: 600px;
       height: auto;
-      font-size: 15px;
+      font-size: 30px;
     }
   }
 
