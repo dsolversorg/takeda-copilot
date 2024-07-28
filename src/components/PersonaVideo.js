@@ -92,8 +92,10 @@ PersonaVideo.propTypes = {
 export default styled(PersonaVideo)`
   /* if you need the persona video to be different than the window dimensions, change these values */
   width: 100vw;
+  height: 100vh;
 
   position: fixed;
+  top: 0;
   z-index: 0;
 
   display: flex;
