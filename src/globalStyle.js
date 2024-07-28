@@ -16,10 +16,10 @@ export default createGlobalStyle`
     padding-bottom: env(safe-area-inset-bottom);
   }
   html, body {
-      height: 100%;
+      height: auto;
   }
   body {
-      min-height: 100vh;
+      min-height: auto;
   }
   svg {
     vertical-align: -0.125em;
@@ -33,6 +33,7 @@ export default createGlobalStyle`
     @media (min-width: 500px){
       width: 600px;
       height: auto;
+      font-size: 15px;
     }
   }
   .form-check-input:checked {
@@ -52,7 +53,7 @@ export default createGlobalStyle`
     @media (min-width: 500px){
       width: 600px;
       height: auto;
-      font-size: 30px;      
+      font-size: 15px;      
     }  
   }
   .error-modal {
