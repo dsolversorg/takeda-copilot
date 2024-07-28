@@ -94,8 +94,8 @@ export default styled(PersonaVideo)`
   width: 100vw;
   height: 100vh;
 
-  position: fixed;
-  top: 0;
+  position: relative;
+  botton: 0;
   z-index: 0;
 
   display: flex;
