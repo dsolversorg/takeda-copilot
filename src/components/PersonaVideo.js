@@ -106,7 +106,7 @@ export default styled(PersonaVideo)`
     /* the video element will conform to the container dimensions, so keep this as it is */
     width: 100vw;
     height: 100vh;
-    position: relative;
+    position: fixed;
     top: 0;
   }
 `;
