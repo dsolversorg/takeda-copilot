@@ -53,7 +53,9 @@ function PersonaVideo({
               id="personavideo"
               data-sm-video
               muted={isOutputMuted}
-            />
+            >
+              <track kind="captions" src="" default />
+            </video>
           )
           : null
       }
