@@ -48,7 +48,7 @@ export default createGlobalStyle`
 
   .card, card-body{
     border: 1px solid ${primaryAccent};
-    background: transparent;
+    background: ${primaryAccent};
     color: ${seconderyAccent};
     text-align: center;
     font-size: 10px;
