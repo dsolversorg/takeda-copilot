@@ -32,7 +32,7 @@ export default createGlobalStyle`
     background: ${primaryAccent};
     color: ${seconderyAccent};
     text-align: center;
-    width: 80%;
+    width: 100%;
     max-width: 270px;
     height: auto;
     font-size: 15px;
@@ -54,7 +54,7 @@ export default createGlobalStyle`
     color: ${seconderyAccent};
     text-align: center;
     font-size: 15px;
-    width: 80%;
+    width: 100%;
     max-width: 500px;
     height: auto;
     margin: 0;
