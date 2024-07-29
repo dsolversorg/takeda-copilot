@@ -97,5 +97,8 @@ export default styled(PersonaVideo)`
     max-width: 100vw;
     max-height: 100vh;
     object-fit: cover;
+    position: fixed;
+    top: 0;
+    
   }    
 `;

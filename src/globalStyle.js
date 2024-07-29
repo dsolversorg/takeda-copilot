@@ -51,7 +51,7 @@ export default createGlobalStyle`
     background: ${primaryAccent};
     color: ${seconderyAccent};
     text-align: center;
-    font-size: 15px;
+    font-size: 10px;
     width: 100%;
     max-width: 500px;
     height: 80px;
@@ -60,7 +60,7 @@ export default createGlobalStyle`
   }
   @media screen and (min-width: 1000px) {
     .card {
-      font-size: 20px;
+      font-size: 15px;
       height: auto;      
     }
   }
