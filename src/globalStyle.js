@@ -34,7 +34,7 @@ export default createGlobalStyle`
     text-align: center;
     width: 100%;
     max-width: 270px;
-    height: 60px;
+    height: 40px;
     font-size: 15px;
     border-radius: 5px;
   }
@@ -54,6 +54,7 @@ export default createGlobalStyle`
     width: 100%;
     max-width: 500px;
     height: 80px;
+    margin: 0;
     border-radius: 10px;
   }
   @media screen and (min-width: 1000px) {
