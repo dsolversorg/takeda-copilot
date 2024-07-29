@@ -215,7 +215,7 @@ function Loading({
               </div>
             </div>
             {
-              percentageLoaded < 100
+              percentageLoaded = 100
                 ? (
                   <div>
                     <div className="progress mt-1">
