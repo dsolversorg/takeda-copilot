@@ -7,8 +7,8 @@ function Markdown({ data }) {
   const { text } = data;
 
   return (
-    <div className="cartao">
-      <div className="cartao-body">
+    <div className="card">
+      <div className="card-body">
         <ReactMarkdown>{text}</ReactMarkdown>
       </div>
     </div>
@@ -24,7 +24,7 @@ Markdown.propTypes = {
 export default styled(Markdown)`
   background: transparent;
 
-  .cartao-body{
+  .card-body{
     font-size: 15px;
     background: transparent;
   }  

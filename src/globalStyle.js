@@ -36,7 +36,7 @@ export default createGlobalStyle`
     max-width: 270px;
     height: auto;
     font-size: 15px;
-    margin-bottom: -117px;
+    margin: -200px;
     border-radius: 5px;
   }
   @media screen and (min-width: 768px) {
@@ -46,7 +46,7 @@ export default createGlobalStyle`
     }
   }
 
-  .card, card-body{
+  .card{
     border: 1px solid ${primaryAccent};
     background: ${primaryAccent};
     color: ${seconderyAccent};
@@ -63,6 +63,11 @@ export default createGlobalStyle`
       font-size: 10px;
     }
   }
+
+  .card-body{
+    font-size: 15px;
+    background: transparent;
+  }    
   
   .form-check-input:checked {
     background-color: ${primaryAccent};
