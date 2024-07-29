@@ -24,7 +24,7 @@ function PersonaVideo({
       const videoWidth = containerRef.current.clientWidth;
       const videoHeight = containerRef.current.clientHeight;
       setVideoDimensions(videoWidth, videoHeight);
-      setHeight(`${window.innerHeight}px`);
+      setHeight(`${videoHeight}px`);
     }
   };
 
@@ -93,12 +93,11 @@ export default styled(PersonaVideo)`
 
   .persona-video {
     width: 100%;
-    height: auto;
+    height: 100%;
     max-width: 100vw;
     max-height: 100vh;
     object-fit: cover;
     position: fixed;
     top: 0;
-    
   }    
 `;
