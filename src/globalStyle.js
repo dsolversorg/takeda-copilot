@@ -36,8 +36,8 @@ export default createGlobalStyle`
     max-width: 270px;
     height: auto;
     font-size: 15px;
-    margin: auto;
-    padding: 10px 20px;
+    margin: 0;
+    padding: 0;
     display: block;
     border-radius: 5px;
   }
@@ -54,11 +54,11 @@ export default createGlobalStyle`
     color: ${seconderyAccent};
     text-align: center;
     font-size: 15px;
-    width: 90%;
+    width: 80%;
     max-width: 500px;
     height: auto;
-    margin: auto;
-    padding: 20px;
+    margin: 0;
+    padding: 0;
     border-radius: 10px;
   }
   @media screen and (min-width: 1000px) {
