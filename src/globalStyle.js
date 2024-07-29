@@ -36,6 +36,7 @@ export default createGlobalStyle`
     max-width: 270px;
     height: 40px;
     font-size: 15px;
+    margin: 2px;
     border-radius: 5px;
   }
   @media screen and (min-width: 1000px) {
