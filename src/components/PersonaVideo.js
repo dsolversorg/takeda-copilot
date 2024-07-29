@@ -102,11 +102,21 @@ export default styled(PersonaVideo)`
   align-items: center;
   justify-content: center;
   margin-top: ${transparentHeader ? '' : headerHeight};
+
   .persona-video {
     /* the video element will conform to the container dimensions, so keep this as it is */
     width: 100%;
     height: 100%;
     position: absolute;
-    top: 0;
+    botton: 50px;
   }
+  @media screen and (min-width: 1000px) {
+    .persona-video {
+      /* the video element will conform to the container dimensions, so keep this as it is */
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+    }
+  }    
 `;
