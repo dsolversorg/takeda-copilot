@@ -42,7 +42,7 @@ export default createGlobalStyle`
       background: #169ca9;
       color: #FFF;
       text-align: center;
-      width: 600px;
+      width: 500px;
       height: auto;
       font-size: 30px;
     }
@@ -64,7 +64,7 @@ export default createGlobalStyle`
       background: #169ca9;
       color: #FFF;
       text-align: center;
-      width: 600px;
+      width: 500px;
       height: auto;
       font-size: 30px;
     }
