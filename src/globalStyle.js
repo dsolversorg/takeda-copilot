@@ -34,7 +34,7 @@ export default createGlobalStyle`
     height: auto;
     font-size: 15px;
   }
-  @media screen and (min-width: 800px) {
+  @media screen and (min-width: 1000px) {
     .btn.primary-accent {
       border: 1px solid ${primaryAccent};
       background: #169ca9;
@@ -56,7 +56,7 @@ export default createGlobalStyle`
     height: auto;
     font-size: 15px;      
   }
-  @media screen and (min-width: 800px) {
+  @media screen and (min-width: 1000px) {
     .card{
       border: 1px solid ${primaryAccent};
       background: #169ca9;
