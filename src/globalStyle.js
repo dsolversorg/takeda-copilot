@@ -36,7 +36,7 @@ export default createGlobalStyle`
     max-width: 270px;
     height: auto;
     font-size: 15px;
-    margin: -200px;
+    margin: 0;
     border-radius: 5px;
   }
   @media screen and (min-width: 768px) {
@@ -64,7 +64,7 @@ export default createGlobalStyle`
     }
   }
 
-  .card-body{
+  .h2{
     font-size: 15px;
     background: transparent;
   }    
