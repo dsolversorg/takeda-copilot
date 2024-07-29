@@ -93,7 +93,7 @@ export default styled(PersonaVideo)`
 
   .persona-video {
     width: 100%;
-    height: 100%;
+    height: auto;
     max-width: 100vw;
     max-height: 100vh;
     object-fit: cover;

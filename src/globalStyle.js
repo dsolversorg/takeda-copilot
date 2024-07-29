@@ -48,20 +48,20 @@ export default createGlobalStyle`
 
   .card {
     border: 1px solid ${primaryAccent};
-    background: ${primaryAccent};
+    background: transparent;
     color: ${seconderyAccent};
     text-align: center;
     font-size: 10px;
     width: 100%;
     max-width: 500px;
-    height: 80px;
+    height: auto;
     margin: 0;
     border-radius: 10px;
   }
   @media screen and (min-width: 1000px) {
     .card {
       font-size: 15px;
-      height: auto;      
+      height: 80px;
     }
   }
   
