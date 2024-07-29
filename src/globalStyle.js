@@ -34,19 +34,19 @@ export default createGlobalStyle`
     text-align: center;
     width: 100%;
     max-width: 270px;
-    height: 40px;
+    height: auto;
     font-size: 15px;
     margin: 2px;
     border-radius: 5px;
   }
-  @media screen and (min-width: 1000px) {
+  @media screen and (min-width: 768px) {
     .btn.primary-accent {
       max-width: 500px;
       font-size: 20px;
     }
   }
 
-  .card {
+  .card, card-body{
     border: 1px solid ${primaryAccent};
     background: transparent;
     color: ${seconderyAccent};
@@ -58,10 +58,9 @@ export default createGlobalStyle`
     margin: 0;
     border-radius: 10px;
   }
-  @media screen and (min-width: 1000px) {
+  @media screen and (min-width: 768px) {
     .card {
-      font-size: 15px;
-      height: 80px;
+      font-size: 10px;
     }
   }
   
