@@ -34,11 +34,8 @@ export default createGlobalStyle`
     text-align: center;
     width: 100%;
     max-width: 270px;
-    height: auto;
+    height: 60px;
     font-size: 15px;
-    margin: 0;
-    padding: 0;
-    display: block;
     border-radius: 5px;
   }
   @media screen and (min-width: 1000px) {
@@ -56,14 +53,13 @@ export default createGlobalStyle`
     font-size: 15px;
     width: 100%;
     max-width: 500px;
-    height: auto;
-    margin: 0;
-    padding: 0;
+    height: 80px;
     border-radius: 10px;
   }
   @media screen and (min-width: 1000px) {
     .card {
       font-size: 20px;
+      height: auto;      
     }
   }
   
