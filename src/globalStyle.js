@@ -36,7 +36,7 @@ export default createGlobalStyle`
     max-width: 270px;
     height: auto;
     font-size: 15px;
-    margin: 10px auto;
+    margin: auto;
     padding: 10px 20px;
     display: block;
     border-radius: 5px;
@@ -57,7 +57,7 @@ export default createGlobalStyle`
     width: 90%;
     max-width: 500px;
     height: auto;
-    margin: 20px auto;
+    margin: auto;
     padding: 20px;
     border-radius: 10px;
   }
