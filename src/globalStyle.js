@@ -29,46 +29,43 @@ export default createGlobalStyle`
 
   .btn.primary-accent {
     border: 1px solid ${primaryAccent};
-    background: #169ca9;
-    color: #FFF;
+    background: ${primaryAccent};
+    color: ${seconderyAccent};
     text-align: center;
-    width: 270px;
+    width: 80%;
+    max-width: 270px;
     height: auto;
     font-size: 15px;
+    margin: 10px auto;
+    padding: 10px 20px;
+    display: block;
+    border-radius: 5px;
   }
   @media screen and (min-width: 1000px) {
     .btn.primary-accent {
-      border: 1px solid ${primaryAccent};
-      background: #169ca9;
-      color: #FFF;
-      text-align: center;
-      width: 500px;
-      height: auto;
-      font-size: 30px;
+      max-width: 500px;
+      font-size: 20px;
     }
   }
 
-  .card{
+  .card {
     border: 1px solid ${primaryAccent};
-    background: #169ca9;
-    color: #FFF;
+    background: ${primaryAccent};
+    color: ${seconderyAccent};
     text-align: center;
-    font-size: 30px;
-    width: auto;
+    font-size: 15px;
+    width: 90%;
+    max-width: 500px;
     height: auto;
-    font-size: 15px;      
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
   }
   @media screen and (min-width: 1000px) {
-    .card{
-      border: 1px solid ${primaryAccent};
-      background: #169ca9;
-      color: #FFF;
-      text-align: center;
-      width: 500px;
-      height: auto;
-      font-size: 30px;
+    .card {
+      font-size: 20px;
     }
-  }  
+  }
   
   .form-check-input:checked {
     background-color: ${primaryAccent};
