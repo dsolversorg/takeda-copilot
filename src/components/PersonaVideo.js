@@ -94,8 +94,7 @@ export default styled(PersonaVideo)`
   width: 100vw;
   height: 100vh;
 
-  position: relative;
-  botton: 0;
+  position: fixed;
   z-index: 0;
 
   display: flex;
@@ -107,16 +106,5 @@ export default styled(PersonaVideo)`
     /* the video element will conform to the container dimensions, so keep this as it is */
     width: 100%;
     height: 100%;
-    position: absolute;
-    botton: 50px;
-  }
-  @media screen and (min-width: 1000px) {
-    .persona-video {
-      /* the video element will conform to the container dimensions, so keep this as it is */
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 0;
-    }
   }    
 `;

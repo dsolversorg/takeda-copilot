@@ -23,4 +23,9 @@ Markdown.propTypes = {
 
 export default styled(Markdown)`
   background: transparent;
+
+  .card{
+    font-size: 4rem;
+    background: transparent;
+  }  
 `;

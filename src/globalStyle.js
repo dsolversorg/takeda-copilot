@@ -10,12 +10,14 @@ export default createGlobalStyle`
     padding: 0;
   }
   body {
+    width: 100vw;
     height: 100vh;
     overflow: hiden;
     padding-top: env(safe-area-inset-top);
     padding-bottom: env(safe-area-inset-bottom);
   }
   html, body {
+      width: 100v%;
       height: 100%;
   }
   body {
