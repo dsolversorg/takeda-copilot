@@ -31,9 +31,7 @@ function Landing({ className }) {
   const history = useHistory();
 
   const handleButtonClick = () => {
-    if (connected) {
-      history.push('/takeda-copilot');
-    }
+    history.push('/takeda-copilot');
   };
 
   return (
@@ -59,24 +57,13 @@ function Landing({ className }) {
                 </div>
               </div>
               <div className="row" style={{ marginBottom: '14px' }}>
-                {!connected && (
-                  <div
-                    className="button-start button--disabled m-2 "
-                    type="button"
-                  >
-                    <img alt="gif loading" src="https://media.tenor.com/t5DMW5PI8mgAAAAj/loading-green-loading.gif" className="gif-loading" />
-                  </div>
-                )}
-
-                {connected && (
-                  <button
-                    className="button-start m-2"
-                    type="button"
-                    onClick={handleButtonClick}
-                  >
-                    Iniciando Assistente Virtual
-                  </button>
-                )}
+                <button
+                  className="button-start m-2"
+                  type="button"
+                  onClick={handleButtonClick}
+                >
+                  Iniciando Assistente Virtual
+                </button>
               </div>
               <div className="row">
                 <div>
