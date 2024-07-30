@@ -54,13 +54,13 @@ function Loading({ className }) {
       </div>
       <div className="row">
         <div className="d-flex align-items-center justify-content-between">
-          <button className="btn-unstyled" type="button" style={{ opacity: 0, width: '44px' }}>
+          <button className="btn-unstyled" type="button" style={{ opacity: 0, width: '44px' }} aria-label="Botão invisível">
             {' '}
           </button>
           <h4>
             Antes de começar
           </h4>
-          <button className="btn-unstyled" type="button" onClick={() => setPage(page + 1)}>
+          <button className="btn-unstyled" type="button" onClick={() => setPage(page + 1)} aria-label="Próximo">
             <ArrowRightCircleFill size={32} />
           </button>
         </div>
@@ -102,13 +102,13 @@ function Loading({ className }) {
       </div>
       <div className="row">
         <div className="d-flex align-items-center justify-content-between">
-          <button className="btn-unstyled" type="button" onClick={() => setPage(page - 1)}>
+          <button className="btn-unstyled" type="button" onClick={() => setPage(page - 1)} aria-label="Anterior">
             <ArrowLeftCircleFill size={32} />
           </button>
           <h4>
             O que fazer?
           </h4>
-          <button className="btn-unstyled" type="button" onClick={() => setPage(page + 1)}>
+          <button className="btn-unstyled" type="button" onClick={() => setPage(page + 1)} aria-label="Próximo">
             <ArrowRightCircleFill size={32} />
           </button>
         </div>
@@ -124,13 +124,13 @@ function Loading({ className }) {
       </div>
       <div className="row">
         <div className="d-flex align-items-center justify-content-between">
-          <button className="btn-unstyled" type="button" onClick={() => setPage(page - 1)}>
+          <button className="btn-unstyled" type="button" onClick={() => setPage(page - 1)} aria-label="Anterior">
             <ArrowLeftCircleFill size={32} />
           </button>
           <h4>
             Sobre o que você pode falar?
           </h4>
-          <button className="btn-unstyled" type="button" style={{ opacity: 0, width: '44px' }}>
+          <button className="btn-unstyled" type="button" style={{ opacity: 0, width: '44px' }} aria-label="Botão invisível">
             {' '}
           </button>
         </div>
@@ -171,12 +171,12 @@ function Loading({ className }) {
                       type="button"
                       onClick={() => setPage(page + 1)}
                       style={{ backgroundColor: '#3C3C3C', border: '2px solid #3C3C3C' }}
+                      aria-label="Próximo"
                     >
                       Next
                     </button>
-                    )
-                    : null
-                }
+                  )
+                  : null}
               </div>
             </div>
             <div className="row">
@@ -186,50 +186,48 @@ function Loading({ className }) {
                   type="button"
                   disabled={skip}
                   onClick={redirectToVideoOnConnect}
+                  aria-label={connected || page >= pages.length - 1 ? 'Falar agora' : 'Pular'}
                 >
-                  { connected || page >= pages.length - 1 ? 'Falar agora' : 'Pular' }
-                  { !connected && skip
+                  {connected || page >= pages.length - 1 ? 'Falar agora' : 'Pular'}
+                  {!connected && skip
                     ? (
                       <div className="ms-1 spinner-border spinner-border-sm text-secondary" role="status">
                         <span className="visually-hidden">Carregando...</span>
                       </div>
                     )
-                    : null }
+                    : null}
                 </button>
               </div>
             </div>
             <div className="row justify-content-center">
               <div>
-                {/* eslint-disable-next-line react/no-array-index-key */}
-                {pages.map((_, i) => (<div key={`${i}-${i === page}`} className="d-inline-block p-1">{i === page ? <div className="closed-dot" /> : <div className="open-dot" />}</div>))}
+                {pages.map((_, i) => (
+                  <div key={`${i}-${i === page}`} className="d-inline-block p-1">
+                    {i === page ? <div className="closed-dot" /> : <div className="open-dot" />}
+                  </div>
+                ))}
               </div>
             </div>
-            {
-              percentageLoaded < 100
-                ? (
-                  <div>
-                    <div className="progress mt-1">
-                      <div
-                        className="progress-bar"
-                        role="progressbar"
-                        style={{ width: `${percentageLoaded}%` }}
-                        aria-label={`${stateName} (${currentStep} out of ${totalSteps - 1})`}
-                        aria-valuenow={percentageLoaded}
-                        aria-valuemin="0"
-                        aria-valuemax="100"
-                      />
-                    </div>
-                    { stateName !== ''
-                      ? (
-                        <pre>
-                          {`${stateName} (${currentStep} out of ${totalSteps - 1} steps)`}
-                        </pre>
-                      )
-                      : null}
-                  </div>
-                )
-                : null
-            }
+            {percentageLoaded < 100 && (
+              <div>
+                <div className="progress mt-1">
+                  <div
+                    className="progress-bar"
+                    role="progressbar"
+                    style={{ width: `${percentageLoaded}%` }}
+                    aria-label={`${stateName} (${currentStep} out of ${totalSteps - 1})`}
+                    aria-valuenow={percentageLoaded}
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  />
+                </div>
+                {stateName && (
+                  <pre>
+                    {`${stateName} (${currentStep} out of ${totalSteps - 1} steps)`}
+                  </pre>
+                )}
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -241,62 +239,60 @@ Loading.propTypes = {
   className: PropTypes.string.isRequired,
 };
 
-export default styled(Loading)`
-  background: ${landingBackgroundColor};
-  background-size: contain;
+const StyledLoading = styled(Loading)`
+  min-height: calc(100vh - ${headerHeight});
+  background: ${landingBackgroundColor} url(${landingBackgroundImage});
+  background-size: cover;
   background-repeat: no-repeat;
-  background-position: center bottom;
 
-  width: 100vw;
-  height: 100vh;
-  color: #3C3C3C;
-
-  &>.container>.row {
-    height: calc(100vh - ${headerHeight});
-  }
   .mobile {
-    @media (max-width: 400px) {
-      width: 300px;
-    }
-  .connected-button {
+    margin-top: 8vh;
+  }
+
+  .tutorial-icon {
+    font-size: 72px;
+    color: white;
+  }
+
+  .tutorial-icon-dp {
+    background: url('/images/dp-image.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 72px;
+    height: 72px;
+  }
+
+  .primary-accent {
     background-color: #3C3C3C;
     border: 2px solid #3C3C3C;
   }
 
+  .connected-button {
+    background-color: #1D8F8E;
+    border: 2px solid #1D8F8E;
+    color: white;
+  }
+
   .unconnected-button {
-    font-size: 14px;
-    font-family: "Helvetica Neue";
+    background-color: transparent;
+    border: 2px solid #1D8F8E;
+    color: #1D8F8E;
   }
 
-  .tutorial-icon {
-    width: 180px;
-    height: 180px;
-    aspect-ratio: 1;
-    border-radius: 50%;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background-color: #EAEAEA;
-  }
-  .tutorial-icon-dp {
-    background-image: url(${landingBackgroundImage});
-    background-size: cover;
-    background-position: button top;
-  }
-  .open-dot {
-    border: 2px solid #3C3C3C;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-  }
   .closed-dot {
-    border: 2px solid #3C3C3C;
-    background: #3C3C3C;
-    width: 8px;
-    height: 8px;
+    width: 12px;
+    height: 12px;
+    background-color: #1D8F8E;
+    border-radius: 50%;
+  }
+
+  .open-dot {
+    width: 12px;
+    height: 12px;
+    background-color: transparent;
+    border: 2px solid #1D8F8E;
     border-radius: 50%;
   }
 `;
-  
+
+export default StyledLoading;

@@ -213,32 +213,16 @@ export default styled(DPChat)`
   .video-overlay {
     overflow: hidden;
     position: fixed;
-    top: 0;
+    botton: 40px;
     right: 0;
     left: 0;
 
     z-index: 10;
 
     width: 100%;
-    height: 95vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
-  }
-  @media screen and (min-width: 768px) {    
-    .video-overlay {
-      overflow: hidden;
-      position: absolute;
-      top: 0;
-      right: 0;
-      left: 0;
-
-      z-index: 10;
-
-      width: 100%;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
   }
 
   .endCont{
