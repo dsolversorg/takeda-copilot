@@ -33,7 +33,7 @@ const LinkGAtoRouter = withRouter(({ history }) => {
 });
 
 function App() {
-  const { error } = useSelector(({ sm }) => ({ ...sm, error: sm?.error || {} }));
+  const { error } = useSelector(({ sm }) => ({ ...sm }));
   const [ignoreError, setIgnoreError] = useState(false);
   // every time error changes, set ignore error to false
   useEffect(() => setIgnoreError(false), [error]);
