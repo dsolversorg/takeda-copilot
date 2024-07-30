@@ -188,6 +188,16 @@ DPChat.propTypes = {
   className: PropTypes.string.isRequired,
 };
 
+const getBottomValue = () => {
+  if (/Android/i.test(navigator.userAgent)) {
+    return '20px';
+  } else if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+    return '40px';
+  } else {
+    return '25px';
+  }
+};
+
 export default styled(DPChat)`
   height: 100vh;
 
@@ -254,7 +264,7 @@ export default styled(DPChat)`
     align-items: center;
     flex-direction: column;
     position: relative;
-    bottom: ${/Android/i.test(navigator.userAgent) ? '20px' : /iPhone|iPad|iPod/i.test(navigator.userAgent) ? '30px' : '25px'};
+    bottom: ${getBottomValue()};
   }
   
   .contWid{
