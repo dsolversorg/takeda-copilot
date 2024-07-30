@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
 import styled from 'styled-components';
 import ReactGA from 'react-ga4';
 import React, { useEffect, useState } from 'react';
@@ -34,14 +33,14 @@ const LinkGAtoRouter = withRouter(({ history }) => {
 });
 
 function App() {
-  const { error } = useSelector(({ sm }) => ({ ...sm }));
+  const { error } = useSelector(({ sm }) => ({ ...sm, error: sm?.error || {} }));
   const [ignoreError, setIgnoreError] = useState(false);
   // every time error changes, set ignore error to false
   useEffect(() => setIgnoreError(false), [error]);
 
   // send SM session ID to google analytics when we connect
   if (REACT_APP_GA_TRACKING_ID) {
-    const sessionID = useSelector(({ sm }) => sm.sessionID);
+    const sessionID = useSelector(({ sm }) => sm?.sessionID || '');
     useEffect(() => {
       if (sessionID !== '') ReactGA.gtag('event', 'sm_session_id', { sm_session_id: sessionID });
     }, [sessionID]);
