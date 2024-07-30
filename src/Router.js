@@ -53,7 +53,7 @@ function App() {
           <div className="error-modal">
             <div className="error-modal-card">
               <div className="d-flex justify-content-end">
-                <button className="btn-unstyled" type="button" onClick={() => setIgnoreError(true)}>
+                <button className="btn-unstyled" type="button" onClick={() => setIgnoreError(true)} aria-label="Fechar">
                   <XCircle size={22} />
                 </button>
               </div>
