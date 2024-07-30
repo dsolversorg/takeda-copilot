@@ -226,6 +226,7 @@ export default styled(DPChat)`
     @media (max-width: 768px){
       position: sticky;
       bottom: 30px;
+      height: 80vh;
     }    
   }
 
