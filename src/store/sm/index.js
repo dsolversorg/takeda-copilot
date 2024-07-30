@@ -65,14 +65,14 @@ const initialState = {
     emotion: {
       confusion: 0,
       negativity: 0,
-      positivity: 0,
+      positivity: 1,
       confidence: 0,
     },
     conversation: {
       turn: '',
       context: {
-        FacePresent: 0,
-        PersonaTurn_IsAttentive: 1,
+        FacePresent: 1,
+        PersonaTurn_IsAttentive: 0,
         PersonaTurn_IsTalking: null,
         Persona_Turn_Confusion: null,
         Persona_Turn_Negativity: null,
@@ -219,7 +219,7 @@ export const createScene = createAsyncThunk('sm/createScene', async (_, thunk) =
   let cameraDenied = false;
   let micDenied = false;
   try {
-    await navigator.mediaDevices.getUserMedia({ micDenied: false, cameraDenied: false });
+    await navigator.mediaDevices.getUserMedia({ audio: false, video: false });
   } catch {
     cameraDenied = false;
     micDenied = false;
@@ -776,14 +776,14 @@ const smSlice = createSlice({
       const timestamp = lastTranscriptItem?.timestamp || new Date(startedAt);
       const timeDiff = new Date(Date.now()) - Date.parse(timestamp);
       // if over 5 minutes old (min timeout thresh. is 5), presume the user timed out
-      const presumeTimeout = timeDiff > 2 * 60 * 1000; // 5 minutes in milliseconds
+      const presumeTimeout = timeDiff > (1 * 60 * 1000); // 5 minutes in milliseconds
       return {
         // completely reset SM state on disconnect, except for errors
         ...initialState,
         disconnected: true,
-        error,
+        error: { msg: error.message },
         presumeTimeout,
-        startedAt,
+        startedAt: Date.now(),
       };
     },
     keepAlive: () => {
@@ -807,14 +807,14 @@ const smSlice = createSlice({
       ...state,
       loading: true,
       disconnected: false,
-      error: null,
+      error: { msg: error.message },
     }),
     [createScene.fulfilled]: (state) => ({
       ...state,
       loading: false,
       connected: true,
       startedAt: Date.now(),
-      error: null,
+      error: { msg: error.message },
     }),
     [createScene.rejected]: (state, { error }) => {
       try {
