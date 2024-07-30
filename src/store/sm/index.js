@@ -782,7 +782,7 @@ const smSlice = createSlice({
         ...initialState,
         disconnected: true,
         loading: false,
-        error: null,
+        error,
         presumeTimeout,
         startedAt: Date.now(),
       };
