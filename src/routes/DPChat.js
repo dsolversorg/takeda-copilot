@@ -270,7 +270,7 @@ export default styled(DPChat)`
     flex-direction: column;
     @media (max-width: 768px){
       position: relative;
-      bottom: 20px;
+      bottom: 25px;
     }        
   }
   
