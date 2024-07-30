@@ -102,21 +102,6 @@ function DPChat({
         {/* top row */}
         <div className="row">
           <Header />
-          {/* {
-            // consumers of the template can uncomment this block if they want a camera preview
-            // will need to add cameraOn to the values they get from the state
-              cameraOn
-                ? (
-                  <div className="row d-flex justify-content-end">
-                    <div className="col-auto">
-                      <div className="camera-preview">
-                        <CameraPreview />
-                      </div>
-                    </div>
-                  </div>
-                )
-                : <div />
-            } */}
         </div>
         {/* middle row */}
         <div
@@ -268,10 +253,8 @@ export default styled(DPChat)`
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    @media (max-width: 768px){
-      position: relative;
-      bottom: 30px;
-    }        
+    position: relative;
+    bottom: ${/Android/i.test(navigator.userAgent) ? '20px' : /iPhone|iPad|iPod/i.test(navigator.userAgent) ? '30px' : '25px'};
   }
   
   .contWid{
@@ -324,5 +307,4 @@ export default styled(DPChat)`
       height: 20px !important;
     }
   }
-}
 `;
