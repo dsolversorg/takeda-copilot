@@ -195,7 +195,7 @@ const getBottomValue = () => {
   if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
     return '30px';
   }
-  return '20px';
+  return '25px';
 };
 
 export default styled(DPChat)`
