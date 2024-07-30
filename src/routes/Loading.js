@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -9,36 +8,31 @@ import { createScene } from '../store/sm';
 import Header from '../components/Header';
 import { headerHeight, landingBackgroundColor, landingBackgroundImage } from '../config';
 
-function Loading({
-  className,
-}) {
+function Loading({ className }) {
   const {
     connected,
     loading,
     error,
     requestedMediaPerms,
-    connectionState,
+    connectionState = {},
   } = useSelector(({ sm }) => (sm));
-  const dispatch = useDispatch();
 
   const {
-    percentageLoaded, name, currentStep, totalSteps,
+    percentageLoaded = 0,
+    name = '',
+    currentStep = 0,
+    totalSteps = 0,
   } = connectionState;
+
+  const dispatch = useDispatch();
 
   const stateNameMap = {
     SearchingForDigitalPerson: 'Searching For Digital Person',
     DownloadingAssets: 'Downloading Assets',
     ConnectingToDigitalPerson: 'Connecting To Digital Person',
   };
-  // map name vals to plain english if we know the state name, otherwise just display the name as is
   const stateName = (name in stateNameMap) ? stateNameMap[name] : name;
 
-  // // pull querystring to see if we are displaying an error
-  // // (app can redirect to /loading on fatal err)
-  // const useQuery = () => new URLSearchParams(useLocation().search);
-  // const query = useQuery();
-
-  // create persona scene on button press on on mount, depending on device size
   const createSceneIfNotStarted = () => {
     if (loading === false && connected === false && error === null) {
       dispatch(createScene());
@@ -71,33 +65,30 @@ function Loading({
           </button>
         </div>
         <div className="mt-0 mb-2">
-          {
-            // show different modal if mic is off or if mic perms are denied
-            requestedMediaPerms.mic === true && requestedMediaPerms.micDenied === false
-              ? (
-                <div>
-                  <p>
-                    Sou a Katia uma Pessoa Digital, eu funciono melhor em um ambiente silencioso,
-                    quando você está próximo ao microfone e a câmera ligada.
-                  </p>
-                  <p>
-                    Fale claramente e em respostas curtas.
-                  </p>
-                </div>
-              )
-              : (
-                <div>
-                  <p>
-                    Sou a Katia uma Pessoa Digital, eu funciono melhor com o microfone ligado.
-                    Habilite seu microfone a qualquer momento durante a experiência
-                    clicando no ícone do microfone e concedendo as permissões.
-                  </p>
-                  <p>
-                    Fale claramente e em respostas curtas.
-                  </p>
-                </div>
-              )
-          }
+          {requestedMediaPerms.mic === true && requestedMediaPerms.micDenied === false
+            ? (
+              <div>
+                <p>
+                  Sou a Katia uma Pessoa Digital, eu funciono melhor em um ambiente silencioso,
+                  quando você está próximo ao microfone e a câmera ligada.
+                </p>
+                <p>
+                  Fale claramente e em respostas curtas.
+                </p>
+              </div>
+            )
+            : (
+              <div>
+                <p>
+                  Sou a Katia uma Pessoa Digital, eu funciono melhor com o microfone ligado.
+                  Habilite seu microfone a qualquer momento durante a experiência
+                  clicando no ícone do microfone e concedendo as permissões.
+                </p>
+                <p>
+                  Fale claramente e em respostas curtas.
+                </p>
+              </div>
+            )}
         </div>
       </div>
     </div>,
@@ -173,17 +164,16 @@ function Loading({
             </div>
             <div className="row justify-content-center">
               <div>
-                {
-                  page < pages.length - 1
-                    ? (
-                      <button
-                        className="btn primary-accent m-2"
-                        type="button"
-                        onClick={() => setPage(page + 1)}
-                        style={{ backgroundColor: '#3C3C3C', border: '2px solid #3C3C3C' }}
-                      >
-                        Next
-                      </button>
+                {page < pages.length - 1
+                  ? (
+                    <button
+                      className="btn primary-accent m-2"
+                      type="button"
+                      onClick={() => setPage(page + 1)}
+                      style={{ backgroundColor: '#3C3C3C', border: '2px solid #3C3C3C' }}
+                    >
+                      Next
+                    </button>
                     )
                     : null
                 }
@@ -309,3 +299,4 @@ export default styled(Loading)`
     border-radius: 50%;
   }
 `;
+  
