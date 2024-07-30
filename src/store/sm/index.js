@@ -36,7 +36,7 @@ const initialState = {
   sessionID: '',
   // use startedAt to measure if someone starts a session and then walks away
   startedAt: Date.now(),
-  presumeTimeout: false,
+  presumeTimeout: true,
   loading: false,
   connectionState: {
     name: '',
