@@ -46,102 +46,117 @@ function Loading({ className }) {
   const iconSize = 66;
   const [page, setPage] = useState(0);
   const pages = [
-    <div>
-      <div className="row justify-content-center">
-        <div className="tutorial-icon mb-2">
-          <MicFill size={iconSize} />
-        </div>
-      </div>
-      <div className="row">
-        <div className="d-flex align-items-center justify-content-between">
-          <button className="btn-unstyled" type="button" style={{ opacity: 0, width: '44px' }} aria-label="Botão invisível">
-            {' '}
-          </button>
-          <h4>
-            Antes de começar
-          </h4>
-          <button className="btn-unstyled" type="button" onClick={() => setPage(page + 1)} aria-label="Próximo">
-            <ArrowRightCircleFill size={32} />
-          </button>
-        </div>
-        <div className="mt-0 mb-2">
-          {requestedMediaPerms.mic === true && requestedMediaPerms.micDenied === false
-            ? (
-              <div>
-                <p>
-                  Sou a Katia uma Pessoa Digital, eu funciono melhor em um ambiente silencioso,
-                  quando você está próximo ao microfone e a câmera ligada.
-                </p>
-                <p>
-                  Fale claramente e em respostas curtas.
-                </p>
-              </div>
-            )
-            : (
-              <div>
-                <p>
-                  Sou a Katia uma Pessoa Digital, eu funciono melhor com o microfone ligado.
-                  Habilite seu microfone a qualquer momento durante a experiência
-                  clicando no ícone do microfone e concedendo as permissões.
-                </p>
-                <p>
-                  Fale claramente e em respostas curtas.
-                </p>
-              </div>
-            )}
-        </div>
-      </div>
-    </div>,
-    <div>
-      <div className="row justify-content-center">
-        <div className="tutorial-icon mb-2">
-          <div className="fs-4 fw-bold mt-2">
-            &ldquo;Olá! Como você está?&rdquo;
+    {
+      key: 'page1',
+      content: (
+        <div>
+          <div className="row justify-content-center">
+            <div className="tutorial-icon mb-2">
+              <MicFill size={iconSize} />
+            </div>
+          </div>
+          <div className="row">
+            <div className="d-flex align-items-center justify-content-between">
+              <button className="btn-unstyled" type="button" style={{ opacity: 0, width: '44px' }} aria-label="Botão invisível">
+                {' '}
+              </button>
+              <h4>
+                Antes de começar
+              </h4>
+              <button className="btn-unstyled" type="button" onClick={() => setPage(page + 1)} aria-label="Próximo">
+                <ArrowRightCircleFill size={32} />
+              </button>
+            </div>
+            <div className="mt-0 mb-2">
+              {requestedMediaPerms.mic === true && requestedMediaPerms.micDenied === false
+                ? (
+                  <div>
+                    <p>
+                      Sou a Katia uma Pessoa Digital, eu funciono melhor em um ambiente silencioso,
+                      quando você está próximo ao microfone e a câmera ligada.
+                    </p>
+                    <p>
+                      Fale claramente e em respostas curtas.
+                    </p>
+                  </div>
+                )
+                : (
+                  <div>
+                    <p>
+                      Sou a Katia uma Pessoa Digital, eu funciono melhor com o microfone ligado.
+                      Habilite seu microfone a qualquer momento durante a experiência
+                      clicando no ícone do microfone e concedendo as permissões.
+                    </p>
+                    <p>
+                      Fale claramente e em respostas curtas.
+                    </p>
+                  </div>
+                )}
+            </div>
           </div>
         </div>
-      </div>
-      <div className="row">
-        <div className="d-flex align-items-center justify-content-between">
-          <button className="btn-unstyled" type="button" onClick={() => setPage(page - 1)} aria-label="Anterior">
-            <ArrowLeftCircleFill size={32} />
-          </button>
-          <h4>
-            O que fazer?
-          </h4>
-          <button className="btn-unstyled" type="button" onClick={() => setPage(page + 1)} aria-label="Próximo">
-            <ArrowRightCircleFill size={32} />
-          </button>
+      ),
+    },
+    {
+      key: 'page2',
+      content: (
+        <div>
+          <div className="row justify-content-center">
+            <div className="tutorial-icon mb-2">
+              <div className="fs-4 fw-bold mt-2">
+                &ldquo;Olá! Como você está?&rdquo;
+              </div>
+            </div>
+          </div>
+          <div className="row">
+            <div className="d-flex align-items-center justify-content-between">
+              <button className="btn-unstyled" type="button" onClick={() => setPage(page - 1)} aria-label="Anterior">
+                <ArrowLeftCircleFill size={32} />
+              </button>
+              <h4>
+                O que fazer?
+              </h4>
+              <button className="btn-unstyled" type="button" onClick={() => setPage(page + 1)} aria-label="Próximo">
+                <ArrowRightCircleFill size={32} />
+              </button>
+            </div>
+            <div className="mt-0 mb-2">
+              O Digital Person ouvirá tudo o que você disser.
+              Outras opções, como digitar ou escolher suas respostas, também estão disponíveis.
+            </div>
+          </div>
         </div>
-        <div className="mt-0 mb-2">
-          O Digital Person ouvirá tudo o que você disser.
-          Outras opções, como digitar ou escolher suas respostas, também estão disponíveis.
+      ),
+    },
+    {
+      key: 'page3',
+      content: (
+        <div>
+          <div className="row justify-content-center">
+            <div className="tutorial-icon tutorial-icon-dp mb-2" />
+          </div>
+          <div className="row">
+            <div className="d-flex align-items-center justify-content-between">
+              <button className="btn-unstyled" type="button" onClick={() => setPage(page - 1)} aria-label="Anterior">
+                <ArrowLeftCircleFill size={32} />
+              </button>
+              <h4>
+                Sobre o que você pode falar?
+              </h4>
+              <button className="btn-unstyled" type="button" style={{ opacity: 0, width: '44px' }} aria-label="Botão invisível">
+                {' '}
+              </button>
+            </div>
+            <div className="mt-0 mb-2">
+              Você pode explorar os recursos da minha UI,
+              ver exemplos dos diferentes conteúdos de suporte
+              que posso mostrar ou ouvir sobre as atualizações
+              mais recentes do modelo de IU que estou usando.
+            </div>
+          </div>
         </div>
-      </div>
-    </div>,
-    <div>
-      <div className="row justify-content-center">
-        <div className="tutorial-icon tutorial-icon-dp mb-2" />
-      </div>
-      <div className="row">
-        <div className="d-flex align-items-center justify-content-between">
-          <button className="btn-unstyled" type="button" onClick={() => setPage(page - 1)} aria-label="Anterior">
-            <ArrowLeftCircleFill size={32} />
-          </button>
-          <h4>
-            Sobre o que você pode falar?
-          </h4>
-          <button className="btn-unstyled" type="button" style={{ opacity: 0, width: '44px' }} aria-label="Botão invisível">
-            {' '}
-          </button>
-        </div>
-        <div className="mt-0 mb-2">
-          Você pode explorar os recursos da minha UI,
-          ver exemplos dos diferentes conteúdos de suporte
-          que posso mostrar ou ouvir sobre as atualizações
-          mais recentes do modelo de IU que estou usando.
-        </div>
-      </div>
-    </div>,
+      ),
+    },
   ];
 
   const [skip, setSkip] = useState(false);
@@ -160,23 +175,21 @@ function Loading({ className }) {
         <div className="row justify-content-center align-items-center">
           <div className="col-11 col-md-6 text-center mobile">
             <div className="row">
-              {pages[page]}
+              {pages[page].content}
             </div>
             <div className="row justify-content-center">
               <div>
-                {page < pages.length - 1
-                  ? (
-                    <button
-                      className="btn primary-accent m-2"
-                      type="button"
-                      onClick={() => setPage(page + 1)}
-                      style={{ backgroundColor: '#3C3C3C', border: '2px solid #3C3C3C' }}
-                      aria-label="Próximo"
-                    >
-                      Next
-                    </button>
-                  )
-                  : null}
+                {page < pages.length - 1 && (
+                  <button
+                    className="btn primary-accent m-2"
+                    type="button"
+                    onClick={() => setPage(page + 1)}
+                    style={{ backgroundColor: '#3C3C3C', border: '2px solid #3C3C3C' }}
+                    aria-label="Próximo"
+                  >
+                    Next
+                  </button>
+                )}
               </div>
             </div>
             <div className="row">
@@ -189,20 +202,18 @@ function Loading({ className }) {
                   aria-label={connected || page >= pages.length - 1 ? 'Falar agora' : 'Pular'}
                 >
                   {connected || page >= pages.length - 1 ? 'Falar agora' : 'Pular'}
-                  {!connected && skip
-                    ? (
-                      <div className="ms-1 spinner-border spinner-border-sm text-secondary" role="status">
-                        <span className="visually-hidden">Carregando...</span>
-                      </div>
-                    )
-                    : null}
+                  {!connected && skip && (
+                    <div className="ms-1 spinner-border spinner-border-sm text-secondary" role="status">
+                      <span className="visually-hidden">Carregando...</span>
+                    </div>
+                  )}
                 </button>
               </div>
             </div>
             <div className="row justify-content-center">
               <div>
                 {pages.map((_, i) => (
-                  <div key={`${i}-${i === page}`} className="d-inline-block p-1">
+                  <div key={pages[i].key} className="d-inline-block p-1">
                     {i === page ? <div className="closed-dot" /> : <div className="open-dot" />}
                   </div>
                 ))}
