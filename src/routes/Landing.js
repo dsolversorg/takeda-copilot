@@ -11,14 +11,15 @@ import { createScene } from '../store/sm';
 
 function Landing({ className }) {
   const dispatch = useDispatch();
-  const history = useHistory();
 
   const {
     connected,
     loading,
     error,
-    progress, // Supondo que este valor vem do estado do Redux
+    connectionProgress, // assumindo que esta variável existe no estado Redux
   } = useSelector(({ sm }) => (sm));
+
+  const [isButtonEnabled, setIsButtonEnabled] = useState(false);
 
   const createSceneIfNotStarted = () => {
     if (loading === false && connected === false && error === null) {
@@ -30,8 +31,16 @@ function Landing({ className }) {
     createSceneIfNotStarted();
   }, []);
 
+  useEffect(() => {
+    if (connectionProgress >= 90) {
+      setIsButtonEnabled(true);
+    }
+  }, [connectionProgress]);
+
+  const history = useHistory();
+
   const handleButtonClick = () => {
-    if (connected || progress >= 90) {
+    if (isButtonEnabled) {
       history.push('/takeda-copilot');
     }
   };
@@ -60,12 +69,12 @@ function Landing({ className }) {
               </div>
               <div className="row" style={{ marginBottom: '14px' }}>
                 <button
-                  className={`button-start m-2 ${progress < 90 ? 'button--disabled' : ''}`}
+                  className={`button-start m-2 ${!isButtonEnabled ? 'button--disabled' : ''}`}
                   type="button"
                   onClick={handleButtonClick}
-                  disabled={progress < 90}
+                  disabled={!isButtonEnabled}
                 >
-                  Conversar com a Katia
+                  Iniciando Assistente Virtual
                 </button>
               </div>
               <div className="row">
