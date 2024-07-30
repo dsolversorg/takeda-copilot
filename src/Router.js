@@ -33,14 +33,14 @@ const LinkGAtoRouter = withRouter(({ history }) => {
 });
 
 function App() {
-  const { error } = useSelector(({ sm }) => ({ ...sm, error: sm?.error || {} }));
+  const { error } = useSelector(({ sm }) => ({ ...sm }));
   const [ignoreError, setIgnoreError] = useState(false);
   // every time error changes, set ignore error to false
   useEffect(() => setIgnoreError(false), [error]);
 
   // send SM session ID to google analytics when we connect
   if (REACT_APP_GA_TRACKING_ID) {
-    const sessionID = useSelector(({ sm }) => sm?.sessionID || '');
+    const sessionID = useSelector(({ sm }) => sm.sessionID);
     useEffect(() => {
       if (sessionID !== '') ReactGA.gtag('event', 'sm_session_id', { sm_session_id: sessionID });
     }, [sessionID]);
@@ -53,7 +53,7 @@ function App() {
           <div className="error-modal">
             <div className="error-modal-card">
               <div className="d-flex justify-content-end">
-                <button className="btn-unstyled" type="button" onClick={() => setIgnoreError(true)} aria-label="Fechar">
+                <button className="btn-unstyled" type="button" onClick={() => setIgnoreError(true)}>
                   <XCircle size={22} />
                 </button>
               </div>
@@ -65,7 +65,7 @@ function App() {
                   Desculpe pelo transtorno
                 </p>
                 <div className="d-flex justify-content-center mb-4">
-                  <Link to="/" className="btn btn-dark me-2">Reconectar</Link>
+                  <Link to="/takeda-copilot" className="btn btn-dark me-2">Reconectar</Link>
                   <Link to="/" className="btn btn-outline-dark">Retornar para a página inicial</Link>
                 </div>
                 <div className="d-flex justify-content-center">
