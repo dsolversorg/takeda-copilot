@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
 import styled from 'styled-components';
 import ReactGA from 'react-ga4';
 import React, { useEffect, useState } from 'react';
@@ -22,7 +21,7 @@ import ContentCardTest from './routes/ContentCardTest';
 const { REACT_APP_GA_TRACKING_ID } = process.env;
 if (REACT_APP_GA_TRACKING_ID) {
   ReactGA.initialize(REACT_APP_GA_TRACKING_ID, { debug: true });
-  console.log(initializing google analytics with tracking ID ${REACT_APP_GA_TRACKING_ID});
+  console.log(`initializing google analytics with tracking ID ${REACT_APP_GA_TRACKING_ID}`);
 } else console.warn('no google analytics tracking ID provided!');
 
 // make GA aware of what pages people navigate to in react router
@@ -34,14 +33,14 @@ const LinkGAtoRouter = withRouter(({ history }) => {
 });
 
 function App() {
-  const { error } = useSelector(({ sm }) => ({ ...sm }));
+  const { error } = useSelector(({ sm }) => ({ ...sm, error: sm?.error || {} }));
   const [ignoreError, setIgnoreError] = useState(false);
   // every time error changes, set ignore error to false
   useEffect(() => setIgnoreError(false), [error]);
 
   // send SM session ID to google analytics when we connect
   if (REACT_APP_GA_TRACKING_ID) {
-    const sessionID = useSelector(({ sm }) => sm.sessionID);
+    const sessionID = useSelector(({ sm }) => sm?.sessionID || '');
     useEffect(() => {
       if (sessionID !== '') ReactGA.gtag('event', 'sm_session_id', { sm_session_id: sessionID });
     }, [sessionID]);
@@ -54,7 +53,7 @@ function App() {
           <div className="error-modal">
             <div className="error-modal-card">
               <div className="d-flex justify-content-end">
-                <button className="btn-unstyled" type="button" onClick={() => setIgnoreError(true)}>
+                <button className="btn-unstyled" type="button" onClick={() => setIgnoreError(true)} aria-label="Fechar">
                   <XCircle size={22} />
                 </button>
               </div>
