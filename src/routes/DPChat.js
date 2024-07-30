@@ -270,8 +270,8 @@ export default styled(DPChat)`
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    position: fixed;
-    bottom: 40px;
+    position: relative;
+    bottom: 30px;
   }
   
   .contWid{
