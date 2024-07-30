@@ -781,8 +781,8 @@ const smSlice = createSlice({
         // completely reset SM state on disconnect, except for errors
         ...initialState,
         disconnected: true,
-        loading: true,
-        error,
+        loading: false,
+        error: null,
         presumeTimeout,
         startedAt: Date.now(),
       };
