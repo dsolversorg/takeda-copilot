@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
@@ -11,11 +11,13 @@ import { createScene } from '../store/sm';
 
 function Landing({ className }) {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const {
     connected,
     loading,
     error,
+    progress, // Supondo que este valor vem do estado do Redux
   } = useSelector(({ sm }) => (sm));
 
   const createSceneIfNotStarted = () => {
@@ -28,10 +30,10 @@ function Landing({ className }) {
     createSceneIfNotStarted();
   }, []);
 
-  const history = useHistory();
-
   const handleButtonClick = () => {
-    history.push('/takeda-copilot');
+    if (connected || progress >= 90) {
+      history.push('/takeda-copilot');
+    }
   };
 
   return (
@@ -58,11 +60,12 @@ function Landing({ className }) {
               </div>
               <div className="row" style={{ marginBottom: '14px' }}>
                 <button
-                  className="button-start m-2"
+                  className={`button-start m-2 ${progress < 90 ? 'button--disabled' : ''}`}
                   type="button"
                   onClick={handleButtonClick}
+                  disabled={progress < 90}
                 >
-                  Iniciando Assistente Virtual
+                  Conversar com a Katia
                 </button>
               </div>
               <div className="row">
@@ -125,14 +128,8 @@ export default styled(Landing)`
   }
 
   .button--disabled {
-    border: 1px solid rgb(60, 60, 60);
-    border-radius: 32px;
-    padding: 16px 32px;
     background-color: #E5E5E5;
     color: #ABABAB;
-    font-weight: 600;
-    margin: 0;
-    text-align: center;
     cursor: not-allowed;
   }
 
