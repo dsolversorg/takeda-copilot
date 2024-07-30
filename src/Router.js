@@ -99,9 +99,9 @@ function App() {
   );
 }
 
-export default styled(App)
+export default styled(App)`
   .d-flex{
     z-index: 1;
     position: relative;
   }
-;
+`;
