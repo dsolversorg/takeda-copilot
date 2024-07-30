@@ -213,7 +213,7 @@ export default styled(DPChat)`
   .video-overlay {
     overflow: hidden;
     position: fixed;
-    bottom: 0;
+    top: 0;
     right: 0;
     left: 0;
     z-index: 10;
@@ -270,7 +270,7 @@ export default styled(DPChat)`
     flex-direction: column;
     @media (max-width: 768px){
       position: relative;
-      bottom: 30px;
+      bottom: 20px;
     }        
   }
   
