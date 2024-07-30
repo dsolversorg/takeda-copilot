@@ -190,12 +190,12 @@ DPChat.propTypes = {
 
 const getBottomValue = () => {
   if (/Android/i.test(navigator.userAgent)) {
-    return '20px';
-  } else if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-    return '40px';
-  } else {
     return '25px';
-  }
+  } 
+  if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+    return '30px';
+  } 
+  return '20px';
 };
 
 export default styled(DPChat)`
