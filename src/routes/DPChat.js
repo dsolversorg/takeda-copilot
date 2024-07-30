@@ -216,17 +216,17 @@ export default styled(DPChat)`
     bottom: 0;
     right: 0;
     left: 0;
-
     z-index: 10;
-
-    width: 100%;
+    max-width:100%;
+    max-height:100%;
+    width: 100vw;
     height: 100vh;
     display: flex;
     flex-direction: column;
     @media (max-width: 768px){
       position: sticky;
       bottom: 30px;
-      height: 80vh;
+      height: 90vh;
     }    
   }
 
