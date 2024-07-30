@@ -53,7 +53,7 @@ function DPChat({
     } else history.push('/');
   } else if (error !== null) history.push('/loading?error=true');
   // usually this will be triggered when the user refreshes
-  else if (connected !== true) history.push('/takeda-copilot');
+  else if (connected !== true) history.push('/loading');
 
   const handleResize = () => {
     if (connected) {
