@@ -51,9 +51,9 @@ function DPChat({
     if (disconnectPage) {
       history.push(disconnectRoute);
     } else history.push('/');
-  } else if (error !== null) history.push('/disconnected?error=true');
+  } else if (error !== null) history.push('/loading?error=true');
   // usually this will be triggered when the user refreshes
-  else if (connected !== true) history.push('/');
+  else if (connected !== true) history.push('/takeda-copilot');
 
   const handleResize = () => {
     if (connected) {
