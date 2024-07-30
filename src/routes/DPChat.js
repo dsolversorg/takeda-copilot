@@ -213,7 +213,7 @@ export default styled(DPChat)`
   .video-overlay {
     overflow: hidden;
     position: fixed;
-    botton: 45px;
+    bottom: 40px;
     right: 0;
     left: 0;
 
