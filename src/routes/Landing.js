@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
@@ -10,7 +10,6 @@ import { landingBackgroundImage, landingBackgroundColor } from '../config';
 import { createScene } from '../store/sm';
 
 function Landing({ className }) {
-  const { mic } = useSelector(({ sm }) => sm.requestedMediaPerms);
   const dispatch = useDispatch();
 
   const {
