@@ -71,8 +71,8 @@ const initialState = {
     conversation: {
       turn: '',
       context: {
-        FacePresent: 0,
-        PersonaTurn_IsAttentive: 1,
+        FacePresent: 1,
+        PersonaTurn_IsAttentive: 0,
         PersonaTurn_IsTalking: null,
         Persona_Turn_Confusion: null,
         Persona_Turn_Negativity: null,
@@ -219,7 +219,7 @@ export const createScene = createAsyncThunk('sm/createScene', async (_, thunk) =
   let cameraDenied = false;
   let micDenied = false;
   try {
-    await navigator.mediaDevices.getUserMedia({ micDenied: false, cameraDenied: false });
+    await navigator.mediaDevices.getUserMedia({ audio: false, video: false });
   } catch {
     cameraDenied = false;
     micDenied = false;
