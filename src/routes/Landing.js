@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
@@ -16,10 +16,7 @@ function Landing({ className }) {
     connected,
     loading,
     error,
-    connectionProgress, // assumindo que esta variável existe no estado Redux
   } = useSelector(({ sm }) => (sm));
-
-  const [isButtonEnabled, setIsButtonEnabled] = useState(false);
 
   const createSceneIfNotStarted = () => {
     if (loading === false && connected === false && error === null) {
@@ -31,16 +28,10 @@ function Landing({ className }) {
     createSceneIfNotStarted();
   }, []);
 
-  useEffect(() => {
-    if (connectionProgress >= 90) {
-      setIsButtonEnabled(true);
-    }
-  }, [connectionProgress]);
-
   const history = useHistory();
 
   const handleButtonClick = () => {
-    if (isButtonEnabled) {
+    if (connected) {
       history.push('/takeda-copilot');
     }
   };
@@ -68,14 +59,24 @@ function Landing({ className }) {
                 </div>
               </div>
               <div className="row" style={{ marginBottom: '14px' }}>
-                <button
-                  className={`button-start m-2 ${!isButtonEnabled ? 'button--disabled' : ''}`}
-                  type="button"
-                  onClick={handleButtonClick}
-                  disabled={!isButtonEnabled}
-                >
-                  Iniciando Assistente Virtual
-                </button>
+                {!connected && (
+                  <div
+                    className="button-start button--disabled m-2 "
+                    type="button"
+                  >
+                    <img alt="gif loading" src="https://media.tenor.com/t5DMW5PI8mgAAAAj/loading-green-loading.gif" className="gif-loading" />
+                  </div>
+                )}
+
+                {connected && (
+                  <button
+                    className="button-start m-2"
+                    type="button"
+                    onClick={handleButtonClick}
+                  >
+                    Conversar com a Katia
+                  </button>
+                )}
               </div>
               <div className="row">
                 <div>
@@ -137,8 +138,14 @@ export default styled(Landing)`
   }
 
   .button--disabled {
+    border: 1px solid rgb(60, 60, 60);
+    border-radius: 32px;
+    padding: 16px 32px;
     background-color: #E5E5E5;
     color: #ABABAB;
+    font-weight: 600;
+    margin: 0;
+    text-align: center;
     cursor: not-allowed;
   }
 
