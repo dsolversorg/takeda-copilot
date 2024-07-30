@@ -29,14 +29,13 @@ function Landing({ className }) {
     createSceneIfNotStarted();
   }, []);
 
-  const [skip, setSkip] = useState(false);
-  const redirectToVideoOnConnect = () => {
-    setSkip(true);
-  };
   const history = useHistory();
-  useEffect(() => {
-    if (connected === true) history.push('/takeda-copilot');
-  }, [connected, skip]);
+
+  const handleButtonClick = () => {
+    if (connected) {
+      history.push('/takeda-copilot');
+    }
+  };
 
   return (
     <div className={className}>
@@ -72,10 +71,9 @@ function Landing({ className }) {
 
                 {connected && (
                   <button
-                    className={`${connected ? 'button-start' : 'button-start button-start--disabled'} m-2`}
+                    className="button-start m-2"
                     type="button"
-                    disabled={!connected}
-                    onClick={redirectToVideoOnConnect ? mic : true}
+                    onClick={handleButtonClick}
                   >
                     Iniciando Assistente Virtual
                   </button>
@@ -102,7 +100,6 @@ Landing.propTypes = {
 };
 
 export default styled(Landing)`
-
   .fw-bol { font-size: 24px!important;}
 
   .fw-light{ font-size: 16px; }
@@ -125,7 +122,6 @@ export default styled(Landing)`
     background-position: button top;
     z-index: 2;
 
-
     @media (min-width: ${breakpoints.lg}px) {
       background-size: 60% auto;
       background-position: right bottom;
@@ -135,7 +131,7 @@ export default styled(Landing)`
   .button-start {
     border: 1px solid rgb(60, 60, 60);
     border-radius: 32px;
-    padding:16px 32px;
+    padding: 16px 32px;
     background-color: #8AC43F;
     color: #ffffff;
     font-weight: 600;
@@ -145,7 +141,7 @@ export default styled(Landing)`
   .button--disabled {
     border: 1px solid rgb(60, 60, 60);
     border-radius: 32px;
-    padding:16px 32px;
+    padding: 16px 32px;
     background-color: #E5E5E5;
     color: #ABABAB;
     font-weight: 600;
@@ -154,14 +150,9 @@ export default styled(Landing)`
     cursor: not-allowed;
   }
 
-  .button-start--disabled {
-    background-color: #E5E5E5;
-    color: #ABABAB;
-  }
-
-  .container{
+  .container {
     @media (min-width: ${breakpoints.lg}px) {
-      margin-left: 70px;  
+      margin-left: 70px;
     }
   }
 
