@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import breakpoints from '../utils/breakpoints';
 import Header from '../components/Header';
 import { landingBackgroundImage, landingBackgroundColor } from '../config';
-import { createScene, disconnect } from '../store/sm';
+import { createScene } from '../store/sm';
 
 function Landing({ className }) {
   const dispatch = useDispatch();
@@ -26,9 +26,6 @@ function Landing({ className }) {
 
   useEffect(() => {
     console.log('load: ', loading, ' connect: ', connected, ' error: ', error);
-    if (loading === false && connected === true && error === null) {
-      dispatch(disconnect());
-    }
     createSceneIfNotStarted();
   }, []);
 

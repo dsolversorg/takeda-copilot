@@ -94,7 +94,7 @@ function Header({
                           <button
                             className="btn-unstyled"
                             type="button"
-                            onClick={() => { history.push('/'); }}
+                            onClick={() => { dispatch(disconnect()); }}
                           >
                             <Escape size={20} />
                             {' '}
