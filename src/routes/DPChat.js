@@ -33,7 +33,6 @@ function DPChat({
     isOutputMuted,
     showTranscript,
     highlightChat,
-    presumeTimeout,
   } = useSelector(({ sm }) => ({ ...sm }));
   const { pathname } = useLocation();
 
@@ -177,13 +176,6 @@ function DPChat({
 
               </div>
             </div>
-          </div>
-        </div>
-        <div className="row">
-          <div>
-            <h1 className="fw-bol" style={{ marginBottom: '31px' }}>
-              {presumeTimeout}
-            </h1>
           </div>
         </div>
       </div>
