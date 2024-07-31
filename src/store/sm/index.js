@@ -767,26 +767,25 @@ const smSlice = createSlice({
       scene = null;
       persona = null;
       const { error } = state;
-      // pull last timestamp from transcript
       const { transcript, startedAt } = state;
-      // on disconnect the persona will add additional entries to the transcript.
-      // grab the time of the last user message.
       const lastUserMessage = transcript.filter((item) => item.source === 'user');
       const lastTranscriptItem = lastUserMessage[lastUserMessage.length - 1];
       const timestamp = lastTranscriptItem?.timestamp || new Date(startedAt);
       const timeDiff = new Date(Date.now()) - Date.parse(timestamp);
-      // if over 5 minutes old (min timeout thresh. is 5), presume the user timed out
-      const presumeTimeout = timeDiff > (2 * 60 * 1000); // 5 minutes in milliseconds
+      const presumeTimeout = timeDiff > (2 * 60 * 1000); // 5 minutos em milissegundos
+    
+      console.log('timeDiff:', timeDiff); // Isso irá mostrar o valor no console do navegador
+    
       return {
-        // completely reset SM state on disconnect, except for errors
         ...initialState,
         disconnected: true,
         loading: false,
         error,
         presumeTimeout,
         startedAt: Date.now(),
+        timeDiff, // Adicionando timeDiff ao estado
       };
-    },
+    },    
     keepAlive: () => {
       if (scene) scene.keepAlive();
       else console.error('não é possível chamar keepAlive, a cena não foi iniciada!');
