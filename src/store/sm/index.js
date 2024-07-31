@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { Scene, Persona } from '@soulmachines/smwebsdk';
-import { useHistory } from 'react-router-dom';
 import to from 'await-to-js';
 import proxyVideo, { mediaStreamProxy } from '../../proxyVideo';
 import roundObject from '../../utils/roundObject';
@@ -12,8 +11,6 @@ const TOKEN_ISSUER = process.env.REACT_APP_TOKEN_URL;
 const PERSONA_ID = '1';
 // CAMERA_ID commented out because CUE manages camera
 // const CAMERA_ID = 'CloseUp';
-
-const history = useHistory();
 
 let startupErr = null;
 
@@ -777,8 +774,6 @@ const smSlice = createSlice({
       const timeDiff = new Date(Date.now()) - Date.parse(timestamp);
       const presumeTimeout = timeDiff > 740; // 5 minutos em milissegundos
       console.log('timeDiff:', timeDiff); // Isso irá mostrar o valor no console do navegador
-      console.log(initialState);
-      history.push('/');
       return {
         ...initialState,
         disconnected: true,
