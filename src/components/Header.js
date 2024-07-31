@@ -99,7 +99,7 @@ function Header({
                           <button
                             className="btn-unstyled"
                             type="button"
-                            onClick={async() => { await dispatch(disconnect()); history.push('/takeda-copilot'); }}
+                            onClick={() => { dispatch(disconnect()); history.push('/takeda-copilot'); }}
                           >
                             <Escape size={20} />
                             {' '}
