@@ -27,7 +27,7 @@ function Landing({ className }) {
 
   useEffect(() => {
     console.log('load: ', loading, ' connect: ', connected, ' error: ', error);
-    if (connected){
+    if (connected) {
       setBool(true);
     }
     if (bool) {
