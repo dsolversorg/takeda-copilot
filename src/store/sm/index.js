@@ -783,7 +783,7 @@ const smSlice = createSlice({
         startedAt: Date.now(),
         timeDiff, // Adicionando timeDiff ao estado
       };
-    },    
+    },
     keepAlive: () => {
       if (scene) scene.keepAlive();
       else console.error('não é possível chamar keepAlive, a cena não foi iniciada!');
