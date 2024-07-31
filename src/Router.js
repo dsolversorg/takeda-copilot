@@ -66,7 +66,6 @@ function App() {
                 </p>
                 <div className="d-flex justify-content-center mb-4">
                   <Link to="/" className="btn btn-dark me-2">Reconectar</Link>
-                  {/* <Link to="/" className="btn btn-outline-dark">Retornar para a página inicial</Link> */}
                 </div>
                 <div className="d-flex justify-content-center">
                   <code className="text-danger">{error.msg}</code>
