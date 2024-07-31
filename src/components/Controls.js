@@ -356,6 +356,8 @@ export default styled(Controls)`
     border-radius: 40px;
     padding: 1rem;
     margin-right: 10px;
+    height: 70px;
+    width: 70px;
     &:hover{
       background-color: #05a0a0;
     }
@@ -370,6 +372,8 @@ export default styled(Controls)`
     border-radius: 40px;
     padding: 1rem;
     margin-right: 10px;
+    height: 70px;
+    width: 70px;
     &:hover{
       background-color: #bc493e;
     }

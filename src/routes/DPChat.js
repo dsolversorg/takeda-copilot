@@ -285,6 +285,8 @@ export default styled(DPChat)`
     background-color: #f2695c;
     border-radius: 40px;
     padding: 1rem;
+    height: 70px;
+    width: 70px;
     &:hover{
       background-color: #bc493e;
     }
@@ -298,6 +300,8 @@ export default styled(DPChat)`
     background-color: #09c8c8;
     border-radius: 40px;
     padding: 1rem;
+    height: 70px;
+    width: 70px;
     &:hover{
       background-color: #05a0a0;
     }
