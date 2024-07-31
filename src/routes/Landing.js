@@ -27,7 +27,7 @@ function Landing({ className }) {
   useEffect(() => {
     createSceneIfNotStarted();
     console.log('essa pagina');
-  }, [loading]);
+  });
 
   const history = useHistory();
 
