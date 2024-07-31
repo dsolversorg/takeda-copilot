@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { Scene, Persona } from '@soulmachines/smwebsdk';
 import to from 'await-to-js';
-import { useDispatch } from 'react-redux';
 import proxyVideo, { mediaStreamProxy } from '../../proxyVideo';
 import roundObject from '../../utils/roundObject';
 import { meatballString } from './meatball';
@@ -14,7 +13,6 @@ const PERSONA_ID = '1';
 // const CAMERA_ID = 'CloseUp';
 
 let startupErr = null;
-const dispatch = useDispatch();
 
 if (AUTH_MODE === 0 && API_KEY === '') startupErr = { msg: 'REACT_APP_API_KEY not defined!' };
 
@@ -776,7 +774,6 @@ const smSlice = createSlice({
       const timeDiff = new Date(Date.now()) - Date.parse(timestamp);
       const presumeTimeout = timeDiff > 740; // 5 minutos em milissegundos
       console.log('timeDiff:', timeDiff); // Isso irá mostrar o valor no console do navegador
-      dispatch(createScene());
       return {
         ...initialState,
         disconnected: true,
