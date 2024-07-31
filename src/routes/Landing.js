@@ -21,6 +21,7 @@ function Landing({ className }) {
 
   const createSceneIfNotStarted = () => {
     if (loading === false && connected === false && error === null) {
+      console.log('entrou2');
       dispatch(createScene());
     }
   };
@@ -28,12 +29,9 @@ function Landing({ className }) {
   useEffect(() => {
     console.log('load: ', loading, ' connect: ', connected, ' error: ', error);
     if (connected) {
-      setBool(true);
-    }
-    if (bool) {
       console.log('entrou');
       dispatch(disconnect());
-      setBool(false);
+      setBool(true);
     }
     createSceneIfNotStarted();
   }, [bool]);
