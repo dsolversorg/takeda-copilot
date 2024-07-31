@@ -1,8 +1,7 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import {
   Escape,
@@ -100,7 +99,7 @@ function Header({
                           <button
                             className="btn-unstyled"
                             type="button"
-                            onClick={() => {dispatch(disconnect()); history.push('/takeda-copilot');}}
+                            onClick={async() => { await dispatch(disconnect()); history.push('/takeda-copilot'); }}
                           >
                             <Escape size={20} />
                             {' '}
