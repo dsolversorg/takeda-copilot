@@ -238,14 +238,14 @@ export default styled(DPChat)`
   .legend{
     @media (max-width: 500px){
       align-items: center;
-      word-break: break-all;
+      word-break: break-word;
     }
   }
 
   .contChat{
     overflow-y: scroll;
     @media (max-width: 500px){
-      word-break: break-all;
+      word-break: break-word;
     }
   }
 

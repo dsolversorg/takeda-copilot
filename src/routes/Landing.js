@@ -58,7 +58,7 @@ function Landing({ className }) {
                     ,
                   </h2>
                   <h2 className="fw-bol">
-                    <b> Enverrar</b>
+                    <b> Encerrar</b>
                   </h2>
                 </div>
               </div>
