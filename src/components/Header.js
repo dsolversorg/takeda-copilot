@@ -94,7 +94,7 @@ function Header({
                           <button
                             className="btn-unstyled"
                             type="button"
-                            onClick={() => { history.push('/takeda-copilot'); }}
+                            onClick={() => { history.push('/'); }}
                           >
                             <Escape size={20} />
                             {' '}
