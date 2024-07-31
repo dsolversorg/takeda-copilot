@@ -773,9 +773,7 @@ const smSlice = createSlice({
       const timestamp = lastTranscriptItem?.timestamp || new Date(startedAt);
       const timeDiff = new Date(Date.now()) - Date.parse(timestamp);
       const presumeTimeout = timeDiff > (2 * 60 * 1000); // 5 minutos em milissegundos
-    
       console.log('timeDiff:', timeDiff); // Isso irá mostrar o valor no console do navegador
-    
       return {
         ...initialState,
         disconnected: true,
