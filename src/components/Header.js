@@ -12,14 +12,10 @@ import {
 import {
   logoAltText, transparentHeader, headerHeight, logoLink,
 } from '../config';
-import {
-  disconnect,
-} from '../store/sm/index';
 
 function Header({
   className,
 }) {
-  const dispatch = useDispatch();
   const originalShareCopy = 'Copiar link';
   const [shareCopy, setShareCopy] = useState(originalShareCopy);
 
