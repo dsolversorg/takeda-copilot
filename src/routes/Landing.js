@@ -17,6 +17,7 @@ function Landing({ className }) {
     loading,
     error,
   } = useSelector(({ sm }) => (sm));
+  const [bool, setBool] = useState(false);
 
   const createSceneIfNotStarted = () => {
     if (loading === false && connected === false && error === null) {
@@ -26,12 +27,15 @@ function Landing({ className }) {
 
   useEffect(() => {
     console.log('load: ', loading, ' connect: ', connected, ' error: ', error);
-    if (loading === false && connected === true && error === null) {
+    if (connected)
+      setBool(true);
+    if (bool) {
       console.log('entrou');
       dispatch(disconnect());
+      setBool(false);
     }
     createSceneIfNotStarted();
-  }, [connected]);
+  }, [bool]);
 
   const history = useHistory();
 
