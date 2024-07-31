@@ -35,7 +35,7 @@ function Landing({ className }) {
       setBool(false);
     }
     createSceneIfNotStarted();
-  }, [connected]);
+  }, [loading]);
 
   const history = useHistory();
 
