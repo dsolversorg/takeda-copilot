@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import {
   Escape,
   Share,
@@ -18,6 +19,8 @@ function Header({
 }) {
   const originalShareCopy = 'Copiar link';
   const [shareCopy, setShareCopy] = useState(originalShareCopy);
+
+  const dispatch = useDispatch();
 
   const shareDP = async () => {
     const url = window.location;
