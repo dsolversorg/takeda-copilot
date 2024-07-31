@@ -48,8 +48,8 @@ function Landing({ className }) {
                 <div>
                   <h1 className="fw-bol">Sou a Katia uma Pessoa Digital Hiper-realista, criada pela Takeda, com o propósito de esclarecer dúvidas sobre a vacina da Dengue Qdenga.</h1>
                   <h1 className="fw-bol">
-                    Tempo de diferença: 
-                    {timeDiff} 
+                    Tempo de diferença:
+                    {timeDiff}
                     ms
                   </h1>
                 </div>
