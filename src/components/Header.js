@@ -8,6 +8,7 @@ import {
   ThreeDotsVertical,
   X,
 } from 'react-bootstrap-icons';
+import { disconnect } from '../store/sm';
 import {
   logoAltText, transparentHeader, headerHeight, logoLink,
 } from '../config';
@@ -31,8 +32,6 @@ function Header({
       setTimeout(() => setShareCopy(originalShareCopy), 3000);
     }
   };
-
-  const history = useHistory();
 
   const [showContextMenu, setShowContextMenu] = useState(false);
   const iconSize = 24;
