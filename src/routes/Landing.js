@@ -25,6 +25,7 @@ function Landing({ className }) {
   };
 
   useEffect(() => {
+    console.log('test');
     if (loading === true && connected === true && error === null) {
       dispatch(disconnect());
     }
