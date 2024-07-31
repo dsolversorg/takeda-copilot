@@ -202,7 +202,7 @@ function Controls({
               data-tip="Pular fala"
               aria-label="Pular fala"
             >
-              <SkipEndFill size={MenuiconSize} className="size" style={{ border: highlightSkip ? 'red 2px solid' : '' }} />
+              <SkipEndFill size={MenuiconSize} className="size" color={seconderyAccent} style={{ border: highlightSkip ? 'red 2px solid' : '' }} />
             </button>
           ) : null}
 

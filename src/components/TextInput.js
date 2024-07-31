@@ -75,6 +75,7 @@ export default styled(TextInput)`
       -webkit-box-pack: end;
       width: 100%;
       justify-content: center;
+      margin-bottom: 30px;
     }
   }
 `;
