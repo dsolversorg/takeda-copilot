@@ -777,7 +777,7 @@ const smSlice = createSlice({
       return {
         ...initialState,
         disconnected: true,
-        loading: false,
+        loading: true,
         connected: false,
         error,
         presumeTimeout,
