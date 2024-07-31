@@ -4,7 +4,6 @@ import to from 'await-to-js';
 import proxyVideo, { mediaStreamProxy } from '../../proxyVideo';
 import roundObject from '../../utils/roundObject';
 import { meatballString } from './meatball';
-import { connect } from 'react-redux';
 
 const AUTH_MODE = parseInt(process.env.REACT_APP_PERSONA_AUTH_MODE, 10) || 0;
 const API_KEY = process.env.REACT_APP_API_KEY || '';
@@ -779,8 +778,8 @@ const smSlice = createSlice({
         ...initialState,
         disconnected: true,
         loading: false,
-        connect: false,
-        error: null,
+        connected: false,
+        error,
         presumeTimeout,
         startedAt: Date.now(),
         timeDiff, // Adicionando timeDiff ao estado
