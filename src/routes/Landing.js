@@ -23,14 +23,12 @@ function Landing({ className }) {
     if (loading === false && connected === false && error === null) {
       console.log('entrou2');
       dispatch(createScene());
+      setBool(true);
     }
   };
 
   useEffect(() => {
     console.log('load: ', loading, ' connect: ', connected, ' error: ', error);
-    if (loading) {
-      setBool(true);
-    }
     if (bool) {
       console.log('entrou');
       dispatch(disconnect());
