@@ -16,7 +16,6 @@ function Landing({ className }) {
     connected,
     loading,
     error,
-    presumeTimeout,
   } = useSelector(({ sm }) => (sm));
 
   const createSceneIfNotStarted = () => {
@@ -49,14 +48,11 @@ function Landing({ className }) {
                   <h1 className="fw-bol">Sou a Katia uma Pessoa Digital Hiper-realista, criada pela Takeda, com o propósito de esclarecer dúvidas sobre a vacina da Dengue Qdenga.</h1>
                   <h2 className="fw-bol">
                     Segue abaixo algumas frases de navegação:
-                    <b> 
-                      Menu Iniciar</b>
+                    <b> Menu Iniciar</b>
                     ,
-                    <b> 
-                      Voltar</b>
+                    <b> Voltar</b>
                     ,
-                    <b> 
-                      Enverrar</b>
+                    <b> Enverrar</b>
                   </h2>
                 </div>
               </div>
