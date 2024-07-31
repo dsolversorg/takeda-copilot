@@ -33,6 +33,7 @@ function DPChat({
     isOutputMuted,
     showTranscript,
     highlightChat,
+    presumeTimeout,
   } = useSelector(({ sm }) => ({ ...sm }));
   const { pathname } = useLocation();
 
@@ -178,6 +179,13 @@ function DPChat({
             </div>
           </div>
         </div>
+        <div className="row">
+          <div>
+            <h1 className="fw-bol" style={{ marginBottom: '31px' }}>
+              {presumeTimeout}
+            </h1>
+          </div>
+        </div>
       </div>
       {connected ? <PersonaVideo /> : null}
     </div>
@@ -199,6 +207,7 @@ const getBottomValue = () => {
 };
 
 export default styled(DPChat)`
+  .fw-bol { font-size: 24px!important;}
   height: 100vh;
 
   .endCont .row>* {
@@ -248,6 +257,9 @@ export default styled(DPChat)`
     }
   }
 
+  .fw-bol {
+    font-size: 32px;
+  }
   .row{
     overflow-x: hiden;
     overflow-y: hiden;

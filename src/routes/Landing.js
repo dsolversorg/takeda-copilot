@@ -48,13 +48,15 @@ function Landing({ className }) {
                 <div>
                   <h1 className="fw-bol">Sou a Katia uma Pessoa Digital Hiper-realista, criada pela Takeda, com o propósito de esclarecer dúvidas sobre a vacina da Dengue Qdenga.</h1>
                   <h2 className="fw-bol">
-                    Segue abaixo algumas frases de navegação
-                    <b> Menu Iniciar</b>
+                    Segue abaixo algumas frases de navegação:
+                    <b> 
+                      Menu Iniciar</b>
                     ,
-                    <b> Voltar</b>
+                    <b> 
+                      Voltar</b>
                     ,
-                    Enverrar
-                    {presumeTimeout}
+                    <b> 
+                      Enverrar</b>
                   </h2>
                 </div>
               </div>
