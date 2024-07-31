@@ -23,19 +23,18 @@ function Landing({ className }) {
     if (loading === false && connected === false && error === null) {
       console.log('entrou2');
       dispatch(createScene());
-      setBool(true);
     }
   };
 
   useEffect(() => {
     console.log('load: ', loading, ' connect: ', connected, ' error: ', error);
-    if (bool) {
+    if (connected) {
       console.log('entrou');
       dispatch(disconnect());
-      setBool(false);
+      setBool(true);
     }
     createSceneIfNotStarted();
-  }, [loading]);
+  }, [bool]);
 
   const history = useHistory();
 
