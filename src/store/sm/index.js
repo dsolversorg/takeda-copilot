@@ -1,10 +1,10 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { Scene, Persona } from '@soulmachines/smwebsdk';
 import to from 'await-to-js';
+import { useDispatch } from 'react-redux';
 import proxyVideo, { mediaStreamProxy } from '../../proxyVideo';
 import roundObject from '../../utils/roundObject';
 import { meatballString } from './meatball';
-import { useDispatch } from 'react-redux';
 
 const AUTH_MODE = parseInt(process.env.REACT_APP_PERSONA_AUTH_MODE, 10) || 0;
 const API_KEY = process.env.REACT_APP_API_KEY || '';
