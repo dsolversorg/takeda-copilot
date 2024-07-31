@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import {
   Escape,
@@ -36,6 +37,8 @@ function Header({
       setTimeout(() => setShareCopy(originalShareCopy), 3000);
     }
   };
+
+  const history = useHistory();
 
   const [showContextMenu, setShowContextMenu] = useState(false);
   const iconSize = 24;
@@ -97,7 +100,7 @@ function Header({
                           <button
                             className="btn-unstyled"
                             type="button"
-                            onClick={() => dispatch(disconnect())}
+                            onClick={() => {dispatch(disconnect()); history.push('/takeda-copilot');}}
                           >
                             <Escape size={20} />
                             {' '}
