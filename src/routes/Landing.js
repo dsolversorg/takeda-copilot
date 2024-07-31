@@ -25,6 +25,9 @@ function Landing({ className }) {
   };
 
   useEffect(() => {
+    if (loading === true && connected === true && error === null) {
+      dispatch(disconnect());
+    }
     createSceneIfNotStarted();
   }, []);
 
