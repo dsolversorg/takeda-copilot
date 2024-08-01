@@ -764,7 +764,6 @@ const smSlice = createSlice({
       return { ...state, videoWidth, videoHeight };
     },
     disconnect: (state) => {
-      console.log('disconectando...');
       scene = null;
       persona = null;
       const { error } = state;
@@ -774,6 +773,7 @@ const smSlice = createSlice({
       const timestamp = lastTranscriptItem?.timestamp || new Date(startedAt);
       const timeDiff = new Date(Date.now()) - Date.parse(timestamp);
       const presumeTimeout = timeDiff > 740; // 5 minutos em milissegundos
+      console.log('desconectando...');
       console.log('initialState: ', ...initialState);
       return {
         ...initialState,
