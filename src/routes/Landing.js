@@ -17,7 +17,6 @@ function Landing({ className }) {
     loading,
     error,
   } = useSelector(({ sm }) => (sm));
-  const [bool, setBool] = useState(false);
 
   const createSceneIfNotStarted = () => {
     if (loading === false && connected === false && error === null) {
