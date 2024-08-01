@@ -31,10 +31,11 @@ function Landing({ className }) {
     if (connected) {
       console.log('entrou');
       dispatch(disconnect());
-      setBool(true);
+      createSceneIfNotStarted();
+    } else {
+      createSceneIfNotStarted();
     }
-    createSceneIfNotStarted();
-  }, [bool]);
+  }, []);
 
   const history = useHistory();
 
