@@ -1,15 +1,14 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { disconnect } from '../store/sm';
 import {
   Escape,
   Share,
   ThreeDotsVertical,
   X,
 } from 'react-bootstrap-icons';
-import { disconnect } from '../store/sm';
 import {
   logoAltText, transparentHeader, headerHeight, logoLink,
 } from '../config';
@@ -34,7 +33,7 @@ function Header({
     }
   };
 
-  const dispatch = useDispatch();
+  const history = useHistory();
 
   const [showContextMenu, setShowContextMenu] = useState(false);
   const iconSize = 24;
@@ -96,7 +95,7 @@ function Header({
                           <button
                             className="btn-unstyled"
                             type="button"
-                            onClick={() => { dispatch(disconnect()); }}
+                            onClick={() => { history.push('/'); }}
                           >
                             <Escape size={20} />
                             {' '}

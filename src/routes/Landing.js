@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import breakpoints from '../utils/breakpoints';
 import Header from '../components/Header';
 import { landingBackgroundImage, landingBackgroundColor } from '../config';
-import { createScene } from '../store/sm';
+import { createScene, disconnect } from '../store/sm';
 
 function Landing({ className }) {
   const dispatch = useDispatch();
@@ -19,8 +19,8 @@ function Landing({ className }) {
   } = useSelector(({ sm }) => (sm));
 
   const createSceneIfNotStarted = () => {
+    console.log('entroufora');
     if (loading === false && connected === false && error === null) {
-      console.log('fora');
       console.log('entrou2');
       dispatch(createScene());
     }
@@ -28,7 +28,13 @@ function Landing({ className }) {
 
   useEffect(() => {
     console.log('load: ', loading, ' connect: ', connected, ' error: ', error);
-    createSceneIfNotStarted();
+    if (connected) {
+      console.log('entrou');
+      dispatch(disconnect());
+      createSceneIfNotStarted();
+    } else {
+      createSceneIfNotStarted();
+    }
   }, []);
 
   const history = useHistory();
