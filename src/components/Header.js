@@ -2,13 +2,14 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
-import { disconnect } from '../store/sm';
+import { useDispatch } from 'react-redux';
 import {
   Escape,
   Share,
   ThreeDotsVertical,
   X,
 } from 'react-bootstrap-icons';
+import { disconnect } from '../store/sm';
 import {
   logoAltText, transparentHeader, headerHeight, logoLink,
 } from '../config';
@@ -32,6 +33,8 @@ function Header({
       setTimeout(() => setShareCopy(originalShareCopy), 3000);
     }
   };
+
+  const dispatch = useDispatch();
 
   const [showContextMenu, setShowContextMenu] = useState(false);
   const iconSize = 24;
