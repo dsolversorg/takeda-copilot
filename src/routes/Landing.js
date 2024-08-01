@@ -28,13 +28,7 @@ function Landing({ className }) {
 
   useEffect(() => {
     console.log('load: ', loading, ' connect: ', connected, ' error: ', error);
-    if (connected) {
-      console.log('entrou');
-      dispatch(disconnect());
-      createSceneIfNotStarted();
-    } else {
-      createSceneIfNotStarted();
-    }
+    createSceneIfNotStarted();
   }, []);
 
   const history = useHistory();

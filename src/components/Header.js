@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
+import { disconnect } from '../store/sm';
 import {
   Escape,
   Share,
@@ -31,8 +32,6 @@ function Header({
       setTimeout(() => setShareCopy(originalShareCopy), 3000);
     }
   };
-
-  const history = useHistory();
 
   const [showContextMenu, setShowContextMenu] = useState(false);
   const iconSize = 24;
@@ -94,7 +93,7 @@ function Header({
                           <button
                             className="btn-unstyled"
                             type="button"
-                            onClick={() => { history.push('/'); }}
+                            onClick={() => { dispatch(disconnect()); }}
                           >
                             <Escape size={20} />
                             {' '}
