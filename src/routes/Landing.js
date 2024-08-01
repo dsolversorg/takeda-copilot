@@ -19,6 +19,7 @@ function Landing({ className }) {
   } = useSelector(({ sm }) => (sm));
 
   const createSceneIfNotStarted = () => {
+    console.log('entroufora');
     if (loading === false && connected === false && error === null) {
       console.log('entrou2');
       dispatch(createScene());
