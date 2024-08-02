@@ -37,6 +37,11 @@ function Header({
   const dispatch = useDispatch();
   const history = useHistory();
 
+  const handleButtonClick = () => {
+    dispatch(disconnect());
+    history.push('/takeda-copilot');
+  };
+
   const [showContextMenu, setShowContextMenu] = useState(false);
   const iconSize = 24;
 
@@ -97,7 +102,7 @@ function Header({
                           <button
                             className="btn-unstyled"
                             type="button"
-                            onClick={() => { dispatch(disconnect()); history.push('/'); }}
+                            onClick={handleButtonClick}
                           >
                             <Escape size={20} />
                             {' '}
