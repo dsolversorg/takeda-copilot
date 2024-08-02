@@ -31,6 +31,7 @@ function Landing({ className }) {
     if (connected) {
       console.log('entrou');
       dispatch(disconnect());
+      console.log('load: ', loading, ' connect: ', connected, ' error: ', error);
       createSceneIfNotStarted();
     } else {
       createSceneIfNotStarted();
