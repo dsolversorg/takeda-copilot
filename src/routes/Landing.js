@@ -32,7 +32,7 @@ function Landing({ className }) {
       if (connected) {
         console.log('entrou');
         setTimeout(() => {
-          await dispatch(disconnect());
+          dispatch(disconnect());
         }, 2000);
         console.log('load: ', loading, ' connect: ', connected, ' error: ', error);
         createSceneIfNotStarted();
