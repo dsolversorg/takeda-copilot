@@ -317,7 +317,6 @@ export default styled(DPChat)`
 
   .chat{
     width: 100%;
-    height: 100%;
     position: relative;
     top: 0px;
   }
