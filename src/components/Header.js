@@ -38,7 +38,7 @@ function Header({
   const history = useHistory();
 
   const handleButtonClick = () => {
-    history.push('/takeda-copilot');
+    history.push('/');
     dispatch(disconnect());
   };
 
