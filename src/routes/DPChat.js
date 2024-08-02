@@ -91,10 +91,10 @@ function DPChat({
   // content card display is dependent on remaining space between header and footer
   // there might be a better way to do this w/ flexbox
   const ccDisplaRef = createRef();
-  //const [ccDisplayHeight, setCCDisplayHeight] = useState('auto');
-  //useEffect(() => {
-  //    setCCDisplayHeight(ccDisplaRef.current.clientHeight);
-  //}, [ccDisplaRef]);
+  // const [ccDisplayHeight, setCCDisplayHeight] = useState('auto');
+  // useEffect(() => {
+  // setCCDisplayHeight(ccDisplaRef.current.clientHeight);
+  // }, [ccDisplaRef]);
 
   return (
     <div className={className}>
@@ -108,7 +108,7 @@ function DPChat({
           className="contChat row d-flex justify-content-end align-items-center flex-grow-1 ps-3 pe-3"
           ref={ccDisplaRef}
         >
-          <div className="col col-md-5 d-flex align-items-end align-items-md-center" style={{ height: `1152px` || 'auto' }}>
+          <div className="col col-md-5 d-flex align-items-end align-items-md-center" style={{ height: '1152px' || 'auto' }}>
             <div className="chat">
               <ContentCardDisplay />
             </div>
