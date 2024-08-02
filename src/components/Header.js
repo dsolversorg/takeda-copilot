@@ -39,7 +39,7 @@ function Header({
 
   const handleButtonClick = () => {
     history.push('/takeda-copilot');
-    dispatch(disconnect());    
+    dispatch(disconnect());
   };
 
   const [showContextMenu, setShowContextMenu] = useState(false);
