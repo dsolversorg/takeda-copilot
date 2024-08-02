@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { Scene, Persona } from '@soulmachines/smwebsdk';
 import to from 'await-to-js';
@@ -116,15 +118,16 @@ const initialState = {
 };
 
 const AutoLogout = () => {
-  const [lastActivityTime, setLastActivityTime] = startedAt;
+  const dispatch = useDispatch();
+  const [lastActivityTime, setLastActivityTime] = useState(Date.now());
 
   useEffect(() => {
     const checkInactivity = () => {
       const currentTime = Date.now();
       const timeElapsed = currentTime - lastActivityTime;
 
-      if (timeElapsed > 60000) { // 300000 ms = 5 min
-        thunk.dispatch(disconnect());
+      if (timeElapsed > 300000) { // 300000 ms = 5 min
+        dispatch(disconnect());
       }
     };
 
@@ -135,14 +138,16 @@ const AutoLogout = () => {
     window.addEventListener('click', activityListener);
     window.addEventListener('keydown', activityListener);
 
-    const intervalId = setInterval(checkInactivity, 60000); // verifica a cada minuto
+    const intervalId = setInterval(checkInactivity, 60000); // Check every minute
 
     return () => {
       clearInterval(intervalId);
       window.removeEventListener('click', activityListener);
       window.removeEventListener('keydown', activityListener);
     };
-  }, [lastActivityTime]);
+  }, [lastActivityTime, dispatch]);
+
+  return null; // No UI component to render
 };
 
 // host actions object since we need the types to be available for
