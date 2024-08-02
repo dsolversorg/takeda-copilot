@@ -19,7 +19,7 @@ function Link({ data, className }) {
           <div className="d-flex justify-content-center">
             {/* open link in new tab */}
             <a href={url} className="btn btn-primary" target="_blank" rel="noreferrer">
-              Visit Link
+              Clique aqui
               <ArrowUpRightSquare className="ms-1" />
             </a>
           </div>
