@@ -102,7 +102,7 @@ function Header({
                           <button
                             className="btn-unstyled"
                             type="button"
-                            onClick={handleButtonClick}
+                            onClick={() => handleButtonClick}
                           >
                             <Escape size={20} />
                             {' '}
