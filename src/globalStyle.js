@@ -41,6 +41,8 @@ export default createGlobalStyle`
   }
   @media screen and (min-width: 768px) {
     .btn.primary-accent {
+      height: auto;  
+      width: 100%;
       max-width: 500px;
       font-size: 20px;
     }
