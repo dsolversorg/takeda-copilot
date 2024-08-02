@@ -33,7 +33,7 @@ function Landing({ className }) {
         console.log('entrou');
         setTimeout(() => {
           dispatch(disconnect());
-        }, 2000);
+        }, 5000);
         console.log('load: ', loading, ' connect: ', connected, ' error: ', error);
         createSceneIfNotStarted();
       } else {
