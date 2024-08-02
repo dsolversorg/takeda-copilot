@@ -1,9 +1,8 @@
-import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { Link, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { disconnect } from '../store/sm';
-import React, { useState } from 'react';
 import {
   Escape,
   Share,
@@ -13,6 +12,7 @@ import {
 import {
   logoAltText, transparentHeader, headerHeight, logoLink,
 } from '../config';
+import { disconnect } from '../store/sm';
 
 function Header({
   className,
