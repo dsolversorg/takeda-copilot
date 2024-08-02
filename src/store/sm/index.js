@@ -115,6 +115,42 @@ const initialState = {
   highlightSkip: false,
 };
 
+const AutoLogout = () => {
+  const [lastActivityTime, setLastActivityTime] = useState(Date.now());
+
+  useEffect(() => {
+    const checkInactivity = () => {
+      const currentTime = Date.now();
+      const timeElapsed = currentTime - lastActivityTime;
+      
+      if (timeElapsed > 60000) { // 300000 ms = 5 min
+        logoutUser();
+      }
+    };
+
+    const activityListener = () => {
+      setLastActivityTime(Date.now());
+    };
+
+    window.addEventListener('click', activityListener);
+    window.addEventListener('keydown', activityListener);
+
+    const intervalId = setInterval(checkInactivity, 60000); // verifica a cada minuto
+
+    return () => {
+      clearInterval(intervalId);
+      window.removeEventListener('click', activityListener);
+      window.removeEventListener('keydown', activityListener);
+    };
+  }, [lastActivityTime]);
+
+  const logoutUser = () => {
+    alert('Você foi desconectado devido à inatividade.');
+    // Aqui você pode adicionar a lógica para deslogar o usuário,
+    // como limpar o estado de autenticação e redirecionar para a tela de login.
+  };
+};
+
 // host actions object since we need the types to be available for
 // async calls later, e.g. handling messages from persona
 let actions;
@@ -815,6 +851,7 @@ const smSlice = createSlice({
       connected: true,
       startedAt: Date.now(),
       error: null,
+      AutoLogout,
     }),
     [createScene.rejected]: (state, { error }) => {
       try {
