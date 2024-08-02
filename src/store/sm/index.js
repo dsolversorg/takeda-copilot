@@ -1,5 +1,3 @@
-import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { Scene, Persona } from '@soulmachines/smwebsdk';
 import to from 'await-to-js';
@@ -605,32 +603,6 @@ export const sendTextMessage = createAsyncThunk('sm/sendTextMessage', async ({ t
   } return thunk.rejectWithValue('not connected to persona!');
 });
 
-export const AutoLogout = () => {
-  const dispatch = useDispatch();
-  const [lastActivityTime, setLastActivityTime] = useState(Date.now());
-  useEffect(() => {
-    const checkInactivity = () => {
-      const currentTime = Date.now();
-      const timeElapsed = currentTime - lastActivityTime;
-      if (timeElapsed > 300000) { // 300000 ms = 5 min
-        dispatch(disconnect());
-      }
-    };
-    const activityListener = () => {
-      setLastActivityTime(Date.now());
-    };
-    window.addEventListener('click', activityListener);
-    window.addEventListener('keydown', activityListener);
-    const intervalId = setInterval(checkInactivity, 60000); // Check every minute
-    return () => {
-      clearInterval(intervalId);
-      window.removeEventListener('click', activityListener);
-      window.removeEventListener('keydown', activityListener);
-    };
-  }, [lastActivityTime, dispatch]);
-  return null; // No UI component to render
-};
-
 const smSlice = createSlice({
   name: 'sm',
   initialState,
@@ -843,7 +815,6 @@ const smSlice = createSlice({
       connected: true,
       startedAt: Date.now(),
       error: null,
-      AutoLogout,
     }),
     [createScene.rejected]: (state, { error }) => {
       try {

@@ -81,6 +81,7 @@ Transcript.propTypes = {
 
 const StyledTranscript = styled(Transcript)`
   width: 100%;
+  height: 1152px;
 
   .transcript-list-group {
     flex-shrink: 1;
