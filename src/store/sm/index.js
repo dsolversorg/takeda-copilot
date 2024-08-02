@@ -117,39 +117,6 @@ const initialState = {
   highlightSkip: false,
 };
 
-const AutoLogout = () => {
-  const dispatch = useDispatch();
-  const [lastActivityTime, setLastActivityTime] = useState(Date.now());
-
-  useEffect(() => {
-    const checkInactivity = () => {
-      const currentTime = Date.now();
-      const timeElapsed = currentTime - lastActivityTime;
-
-      if (timeElapsed > 300000) { // 300000 ms = 5 min
-        dispatch(disconnect());
-      }
-    };
-
-    const activityListener = () => {
-      setLastActivityTime(Date.now());
-    };
-
-    window.addEventListener('click', activityListener);
-    window.addEventListener('keydown', activityListener);
-
-    const intervalId = setInterval(checkInactivity, 60000); // Check every minute
-
-    return () => {
-      clearInterval(intervalId);
-      window.removeEventListener('click', activityListener);
-      window.removeEventListener('keydown', activityListener);
-    };
-  }, [lastActivityTime, dispatch]);
-
-  return null; // No UI component to render
-};
-
 // host actions object since we need the types to be available for
 // async calls later, e.g. handling messages from persona
 let actions;
@@ -820,6 +787,38 @@ const smSlice = createSlice({
         startedAt: Date.now(),
         timeDiff, // Adicionando timeDiff ao estado
       };
+    },
+    AutoLogout: () => {
+      const dispatch = useDispatch();
+      const [lastActivityTime, setLastActivityTime] = useState(Date.now());
+    
+      useEffect(() => {
+        const checkInactivity = () => {
+          const currentTime = Date.now();
+          const timeElapsed = currentTime - lastActivityTime;
+    
+          if (timeElapsed > 300000) { // 300000 ms = 5 min
+            dispatch(disconnect());
+          }
+        };
+    
+        const activityListener = () => {
+          setLastActivityTime(Date.now());
+        };
+    
+        window.addEventListener('click', activityListener);
+        window.addEventListener('keydown', activityListener);
+    
+        const intervalId = setInterval(checkInactivity, 60000); // Check every minute
+    
+        return () => {
+          clearInterval(intervalId);
+          window.removeEventListener('click', activityListener);
+          window.removeEventListener('keydown', activityListener);
+        };
+      }, [lastActivityTime, dispatch]);
+    
+      return null; // No UI component to render
     },
     keepAlive: () => {
       if (scene) scene.keepAlive();
