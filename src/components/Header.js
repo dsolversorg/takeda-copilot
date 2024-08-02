@@ -37,11 +37,6 @@ function Header({
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const handleButtonClick = () => {
-    history.push('/');
-    dispatch(disconnect());
-  };
-
   const [showContextMenu, setShowContextMenu] = useState(false);
   const iconSize = 24;
 
@@ -102,7 +97,7 @@ function Header({
                           <button
                             className="btn-unstyled"
                             type="button"
-                            onClick={() => handleButtonClick}
+                            onClick={() => { history.push('/'); dispatch(disconnect()); }}
                           >
                             <Escape size={20} />
                             {' '}
