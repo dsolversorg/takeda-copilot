@@ -27,15 +27,18 @@ function Landing({ className }) {
   };
 
   useEffect(() => {
-    console.log('load: ', loading, ' connect: ', connected, ' error: ', error);
-    if (connected) {
-      console.log('entrou');
-      dispatch(disconnect());
+    const conectDesconect = async () => {
       console.log('load: ', loading, ' connect: ', connected, ' error: ', error);
-      createSceneIfNotStarted();
-    } else {
-      createSceneIfNotStarted();
-    }
+      if (connected) {
+        console.log('entrou');
+        await dispatch(disconnect());
+        console.log('load: ', loading, ' connect: ', connected, ' error: ', error);
+        createSceneIfNotStarted();
+      } else {
+        createSceneIfNotStarted();
+      }
+    };
+    conectDesconect();
   }, []);
 
   const history = useHistory();
