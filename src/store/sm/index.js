@@ -843,7 +843,7 @@ const smSlice = createSlice({
       connected: true,
       startedAt: Date.now(),
       error: null,
-      AutoLogout
+      AutoLogout,
     }),
     [createScene.rejected]: (state, { error }) => {
       try {
