@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Link, useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { disconnect } from '../store/sm';
 import React, { useState } from 'react';
 import {
   Escape,
@@ -32,6 +34,7 @@ function Header({
     }
   };
 
+  const dispatch = useDispatch();
   const history = useHistory();
 
   const [showContextMenu, setShowContextMenu] = useState(false);
