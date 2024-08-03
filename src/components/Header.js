@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Link, useHistory } from 'react-router-dom';
@@ -35,43 +35,14 @@ function Header({
   };
 
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const {
     connected,
     loading,
     error,
   } = useSelector(({ sm }) => (sm));
-
-  const createSceneIfNotStarted = () => {
-    console.log('entroufora');
-    if (loading === false && connected === false && error === null) {
-      console.log('entrou2');
-      dispatch(createScene());
-    }
-  };
-
-  useEffect(() => {
-    const conectDesconect = async () => {
-      console.log('load: ', loading, ' connect: ', connected, ' error: ', error);
-      if (connected) {
-        console.log('entrou');
-        await dispatch(disconnect());
-        console.log('load: ', loading, ' connect: ', connected, ' error: ', error);
-        createSceneIfNotStarted();
-      } else {
-        createSceneIfNotStarted();
-      }
-    };
-    conectDesconect();
-  }, []);
-
-  const history = useHistory();
-
-  const handleButtonClick = () => {
-    if (connected) {
-      history.push('/takeda-copilot');
-    }
-  };
+  console.log('load: ', loading, ' connect: ', connected, ' error: ', error);
   const [showContextMenu, setShowContextMenu] = useState(false);
   const iconSize = 24;
 
@@ -132,7 +103,7 @@ function Header({
                           <button
                             className="btn-unstyled"
                             type="button"
-                            onClick={handleButtonClick}
+                            onClick={() => { history.push('/'); dispatch(disconnect({ loading: false, connected: false, error: null })); dispatch(createScene({ loading: false, connected: false, error: null }));}}
                           >
                             <Escape size={20} />
                             {' '}
