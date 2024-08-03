@@ -327,6 +327,6 @@ export default styled(DPChat)`
   }
 
   .col-md-5{
-    --bs-gutter-y: '7rem';
+    --bs-gutter-y: 7rem;
   }
 `;
