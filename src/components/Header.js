@@ -35,14 +35,43 @@ function Header({
   };
 
   const dispatch = useDispatch();
-  const history = useHistory();
 
   const {
     connected,
     loading,
     error,
   } = useSelector(({ sm }) => (sm));
-  console.log('load: ', loading, ' connect: ', connected, ' error: ', error);
+
+  const createSceneIfNotStarted = () => {
+    console.log('entroufora');
+    if (loading === false && connected === false && error === null) {
+      console.log('entrou2');
+      dispatch(createScene());
+    }
+  };
+
+  useEffect(() => {
+    const conectDesconect = async () => {
+      console.log('load: ', loading, ' connect: ', connected, ' error: ', error);
+      if (connected) {
+        console.log('entrou');
+        await dispatch(disconnect());
+        console.log('load: ', loading, ' connect: ', connected, ' error: ', error);
+        createSceneIfNotStarted();
+      } else {
+        createSceneIfNotStarted();
+      }
+    };
+    conectDesconect();
+  }, []);
+
+  const history = useHistory();
+
+  const handleButtonClick = () => {
+    if (connected) {
+      history.push('/takeda-copilot');
+    }
+  };
   const [showContextMenu, setShowContextMenu] = useState(false);
   const iconSize = 24;
 
@@ -103,7 +132,7 @@ function Header({
                           <button
                             className="btn-unstyled"
                             type="button"
-                            onClick={() => { history.push('/'); dispatch(disconnect({ loading: false, connected: false, error: null })); dispatch(createScene()); }}
+                            onClick={handleButtonClick}
                           >
                             <Escape size={20} />
                             {' '}
