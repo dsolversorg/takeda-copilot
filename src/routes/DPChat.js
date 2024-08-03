@@ -108,7 +108,7 @@ function DPChat({
           className="contChat row d-flex justify-content-end align-items-center flex-grow-1 ps-3 pe-3"
           ref={ccDisplaRef}
         >
-          <div className="col col-md-5 d-flex align-items-end align-items-md-center" style={{ height: `${ccDisplayHeight}px` || 'auto' }}>
+          <div className="col col-md-5 d-flex align-items-end align-items-md-center" style="{{ height: `${ccDisplayHeight}px` || 'auto' }}; --bs-gutter-y: '7rem';">
             <div className="chat">
               <ContentCardDisplay />
             </div>
@@ -317,8 +317,6 @@ export default styled(DPChat)`
 
   .chat{
     width: 100%;
-    position: relative;
-    top: 0px;
   }
 
   .size{
