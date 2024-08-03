@@ -103,7 +103,7 @@ function Header({
                           <button
                             className="btn-unstyled"
                             type="button"
-                            onClick={() => { history.push('/'); dispatch(disconnect({ loading: false, connected: false, error: null })); dispatch(createScene({ loading: false, connected: false, error: null }));}}
+                            onClick={() => { history.push('/'); dispatch(disconnect({ loading: false, connected: false, error: null })); dispatch(createScene({ loading: false, connected: false, error: null })); }}
                           >
                             <Escape size={20} />
                             {' '}
