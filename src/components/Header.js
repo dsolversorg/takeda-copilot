@@ -12,7 +12,7 @@ import {
 import {
   logoAltText, transparentHeader, headerHeight, logoLink,
 } from '../config';
-import { disconnect } from '../store/sm';
+import { createScene, disconnect } from '../store/sm';
 
 function Header({
   className,
@@ -103,7 +103,7 @@ function Header({
                           <button
                             className="btn-unstyled"
                             type="button"
-                            onClick={() => { push('/takeda-copilot'); dispatch(disconnect({ loading: false, connected: false, error: null })); }}
+                            onClick={() => { history.push('/'); dispatch(disconnect({ loading: false, connected: false, error: null })); dispatch(createScene());}}
                           >
                             <Escape size={20} />
                             {' '}
