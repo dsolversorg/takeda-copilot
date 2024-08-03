@@ -42,7 +42,7 @@ function Header({
     loading,
     error,
   } = useSelector(({ sm }) => (sm));
-
+  console.log('load: ', loading, ' connect: ', connected, ' error: ', error);
   const [showContextMenu, setShowContextMenu] = useState(false);
   const iconSize = 24;
 
@@ -103,7 +103,7 @@ function Header({
                           <button
                             className="btn-unstyled"
                             type="button"
-                            onClick={() => { history.push('/'); dispatch(disconnect(loading === false && connected === false && error === null)); }}
+                            onClick={() => { history.push('/'); dispatch(disconnect({loading: false, connected: false, error: null})); }}
                           >
                             <Escape size={20} />
                             {' '}
