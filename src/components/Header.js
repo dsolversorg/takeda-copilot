@@ -12,7 +12,6 @@ import {
 import {
   logoAltText, transparentHeader, headerHeight, logoLink,
 } from '../config';
-import { createScene, disconnect } from '../store/sm';
 
 function Header({
   className,
@@ -34,7 +33,6 @@ function Header({
     }
   };
 
-  const dispatch = useDispatch();
   const history = useHistory();
 
   const {
@@ -103,7 +101,7 @@ function Header({
                           <button
                             className="btn-unstyled"
                             type="button"
-                            onClick={() => { history.push('/'); history.goBack() }}
+                            onClick={() => { history.push('/'); history.goBack(); }}
                           >
                             <Escape size={20} />
                             {' '}
