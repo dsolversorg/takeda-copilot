@@ -32,18 +32,15 @@ export default createGlobalStyle`
     background: ${primaryAccent};
     color: ${seconderyAccent};
     text-align: center;
-    width: 100%;
-    max-width: 270px;
-    height: auto;
     font-size: 15px;
+    width: 100%;
+    max-width: 500px;
+    height: auto;
     margin: 0;
-    border-radius: 5px;
+    border-radius: 10px;
   }
   @media screen and (min-width: 768px) {
     .btn.primary-accent {
-      height: auto;  
-      width: 100%;
-      max-width: 500px;
       font-size: 20px;
     }
   }
