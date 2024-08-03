@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Link, useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   Escape,
   Share,
@@ -36,6 +36,12 @@ function Header({
 
   const dispatch = useDispatch();
   const history = useHistory();
+
+  const {
+    connected,
+    loading,
+    error,
+  } = useSelector(({ sm }) => (sm));
 
   const [showContextMenu, setShowContextMenu] = useState(false);
   const iconSize = 24;
