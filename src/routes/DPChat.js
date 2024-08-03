@@ -327,6 +327,12 @@ export default styled(DPChat)`
   }
 
   .col-md-5{
-    --bs-gutter-y: 7rem;
+    position: relative;
+    top: 134px;
+  
+    @media (max-width: 500px){
+      position: relative;
+      top: 0;
+    }
   }
 `;
