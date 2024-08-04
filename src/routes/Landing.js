@@ -32,11 +32,11 @@ function Landing({ className }) {
   };
   useEffect(() => {
     const conectDesconect = async () => {
-      console.log('load: ', loading, ' connect: ', connected, ' error: ', error);
+      console.log('timeDiff: ', timeDiff, 'load: ', loading, ' connect: ', connected, ' error: ', error);
       if (connected) {
         console.log('entrou');
         await dispatch(disconnect());
-        console.log('load: ', loading, ' connect: ', connected, ' error: ', error);
+        console.log('timeDiff: ', timeDiff, 'load: ', loading, ' connect: ', connected, ' error: ', error);
         createSceneIfNotStarted();
       } else {
         createSceneIfNotStarted();
