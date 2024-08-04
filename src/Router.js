@@ -65,7 +65,7 @@ function App() {
                   Desculpe pelo transtorno
                 </p>
                 <div className="d-flex justify-content-center mb-4">
-                  <Link to="/takeda-copilot" className="btn btn-dark me-2">Reconectar</Link>
+                  <Link to="/landing" className="btn btn-dark me-2">Reconectar</Link>
                 </div>
                 <div className="d-flex justify-content-center">
                   <code className="text-danger">{error.msg}</code>
@@ -80,6 +80,9 @@ function App() {
         </Route>
         <Route path="/loading">
           <Loading />
+        </Route>
+        <Route path="/landing">
+          <Landing />          
         </Route>
         <Route path="/takeda-copilot">
           <DPChat />
