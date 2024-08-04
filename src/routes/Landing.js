@@ -30,8 +30,6 @@ function Landing({ className }) {
       }
     }
   };
-  
-
   useEffect(() => {
     const conectDesconect = async () => {
       console.log('load: ', loading, ' connect: ', connected, ' error: ', error);
