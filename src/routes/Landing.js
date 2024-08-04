@@ -16,6 +16,7 @@ function Landing({ className }) {
     connected,
     loading,
     error,
+    timeDiff,
   } = useSelector(({ sm }) => (sm));
 
   const createSceneIfNotStarted = () => {
@@ -23,6 +24,9 @@ function Landing({ className }) {
     if (loading === false && connected === false && error === null) {
       console.log('entrou2');
       dispatch(createScene());
+    if (timeDiff > 60000 && loading === false && connected === false && error === null)
+      console.log('entrou3');
+      dispatch(createScene());      
     }
   };
 
