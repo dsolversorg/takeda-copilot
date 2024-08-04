@@ -26,7 +26,7 @@ function Landing({ className }) {
       dispatch(createScene());
     if (timeDiff > 60000 && loading === false && connected === false && error === null)
       console.log('entrou3');
-      dispatch(createScene());      
+      dispatch(createScene());
     }
   };
 
