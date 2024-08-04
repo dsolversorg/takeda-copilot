@@ -101,7 +101,7 @@ function Header({
                           <button
                             className="btn-unstyled"
                             type="button"
-                            onClick={() => { history.push({ pathname: '/', state: { loading: false, connected: false, error: null }}); }}
+                            onClick={() => { history.push( { pathname: '/', state: { loading: false, connected: false, error: null }} ); }}
                           >
                             <Escape size={20} />
                             {' '}
