@@ -82,7 +82,7 @@ function App() {
           <Loading />
         </Route>
         <Route path="/landing">
-          <Landing />          
+          <Landing />
         </Route>
         <Route path="/takeda-copilot">
           <DPChat />
