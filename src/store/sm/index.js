@@ -772,7 +772,7 @@ const smSlice = createSlice({
       const lastTranscriptItem = lastUserMessage[lastUserMessage.length - 1];
       const timestamp = lastTranscriptItem?.timestamp || new Date(startedAt);
       const timeDiff = new Date(Date.now()) - Date.parse(timestamp);
-      const presumeTimeout = timeDiff > 740; // 5 minutos em milissegundos
+      const presumeTimeout = timeDiff > 60000; // 5 minutos em milissegundos
       console.log('timeDiff:', timeDiff); // Isso irá mostrar o valor no console do navegador
       return {
         ...initialState,
