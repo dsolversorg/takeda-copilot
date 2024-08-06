@@ -96,7 +96,7 @@ function Landing({ className }) {
                     type="button"
                   >
                     <span>
-                      Aguarde..
+                      Aguarde...
                     </span>
                     <img alt="gif loading" src="https://media.tenor.com/t5DMW5PI8mgAAAAj/loading-green-loading.gif" className="gif-loading" />
                   </div>
