@@ -45,6 +45,7 @@ function Controls({
   } = useSelector((state) => ({ ...state.sm }));
 
   const dispatch = useDispatch();
+  const [initial, setInitial] = useState(false);
 
   const [showFeedback, setShowFeedback] = useState(false);
 
