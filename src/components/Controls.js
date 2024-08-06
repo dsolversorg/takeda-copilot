@@ -371,7 +371,7 @@ export default styled(Controls)`
   }
 
   .icon{
-    background-color: #8bc53f;
+    background-color: #09c8c8;
     color: #fff;
     border-radius: 40px;
     margin-right: 10px;
@@ -381,7 +381,7 @@ export default styled(Controls)`
     align-items: center;
     justify-content: center;
     &:hover{
-      background-color: #628c2a;
+      background-color: #05a0a0;
     }
     @media (max-width: 500px){
       height: 60px;

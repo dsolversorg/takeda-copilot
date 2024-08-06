@@ -181,6 +181,10 @@ export default styled(Landing)`
     margin: 0;
     text-align: center;
     cursor: not-allowed;
+
+    &>span{
+      margin-right: 10px;
+    }
   }
 
   .container {

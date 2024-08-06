@@ -303,9 +303,11 @@ export default styled(DPChat)`
   .icon{
     background-color: #09c8c8;
     border-radius: 40px;
-    padding: 1rem;
     height: 70px;
     width: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     &:hover{
       background-color: #05a0a0;
     }
