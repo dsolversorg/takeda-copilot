@@ -95,6 +95,9 @@ function Landing({ className }) {
                     className="button-start button--disabled m-2 "
                     type="button"
                   >
+                    <span>
+                      Aguarde...
+                    </span>
                     <img alt="gif loading" src="https://media.tenor.com/t5DMW5PI8mgAAAAj/loading-green-loading.gif" className="gif-loading" />
                   </div>
                 )}
