@@ -35,8 +35,10 @@ function Header({
 
   // const history = useHistory();
 
-  const handleRefresh = () => {
-    window.location.reload();
+  const [count, setCount] = useState(0);
+
+  const handleUpdate = () => {
+    setCount(count + 1);
   };
 
   const {
@@ -102,10 +104,11 @@ function Header({
                       </button>
                       <ul className="list">
                         <li>
+                          <h1>Contador: {count}</h1>
                           <button
                             className="btn-unstyled"
                             type="button"
-                            onClick={handleRefresh}
+                            onClick={handleUpdate}
                           >
                             <Escape size={20} />
                             {' '}
