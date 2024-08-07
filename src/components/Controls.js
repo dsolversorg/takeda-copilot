@@ -135,122 +135,102 @@ function Controls({
         </div>
       ) : null}
       <div className="d-flex espace">
+        <div>
+          {/* alternar microfone do usuário */}
+          {micOn ? (
+            <button
+              type="button"
+              className="control-icon icon"
+              aria-label="Alternar Microfone"
+              data-tip="Alternar Microfone"
+              disabled={requestedMediaPerms.micDenied === true}
+              onClick={() => dispatch(setMicOn({ micOn: !micOn }))}
+            >
+              <MicFill size={MenuiconSize} className="size" color={seconderyAccent} style={{ border: highlightMic ? 'red 2px solid' : '' }} />
+            </button>
+          )
+            : (
+              <button
+                type="button"
+                className="control-icon iconMute"
+                aria-label="Alternar Microfone"
+                data-tip="Alternar Microfone"
+                disabled={requestedMediaPerms.micDenied === true}
+                onClick={() => dispatch(setMicOn({ micOn: !micOn }))}
+              >
+                <MicMuteFill size={MenuiconSize} className="size" color={seconderyAccent} style={{ border: highlightMic ? 'red 2px solid' : '' }} />
+              </button>
+            )}
+        </div>
 
-        {!initial ? (
-          <button
-            type="button"
-            className="control-icon icon iniciar"
-            aria-label="Alternar Microfone"
-            data-tip="Alternar Microfone"
-            onClick={() => {
-              dispatch(setMicOn({ micOn: !micOn }));
-              dispatch(setCameraOn({ cameraOn: !cameraOn }));
-              setInitial(true);
-            }}
-          >
-            <span>Iniciar</span>
-          </button>
-        )
-          : (
-            <>
-              <div>
-                {/* alternar microfone do usuário */}
-                {micOn ? (
-                  <button
-                    type="button"
-                    className="control-icon icon"
-                    aria-label="Alternar Microfone"
-                    data-tip="Alternar Microfone"
-                    disabled={requestedMediaPerms.micDenied === true}
-                    onClick={() => dispatch(setMicOn({ micOn: !micOn }))}
-                  >
-                    <MicFill size={MenuiconSize} className="size" color={seconderyAccent} style={{ border: highlightMic ? 'red 2px solid' : '' }} />
-                  </button>
-                )
-                  : (
-                    <button
-                      type="button"
-                      className="control-icon iconMute"
-                      aria-label="Alternar Microfone"
-                      data-tip="Alternar Microfone"
-                      disabled={requestedMediaPerms.micDenied === true}
-                      onClick={() => dispatch(setMicOn({ micOn: !micOn }))}
-                    >
-                      <MicMuteFill size={MenuiconSize} className="size" color={seconderyAccent} style={{ border: highlightMic ? 'red 2px solid' : '' }} />
-                    </button>
-                  )}
-              </div>
+        <div>
+          {/* alternar câmera do usuário */}
+          {cameraOn ? (
+            <button
+              type="button"
+              className="control-icon icon"
+              aria-label="Alternar Câmera"
+              data-tip="Alternar Câmera"
+              disabled={requestedMediaPerms.cameraDenied === true}
+              onClick={() => dispatch(setCameraOn({ cameraOn: !cameraOn }))}
+            >
+              <CameraVideoFill size={MenuiconSize} color={seconderyAccent} style={{ border: highlightCamera ? 'red 2px solid' : '' }} className="size" />
+            </button>
+          ) : (
+            <button
+              type="button"
+              className="control-icon iconMute"
+              aria-label="Alternar Câmera"
+              data-tip="Alternar Câmera"
+              disabled={requestedMediaPerms.cameraDenied === true}
+              onClick={() => dispatch(setCameraOn({ cameraOn: !cameraOn }))}
+            >
+              <CameraVideoOffFill size={MenuiconSize} className="size" color={seconderyAccent} style={{ border: highlightCamera ? 'red 2px solid' : '' }} />
 
-              <div>
-                {/* alternar câmera do usuário */}
-                {cameraOn ? (
-                  <button
-                    type="button"
-                    className="control-icon icon"
-                    aria-label="Alternar Câmera"
-                    data-tip="Alternar Câmera"
-                    disabled={requestedMediaPerms.cameraDenied === true}
-                    onClick={() => dispatch(setCameraOn({ cameraOn: !cameraOn }))}
-                  >
-                    <CameraVideoFill size={MenuiconSize} color={seconderyAccent} style={{ border: highlightCamera ? 'red 2px solid' : '' }} className="size" />
-                  </button>
-                ) : (
-                  <button
-                    type="button"
-                    className="control-icon iconMute"
-                    aria-label="Alternar Câmera"
-                    data-tip="Alternar Câmera"
-                    disabled={requestedMediaPerms.cameraDenied === true}
-                    onClick={() => dispatch(setCameraOn({ cameraOn: !cameraOn }))}
-                  >
-                    <CameraVideoOffFill size={MenuiconSize} className="size" color={seconderyAccent} style={{ border: highlightCamera ? 'red 2px solid' : '' }} />
-
-                  </button>
-                )}
-              </div>
-
-              <div>
-                {/* pule o que quer que o dp esteja falando no momento */}
-                {speechState === 'speaking' ? (
-                  <button
-                    type="button"
-                    className="control-icon icon"
-                    onClick={() => dispatch(stopSpeaking())}
-                    data-tip="Pular fala"
-                    aria-label="Pular fala"
-                  >
-                    <SkipEndFill size={MenuiconSize} className="size" color={seconderyAccent} style={{ border: highlightSkip ? 'red 2px solid' : '' }} />
-                  </button>
-                ) : null}
-
-              </div>
-
-              <div>
-                {/* silenciar som dp */}
-                {isOutputMuted ? (
-                  <button
-                    type="button"
-                    className="control-icon iconMute"
-                    aria-label="Alternar áudio"
-                    data-tip="Alternar áudio"
-                    onClick={() => dispatch(setOutputMute({ isOutputMuted: !isOutputMuted }))}
-                  >
-                    <VolumeMuteFill size={MenuiconSize} className="size" color={seconderyAccent} style={{ border: highlightMute ? 'red 2px solid' : '' }} />
-                  </button>
-                ) : (
-                  <button
-                    type="button"
-                    className="control-icon icon"
-                    aria-label="Alternar áudio"
-                    data-tip="Alternar áudio"
-                    onClick={() => dispatch(setOutputMute({ isOutputMuted: !isOutputMuted }))}
-                  >
-                    <VolumeUpFill size={MenuiconSize} className="size" color={seconderyAccent} style={{ border: highlightMute ? 'red 2px solid' : '' }} />
-                  </button>
-                )}
-              </div>
-            </>
+            </button>
           )}
+        </div>
+
+        <div>
+          {/* pule o que quer que o dp esteja falando no momento */}
+          {speechState === 'speaking' ? (
+            <button
+              type="button"
+              className="control-icon icon"
+              onClick={() => dispatch(stopSpeaking())}
+              data-tip="Pular fala"
+              aria-label="Pular fala"
+            >
+              <SkipEndFill size={MenuiconSize} className="size" color={seconderyAccent} style={{ border: highlightSkip ? 'red 2px solid' : '' }} />
+            </button>
+          ) : null}
+
+        </div>
+
+        <div>
+          {/* silenciar som dp */}
+          {isOutputMuted ? (
+            <button
+              type="button"
+              className="control-icon iconMute"
+              aria-label="Alternar áudio"
+              data-tip="Alternar áudio"
+              onClick={() => dispatch(setOutputMute({ isOutputMuted: !isOutputMuted }))}
+            >
+              <VolumeMuteFill size={MenuiconSize} className="size" color={seconderyAccent} style={{ border: highlightMute ? 'red 2px solid' : '' }} />
+            </button>
+          ) : (
+            <button
+              type="button"
+              className="control-icon icon"
+              aria-label="Alternar áudio"
+              data-tip="Alternar áudio"
+              onClick={() => dispatch(setOutputMute({ isOutputMuted: !isOutputMuted }))}
+            >
+              <VolumeUpFill size={MenuiconSize} className="size" color={seconderyAccent} style={{ border: highlightMute ? 'red 2px solid' : '' }} />
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );
