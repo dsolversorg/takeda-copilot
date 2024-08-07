@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import {
   Escape,
@@ -33,9 +33,7 @@ function Header({
     }
   };
 
-  const handleExternalNavigate = () => {
-    window.location.href = 'https://pessoadigital.digitalsolvers.com/takeda-copilot'; // Redireciona para uma URL externa
-  };
+  const history = useHistory();
 
   const {
     connected,
@@ -103,7 +101,7 @@ function Header({
                           <button
                             className="btn-unstyled"
                             type="button"
-                            onClick={handleExternalNavigate}
+                            onClick={() => { history.push('/'); }}
                           >
                             <Escape size={20} />
                             {' '}
