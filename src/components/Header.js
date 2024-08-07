@@ -33,12 +33,8 @@ function Header({
     }
   };
 
-  // const history = useHistory();
-
-  const [count, setCount] = useState(0);
-
-  const handleUpdate = () => {
-    setCount(count + 1);
+  const handleExternalNavigate = () => {
+    window.location.href = 'https://pessoadigital.digitalsolvers.com/takeda-copilot'; // Redireciona para uma URL externa
   };
 
   const {
@@ -104,11 +100,10 @@ function Header({
                       </button>
                       <ul className="list">
                         <li>
-                          <h1>Contador: {count}</h1>
                           <button
                             className="btn-unstyled"
                             type="button"
-                            onClick={handleUpdate}
+                            onClick={handleExternalNavigate}
                           >
                             <Escape size={20} />
                             {' '}
