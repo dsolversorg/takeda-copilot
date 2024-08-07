@@ -67,7 +67,7 @@ function Landing({ className }) {
                     Segue abaixo algumas frases de navegação:
                   </h2>
                   <h2 className="fw-bol">
-                    <b> Menu Iniciar</b>
+                    <b> Menu</b>
                     ,
                   </h2>
                   <h2 className="fw-bol">
