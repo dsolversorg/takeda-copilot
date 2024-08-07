@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import {
   Escape,
@@ -33,7 +33,11 @@ function Header({
     }
   };
 
-  const history = useHistory();
+  //const history = useHistory();
+
+  const handleRefresh = () => {
+    window.location.reload();
+  };
 
   const {
     connected,
@@ -101,7 +105,7 @@ function Header({
                           <button
                             className="btn-unstyled"
                             type="button"
-                            onClick={() => { history.push('/'); }}
+                            onClick={handleRefresh}
                           >
                             <Escape size={20} />
                             {' '}
