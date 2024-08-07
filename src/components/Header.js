@@ -33,7 +33,7 @@ function Header({
     }
   };
 
-  //const history = useHistory();
+  // const history = useHistory();
 
   const handleRefresh = () => {
     window.location.reload();
