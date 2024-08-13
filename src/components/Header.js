@@ -33,7 +33,11 @@ function Header({
     }
   };
 
-  const history = useHistory();
+  const handleExternalNavigate = () => {
+    const url = new URL('https://exemplo.com.br');
+    url.searchParams.set('cacheBuster', Date.now()); // Adiciona um parâmetro único para evitar o cache
+    window.location.href = url.toString();
+  };
 
   const {
     connected,
@@ -101,7 +105,7 @@ function Header({
                           <button
                             className="btn-unstyled"
                             type="button"
-                            onClick={() => { history.push('/'); }}
+                            onClick={handleExternalNavigate}
                           >
                             <Escape size={20} />
                             {' '}
