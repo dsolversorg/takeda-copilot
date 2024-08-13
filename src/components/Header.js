@@ -34,7 +34,7 @@ function Header({
   };
 
   const handleExternalNavigate = () => {
-    const url = new URL('https://exemplo.com.br');
+    const url = new URL('https://pessoadigital.digitalsolvers.com/takeda-copilot');
     url.searchParams.set('cacheBuster', Date.now()); // Adiciona um parâmetro único para evitar o cache
     window.location.href = url.toString();
   };
