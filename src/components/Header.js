@@ -33,20 +33,11 @@ function Header({
     }
   };
 
-  // Certifique-se de que `currentSessionId` esteja definido corretamente.
-  const currentSessionId = '';
-
   const handleExternalNavigate = () => {
-    fetch('/api/encerrar-sessao', {
-      method: 'POST',
-      body: JSON.stringify({ sessionId: currentSessionId }), // Adicione uma vírgula aqui
-    })
-    .then((response) => { // Adicione parênteses ao redor do argumento `response`
-      if (response.ok) {
-        // Redireciona após a sessão ser encerrada
+    fetch('https://pessoadigital.digitalsolvers.com/takeda-copilot', { cache: 'no-store' })
+      .then(() => {
         window.location.href = 'https://pessoadigital.digitalsolvers.com/takeda-copilot';
-      }
-    });
+      });
   };
 
   const {
