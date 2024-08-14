@@ -53,7 +53,7 @@ function DPChat({
     } else history.push('/');
   } else if (error !== null) history.push('/loading?error=true');
   // usually this will be triggered when the user refreshes
-  else if (connected !== true) window.location.href = 'https://pessoadigital.digitalsolvers.com/takeda-copilot';
+  else if (connected !== true) history.push('/');
 
   const handleResize = () => {
     if (connected) {
