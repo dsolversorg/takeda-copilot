@@ -50,10 +50,10 @@ function DPChat({
   if (disconnected === true) {
     if (disconnectPage) {
       history.push(disconnectRoute);
-    } else history.push('/');
-  } else if (error !== null) history.push('/loading?error=true');
+    } else window.location.href = 'https://pessoadigital.digitalsolvers.com/takeda-copilot';
+  } else if (error !== null) window.location.href = 'https://pessoadigital.digitalsolvers.com/takeda-copilot';
   // usually this will be triggered when the user refreshes
-  else if (connected !== true) history.push('/');
+  else if (connected !== true) window.location.href = 'https://pessoadigital.digitalsolvers.com/takeda-copilot';
 
   const handleResize = () => {
     if (connected) {
