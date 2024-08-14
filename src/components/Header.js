@@ -34,10 +34,15 @@ function Header({
   };
 
   const handleExternalNavigate = () => {
-    fetch('https://pessoadigital.digitalsolvers.com/takeda-copilot', { cache: 'no-store' })
-      .then(() => {
+    fetch('/api/encerrar-sessao', {
+      method: 'POST',
+      body: JSON.stringify({ sessionId: currentSessionId })
+    }).then(response => {
+      if (response.ok) {
+        // Redireciona após a sessão ser encerrada
         window.location.href = 'https://pessoadigital.digitalsolvers.com/takeda-copilot';
-      });
+      }
+    });
   };
 
   const {
