@@ -35,6 +35,7 @@ function Header({
 
   const handleExternalNavigate = () => {
     window.location.href = 'https://pessoadigital.digitalsolvers.com/takeda-copilot'; // Redireciona para uma URL externa
+    window.location.reload(true); // Tenta forçar o recarregamento ignorando o cache
   };
 
   const {
