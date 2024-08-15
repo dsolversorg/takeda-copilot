@@ -1,3 +1,4 @@
+import styled from 'styled-components';
 import ReactGA from 'react-ga4';
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -64,8 +65,7 @@ function App() {
                   Desculpe pelo transtorno
                 </p>
                 <div className="d-flex justify-content-center mb-4">
-                  <Link to="/" className="btn btn-dark me-2">Reconectar</Link>
-                  <Link to="/" className="btn btn-outline-dark">Retornar para a página inicial</Link>
+                  <Link to="https://pessoadigital.digitalsolvers.com/takeda-copilot" className="btn btn-dark me-2">Reconectar</Link>
                 </div>
                 <div className="d-flex justify-content-center">
                   <code className="text-danger">{error.msg}</code>
@@ -81,7 +81,10 @@ function App() {
         <Route path="/loading">
           <Loading />
         </Route>
-        <Route path="/video">
+        <Route path="/landing">
+          <Landing />
+        </Route>        
+        <Route path="/takeda-copilot">
           <DPChat />
         </Route>
         <Route path="/feedback">
@@ -97,4 +100,10 @@ function App() {
   );
 }
 
-export default App;
+export default styled(App)`
+  .d-flex{
+    z-index: 1;
+    position: relative;
+  }
+`;
+
