@@ -137,7 +137,7 @@ function DPChat({
           </div>
           <div className="justify-content-between align-items-center contWid">
             <div className="d-flex justify-content-center aling-itens-center">
-              <div className={`contControl ${connected && !loading && pathname === '/video' ? '' : 'd-none'}`}>
+              <div className={`contControl ${connected && !loading && pathname === '/' ? '' : 'd-none'}`}>
                 <Controls />
               </div>
             </div>
