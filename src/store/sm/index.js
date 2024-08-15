@@ -25,7 +25,7 @@ const initialState = {
       micDenied: false,
     }
     : {
-      mic: true,
+      mic: false,
       micDenied: false,
       camera: true,
       cameraDenied: false,
