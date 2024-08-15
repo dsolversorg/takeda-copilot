@@ -83,7 +83,7 @@ function App() {
         </Route>
         <Route path="/landing">
           <Landing />
-        </Route>        
+        </Route>
         <Route path="/takeda-copilot">
           <DPChat />
         </Route>
@@ -106,4 +106,3 @@ export default styled(App)`
     position: relative;
   }
 `;
-
