@@ -23,13 +23,12 @@ function Options({
           <a
             href={value}
             className="btn primary-accent me-2 mb-2"
-            style={{ textAlign: 'center' }}
             key={JSON.stringify({ label, value })}
             target="_blank"
             rel="noreferrer"
           >
             {label}
-            <BoxArrowUpRight className="ms-2" size={48} />
+            <BoxArrowUpRight className="ms-2" size={18} />
           </a>
         );
       }
@@ -38,7 +37,6 @@ function Options({
           type="button"
           className="btn primary-accent me-2 mb-2"
           data-trigger-text={value}
-          style={{ textAlign: 'center' }}
           onClick={dispatchTextFromData}
           key={JSON.stringify({ label, value })}
           disabled={isStaleOptionsCardInTranscript}

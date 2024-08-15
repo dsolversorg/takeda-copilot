@@ -133,6 +133,7 @@ function Controls({
           </div>
         </div>
       ) : null}
+
       <div className="d-flex espace">
         <div>
           {/* alternar microfone do usuário */}
@@ -146,6 +147,7 @@ function Controls({
               onClick={() => dispatch(setMicOn({ micOn: !micOn }))}
             >
               <MicFill size={MenuiconSize} className="size" color={seconderyAccent} style={{ border: highlightMic ? 'red 2px solid' : '' }} />
+
             </button>
           )
             : (
@@ -351,14 +353,11 @@ export default styled(Controls)`
 
   .icon{
     background-color: #09c8c8;
-    color: #fff;
     border-radius: 40px;
+    padding: 1rem;
     margin-right: 10px;
     height: 70px;
     width: 70px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     &:hover{
       background-color: #05a0a0;
     }
@@ -371,12 +370,10 @@ export default styled(Controls)`
   .iconMute{
     background-color: #f2695c;
     border-radius: 40px;
+    padding: 1rem;
     margin-right: 10px;
     height: 70px;
     width: 70px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     &:hover{
       background-color: #bc493e;
     }

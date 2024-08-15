@@ -19,7 +19,7 @@ function Link({ data, className }) {
           <div className="d-flex justify-content-center">
             {/* open link in new tab */}
             <a href={url} className="btn btn-primary" target="_blank" rel="noreferrer">
-              Clique aqui
+              Visit Link
               <ArrowUpRightSquare className="ms-1" />
             </a>
           </div>
@@ -42,9 +42,9 @@ Link.propTypes = {
 
 export default styled(Link)`
   width: 20rem;
- 
+
   img {
-    width: auto;
+    width: 100%;
     height: auto;
   }
 `;

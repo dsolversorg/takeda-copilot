@@ -196,7 +196,7 @@ export default styled(Video)`
     align-items: center;
   }
   .video-play-button {
-    background-color: #ff0000;
+    background-color: #f00;
     color: #FFF;
     height: 2.5rem;
     aspect-ratio: 1;

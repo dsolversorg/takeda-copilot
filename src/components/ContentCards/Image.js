@@ -34,6 +34,6 @@ export default styled(Image)`
   border: 1px solid rgba(0,0,0,0.2);
   overflow: hidden;
 
-  background: #40FFBF00;
+  background: #393939;
   color: #FFF;
 `;

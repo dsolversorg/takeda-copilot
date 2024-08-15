@@ -1,11 +1,9 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 function Markdown({ data }) {
   const { text } = data;
-
   return (
     <div className="card">
       <div className="card-body">
@@ -21,11 +19,4 @@ Markdown.propTypes = {
   }).isRequired,
 };
 
-export default styled(Markdown)`
-  background: transparent;
-
-  .card-body{
-    font-size: 15px;
-    background: transparent;
-  }  
-`;
+export default Markdown;

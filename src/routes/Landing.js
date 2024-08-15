@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
@@ -7,51 +7,38 @@ import { useDispatch, useSelector } from 'react-redux';
 import breakpoints from '../utils/breakpoints';
 import Header from '../components/Header';
 import { landingBackgroundImage, landingBackgroundColor } from '../config';
-import { createScene, disconnect } from '../store/sm';
+import { setRequestedMediaPerms, createScene } from '../store/sm';
+import micFill from '../img/mic-fill.svg';
+import videoFill from '../img/camera-video-fill.svg';
 
 function Landing({ className }) {
+  const { mic, camera } = useSelector(({ sm }) => sm.requestedMediaPerms);
   const dispatch = useDispatch();
 
   const {
     connected,
     loading,
     error,
-    timeDiff,
   } = useSelector(({ sm }) => (sm));
 
   const createSceneIfNotStarted = () => {
-    console.log('entroufora');
     if (loading === false && connected === false && error === null) {
-      console.log('entrou2');
       dispatch(createScene());
-      if (timeDiff > 60000 && loading === false && connected === false && error === null) {
-        console.log('entrou3');
-        dispatch(createScene());
-      }
     }
   };
+
   useEffect(() => {
-    const conectDesconect = async () => {
-      console.log('timeDiff: ', timeDiff, 'load: ', loading, ' connect: ', connected, ' error: ', error);
-      if (connected) {
-        console.log('entrou');
-        await dispatch(disconnect());
-        console.log('timeDiff: ', timeDiff, 'load: ', loading, ' connect: ', connected, ' error: ', error);
-        createSceneIfNotStarted();
-      } else {
-        createSceneIfNotStarted();
-      }
-    };
-    conectDesconect();
+    createSceneIfNotStarted();
   }, []);
 
-  const history = useHistory();
-
-  const handleButtonClick = () => {
-    if (connected) {
-      history.push('/takeda-copilot');
-    }
+  const [skip, setSkip] = useState(false);
+  const redirectToVideoOnConnect = () => {
+    setSkip(true);
   };
+  const history = useHistory();
+  useEffect(() => {
+    if (skip === true && connected === true) history.push('/video');
+  }, [connected, skip]);
 
   return (
     <div className={className}>
@@ -82,33 +69,75 @@ function Landing({ className }) {
               <div className="row">
                 <div>
                   <h4 className="fw-light" style={{ marginBottom: '31px' }}>
-                    Sou um especialista
-                    <b> em Dengue</b>
+                    Sou especialista em
+                    <b> Dengue</b>
                     ,
-                    faça-me perguntas e farei meu melhor para respondê-las.
+                    faça-me uma pergunta e farei o meu melhor para respondê-la.
                   </h4>
                 </div>
               </div>
-              <div className="row" style={{ marginBottom: '14px' }}>
+              <div className="row" style={{ marginBottom: '36px' }}>
+                <div>
+                  <div className="form-check form-switch">
+                    <label
+                      className="form-check-label d-flex align-items-center"
+                      htmlFor="micPermSwitch"
+                    >
+                      <input
+                        className={`shadow form-check-input mic-switch switch ${mic ? 'status-checked' : 'status-unchecked'}`}
+                        type="checkbox"
+                        role="switch"
+                        id="micPermSwitch"
+                        onChange={() => dispatch(setRequestedMediaPerms({ mic: !mic }))}
+                        checked={mic}
+                      />
+                      <div className="d-block ms-2">
+                        Use seu microfone para que eu possa te ouvir.
+                      </div>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div className="row" style={{ marginBottom: '52px' }}>
+                <div>
+                  <div className="form-check form-switch">
+                    <label
+                      className="form-check-label d-flex align-items-center"
+                      htmlFor="cameraPermSwitch"
+                    >
+                      <input
+                        className={`shadow form-check-input video-switch switch ${camera ? 'status-checked' : 'status-unchecked'}`}
+                        type="checkbox"
+                        role="switch"
+                        id="micPermSwitch"
+                        onChange={() => dispatch(setRequestedMediaPerms({ camera: !camera }))}
+                        checked={camera}
+                      />
+                      <div className="d-block ms-2">
+                        Deixe sua câmera ligada, pois reajo as suas expressões.
+                      </div>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div className="row" style={{ marginBottom: '60px' }}>
                 {!connected && (
                   <div
                     className="button-start button--disabled m-2 "
                     type="button"
                   >
-                    <span>
-                      Aguarde...
-                    </span>
                     <img alt="gif loading" src="https://media.tenor.com/t5DMW5PI8mgAAAAj/loading-green-loading.gif" className="gif-loading" />
                   </div>
                 )}
 
                 {connected && (
                   <button
-                    className="button-start m-2"
+                    className={`${connected ? 'button-start' : 'button-start button-start--disabled'} m-2`}
                     type="button"
-                    onClick={handleButtonClick}
+                    disabled={!connected}
+                    onClick={redirectToVideoOnConnect}
                   >
-                    Conversar com a Katia
+                    Converse comigo
                   </button>
                 )}
               </div>
@@ -145,15 +174,16 @@ export default styled(Landing)`
   .fw-bol {
     font-size: 32px;
   }
-
+  
   .landing-wrapper {
     min-height: 100vh;
 
     background: ${landingBackgroundImage ? `url(${landingBackgroundImage})` : ''} ${landingBackgroundColor ? `${landingBackgroundColor};` : ''};
     background-size: auto 50%;
     background-repeat: no-repeat;
-    background-position: button top;
+    background-position: bottom center;
     z-index: 2;
+
 
     @media (min-width: ${breakpoints.lg}px) {
       background-size: 60% auto;
@@ -164,7 +194,7 @@ export default styled(Landing)`
   .button-start {
     border: 1px solid rgb(60, 60, 60);
     border-radius: 32px;
-    padding: 16px 32px;
+    padding:16px 32px;
     background-color: #8AC43F;
     color: #ffffff;
     font-weight: 600;
@@ -174,23 +204,18 @@ export default styled(Landing)`
   .button--disabled {
     border: 1px solid rgb(60, 60, 60);
     border-radius: 32px;
-    padding: 16px 32px;
+    padding:16px 32px;
     background-color: #E5E5E5;
     color: #ABABAB;
     font-weight: 600;
     margin: 0;
     text-align: center;
     cursor: not-allowed;
-
-    &>span{
-      margin-right: 10px;
-    }
   }
 
-  .container {
-    @media (min-width: ${breakpoints.lg}px) {
-      margin-left: 70px;
-    }
+  .button-start--disabled {
+    background-color: #E5E5E5;
+    color: #ABABAB;
   }
 
   .landing-container {
@@ -209,4 +234,74 @@ export default styled(Landing)`
       }
     }
   }
+  .form-switch .form-check-input {
+    min-width: 7rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #8AC43F;
+    color: #ffffff;
+
+
+    &.mic-switch::before, &.mic-switch.status-checked::after {
+        background-image: url(${micFill});
+    }
+    &.video-switch::before, &.video-switch.status-checked::after {
+        background-image: url(${videoFill});
+    }
+    &.mic-switch.status-checked::before, &.video-switch.status-checked::before {
+      background-image: none;
+    }
+
+    &.status-unchecked {
+      background-color: #E5E5E5;
+      color: #ABABAB;
+      &::after {
+        content: 'OFF';
+        color: #000;
+        margin-right: 18%;
+      }
+      &::before {
+        background-size: 60%;
+        background-repeat: no-repeat;
+        background-color: rgb(220, 220, 220);
+        background-position: 45% center;
+        content: '';
+        display: block;
+
+        border-radius: 50%;
+
+        height: 80%;
+        margin-left: 5%;
+        aspect-ratio: 1;
+        float: right;
+      }
+    }
+
+    &.status-checked {
+      &::before {
+        content: 'ON';
+        color: #FFF;
+        margin-left: 22%;
+      }
+
+      &::after {
+        background-size: 60%;
+        background-repeat: no-repeat;
+        background-color: #FFF;
+        background-position: 55% center;
+        content: '';
+        display: block;
+
+        border-radius: 50%;
+
+        height: 80%;
+        margin-right: 5%;
+        aspect-ratio: 1;
+        float: right;
+      }
+    }
+  }
+
 `;

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/media-has-caption */
 import React, { createRef, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -14,20 +15,30 @@ function PersonaVideo({
     actions.setVideoDimensions({ videoWidth, videoHeight }),
   );
   const { isOutputMuted, loading, connected } = useSelector(({ sm }) => ({ ...sm }));
+  // video elem ref used to link proxy video element to displayed video
   const videoRef = createRef();
+  // we need the container dimensions to render the right size video in the persona server
   const containerRef = createRef();
+  // only set the video ref once, otherwise we get a flickering whenever the window is resized
   const [videoDisplayed, setVideoDisplayed] = useState(false);
+  // we need to keep track of the inner window height so the video displays correctly
   const [height, setHeight] = useState('100vh');
 
   const handleResize = () => {
     if (containerRef.current) {
+      // the video should resize with the element size.
+      // this needs to be done through the redux store because the Persona server
+      // needs to be aware of the video target dimensions to render a propperly sized video
       const videoWidth = containerRef.current.clientWidth;
       const videoHeight = containerRef.current.clientHeight;
       setVideoDimensions(videoWidth, videoHeight);
-      setHeight(`${videoHeight}px`);
+      // constrain to inner window height so it fits on mobile
+      setHeight(`${videoHeight}`);
     }
   };
 
+  // persona video feed is routed through a proxy <video> tag,
+  // we need to get the src data from that element to use here
   useEffect(() => {
     handleResize();
     window.addEventListener('resize', handleResize);
@@ -37,8 +48,9 @@ function PersonaVideo({
         setVideoDisplayed(true);
       }
     }
+    // when component dismounts, remove resize listener
     return () => window.removeEventListener('resize', handleResize);
-  }, [connected, videoDisplayed]);
+  }, []);
 
   return (
     <div ref={containerRef} className={className} style={{ height }}>
@@ -53,9 +65,7 @@ function PersonaVideo({
               id="personavideo"
               data-sm-video
               muted={isOutputMuted}
-            >
-              <track kind="captions" src="" default />
-            </video>
+            />
           )
           : null
       }
@@ -80,8 +90,8 @@ PersonaVideo.propTypes = {
 };
 
 export default styled(PersonaVideo)`
+  /* if you need the persona video to be different than the window dimensions, change these values */
   width: 100vw;
-  height: 100vh;
 
   position: fixed;
   z-index: 0;
@@ -90,14 +100,9 @@ export default styled(PersonaVideo)`
   align-items: center;
   justify-content: center;
   margin-top: ${transparentHeader ? '' : headerHeight};
-
   .persona-video {
+    /* the video element will conform to the container dimensions, so keep this as it is */
     width: 100%;
     height: 100%;
-    max-width: 100vw;
-    max-height: 100vh;
-    object-fit: cover;
-    position: fixed;
-    top: 0;
-  }    
+  }
 `;

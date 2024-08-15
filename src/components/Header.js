@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import styled from 'styled-components';
+import { Link, useHistory } from 'react-router-dom';
+import React, { useState } from 'react';
 import {
   Escape,
   Share,
@@ -33,19 +32,8 @@ function Header({
     }
   };
 
-  const handleExternalNavigate = () => {
-    fetch('https://pessoadigital.digitalsolvers.com/takeda-copilot', { cache: 'no-store' })
-      .then(() => {
-        window.location.href = 'https://pessoadigital.digitalsolvers.com/takeda-copilot';
-      });
-  };
+  const history = useHistory();
 
-  const {
-    connected,
-    loading,
-    error,
-  } = useSelector(({ sm }) => (sm));
-  console.log('load: ', loading, ' connect: ', connected, ' error: ', error);
   const [showContextMenu, setShowContextMenu] = useState(false);
   const iconSize = 24;
 
@@ -61,7 +49,7 @@ function Header({
             <div>
               {/* left align */}
               <Link to={logoLink}>
-                <img src="https://i.postimg.cc/MpthtcR9/logo-conheca-branco.png" className="logo position-relative" alt={logoAltText} />
+                <img src="https://conhecadengue.com.br/themes/custom/conheca_dengue/img/header-logo.png" className="logo position-relative" alt={logoAltText} />
               </Link>
             </div>
             <div>
@@ -106,7 +94,7 @@ function Header({
                           <button
                             className="btn-unstyled"
                             type="button"
-                            onClick={handleExternalNavigate}
+                            onClick={() => { history.push('/'); }}
                           >
                             <Escape size={20} />
                             {' '}
@@ -210,7 +198,7 @@ export default styled(Header)`
 
   .context-controls-trigger {
     position: relative;
-    z-index: 105;
+    z-index: 106;
   }
 
   .logo {

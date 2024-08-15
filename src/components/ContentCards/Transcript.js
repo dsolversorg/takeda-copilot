@@ -6,14 +6,14 @@ import ContentCardSwitch from '../ContentCardSwitch';
 import { primaryAccent } from '../../globalStyle';
 
 function Transcript({ className, transcript }) {
-  // role até o final da transcrição sempre que ela for atualizada
+  // scroll to bottom of transcript whenever it updates
   let scrollRef;
   const [isMounting, setIsMounting] = useState(true);
   useEffect(() => {
     setIsMounting(false);
     return () => setIsMounting(true);
   });
-  // o valor do estado é arbitrário, só precisamos alterá-lo para acionar o gancho de efeito
+  // state value is arbitrary, we just need it to change to trigger the effect hook
   const [triggerScrollIntoView, setTriggerScroll] = useState(false);
   useEffect(() => {
     scrollRef.scrollIntoView({ behavior: isMounting ? 'auto' : 'smooth' });
@@ -23,7 +23,7 @@ function Transcript({ className, transcript }) {
   const transcriptDisplay = transcript.map(({
     source, text, card, timestamp,
   }, index) => {
-    // não queremos embrulhar os cartões em uma bolha, retorne como estão com uma chave adicionada
+    // we don't want to wrap cards in a bubble, return as is w/ a key added
     if (card) {
       return (
         <ContentCardSwitch
@@ -41,7 +41,7 @@ function Transcript({ className, transcript }) {
         <div className={`transcript-entry ${source === 'user' ? 'transcript-entry-user' : 'transcript-entry-persona'}`}>
           <div>
             <small>
-              {source === 'user' ? 'Você' : 'Katia'}
+              {source === 'user' ? 'You' : 'Digital Person A'}
             </small>
           </div>
           <div className="transcript-entry-content">
@@ -59,11 +59,11 @@ function Transcript({ className, transcript }) {
           ? transcriptDisplay
           : (
             <li className="list-group-item">
-              Não há itens para mostrar, diga alguma coisa!
+              No items to show, say something!
             </li>
           )}
-        {/* altura adicionada porque o safari não exibe elementos de altura zero,
-        então o comportamento de rolagem não funciona */}
+        {/* height added because safari doesn't display zero height elems,
+        so the scroll behavior doesn't work */}
         <div ref={(el) => { scrollRef = el; }} style={{ clear: 'both', height: '1px' }} />
       </div>
     </div>
@@ -81,14 +81,12 @@ Transcript.propTypes = {
 
 const StyledTranscript = styled(Transcript)`
   width: 100%;
-  height: 1152px;
 
   .transcript-list-group {
     flex-shrink: 1;
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
-    overflow-x: hiden;
     scrollbar-width: none;
 
     &::-webkit-scrollbar {
@@ -101,14 +99,12 @@ const StyledTranscript = styled(Transcript)`
     small {
       display: block;
       color: #B2B2B2;
-      padding-bottom: 2rem;
-      width: auto;
-      height: auto;
+      padding-bottom: 0.2rem;
     }
   }
 
   .transcript-entry-content {
-    padding: 40px 30px;
+    padding: 24px 20px;
   }
 
   .transcript-entry-persona {
@@ -118,8 +114,6 @@ const StyledTranscript = styled(Transcript)`
       border-top-right-radius: 1.1rem;
       border-top-left-radius: 1.1rem;
       border-bottom-right-radius: 1.1rem;
-      width: auto;
-      height: auto;
 
       background: ${primaryAccent};
       color: #FFF;
@@ -135,11 +129,8 @@ const StyledTranscript = styled(Transcript)`
       border-top-right-radius: 1.1rem;
       border-top-left-radius: 1.1rem;
       border-bottom-left-radius: 1.1rem;
-      width: auto;
-      height: auto;
 
-      background: #00385b;
-      color: #FFF;
+      background: #FFF;
       border: 1px solid rgba(0,0,0,0.3);
     }
   }

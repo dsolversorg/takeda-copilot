@@ -106,8 +106,7 @@ const StyledCaptions = styled(Captions)`
     display: flex;
     align-items: center;
 
-    margin-top: 10px;
-    width: auto;
+    min-height: 35px;
     transition: height 0.3s;
   }
 `;

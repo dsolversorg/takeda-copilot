@@ -229,7 +229,7 @@ export default styled(FeedbackModal)`
     text-overflow: ellipsis;
 
     &.rating-tag-selected {
-      background: #ff0000;
+      background: #212529;
       color: #fff;
       &:hover {
         background: #0e1012;
@@ -237,7 +237,7 @@ export default styled(FeedbackModal)`
       }
     }
     &:hover {
-      background: #ff0000;
+      background: #dcdcdc;
     }
   }
 
@@ -263,11 +263,11 @@ export default styled(FeedbackModal)`
     align-items: center;
     justify-content: center;
 
-    background-color: #ff0000;
+    background-color: #eaeaea;
   }
   .tutorial-icon-dp {
     background-image: url(${landingBackgroundImage});
     background-size: cover;
-    background-position: button top;
+    background-position: bottom center;
   }
 `;

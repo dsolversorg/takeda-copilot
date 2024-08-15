@@ -25,9 +25,9 @@ const initialState = {
       micDenied: false,
     }
     : {
-      mic: false,
+      mic: true,
       micDenied: false,
-      camera: false,
+      camera: true,
       cameraDenied: false,
     },
   tosAccepted: false,
@@ -71,7 +71,7 @@ const initialState = {
     conversation: {
       turn: '',
       context: {
-        FacePresent: 1,
+        FacePresent: 0,
         PersonaTurn_IsAttentive: 0,
         PersonaTurn_IsTalking: null,
         Persona_Turn_Confusion: null,
@@ -163,7 +163,7 @@ export const createScene = createAsyncThunk('sm/createScene', async (_, thunk) =
   if (scene !== null) {
     return console.error('warning! you attempted to create a new scene, when one already exists!');
   }
-  // request permissions from user and create instance of Scene and ask for
+  // request permissions from user and create instance of Scene and ask for webcam/mic permissions
   const { requestedMediaPerms } = thunk.getState().sm;
   const { mic, camera } = requestedMediaPerms;
 
@@ -219,23 +219,14 @@ export const createScene = createAsyncThunk('sm/createScene', async (_, thunk) =
   let cameraDenied = false;
   let micDenied = false;
   try {
-    await navigator.mediaDevices.getUserMedia({ audio: false, video: false });
-  } catch {
-    cameraDenied = false;
-    micDenied = false;
-  }
-
-  try {
     await navigator.mediaDevices.getUserMedia({ audio: false, video: true });
   } catch {
     cameraDenied = true;
-    micDenied = false;
   }
   try {
     await navigator.mediaDevices.getUserMedia({ audio: true, video: false });
   } catch {
     micDenied = true;
-    cameraDenied = false;
   }
 
   thunk.dispatch(actions.setRequestedMediaPerms({
@@ -332,7 +323,7 @@ export const createScene = createAsyncThunk('sm/createScene', async (_, thunk) =
                 console.log('camera');
                 if (featureState === 'on') thunk.dispatch(actions.setCameraOn({ cameraOn: true }));
                 else if (featureState === 'off') thunk.dispatch(actions.setCameraOn({ cameraOn: false }));
-                else console.error(`state ${featureState} not supported by @feature(camera)!`);
+                else console.error(`state ${featureState} not supported by @feature(microphone)!`);
                 break;
               }
               case ('microphone'): {
@@ -351,8 +342,8 @@ export const createScene = createAsyncThunk('sm/createScene', async (_, thunk) =
               }
               case ('audio'): {
                 console.log('audio');
-                if (featureState === 'on') thunk.dispatch(actions.setOutputMute({ isOutputMuted: true }));
-                else if (featureState === 'off') thunk.dispatch(actions.setOutputMute({ isOutputMuted: false }));
+                if (featureState === 'on') thunk.dispatch(actions.setOutputMute({ isOutputMuted: false }));
+                else if (featureState === 'off') thunk.dispatch(actions.setOutputMute({ isOutputMuted: true }));
                 else console.error(`state ${featureState} not supported by @feature(audio)!`);
                 break;
               }
@@ -658,11 +649,11 @@ const smSlice = createSlice({
       activeCards: payload.activeCards || [],
     }),
     stopSpeaking: () => {
-      if (!persona) console.error('persona não iniciada!');
+      if (!persona) console.error('persona not initiated!');
       else persona.stopSpeaking();
     },
     setMicOn: (state, { payload }) => {
-      if (!scene) return console.error('cena não iniciada!');
+      if (!scene) return console.error('scene not initiated!');
       const { micOn } = payload;
       scene.setMediaDeviceActive({
         microphone: micOn,
@@ -670,7 +661,7 @@ const smSlice = createSlice({
       return ({ ...state, micOn });
     },
     setCameraOn: (state, { payload }) => {
-      if (!scene) return console.error('cena não iniciada!');
+      if (!scene) return console.error('scene not initiated!');
       const { cameraOn } = payload;
       scene.setMediaDeviceActive({
         camera: cameraOn,
@@ -678,13 +669,13 @@ const smSlice = createSlice({
       return ({ ...state, cameraOn });
     },
     setMediaDevices: (state, { payload }) => {
-      if (!scene) return console.error('cena não iniciada!');
+      if (!scene) return console.error('scene not initiated!');
       const {
         cameraOn, micOn,
       } = payload;
       scene.setMediaDeviceActive({
         camera: cameraOn,
-        mic: micOn,
+        mic: cameraOn,
       });
       return ({ ...state, cameraOn, micOn });
     },
@@ -723,7 +714,7 @@ const smSlice = createSlice({
           ] = payload.text;
         }
         return out;
-      } return console.warn('addConversationResult: ignorando string vazia');
+      } return console.warn('addConversationResult: ignoring empty string');
     },
     setSpeechState: (state, { payload }) => ({
       ...state,
@@ -767,25 +758,28 @@ const smSlice = createSlice({
       scene = null;
       persona = null;
       const { error } = state;
+      // pull last timestamp from transcript
       const { transcript, startedAt } = state;
+      // on disconnect the persona will add additional entries to the transcript.
+      // grab the time of the last user message.
       const lastUserMessage = transcript.filter((item) => item.source === 'user');
       const lastTranscriptItem = lastUserMessage[lastUserMessage.length - 1];
       const timestamp = lastTranscriptItem?.timestamp || new Date(startedAt);
       const timeDiff = new Date(Date.now()) - Date.parse(timestamp);
-      const presumeTimeout = timeDiff > 60000; // 5 minutos em milissegundos
-      console.log('timeDiff:', timeDiff); // Isso irá mostrar o valor no console do navegador
+      // if over 4 minutes old (min timeout thresh. is 5), presume the user timed out
+      const presumeTimeout = timeDiff > 240000;
       return {
+        // completely reset SM state on disconnect, except for errors
         ...initialState,
         disconnected: true,
         error,
         presumeTimeout,
-        startedAt: Date.now(),
-        timeDiff, // Adicionando timeDiff ao estado
+        startedAt,
       };
     },
     keepAlive: () => {
       if (scene) scene.keepAlive();
-      else console.error('não é possível chamar keepAlive, a cena não foi iniciada!');
+      else console.error('can\'t call keepAlive, scene is not initiated!');
     },
     sendEvent: (state, { payload }) => {
       const { eventName, payload: eventPayload, kind } = payload;
@@ -817,7 +811,7 @@ const smSlice = createSlice({
       try {
         scene.disconnect();
       } catch {
-        console.error('nenhuma cena para desconectar! continuando...');
+        console.error('no scene to disconnect! continuing...');
       }
       // if we call this immediately the disconnect call might not complete
       setTimeout(() => {

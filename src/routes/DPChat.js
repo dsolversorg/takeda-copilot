@@ -137,7 +137,7 @@ function DPChat({
           </div>
           <div className="justify-content-between align-items-center contWid">
             <div className="d-flex justify-content-center aling-itens-center">
-              <div className={`contControl ${connected && !loading && pathname === '/takeda-copilot' ? '' : 'd-none'}`}>
+              <div className={`contControl ${connected && !loading && pathname === '/video' ? '' : 'd-none'}`}>
                 <Controls />
               </div>
             </div>
@@ -303,11 +303,9 @@ export default styled(DPChat)`
   .icon{
     background-color: #09c8c8;
     border-radius: 40px;
+    padding: 1rem;
     height: 70px;
     width: 70px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     &:hover{
       background-color: #05a0a0;
     }
@@ -325,16 +323,6 @@ export default styled(DPChat)`
     @media (max-width: 500px){
       width: 20px !important;
       height: 20px !important;
-    }
-  }
-
-  .col-md-5{
-    position: relative;
-    top: 134px;
-  
-    @media (max-width: 500px){
-      position: relative;
-      top: 0;
     }
   }
 `;
