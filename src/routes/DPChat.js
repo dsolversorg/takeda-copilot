@@ -325,4 +325,14 @@ export default styled(DPChat)`
       height: 20px !important;
     }
   }
+
+  .col-md-5{
+    position: relative;
+    top: 134px;
+  
+    @media (max-width: 500px){
+      position: relative;
+      top: 0;
+    }
+  }  
 `;
