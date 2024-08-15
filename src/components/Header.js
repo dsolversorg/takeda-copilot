@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
 import {
   Escape,
@@ -32,7 +32,25 @@ function Header({
     }
   };
 
-  const history = useHistory();
+  // Certifique-se de que `currentSessionId` esteja definido corretamente.
+  const currentSessionId = '';
+
+  const handleExternalNavigate = () => {
+    fetch('/api/encerrar-sessao', {
+      method: 'POST',
+      body: JSON.stringify({ sessionId: currentSessionId }), // Adicione uma vírgula aqui
+    })
+    .then((response) => { // Adicione parênteses ao redor do argumento `response`
+      if (response.ok) {
+        // Redireciona após a sessão ser encerrada
+        fetch('https://pessoadigital.digitalsolvers.com/takeda-copilot', { cache: 'no-store' })
+        .then(() => {
+            window.location.href = 'https://pessoadigital.digitalsolvers.com/takeda-copilot';
+          }
+        )
+      };
+    });
+  };
 
   const [showContextMenu, setShowContextMenu] = useState(false);
   const iconSize = 24;
@@ -94,7 +112,7 @@ function Header({
                           <button
                             className="btn-unstyled"
                             type="button"
-                            onClick={() => { history.push('/'); }}
+                            onClick={handleExternalNavigate}
                           >
                             <Escape size={20} />
                             {' '}
