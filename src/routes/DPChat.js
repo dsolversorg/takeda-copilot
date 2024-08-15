@@ -328,7 +328,7 @@ export default styled(DPChat)`
 
   .col-md-5{
     position: relative;
-    top: 134px;
+    top: 200px;
   
     @media (max-width: 500px){
       position: relative;

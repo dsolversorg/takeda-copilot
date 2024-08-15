@@ -7,12 +7,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import breakpoints from '../utils/breakpoints';
 import Header from '../components/Header';
 import { landingBackgroundImage, landingBackgroundColor } from '../config';
-import { setRequestedMediaPerms, createScene } from '../store/sm';
+import { createScene } from '../store/sm';
 import micFill from '../img/mic-fill.svg';
 import videoFill from '../img/camera-video-fill.svg';
 
 function Landing({ className }) {
-  const { mic, camera } = useSelector(({ sm }) => sm.requestedMediaPerms);
   const dispatch = useDispatch();
 
   const {
@@ -54,7 +53,7 @@ function Landing({ className }) {
                     Segue abaixo algumas frases de navegação:
                   </h2>
                   <h2 className="fw-bol">
-                    <b> Menu Iniciar</b>
+                    <b> Menu</b>
                     ,
                   </h2>
                   <h2 className="fw-bol">
@@ -76,50 +75,6 @@ function Landing({ className }) {
                   </h4>
                 </div>
               </div>
-              <div className="row" style={{ marginBottom: '36px' }}>
-                <div>
-                  <div className="form-check form-switch">
-                    <label
-                      className="form-check-label d-flex align-items-center"
-                      htmlFor="micPermSwitch"
-                    >
-                      <input
-                        className={`shadow form-check-input mic-switch switch ${mic ? 'status-checked' : 'status-unchecked'}`}
-                        type="checkbox"
-                        role="switch"
-                        id="micPermSwitch"
-                        onChange={() => dispatch(setRequestedMediaPerms({ mic: !mic }))}
-                        checked={mic}
-                      />
-                      <div className="d-block ms-2">
-                        Use seu microfone para que eu possa te ouvir.
-                      </div>
-                    </label>
-                  </div>
-                </div>
-              </div>
-              <div className="row" style={{ marginBottom: '52px' }}>
-                <div>
-                  <div className="form-check form-switch">
-                    <label
-                      className="form-check-label d-flex align-items-center"
-                      htmlFor="cameraPermSwitch"
-                    >
-                      <input
-                        className={`shadow form-check-input video-switch switch ${camera ? 'status-checked' : 'status-unchecked'}`}
-                        type="checkbox"
-                        role="switch"
-                        id="micPermSwitch"
-                        onChange={() => dispatch(setRequestedMediaPerms({ camera: !camera }))}
-                        checked={camera}
-                      />
-                      <div className="d-block ms-2">
-                        Deixe sua câmera ligada, pois reajo as suas expressões.
-                      </div>
-                    </label>
-                  </div>
-                </div>
-              </div>
               <div className="row" style={{ marginBottom: '60px' }}>
                 {!connected && (
                   <div
@@ -127,7 +82,7 @@ function Landing({ className }) {
                     type="button"
                   >
                     <span>
-                      Aguarde...
+                      Aguarde... 
                     </span>
                     <img alt="gif loading" src="https://media.tenor.com/t5DMW5PI8mgAAAAj/loading-green-loading.gif" className="gif-loading" />
                   </div>
