@@ -49,7 +49,7 @@ function Landing({ className }) {
               <div className="row" style={{ marginBottom: '9px' }}>
                 <div>
                   <h1 className="fw-bol">Sou a Katia uma Pessoa Digital Hiper-realista, criada pela Takeda, com o propósito de esclarecer dúvidas sobre a vacina da Dengue Qdenga.</h1>
-                  <h2 className="fw-bol">
+                  {/* <h2 className="fw-bol">
                     Segue abaixo algumas frases de navegação:
                   </h2>
                   <h2 className="fw-bol">
@@ -62,7 +62,7 @@ function Landing({ className }) {
                   </h2>
                   <h2 className="fw-bol">
                     <b> Encerrar</b>
-                  </h2>
+                  </h2> */}
                 </div>
               </div>
               <div className="row">
