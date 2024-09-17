@@ -48,7 +48,7 @@ function Landing({ className }) {
             <div className="col-12 col-lg-6">
               <div className="row" style={{ marginBottom: '9px' }}>
                 <div>
-                  <h1 className="fw-bol">Sou a Katia uma Pessoa Digital Hiper-realista, criada pela Takeda, com o propósito de esclarecer dúvidas sobre a vacina da Dengue Qdenga.</h1>
+                  <h1 className="fw-bol">Sou a Joana uma Pessoa Digital Hiper-realista, criada pela Takeda, com o propósito de esclarecer dúvidas sobre a vacina da Dengue Qdenga.</h1>
                   {/* <h2 className="fw-bol">
                     Segue abaixo algumas frases de navegação:
                   </h2>
@@ -95,7 +95,7 @@ function Landing({ className }) {
                     disabled={!connected}
                     onClick={redirectToVideoOnConnect}
                   >
-                    Conversar com a Katia
+                    Conversar com a Joana
                   </button>
                 )}
               </div>
