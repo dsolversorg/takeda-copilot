@@ -41,7 +41,7 @@ function Transcript({ className, transcript }) {
         <div className={`transcript-entry ${source === 'user' ? 'transcript-entry-user' : 'transcript-entry-persona'}`}>
           <div>
             <small>
-              {source === 'user' ? 'You' : 'Joana'}
+              {source === 'user' ? 'Você' : 'Joana'}
             </small>
           </div>
           <div className="transcript-entry-content">
