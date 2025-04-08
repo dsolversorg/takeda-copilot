@@ -200,7 +200,7 @@ function Controls({
                   data-tip="Falar com Representante"
                   onClick={PhoneForm}
                 >
-                  <PhoneFill size={MenuiconSize} className="size" color={seconderyAccent} style={{ border: highlightMute ? 'red 2px solid' : '' }} />                    
+                  <PhoneFill size={MenuiconSize} className="size" color={seconderyAccent} style={{ border: highlightMute ? 'red 2px solid' : '' }} />
                 </button>
               </div>              
             </>
