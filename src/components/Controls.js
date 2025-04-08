@@ -23,6 +23,7 @@ import micFill from '../img/mic-fill.svg';
 import breakpoints from '../utils/breakpoints';
 import { seconderyAccent } from '../globalStyle';
 import FeedbackModal from './FeedbackModal';
+import PhoneForm from './Call';
 
 const volumeMeterHeight = 24;
 const volumeMeterMultiplier = 1.2;
@@ -188,6 +189,18 @@ function Controls({
                   </button>
                 )}
               </div>
+
+              <div>
+                {/* PhoneForm */}
+                  <button
+                    type="button"
+                    className="control-icon iconMute"
+                    aria-label="Falar com Representante"
+                    data-tip="Falar com Representante"
+                    onClick={PhoneForm}
+                  >
+                  </button>
+              </div>              
             </>
           )}
       </div>
