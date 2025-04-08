@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 import {
   ChatSquareTextFill,
   X,
-} from 'react-bootstrap-icons';
+  TelephoneFill,
+} from 'react-bootstrap-icons'; // Adicione TelephoneFill aqui
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
 import PersonaVideo from '../components/PersonaVideo';
@@ -21,6 +22,7 @@ import TextInput from '../components/TextInput';
 import STTFeedback from '../components/STTFeedback';
 import Controls from '../components/Controls';
 import { seconderyAccent } from '../globalStyle';
+import PhoneForm from '../components/PhoneForm'; // Importação do novo componente
 
 function DPChat({
   className,
@@ -35,18 +37,13 @@ function DPChat({
     highlightChat,
   } = useSelector(({ sm }) => ({ ...sm }));
   const { pathname } = useLocation();
-
   const dispatch = useDispatch();
-
   const history = useHistory();
-
   const MenuiconSize = 35;
-
   const toggleKeyboardInput = () => {
     dispatch(setShowTranscript(!showTranscript));
     dispatch(setMicOn({ micOn: showTranscript }));
   };
-
   if (disconnected === true) {
     if (disconnectPage) {
       history.push(disconnectRoute);
@@ -54,7 +51,6 @@ function DPChat({
   } else if (error !== null) history.push('/loading?error=true');
   // usually this will be triggered when the user refreshes
   else if (connected !== true) history.push('/');
-
   const handleResize = () => {
     if (connected) {
       dispatch(setVideoDimensions({
@@ -63,7 +59,6 @@ function DPChat({
       }));
     }
   };
-
   const [startedAt] = useState(Date.now());
   const cleanup = () => {
     if (Date.now() - startedAt < 1000) {
@@ -74,7 +69,6 @@ function DPChat({
       if (connected === true && loading === false) dispatch(disconnect());
     }
   };
-
   useEffect(() => {
     // run resize once on mount, then add listener for future resize events
     handleResize();
@@ -82,12 +76,10 @@ function DPChat({
     // run cleanup on unmount
     return () => cleanup();
   }, []);
-
   window.onbeforeunload = () => {
     console.log('cleaning up');
     cleanup();
   };
-
   // content card display is dependent on remaining space between header and footer
   // there might be a better way to do this w/ flexbox
   const ccDisplaRef = createRef();
@@ -95,7 +87,6 @@ function DPChat({
   useEffect(() => {
     setCCDisplayHeight(ccDisplaRef.current.clientHeight);
   }, [ccDisplaRef]);
-
   return (
     <div className={className}>
       <div className="video-overlay">
@@ -108,7 +99,7 @@ function DPChat({
           className="contChat row d-flex justify-content-end align-items-center flex-grow-1 ps-3 pe-3"
           ref={ccDisplaRef}
         >
-          <div className="col col-md-5 d-flex align-items-end align-items-md-center" style={{ height: `${ccDisplayHeight}px` || 'auto' }}>
+          <div className="col col-md-5 d-flex align-items-end align-items-md-center" style={{ height: `${ccDisplayHeight}px` 'auto' }}>
             <div className="chat">
               <ContentCardDisplay />
             </div>
@@ -173,8 +164,8 @@ function DPChat({
                     <X size={MenuiconSize} className="size" color={seconderyAccent} style={{ border: highlightChat ? 'red 2px solid' : '' }} />
                   </button>
                 )}
-
               </div>
+              <PhoneForm /> {/* Adicione o componente PhoneForm aqui */}
             </div>
           </div>
         </div>
@@ -192,7 +183,7 @@ const getBottomValue = () => {
   if (/Android/i.test(navigator.userAgent)) {
     return '30px';
   }
-  if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+  if (/iPhone\niPad\niPod/i.test(navigator.userAgent)) {
     return '80px';
   }
   return '25px';
@@ -201,11 +192,9 @@ const getBottomValue = () => {
 export default styled(DPChat)`
   .fw-bol { font-size: 24px!important;}
   height: 100vh;
-
   .endCont .row>* {
     width: 0;
   }
-
   .video-overlay {
     overflow: hidden;
     position: fixed;
@@ -218,37 +207,31 @@ export default styled(DPChat)`
     display: flex;
     flex-direction: column;
   }
-
   .endCont{
     width: 90px;
     display: flex;
     justify-content: center;
   }
-
   .vertical-fit-container {
     flex: 0 1 auto;
     overflow-y: scroll;
-
     scrollbar-width: none; /* Firefox 64 */
     &::-webkit-scrollbar {
       display: none;
     }
   }
-
   .legend{
     @media (max-width: 500px){
       align-items: center;
       word-break: break-word;
     }
   }
-
   .contChat{
     overflow-y: scroll;
     @media (max-width: 500px){
       word-break: break-word;
     }
   }
-
   .fw-bol {
     font-size: 32px;
   }
@@ -257,11 +240,9 @@ export default styled(DPChat)`
     overflow-y: hiden;
     --bs-gutter-y: 0.2rem;
   }
-
   .contControl{
     width: 100%;
   }
-
   .contBottom{
     display: flex;
     justify-content: center;
@@ -277,14 +258,11 @@ export default styled(DPChat)`
     margin-bottom: 20px;
     margin-top: 20px;
   }
-
   .control-icon {
     border: none;
     background: none;
-
     padding: .4rem;
   }
-
   .iconMute{
     background-color: #f2695c;
     border-radius: 40px;
@@ -299,7 +277,7 @@ export default styled(DPChat)`
       width: 60px;
     }
   }
-    
+  
   .icon{
     background-color: #09c8c8;
     border-radius: 40px;
@@ -314,25 +292,22 @@ export default styled(DPChat)`
       width: 60px;
     }
   }
-
   .chat{
     width: 100%;
   }
-
   .size{
     @media (max-width: 500px){
       width: 20px !important;
       height: 20px !important;
     }
   }
-
   .col-md-5{
     position: relative;
     top: 200px;
-  
+    
     @media (max-width: 500px){
       position: relative;
       top: 0;
     }
-  }  
+  } 
 `;
