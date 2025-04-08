@@ -32,7 +32,7 @@ function PhoneForm({ className }) {
             <input
               type="text"
               id="name"
-              name="Nome"
+              name="name"
               value={formData.name}
               onChange={handleInputChange}
             />
@@ -42,7 +42,7 @@ function PhoneForm({ className }) {
             <input
               type="text"
               id="company"
-              name="Empresa"
+              name="company"
               value={formData.company}
               onChange={handleInputChange}
             />
@@ -52,7 +52,7 @@ function PhoneForm({ className }) {
             <input
               type="text"
               id="phone"
-              name="Celular"
+              name="phone"
               value={formData.phone}
               onChange={handleInputChange}
             />
