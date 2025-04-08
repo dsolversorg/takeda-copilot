@@ -10,6 +10,7 @@ import {
   SkipEndFill,
   VolumeMuteFill,
   VolumeUpFill,
+  PhoneFill,
 } from 'react-bootstrap-icons';
 import ReactTooltip from 'react-tooltip';
 import {
@@ -192,14 +193,15 @@ function Controls({
 
               <div>
                 {/* PhoneForm */}
-                  <button
-                    type="button"
-                    className="control-icon iconMute"
-                    aria-label="Falar com Representante"
-                    data-tip="Falar com Representante"
-                    onClick={PhoneForm}
-                  >
-                  </button>
+                <button
+                  type="button"
+                  className="control-icon iconMute"
+                  aria-label="Falar com Representante"
+                  data-tip="Falar com Representante"
+                  onClick={PhoneForm}
+                >
+                  <PhoneFill size={MenuiconSize} className="size" color={seconderyAccent} style={{ border: highlightMute ? 'red 2px solid' : '' }} />                    
+                </button>
               </div>              
             </>
           )}
