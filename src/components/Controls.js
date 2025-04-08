@@ -202,7 +202,7 @@ function Controls({
                 >
                   <PhoneFill size={MenuiconSize} className="size" color={seconderyAccent} style={{ border: highlightMute ? 'red 2px solid' : '' }} />
                 </button>
-              </div>              
+              </div>
             </>
           )}
       </div>
