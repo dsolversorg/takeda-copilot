@@ -364,6 +364,6 @@ export default styled(DPChat)`
     flex-direction: row;
     align-items: center;
     width: ${setShowTranscript ? '50%' : '100%'};
-    background: azure;
+    background: ${setShowTranscript ? none : azure};
   }
 `;
