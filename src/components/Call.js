@@ -5,7 +5,7 @@ import { Send } from 'react-bootstrap-icons';
 import { useDispatch } from 'react-redux';
 // import { sendTextMessage } from '../store/sm';
 
-function TextInput({ className }) {
+function PhoneForm({ className }) {
   const [name, setName] = useState('');
   const [company, setCompany] = useState('');
   const [phone, setPhone] = useState('');
@@ -69,11 +69,11 @@ function TextInput({ className }) {
   );
 }
 
-TextInput.propTypes = {
+PhoneForm.propTypes = {
   className: PropTypes.string.isRequired,
 };
 
-export default styled(TextInput)`
+export default styled(PhoneForm)`
   .form-control {
     margin-bottom: 10px;
   }
