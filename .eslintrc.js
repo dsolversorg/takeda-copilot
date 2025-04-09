@@ -18,6 +18,7 @@ module.exports = {
   plugins: [
     'react',
     '@typescript-eslint',
+    'jsx-a11y',
   ],
   rules: {
     'react/jsx-filename-extension': 0,
