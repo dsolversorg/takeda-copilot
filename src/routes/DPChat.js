@@ -144,8 +144,7 @@ function DPChat({
                 <Controls />
               </div>
             </div>
-            <div>
-            </div>
+            <div />
             <div className="endCont">
               <div className="d-flex button-container">
                 {!showTranscript ? (
@@ -313,7 +312,7 @@ export default styled(DPChat)`
     height: 70px;
     width: 70px;
     &:hover{
-      background-color: #05a0a0;
+      background-color: #388e3c;
     }
     @media (max-width: 500px){
       height: 60px;
