@@ -365,7 +365,11 @@ export default styled(DPChat)`
     margin-right: 10px;
   }
   .phone-form {
+    disply: flex;
     flex: 1;
     margin-right: 10px;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
   }
 `;
