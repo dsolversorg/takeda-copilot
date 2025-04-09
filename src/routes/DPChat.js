@@ -117,12 +117,16 @@ function DPChat({
             </div>
           </div>
         </div>
-        <div>
+        <div className="form-container">
           {showTranscript ? (
-            <TextInput />
+            <div className="transcript-form">
+              <TextInput />
+            </div>
           ) : null}
           {showPhoneForm ? (
-            <PhoneForm />
+            <div className="phone-form">
+              <PhoneForm />
+            </div>
           ) : null}
         </div>
         <div className="contBottom">
@@ -312,7 +316,7 @@ export default styled(DPChat)`
     height: 70px;
     width: 70px;
     &:hover{
-      background-color: #bc493e;
+      background-color: #05a0a0;
     }
     @media (max-width: 500px){
       height: 60px;
@@ -350,5 +354,18 @@ export default styled(DPChat)`
       position: relative;
       top: 0;
     }
-  } 
+  }
+  .form-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .transcript-form {
+    flex: 1;
+    margin-right: 10px;
+  }
+  .phone-form {
+    flex: 1;
+    margin-left: 10px;
+  }
 `;
