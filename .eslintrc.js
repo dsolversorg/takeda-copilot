@@ -6,6 +6,7 @@ module.exports = {
   extends: [
     'plugin:react/recommended',
     'airbnb',
+    'plugin:jsx-a11y/recommended',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -24,8 +25,10 @@ module.exports = {
     'react/jsx-filename-extension': 0,
     'no-console': 0,
     'default-param-last': 0,
-    "jsx-a11y/label-has-for": "off",
-    "label-has-associated-control": "warn",
+    'jsx-a11y/label-has-for': 'off',
+    'jsx-a11y/label-has-associated-control': ['warn', {
+      'assert': 'either',
+    }],
     'linebreak-style': ['error', process.platform === 'win32' ? 'windows' : 'unix'],
   },
 };
