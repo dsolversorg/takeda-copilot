@@ -21,7 +21,7 @@ import {
 import TextInput from '../components/TextInput';
 import STTFeedback from '../components/STTFeedback';
 import Controls from '../components/Controls';
-import PhoneForm from './Call';
+import PhoneForm from '../components/Call';
 import { seconderyAccent } from '../globalStyle';
 
 function DPChat({
