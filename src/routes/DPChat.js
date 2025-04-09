@@ -40,7 +40,7 @@ function DPChat({
   const dispatch = useDispatch();
   const history = useHistory();
   const MenuiconSize = 35;
-  const [showPhoneForm, setShowPhoneForm] = useState(false); 
+  const [showPhoneForm, setShowPhoneForm] = useState(false);
 
   const toggleKeyboardInput = () => {
     dispatch(setShowTranscript(!showTranscript));
