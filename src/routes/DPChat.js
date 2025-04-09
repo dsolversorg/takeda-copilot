@@ -124,7 +124,7 @@ function DPChat({
             </div>
           ) : null}
           {showPhoneForm ? (
-            <div className="phone-form">
+            <div className="phone-form formCont">
               <PhoneForm />
             </div>
           ) : null}
@@ -365,11 +365,14 @@ export default styled(DPChat)`
     margin-right: 10px;
   }
   .phone-form {
-    disply: flex;
     flex: 1;
     margin-right: 10px;
+  }
+  .formCont {
+    display: flex;
     flex-direction: row;
     align-items: center;
     width: 100%;
+    background: azure;
   }
 `;
