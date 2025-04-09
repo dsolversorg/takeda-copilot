@@ -27,9 +27,8 @@ function TextInput({ className }) {
     <div className={className}>
       <form onSubmit={handleSubmit} className="formCont">
         <div className="input-group">
-          <label htmlFor="name">Nome</label>
+          <label>Nome</label>
           <input
-            id="name"
             value={name}
             onChange={handleNameInput}
             className="form-control"
@@ -37,9 +36,8 @@ function TextInput({ className }) {
           />
         </div>
         <div className="input-group">
-          <label htmlFor="company">Empresa</label>
+          <label>Empresa</label>
           <input
-            id="company"
             value={company}
             onChange={handleCompanyInput}
             className="form-control"
@@ -47,9 +45,8 @@ function TextInput({ className }) {
           />
         </div>
         <div className="input-group">
-          <label htmlFor="phone">Celular</label>
+          <label>Celular</label>
           <input
-            id="phone"
             value={phone}
             onChange={handlePhoneInput}
             className="form-control"
