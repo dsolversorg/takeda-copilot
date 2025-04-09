@@ -10,7 +10,6 @@ import {
   SkipEndFill,
   VolumeMuteFill,
   VolumeUpFill,
-  PhoneFill,
 } from 'react-bootstrap-icons';
 import ReactTooltip from 'react-tooltip';
 import {
@@ -24,7 +23,6 @@ import micFill from '../img/mic-fill.svg';
 import breakpoints from '../utils/breakpoints';
 import { seconderyAccent } from '../globalStyle';
 import FeedbackModal from './FeedbackModal';
-import PhoneForm from './Call';
 
 const volumeMeterHeight = 24;
 const volumeMeterMultiplier = 1.2;
@@ -145,32 +143,6 @@ function Controls({
                     onClick={() => dispatch(setCameraOn({ cameraOn: !cameraOn }))}
                   >
                     <CameraVideoOffFill size={MenuiconSize} className="size" color={seconderyAccent} style={{ border: highlightCamera ? 'red 2px solid' : '' }} />
-
-                  </button>
-                )}
-              </div>
-
-              <div>
-                {/* PhoneForm  */}
-                {cameraOn ? (
-                  <button
-                    type="button"
-                    className="control-icon icon"
-                    aria-label="Falar com Representante"
-                    data-tip="Falar com Representante"
-                    onClick={PhoneForm}
-                  >
-                    <PhoneFill size={MenuiconSize} color={seconderyAccent} style={{ border: highlightCamera ? 'red 2px solid' : '' }} className="size" />
-                  </button>
-                ) : (
-                  <button
-                    type="button"
-                    className="control-icon iconMute"
-                    aria-label="Falar com Representante"
-                    data-tip="Falar com Representante"
-                    onClick={PhoneForm}
-                  >
-                    <PhoneFill size={MenuiconSize} className="size" color={seconderyAccent} style={{ border: highlightCamera ? 'red 2px solid' : '' }} />
 
                   </button>
                 )}

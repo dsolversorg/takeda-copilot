@@ -176,6 +176,39 @@ function DPChat({
 
               </div>
             </div>
+
+            <div className="endCont">
+              {/* aling end */}
+              <div>
+                {/* mostrar transcrição */}
+                {!showTranscript ? (
+                  <button
+                    type="button"
+                    className="control-icon icon"
+                    aria-label="Alternar Transcrição"
+                    data-tip="Alternar Transcrição"
+                    onClick={toggleKeyboardInput}
+                  >
+                    <ChatSquareTextFill
+                      size={MenuiconSize}
+                      color={seconderyAccent}
+                      className="size"
+                    />
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    className="control-icon iconMute"
+                    aria-label="Alternar Transcrição"
+                    data-tip="Alternar Transcrição"
+                    onClick={toggleKeyboardInput}
+                  >
+                    <X size={MenuiconSize} className="size" color={seconderyAccent} style={{ border: highlightChat ? 'red 2px solid' : '' }} />
+                  </button>
+                )}
+
+              </div>
+            </div>
           </div>
         </div>
       </div>
