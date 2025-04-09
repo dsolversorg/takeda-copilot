@@ -119,14 +119,10 @@ function DPChat({
         </div>
         <div>
           {showTranscript ? (
-            <div>
-              <TextInput />
-            </div>
+            <TextInput />
           ) : null}
           {showPhoneForm ? (
-            <div>
-              <PhoneForm />
-            </div>
+            <PhoneForm />
           ) : null}
         </div>
         <div className="contBottom">
@@ -177,7 +173,8 @@ function DPChat({
                     <X size={MenuiconSize} className="size" color={seconderyAccent} style={{ border: highlightChat ? 'red 2px solid' : '' }} />
                   </button>
                 )}
-                <div style={{ width: '10px' }} /> {/* Espaçamento entre os botões */}
+                {/* Espaçamento entre os botões */}
+                <div style={{ width: '10px' }} />
                 <button
                   type="button"
                   className="control-icon iconPhone"
