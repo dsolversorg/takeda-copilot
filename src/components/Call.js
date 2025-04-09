@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Send } from 'react-bootstrap-icons';
 import { useDispatch } from 'react-redux';
-// import { sendTextMessage } from '../store/sm';
+import axios from 'axios'; // Import axios for making HTTP requests
 
 function PhoneForm({ className }) {
   const [name, setName] = useState('');
@@ -15,9 +15,27 @@ function PhoneForm({ className }) {
   const handlePhoneInput = (e) => setPhone(e.target.value);
 
   const dispatch = useDispatch();
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch({ name, company, phone });
+
+    // Make the POST request to Twilio API
+    try {
+      const response = await axios.post(`https://api.twilio.com/2010-04-01/Accounts/${process.env.TWILIO_ACCOUNT_SID}/Calls.json`, {
+        Url: `https://handler.twilio.com/twiml/${process.env.TWIMLBIN_ACCOUNT_SID}`,
+        To: '+15558675310',
+        From: phone,
+      }, {
+        auth: {
+          username: process.env.TWILIO_ACCOUNT_SID,
+          password: process.env.TWILIO_AUTH_TOKEN,
+        },
+      });
+      console.log('Call initiated:', response.data);
+    } catch (error) {
+      console.error('Error initiating call:', error);
+    }
+
     setName('');
     setCompany('');
     setPhone('');
