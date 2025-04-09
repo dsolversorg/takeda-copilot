@@ -21,6 +21,7 @@ import {
 import TextInput from '../components/TextInput';
 import STTFeedback from '../components/STTFeedback';
 import Controls from '../components/Controls';
+import PhoneForm from './Call';
 import { seconderyAccent } from '../globalStyle';
 
 function DPChat({
@@ -137,6 +138,20 @@ function DPChat({
             <div className="endCont">
               {/* align end */}
               <div className="d-flex button-container">
+                {/* botão de telefone */}
+                <button
+                  type="button"
+                  className="control-icon iconPhone"
+                  aria-label="Telefone"
+                  data-tip="Telefone"
+                  onClick={PhoneForm}
+                >
+                  <TelephoneFill
+                    size={MenuiconSize}
+                    color={seconderyAccent}
+                    className="size"
+                  />
+                </button>
                 {/* mostrar transcrição */}
                 {!showTranscript ? (
                   <button
@@ -163,20 +178,6 @@ function DPChat({
                     <X size={MenuiconSize} className="size" color={seconderyAccent} style={{ border: highlightChat ? 'red 2px solid' : '' }} />
                   </button>
                 )}
-                {/* botão de telefone */}
-                <button
-                  type="button"
-                  className="control-icon iconPhone"
-                  aria-label="Telefone"
-                  data-tip="Telefone"
-                  onClick={() => alert('Telefone clicado!')}
-                >
-                  <TelephoneFill
-                    size={MenuiconSize}
-                    color={seconderyAccent}
-                    className="size"
-                  />
-                </button>
               </div>
             </div>
           </div>
