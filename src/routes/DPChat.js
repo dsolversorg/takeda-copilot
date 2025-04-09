@@ -40,6 +40,7 @@ function DPChat({
   const dispatch = useDispatch();
   const history = useHistory();
   const MenuiconSize = 35;
+  const [showPhoneForm, setShowPhoneForm] = useState(false);
   const toggleKeyboardInput = () => {
     dispatch(setShowTranscript(!showTranscript));
     dispatch(setMicOn({ micOn: showTranscript }));
@@ -362,7 +363,7 @@ export default styled(DPChat)`
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: ${showTranscript ? '50%' : '100%'};
+    width: ${setShowTranscript ? '50%' : '100%'};
     background: azure;
   }
 `;
