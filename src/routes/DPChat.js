@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import {
   ChatSquareTextFill,
   X,
+  TelephoneFill, // Importando o ícone de telefone
 } from 'react-bootstrap-icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
@@ -162,6 +163,20 @@ function DPChat({
                     <X size={MenuiconSize} className="size" color={seconderyAccent} style={{ border: highlightChat ? 'red 2px solid' : '' }} />
                   </button>
                 )}
+                {/* botão de telefone */}
+                <button
+                  type="button"
+                  className="control-icon iconPhone"
+                  aria-label="Telefone"
+                  data-tip="Telefone"
+                  onClick={() => alert('Telefone clicado!')}
+                >
+                  <TelephoneFill
+                    size={MenuiconSize}
+                    color={seconderyAccent}
+                    className="size"
+                  />
+                </button>
               </div>
             </div>
           </div>
@@ -254,6 +269,7 @@ export default styled(DPChat)`
     position: relative;
     bottom: ${getBottomValue()};
   }
+  
   .contWid{
     display: flex;
     width: 90%;
@@ -262,54 +278,68 @@ export default styled(DPChat)`
   }
   .control-icon {
     border: none;
-    background: none;
-    padding: .4rem;
+  background: none;
+  padding: .4rem;
+}
+.iconMute{
+  background-color: #f2695c;
+  border-radius: 40px;
+  padding: 1rem;
+  height: 70px;
+  width: 70px;
+  &:hover{
+    background-color: #bc493e;
   }
-  .iconMute{
-    background-color: #f2695c;
-    border-radius: 40px;
-    padding: 1rem;
-    height: 70px;
-    width: 70px;
-    &:hover{
-      background-color: #bc493e;
-    }
-    @media (max-width: 500px){
-      height: 60px;
-      width: 60px;
-    }
+  @media (max-width: 500px){
+    height: 60px;
+    width: 60px;
   }
-  .icon{
-    background-color: #09c8c8;
-    border-radius: 40px;
-    padding: 1rem;
-    height: 70px;
-    width: 70px;
-    &:hover{
-      background-color: #05a0a0;
-    }
-    @media (max-width: 500px){
-      height: 60px;
-      width: 60px;
-    }
-  }
-  .chat{
-    width: 100%;
-  }
+}
 
-  .size{
-    @media (max-width: 500px){
-      width: 20px !important;
-      height: 20px !important;
-    }
+.icon{
+  background-color: #09c8c8;
+  border-radius: 40px;
+  padding: 1rem;
+  height: 70px;
+  width: 70px;
+  &:hover{
+    background-color: #05a0a0;
   }
-  .col-md-5{
+  @media (max-width: 500px){
+    height: 60px;
+    width: 60px;
+  }
+}
+.iconPhone{
+  background-color: #4caf50;
+  border-radius: 40px;
+  padding: 1rem;
+  height: 70px;
+  width: 70px;
+  &:hover{
+    background-color: #388e3c;
+  }
+  @media (max-width: 500px){
+    height: 60px;
+    width: 60px;
+  }
+}
+.chat{
+  width: 100%;
+}
+.size{
+  @media (max-width: 500px){
+    width: 20px !important;
+    height: 20px !important;
+  }
+}
+.col-md-5{
+  position: relative;
+  top: 200px;
+  
+  @media (max-width: 500px){
     position: relative;
-    top: 200px;
-    
-    @media (max-width: 500px){
-      position: relative;
-      top: 0;
-    }
-  } 
+    top: 0;
+  }
+} 
 `;
