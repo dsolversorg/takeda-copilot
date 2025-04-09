@@ -41,7 +41,6 @@ function DPChat({
   const history = useHistory();
   const MenuiconSize = 35;
   const [showPhoneForm, setShowPhoneForm] = useState(false);
-
   const toggleKeyboardInput = () => {
     dispatch(setShowTranscript(!showTranscript));
     dispatch(setMicOn({ micOn: showTranscript }));
@@ -49,21 +48,18 @@ function DPChat({
       setShowPhoneForm(false);
     }
   };
-
   const togglePhoneForm = () => {
     setShowPhoneForm(!showPhoneForm);
     if (!showPhoneForm) {
       dispatch(setShowTranscript(false));
     }
   };
-
   if (disconnected === true) {
     if (disconnectPage) {
       history.push(disconnectRoute);
     } else history.push('/');
   } else if (error !== null) history.push('/loading?error=true');
   else if (connected !== true) history.push('/');
-
   const handleResize = () => {
     if (connected) {
       dispatch(setVideoDimensions({
@@ -72,7 +68,6 @@ function DPChat({
       }));
     }
   };
-
   const [startedAt] = useState(Date.now());
   const cleanup = () => {
     if (Date.now() - startedAt < 1000) {
@@ -83,24 +78,20 @@ function DPChat({
       if (connected === true && loading === false) dispatch(disconnect());
     }
   };
-
   useEffect(() => {
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => cleanup();
   }, []);
-
   window.onbeforeunload = () => {
     console.log('cleaning up');
     cleanup();
   };
-
   const ccDisplaRef = createRef();
   const [ccDisplayHeight, setCCDisplayHeight] = useState('auto');
   useEffect(() => {
     setCCDisplayHeight(ccDisplaRef.current.clientHeight);
   }, [ccDisplaRef]);
-
   return (
     <div className={className}>
       <div className="video-overlay">
@@ -209,7 +200,7 @@ const getBottomValue = () => {
   if (/Android/i.test(navigator.userAgent)) {
     return '30px';
   }
-  if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+  if (/iPhone\niPad\niPod/i.test(navigator.userAgent)) {
     return '80px';
   }
   return '25px';
@@ -242,7 +233,7 @@ export default styled(DPChat)`
   .button-container {
     display: flex;
     justify-content: space-between;
-    width: 100%;
+    width: 200%;
   }
   .vertical-fit-container {
     flex: 0 1 auto;
@@ -372,7 +363,7 @@ export default styled(DPChat)`
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 100%;
+    width: ${showPhoneForm ? '50%' : '100%'};
     background: azure;
   }
 `;
