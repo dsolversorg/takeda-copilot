@@ -151,6 +151,32 @@ function Controls({
               </div>
 
               <div>
+                {/* PhoneForm  */}
+                {cameraOn ? (
+                  <button
+                    type="button"
+                    className="control-icon icon"
+                    aria-label="Falar com Representante"
+                    data-tip="Falar com Representante"
+                    onClick={PhoneForm}
+                  >
+                    <PhoneFill size={MenuiconSize} color={seconderyAccent} style={{ border: highlightCamera ? 'red 2px solid' : '' }} className="size" />
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    className="control-icon iconMute"
+                    aria-label="Falar com Representante"
+                    data-tip="Falar com Representante"
+                    onClick={PhoneForm}
+                  >
+                    <PhoneFill size={MenuiconSize} className="size" color={seconderyAccent} style={{ border: highlightCamera ? 'red 2px solid' : '' }} />
+
+                  </button>
+                )}
+              </div>
+
+              <div>
                 {/* pule o que quer que o dp esteja falando no momento */}
                 {speechState === 'speaking' ? (
                   <button
@@ -189,19 +215,6 @@ function Controls({
                     <VolumeUpFill size={MenuiconSize} className="size" color={seconderyAccent} style={{ border: highlightMute ? 'red 2px solid' : '' }} />
                   </button>
                 )}
-              </div>
-
-              <div>
-                {/* PhoneForm */}
-                <button
-                  type="button"
-                  className="control-icon iconPhone"
-                  aria-label="Falar com Representante"
-                  data-tip="Falar com Representante"
-                  onClick={PhoneForm}
-                >
-                  <PhoneFill size={MenuiconSize} className="size" color={seconderyAccent} style={{ border: highlightMute ? 'red 2px solid' : '' }} />
-                </button>
               </div>
             </>
           )}
