@@ -27,34 +27,40 @@ function PhoneForm({ className }) {
     <div className={className}>
       <form onSubmit={handleSubmit} className="formCont">
         <div className="input-group">
-          <label htmlFor="name">Nome</label>
-          <input
-            id="name"
-            value={name}
-            onChange={handleNameInput}
-            className="form-control"
-            placeholder="Digite seu nome"
-          />
+          <label htmlFor="name">
+            Nome
+            <input
+              id="name"
+              value={name}
+              onChange={handleNameInput}
+              className="form-control"
+              placeholder="Digite seu nome"
+            />
+          </label>
         </div>
         <div className="input-group">
-          <label htmlFor="company">Empresa</label>
-          <input
-            id="company"
-            value={company}
-            onChange={handleCompanyInput}
-            className="form-control"
-            placeholder="Digite sua empresa"
-          />
+          <label htmlFor="company">
+            Empresa
+            <input
+              id="company"
+              value={company}
+              onChange={handleCompanyInput}
+              className="form-control"
+              placeholder="Digite sua empresa"
+            />
+          </label>
         </div>
         <div className="input-group">
-          <label htmlFor="phone">Celular</label>
-          <input
-            id="phone"
-            value={phone}
-            onChange={handlePhoneInput}
-            className="form-control"
-            placeholder="Digite seu celular"
-          />
+          <label htmlFor="phone">
+            Celular
+            <input
+              id="phone"
+              value={phone}
+              onChange={handlePhoneInput}
+              className="form-control"
+              placeholder="Digite seu celular"
+            />
+          </label>
         </div>
         <button
           className="btn send-button"
