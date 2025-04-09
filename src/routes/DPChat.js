@@ -21,8 +21,8 @@ import {
 import TextInput from '../components/TextInput';
 import STTFeedback from '../components/STTFeedback';
 import Controls from '../components/Controls';
-import PhoneForm from '../components/Call';
 import { seconderyAccent } from '../globalStyle';
+import PhoneForm from '../components/Call'; // Importando o PhoneForm
 
 function DPChat({
   className,
@@ -40,10 +40,17 @@ function DPChat({
   const dispatch = useDispatch();
   const history = useHistory();
   const MenuiconSize = 35;
+  const [showPhoneForm, setShowPhoneForm] = useState(false); // Estado para controlar a exibição do PhoneForm
+
   const toggleKeyboardInput = () => {
     dispatch(setShowTranscript(!showTranscript));
     dispatch(setMicOn({ micOn: showTranscript }));
   };
+
+  const togglePhoneForm = () => {
+    setShowPhoneForm(!showPhoneForm); // Alterna a exibição do PhoneForm
+  };
+
   if (disconnected === true) {
     if (disconnectPage) {
       history.push(disconnectRoute);
@@ -111,6 +118,11 @@ function DPChat({
               <TextInput />
             </div>
           ) : null}
+          {showPhoneForm ? ( // Renderiza o PhoneForm condicionalmente
+            <div>
+              <PhoneForm />
+            </div>
+          ) : null}
         </div>
         {/* bottom row */}
         <div className="contBottom">
@@ -138,20 +150,6 @@ function DPChat({
             <div className="endCont">
               {/* align end */}
               <div className="d-flex button-container">
-                {/* botão de telefone */}
-                <button
-                  type="button"
-                  className="control-icon iconPhone"
-                  aria-label="Telefone"
-                  data-tip="Telefone"
-                  onClick={PhoneForm}
-                >
-                  <TelephoneFill
-                    size={MenuiconSize}
-                    color={seconderyAccent}
-                    className="size"
-                  />
-                </button>
                 {/* mostrar transcrição */}
                 {!showTranscript ? (
                   <button
@@ -178,6 +176,20 @@ function DPChat({
                     <X size={MenuiconSize} className="size" color={seconderyAccent} style={{ border: highlightChat ? 'red 2px solid' : '' }} />
                   </button>
                 )}
+                {/* botão de telefone */}
+                <button
+                  type="button"
+                  className="control-icon iconPhone"
+                  aria-label="Telefone"
+                  data-tip="Telefone"
+                  onClick={togglePhoneForm}
+                >
+                  <TelephoneFill
+                    size={MenuiconSize}
+                    color={seconderyAccent}
+                    className="size"
+                  />
+                </button>
               </div>
             </div>
           </div>
