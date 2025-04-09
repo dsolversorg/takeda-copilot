@@ -360,10 +360,10 @@ export default styled(DPChat)`
     margin-right: 10px;
   }
   .formCont {
-    display: ${showTranscript ? 'flex' : 'masonry'};
+    display: ${setShowTranscript ? 'flex' : 'masonry'};
     flex-direction: row;
     align-items: center;
-    width: ${showTranscript ? '50%' : '100%'};
-    background: ${showTranscript ? 'none' : 'azure'};
+    width: ${setShowTranscript ? '50%' : '100%'};
+    background: ${setShowTranscript ? 'none' : 'azure'};
   }
 `;
