@@ -195,7 +195,7 @@ function Controls({
                 {/* PhoneForm */}
                 <button
                   type="button"
-                  className="control-icon iconMute"
+                  className="control-icon iconPhone"
                   aria-label="Falar com Representante"
                   data-tip="Falar com Representante"
                   onClick={PhoneForm}
@@ -344,6 +344,24 @@ export default styled(Controls)`
   }
 
   .iconMute{
+    background-color: #f2695c;
+    border-radius: 40px;
+    margin-right: 10px;
+    height: 70px;
+    width: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:hover{
+      background-color: #bc493e;
+    }
+    @media (max-width: 500px){
+      height: 60px;
+      width: 60px;
+    }
+  }
+
+  .iconPhone{
     background-color: #f2695c;
     border-radius: 40px;
     margin-right: 10px;

@@ -1,103 +1,81 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { TelephoneFill } from 'react-bootstrap-icons';
+import { Send } from 'react-bootstrap-icons';
+import { useDispatch } from 'react-redux';
+//import { sendTextMessage } from '../store/sm';
 
-function PhoneForm({ className }) {
-  const [showForm, setShowForm] = useState(false);
-  const [formData, setFormData] = useState({
-    name: '',
-    company: '',
-    phone: '',
-  });
+function TextInput({ className }) {
+  const [textInput, setText] = useState('');
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
+  const handleInput = (e) => setText(e.target.value);
 
-  const toggleForm = () => {
-    setShowForm(!showForm);
-  };
+  /*const dispatch = useDispatch();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(sendTextMessage({ text: textInput }));
+    setText('');
+  };*/
 
   return (
     <div className={className}>
-      <button type="button" className="control-icon icon" onClick={toggleForm}>
-        <TelephoneFill size={35} color="#09c8c8" />
-      </button>
-      {showForm && (
-        <form className="phone-form">
-          <div>
-            <label htmlFor="name">Nome:</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleInputChange}
-            />
-          </div>
-          <div>
-            <label htmlFor="company">Empresa:</label>
-            <input
-              type="text"
-              id="company"
-              name="company"
-              value={formData.company}
-              onChange={handleInputChange}
-            />
-          </div>
-          <div>
-            <label htmlFor="phone">Celular:</label>
-            <input
-              type="text"
-              id="phone"
-              name="phone"
-              value={formData.phone}
-              onChange={handleInputChange}
-            />
-          </div>
-        </form>
-      )}
+      <form onSubmit={handleSubmit} className="formCont">
+        <div className="input-group">
+          <input
+            value={textInput}
+            onChange={handleInput}
+            className="form-control"
+            placeholder="Digite seu nome"
+          />
+          <button
+            className="btn send-button"
+            type="submit"
+            aria-label="Submit"
+            data-tip="Submit"
+          >
+            <Send />
+          </button>
+
+        </div>
+      </form>
     </div>
   );
 }
 
-PhoneForm.propTypes = {
+TextInput.propTypes = {
   className: PropTypes.string.isRequired,
 };
 
-export default styled(PhoneForm)`
-  .control-icon {
-    border: none;
-    background: none;
-    padding: 0.4rem;
-    background-color: #09c8c8;
-    border-radius: 40px;
-    height: 70px;
-    width: 70px;
-    &:hover {
-      background-color: #05a0a0;
+export default styled(TextInput)`
+  input {
+    border-right: none;
+  }
+  .send-button {
+    border: 1px solid #ced4da;
+    border-left: none;
+    background: #FFF;
+    color: rgba(0,0,0,0.4);
+  }
+
+  .input-group {
+    width: 40%;
+
+    @media (max-width: 700px){
+      width: 90%;
     }
   }
 
-  .phone-form {
+  .formCont {
     display: flex;
-    flex-direction: column;
-    margin-top: 1rem;
-  }
+    justify-content: flex-end;
+    width: 98%;
 
-  .phone-form div {
-    margin-bottom: 0.5rem;
-  }
-
-  .phone-form label {
-    margin-right: 0.5rem;
-  }
-
-  .phone-form input {
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+     @media (max-width: 700px){
+      display: flex;
+      -webkit-box-pack: end;
+      width: 100%;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
   }
 `;
