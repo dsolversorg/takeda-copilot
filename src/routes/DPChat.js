@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import {
   ChatSquareTextFill,
   X,
-  TelephoneFill, // Importando o ícone de telefone
+  TelephoneFill,
 } from 'react-bootstrap-icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
@@ -22,7 +22,7 @@ import TextInput from '../components/TextInput';
 import STTFeedback from '../components/STTFeedback';
 import Controls from '../components/Controls';
 import { seconderyAccent } from '../globalStyle';
-import PhoneForm from '../components/Call'; // Importando o PhoneForm
+import PhoneForm from '../components/Call';
 
 function DPChat({
   className,
@@ -45,10 +45,16 @@ function DPChat({
   const toggleKeyboardInput = () => {
     dispatch(setShowTranscript(!showTranscript));
     dispatch(setMicOn({ micOn: showTranscript }));
+    if (!showTranscript) {
+      setShowPhoneForm(false);
+    }
   };
 
   const togglePhoneForm = () => {
-    setShowPhoneForm(!showPhoneForm); // Alterna a exibição do PhoneForm
+    setShowPhoneForm(!showPhoneForm);
+    if (!showPhoneForm) {
+      dispatch(setShowTranscript(false));
+    }
   };
 
   if (disconnected === true) {
@@ -56,8 +62,8 @@ function DPChat({
       history.push(disconnectRoute);
     } else history.push('/');
   } else if (error !== null) history.push('/loading?error=true');
-  // usually this will be triggered when the user refreshes
   else if (connected !== true) history.push('/');
+
   const handleResize = () => {
     if (connected) {
       dispatch(setVideoDimensions({
@@ -66,6 +72,7 @@ function DPChat({
       }));
     }
   };
+
   const [startedAt] = useState(Date.now());
   const cleanup = () => {
     if (Date.now() - startedAt < 1000) {
@@ -76,32 +83,30 @@ function DPChat({
       if (connected === true && loading === false) dispatch(disconnect());
     }
   };
+
   useEffect(() => {
-    // run resize once on mount, then add listener for future resize events
     handleResize();
     window.addEventListener('resize', handleResize);
-    // run cleanup on unmount
     return () => cleanup();
   }, []);
+
   window.onbeforeunload = () => {
     console.log('cleaning up');
     cleanup();
   };
-  // content card display is dependent on remaining space between header and footer
-  // there might be a better way to do this w/ flexbox
+
   const ccDisplaRef = createRef();
   const [ccDisplayHeight, setCCDisplayHeight] = useState('auto');
   useEffect(() => {
     setCCDisplayHeight(ccDisplaRef.current.clientHeight);
   }, [ccDisplaRef]);
+
   return (
     <div className={className}>
       <div className="video-overlay">
-        {/* top row */}
         <div className="row">
           <Header />
         </div>
-        {/* middle row */}
         <div
           className="contChat row d-flex justify-content-end align-items-center flex-grow-1 ps-3 pe-3"
           ref={ccDisplaRef}
@@ -118,13 +123,12 @@ function DPChat({
               <TextInput />
             </div>
           ) : null}
-          {showPhoneForm ? ( // Renderiza o PhoneForm condicionalmente
+          {showPhoneForm ? (
             <div>
               <PhoneForm />
             </div>
           ) : null}
         </div>
-        {/* bottom row */}
         <div className="contBottom">
           {isOutputMuted ? (
             <div className="row">
@@ -145,12 +149,9 @@ function DPChat({
               </div>
             </div>
             <div>
-              {/* align center */}
             </div>
             <div className="endCont">
-              {/* align end */}
               <div className="d-flex button-container">
-                {/* mostrar transcrição */}
                 {!showTranscript ? (
                   <button
                     type="button"
@@ -176,7 +177,7 @@ function DPChat({
                     <X size={MenuiconSize} className="size" color={seconderyAccent} style={{ border: highlightChat ? 'red 2px solid' : '' }} />
                   </button>
                 )}
-                {/* botão de telefone */}
+                <div style={{ width: '10px' }} /> {/* Espaçamento entre os botões */}
                 <button
                   type="button"
                   className="control-icon iconPhone"
@@ -236,7 +237,7 @@ export default styled(DPChat)`
     width: 90px;
     display: flex;
     justify-content: center;
-    flex-direction: row; /* Alinha os botões em uma linha */
+    flex-direction: row;
   }
   .button-container {
     display: flex;
@@ -246,7 +247,7 @@ export default styled(DPChat)`
   .vertical-fit-container {
     flex: 0 1 auto;
     overflow-y: scroll;
-    scrollbar-width: none; /* Firefox 64 */
+    scrollbar-width: none;
     &::-webkit-scrollbar {
       display: none;
     }
@@ -291,68 +292,67 @@ export default styled(DPChat)`
   }
   .control-icon {
     border: none;
-  background: none;
-  padding: .4rem;
-}
-.iconMute{
-  background-color: #f2695c;
-  border-radius: 40px;
-  padding: 1rem;
-  height: 70px;
-  width: 70px;
-  &:hover{
-    background-color: #bc493e;
+    background: none;
+    padding: .4rem;
   }
-  @media (max-width: 500px){
-    height: 60px;
-    width: 60px;
+  .iconMute{
+    background-color: #f2695c;
+    border-radius: 40px;
+    padding: 1rem;
+    height: 70px;
+    width: 70px;
+    &:hover{
+      background-color: #bc493e;
+    }
+    @media (max-width: 500px){
+      height: 60px;
+      width: 60px;
+    }
   }
-}
-
-.icon{
-  background-color: #09c8c8;
-  border-radius: 40px;
-  padding: 1rem;
-  height: 70px;
-  width: 70px;
-  &:hover{
-    background-color: #05a0a0;
+  .icon{
+    background-color: #09c8c8;
+    border-radius: 40px;
+    padding: 1rem;
+    height: 70px;
+    width: 70px;
+    &:hover{
+      background-color: #05a0a0;
+    }
+    @media (max-width: 500px){
+      height: 60px;
+      width: 60px;
+    }
   }
-  @media (max-width: 500px){
-    height: 60px;
-    width: 60px;
+  .iconPhone{
+    background-color: #4caf50;
+    border-radius: 40px;
+    padding: 1rem;
+    height: 70px;
+    width: 70px;
+    &:hover{
+      background-color: #388e3c;
+    }
+    @media (max-width: 500px){
+      height: 60px;
+      width: 60px;
+    }
   }
-}
-.iconPhone{
-  background-color: #4caf50;
-  border-radius: 40px;
-  padding: 1rem;
-  height: 70px;
-  width: 70px;
-  &:hover{
-    background-color: #388e3c;
+  .chat{
+    width: 100%;
   }
-  @media (max-width: 500px){
-    height: 60px;
-    width: 60px;
+  .size{
+    @media (max-width: 500px){
+      width: 20px !important;
+      height: 20px !important;
+    }
   }
-}
-.chat{
-  width: 100%;
-}
-.size{
-  @media (max-width: 500px){
-    width: 20px !important;
-    height: 20px !important;
-  }
-}
-.col-md-5{
-  position: relative;
-  top: 200px;
-  
-  @media (max-width: 500px){
+  .col-md-5{
     position: relative;
-    top: 0;
-  }
-} 
+    top: 200px;
+    
+    @media (max-width: 500px){
+      position: relative;
+      top: 0;
+    }
+  } 
 `;
