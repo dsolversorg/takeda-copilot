@@ -135,7 +135,7 @@ function DPChat({
             </div>
             <div className="endCont">
               {/* align end */}
-              <div className="d-flex">
+              <div className="d-flex button-container">
                 {/* mostrar transcrição */}
                 {!showTranscript ? (
                   <button
@@ -210,6 +210,11 @@ export default styled(DPChat)`
     justify-content: center;
     flex-direction: row; /* Alinha os botões em uma linha */
   }
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
   .vertical-fit-container {
     flex: 0 1 auto;
     overflow-y: scroll;
@@ -249,7 +254,6 @@ export default styled(DPChat)`
     position: relative;
     bottom: ${getBottomValue()};
   }
-  
   .contWid{
     display: flex;
     width: 90%;
@@ -275,7 +279,6 @@ export default styled(DPChat)`
       width: 60px;
     }
   }
-  
   .icon{
     background-color: #09c8c8;
     border-radius: 40px;
@@ -289,9 +292,11 @@ export default styled(DPChat)`
       height: 60px;
       width: 60px;
     }
-   .chat{
+  }
+  .chat{
     width: 100%;
   }
+
   .size{
     @media (max-width: 500px){
       width: 20px !important;
