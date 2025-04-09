@@ -3,19 +3,19 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Send } from 'react-bootstrap-icons';
 import { useDispatch } from 'react-redux';
-//import { sendTextMessage } from '../store/sm';
+// import { sendTextMessage } from '../store/sm';
 
 function TextInput({ className }) {
   const [textInput, setText] = useState('');
 
   const handleInput = (e) => setText(e.target.value);
 
-  /*const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(sendTextMessage({ text: textInput }));
+    dispatch({ text: textInput });
     setText('');
-  };*/
+  };
 
   return (
     <div className={className}>
