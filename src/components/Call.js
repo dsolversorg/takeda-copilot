@@ -6,37 +6,64 @@ import { useDispatch } from 'react-redux';
 // import { sendTextMessage } from '../store/sm';
 
 function TextInput({ className }) {
-  const [textInput, setText] = useState('');
+  const [name, setName] = useState('');
+  const [company, setCompany] = useState('');
+  const [phone, setPhone] = useState('');
 
-  const handleInput = (e) => setText(e.target.value);
+  const handleNameInput = (e) => setName(e.target.value);
+  const handleCompanyInput = (e) => setCompany(e.target.value);
+  const handlePhoneInput = (e) => setPhone(e.target.value);
 
   const dispatch = useDispatch();
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch({ text: textInput });
-    setText('');
+    dispatch({ name, company, phone });
+    setName('');
+    setCompany('');
+    setPhone('');
   };
 
   return (
     <div className={className}>
       <form onSubmit={handleSubmit} className="formCont">
         <div className="input-group">
+          <label htmlFor="name">Nome</label>
           <input
-            value={textInput}
-            onChange={handleInput}
+            id="name"
+            value={name}
+            onChange={handleNameInput}
             className="form-control"
             placeholder="Digite seu nome"
           />
-          <button
-            className="btn send-button"
-            type="submit"
-            aria-label="Submit"
-            data-tip="Submit"
-          >
-            <Send />
-          </button>
-
         </div>
+        <div className="input-group">
+          <label htmlFor="company">Empresa</label>
+          <input
+            id="company"
+            value={company}
+            onChange={handleCompanyInput}
+            className="form-control"
+            placeholder="Digite sua empresa"
+          />
+        </div>
+        <div className="input-group">
+          <label htmlFor="phone">Celular</label>
+          <input
+            id="phone"
+            value={phone}
+            onChange={handlePhoneInput}
+            className="form-control"
+            placeholder="Digite seu celular"
+          />
+        </div>
+        <button
+          className="btn send-button"
+          type="submit"
+          aria-label="Submit"
+          data-tip="Submit"
+        >
+          <Send />
+        </button>
       </form>
     </div>
   );
@@ -47,18 +74,22 @@ TextInput.propTypes = {
 };
 
 export default styled(TextInput)`
-  input {
-    border-right: none;
+  .form-control {
+    margin-bottom: 10px;
   }
+
   .send-button {
     border: 1px solid #ced4da;
-    border-left: none;
     background: #FFF;
     color: rgba(0,0,0,0.4);
+    margin-top: 10px;
   }
 
   .input-group {
-    width: 40%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 10px;
 
     @media (max-width: 700px){
       width: 90%;
@@ -67,15 +98,17 @@ export default styled(TextInput)`
 
   .formCont {
     display: flex;
-    justify-content: flex-end;
-    width: 98%;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
 
-     @media (max-width: 700px){
-      display: flex;
-      -webkit-box-pack: end;
-      width: 100%;
-      justify-content: center;
-      margin-bottom: 30px;
+    @media (max-width: 700px){
+      width: 90%;
     }
+  }
+
+  label {
+    margin-bottom: 5px;
+    font-weight: bold;
   }
 `;
