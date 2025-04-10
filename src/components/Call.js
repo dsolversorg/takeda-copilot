@@ -93,7 +93,6 @@ function PhoneForm({ className }) {
               required
             />
           </label>
-          {message && <p className="message">{message}</p>}
         </div>
         <button
           className="btn send-button"
@@ -104,6 +103,7 @@ function PhoneForm({ className }) {
           <Send />
         </button>
       </form>
+      {message && <div className="message-container"><p className="message">{message}</p></div>}
     </div>
   );
 }
@@ -152,8 +152,14 @@ export default styled(PhoneForm)`
     font-weight: bold;
   }
 
-  .message {
+  .message-container {
     margin-top: 10px;
+    background: #f8d7da;
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  .message {
     font-weight: bold;
     color: red; /* You can style this message as needed */
   }
