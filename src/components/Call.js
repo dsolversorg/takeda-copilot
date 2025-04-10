@@ -34,9 +34,9 @@ function PhoneForm({ className }) {
           password: process.env.REACT_APP_TWILIO_AUTH_TOKEN,
         },
       });
-      console.log('Chamada iniciada: ', callResponse.data);
+      console.log('Chamada iniciada');
     } catch (error) {
-      console.error('Erro ao iniciar chamada: ', error);
+      console.error('Erro ao iniciar chamada');
     }
     setName('');
     setCompany('');
