@@ -5,10 +5,6 @@ import { Send } from 'react-bootstrap-icons';
 import { useDispatch } from 'react-redux';
 import axios from 'axios'; // Import axios for making HTTP requests
 
-console.log('REACT_APP_TWILIO_ACCOUNT_SID:', process.env.REACT_APP_TWILIO_ACCOUNT_SID);
-console.log('REACT_APP_TWILIO_AUTH_TOKEN:', process.env.REACT_APP_TWILIO_AUTH_TOKEN);
-console.log('REACT_APP_TWIMLBIN_ACCOUNT_SID:', process.env.REACT_APP_TWIMLBIN_ACCOUNT_SID);
-
 function PhoneForm({ className }) {
   const [name, setName] = useState('');
   const [company, setCompany] = useState('');
@@ -27,7 +23,7 @@ function PhoneForm({ className }) {
     try {
       const response = await axios.post(`https://api.twilio.com/2010-04-01/Accounts/${process.env.REACT_APP_TWILIO_ACCOUNT_SID}/Calls.json`, {
         Url: `https://handler.twilio.com/twiml/${process.env.REACT_APP_TWIMLBIN_ACCOUNT_SID}`,
-        From: '+15558675310',
+        From: '+13374152289',
         To: phone,
       }, {
         auth: {
@@ -35,9 +31,9 @@ function PhoneForm({ className }) {
           password: process.env.REACT_APP_TWILIO_AUTH_TOKEN,
         },
       });
-      console.log('Call initiated:', response.data);
+      console.log('Chamada iniciada: ', response.data);
     } catch (error) {
-      console.error('Error initiating call:', error);
+      console.error('Erro ao iniciar chamada: ', error);
     }
 
     setName('');
