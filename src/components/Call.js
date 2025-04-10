@@ -106,7 +106,7 @@ function PhoneForm({ className }) {
           <p className="message">
             {message}
           </p>
-        )} {/* Display message */}
+        )}
       </form>
     </div>
   );
