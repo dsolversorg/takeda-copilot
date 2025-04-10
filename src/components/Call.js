@@ -102,7 +102,11 @@ function PhoneForm({ className }) {
         >
           <Send />
         </button>
-        {message && <p className="message">{message}</p>} {/* Display message */}
+        {message && (
+          <p className="message">
+            {message}
+          </p>
+        )} {/* Display message */}
       </form>
     </div>
   );
