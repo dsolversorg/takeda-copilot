@@ -27,8 +27,8 @@ function PhoneForm({ className }) {
     try {
       const response = await axios.post(`https://api.twilio.com/2010-04-01/Accounts/${process.env.REACT_APP_TWILIO_ACCOUNT_SID}/Calls.json`, {
         Url: `https://handler.twilio.com/twiml/${process.env.REACT_APP_TWIMLBIN_ACCOUNT_SID}`,
-        To: '+15558675310',
-        From: phone,
+        From: '+15558675310',
+        To: phone,
       }, {
         auth: {
           username: process.env.REACT_APP_TWILIO_ACCOUNT_SID,
