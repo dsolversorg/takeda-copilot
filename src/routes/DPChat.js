@@ -115,7 +115,7 @@ function DPChat({
             </div>
           ) : null}
           {showPhoneForm ? (
-            <div className="phone-form formCont">
+            <div className="phone-form">
               <PhoneForm />
             </div>
           ) : null}
@@ -358,12 +358,5 @@ export default styled(DPChat)`
   .phone-form {
     flex: 1;
     margin-right: 10px;
-  }
-  .formCont {
-    display: ${setShowTranscript ? 'flex' : 'masonry'};
-    flex-direction: row;
-    align-items: center;
-    width: ${setShowTranscript ? '50%' : '100%'};
-    background: ${setShowTranscript ? 'none' : 'azure'};
   }
 `;

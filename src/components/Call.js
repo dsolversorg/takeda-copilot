@@ -121,10 +121,11 @@ export default styled(PhoneForm)`
   }
 
   .formCont {
-    display: flex;
-    flex-direction: column;
+    display: masonry;
+    flex-direction: row;
     align-items: center;
-    width: 50%;
+    width: 100%;
+    background: azure;
 
     @media (max-width: 700px){
       width: 90%;
