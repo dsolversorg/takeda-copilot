@@ -1,5 +1,3 @@
-require('dotenv').config(); // Adicione esta linha no início do arquivo
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
