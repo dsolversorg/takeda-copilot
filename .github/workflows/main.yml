@@ -17,27 +17,22 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v3
 
-      - name: Get Secrets
+      - name: Setup Node 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build the app
+        run: npm run build
         env:
           REACT_APP_API_KEY: ${{ secrets.API_KEY_TAKEDA_COPILOT }}
           REACT_APP_TOKEN_URL: ${{ secrets.API_KEY_TAKEDA_COPILOT }}
           REACT_APP_TWILIO_ACCOUNT_SID: ${{ secrets.REACT_APP_TWILIO_ACCOUNT_SID }}
           REACT_APP_TWILIO_AUTH_TOKEN: ${{ secrets.REACT_APP_TWILIO_AUTH_TOKEN }}
           REACT_APP_TWIMLBIN_ACCOUNT_SID: ${{ secrets.REACT_APP_TWIMLBIN_ACCOUNT_SID }}
-        run: |
-          echo REACT_APP_API_KEY="$REACT_APP_API_KEY" >> env
-          echo REACT_APP_TOKEN_URL="$REACT_APP_TOKEN_URL" >> env
-          echo REACT_APP_TWILIO_ACCOUNT_SID="$REACT_APP_TWILIO_ACCOUNT_SID" >> env
-          echo REACT_APP_TWILIO_AUTH_TOKEN="$REACT_APP_TWILIO_AUTH_TOKEN" >> env
-          echo REACT_APP_TWIMLBIN_ACCOUNT_SID="$REACT_APP_TWIMLBIN_ACCOUNT_SID" >> env
-          mv env .env
-
-      - name: Setup Node 16
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
-      - run: npm install
-      - run: npm run build
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1

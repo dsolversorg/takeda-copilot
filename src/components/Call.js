@@ -133,7 +133,6 @@ export default styled(PhoneForm)`
 
     @media (max-width: 700px){
       display: masonry;
-      width: 90%;
     }
   }
 

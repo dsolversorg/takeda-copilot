@@ -17,9 +17,6 @@ steps:
     - 'REACT_APP_PERSONA_AUTH_MODE=0'
     - 'REACT_APP_ORCHESTRATION_MODE=false'
     - 'GENERATE_SOURCEMAP=false'
-    - 'REACT_APP_TWILIO_ACCOUNT_SID='
-    - 'REACT_APP_TWILIO_AUTH_TOKEN='
-    - 'REACT_APP_TWIMLBIN_ACCOUNT_SID='
 - name: "gcr.io/cloud-builders/gcloud"
   args: ["app", "deploy"]
 timeout: "1600s"
