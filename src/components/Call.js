@@ -21,14 +21,14 @@ function PhoneForm({ className }) {
 
     // Make the POST request to Twilio API
     try {
-      const response = await axios.post(`https://api.twilio.com/2010-04-01/Accounts/${process.env.TWILIO_ACCOUNT_SID}/Calls.json`, {
-        Url: `https://handler.twilio.com/twiml/${process.env.TWIMLBIN_ACCOUNT_SID}`,
+      const response = await axios.post(`https://api.twilio.com/2010-04-01/Accounts/${process.env.REACT_APP_TWILIO_ACCOUNT_SID}/Calls.json`, {
+        Url: `https://handler.twilio.com/twiml/${process.env.REACT_APP_TWIMLBIN_ACCOUNT_SID}`,
         To: '+15558675310',
         From: phone,
       }, {
         auth: {
-          username: process.env.TWILIO_ACCOUNT_SID,
-          password: process.env.TWILIO_AUTH_TOKEN,
+          username: process.env.REACT_APP_TWILIO_ACCOUNT_SID,
+          password: process.env.REACT_APP_TWILIO_AUTH_TOKEN,
         },
       });
       console.log('Call initiated:', response.data);
@@ -121,13 +121,14 @@ export default styled(PhoneForm)`
   }
 
   .formCont {
-    display: masonry;
+    display: flex;
     flex-direction: row;
     align-items: center;
     width: 100%;
     background: azure;
 
     @media (max-width: 700px){
+      display: masonry;
       width: 90%;
     }
   }
