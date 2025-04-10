@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Send } from 'react-bootstrap-icons';
 import { useDispatch } from 'react-redux';
 import axios from 'axios'; // Import axios for making HTTP requests
+import InputMask from 'react-input-mask'; // Import InputMask for phone masking
 
 function PhoneForm({ className }) {
   const [name, setName] = useState('');
@@ -17,6 +18,10 @@ function PhoneForm({ className }) {
   const dispatch = useDispatch();
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!phone.match(/^\+\d{1,3}\(\d{2}\)\d{4,5}-\d{4}$/)) {
+      alert('Por favor, insira um número de telefone válido com DDI e DDD.');
+      return;
+    }
     dispatch({ type: 'SUBMIT_FORM', payload: { name, company, phone } });
 
     // Make the POST request to Twilio API for Call
@@ -34,8 +39,10 @@ function PhoneForm({ className }) {
           password: process.env.REACT_APP_TWILIO_AUTH_TOKEN,
         },
       });
+      alert('Chamada iniciada com sucesso!');
       console.log('Chamada iniciada');
     } catch (error) {
+      alert('Erro ao iniciar chamada. Por favor, tente novamente.');
       console.error('Erro ao iniciar chamada');
     }
     setName('');
@@ -55,6 +62,7 @@ function PhoneForm({ className }) {
               onChange={handleNameInput}
               className="form-control"
               placeholder="Digite seu nome"
+              required
             />
           </label>
         </div>
@@ -67,18 +75,21 @@ function PhoneForm({ className }) {
               onChange={handleCompanyInput}
               className="form-control"
               placeholder="Digite sua empresa"
+              required
             />
           </label>
         </div>
         <div className="input-group">
           <label htmlFor="phone">
             Celular
-            <input
+            <InputMask
+              mask="+99(99)99999-9999"
               id="phone"
               value={phone}
               onChange={handlePhoneInput}
               className="form-control"
               placeholder="Digite seu celular"
+              required
             />
           </label>
         </div>
