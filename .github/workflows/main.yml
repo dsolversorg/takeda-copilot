@@ -21,9 +21,15 @@ jobs:
         env:
           REACT_APP_API_KEY: ${{ secrets.API_KEY_TAKEDA_COPILOT }}
           REACT_APP_TOKEN_URL: ${{ secrets.API_KEY_TAKEDA_COPILOT }}
+          REACT_APP_TWILIO_ACCOUNT_SID: ${{ secrets.REACT_APP_TWILIO_ACCOUNT_SID }}
+          REACT_APP_TWILIO_AUTH_TOKEN: ${{ secrets.REACT_APP_TWILIO_AUTH_TOKEN }}
+          REACT_APP_TWIMLBIN_ACCOUNT_SID: ${{ secrets.REACT_APP_TWIMLBIN_ACCOUNT_SID }}
         run: |
           echo REACT_APP_API_KEY="$REACT_APP_API_KEY" >> env
           echo REACT_APP_TOKEN_URL="$REACT_APP_TOKEN_URL" >> env
+          echo REACT_APP_TWILIO_ACCOUNT_SID="$REACT_APP_TWILIO_ACCOUNT_SID" >> env
+          echo REACT_APP_TWILIO_AUTH_TOKEN="$REACT_APP_TWILIO_AUTH_TOKEN" >> env
+          echo REACT_APP_TWIMLBIN_ACCOUNT_SID="$REACT_APP_TWIMLBIN_ACCOUNT_SID" >> env
           mv env .env
 
       - name: Setup Node 16
