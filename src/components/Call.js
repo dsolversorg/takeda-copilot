@@ -19,23 +19,25 @@ function PhoneForm({ className }) {
     e.preventDefault();
     dispatch({ type: 'SUBMIT_FORM', payload: { name, company, phone } });
 
-    // Make the POST request to Twilio API
+    // Make the POST request to Twilio API for Call
     try {
-      const response = await axios.post(`https://api.twilio.com/2010-04-01/Accounts/${process.env.REACT_APP_TWILIO_ACCOUNT_SID}/Calls.json`, {
+      const callResponse = await axios.post(`https://api.twilio.com/2010-04-01/Accounts/${process.env.REACT_APP_TWILIO_ACCOUNT_SID}/Calls.json`, new URLSearchParams({
         Url: `https://handler.twilio.com/twiml/${process.env.REACT_APP_TWIMLBIN_ACCOUNT_SID}`,
         From: '+13374152289',
         To: phone,
-      }, {
+      }), {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
         auth: {
           username: process.env.REACT_APP_TWILIO_ACCOUNT_SID,
           password: process.env.REACT_APP_TWILIO_AUTH_TOKEN,
         },
       });
-      console.log('Chamada iniciada: ', response.data);
+      console.log('Chamada iniciada: ', callResponse.data);
     } catch (error) {
       console.error('Erro ao iniciar chamada: ', error);
     }
-
     setName('');
     setCompany('');
     setPhone('');
