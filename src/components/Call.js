@@ -17,7 +17,7 @@ function PhoneForm({ className }) {
   const dispatch = useDispatch();
   const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch({ name, company, phone });
+    dispatch({ type: 'SUBMIT_FORM', payload: { name, company, phone } });
 
     // Make the POST request to Twilio API
     try {
