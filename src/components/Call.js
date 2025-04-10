@@ -66,7 +66,6 @@ function PhoneForm({ className }) {
               required
             />
           </label>
-          {message && <p className="message">{message}</p>}
         </div>
         <div className="input-group">
           <label htmlFor="company">
@@ -80,7 +79,6 @@ function PhoneForm({ className }) {
               required
             />
           </label>
-          {message && <p className="message">{message}</p>}
         </div>
         <div className="input-group">
           <label htmlFor="phone">
