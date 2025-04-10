@@ -5,6 +5,10 @@ import { Send } from 'react-bootstrap-icons';
 import { useDispatch } from 'react-redux';
 import axios from 'axios'; // Import axios for making HTTP requests
 
+console.log('REACT_APP_TWILIO_ACCOUNT_SID:', process.env.REACT_APP_TWILIO_ACCOUNT_SID);
+console.log('REACT_APP_TWILIO_AUTH_TOKEN:', process.env.REACT_APP_TWILIO_AUTH_TOKEN);
+console.log('REACT_APP_TWIMLBIN_ACCOUNT_SID:', process.env.REACT_APP_TWIMLBIN_ACCOUNT_SID);
+
 function PhoneForm({ className }) {
   const [name, setName] = useState('');
   const [company, setCompany] = useState('');
