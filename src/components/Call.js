@@ -10,6 +10,7 @@ function PhoneForm({ className }) {
   const [name, setName] = useState('');
   const [company, setCompany] = useState('');
   const [phone, setPhone] = useState('');
+  const [message, setMessage] = useState(''); // State for messages
 
   const handleNameInput = (e) => setName(e.target.value);
   const handleCompanyInput = (e) => setCompany(e.target.value);
@@ -19,7 +20,7 @@ function PhoneForm({ className }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!phone.match(/^\+\d{1,3}\(\d{2}\)\d{4,5}-\d{4}$/)) {
-      alert('Por favor, insira um número de telefone válido com DDI e DDD.');
+      setMessage('Por favor, insira um número de telefone válido com DDI e DDD.');
       return;
     }
     dispatch({ type: 'SUBMIT_FORM', payload: { name, company, phone } });
@@ -39,10 +40,10 @@ function PhoneForm({ className }) {
           password: process.env.REACT_APP_TWILIO_AUTH_TOKEN,
         },
       });
-      alert('Chamada iniciada com sucesso!');
+      setMessage('Chamada iniciada com sucesso!');
       console.log('Chamada iniciada');
     } catch (error) {
-      alert('Erro ao iniciar chamada. Por favor, tente novamente.');
+      setMessage('Erro ao iniciar chamada. Por favor, tente novamente.');
       console.error('Erro ao iniciar chamada');
     }
     setName('');
@@ -101,6 +102,7 @@ function PhoneForm({ className }) {
         >
           <Send />
         </button>
+        {message && <p className="message">{message}</p>} {/* Display message */}
       </form>
     </div>
   );
@@ -148,5 +150,11 @@ export default styled(PhoneForm)`
   label {
     margin-bottom: 5px;
     font-weight: bold;
+  }
+
+  .message {
+    margin-top: 10px;
+    font-weight: bold;
+    color: red; /* You can style this message as needed */
   }
 `;
