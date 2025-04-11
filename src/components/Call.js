@@ -27,14 +27,19 @@ function PhoneForm({ className }) {
 
     // Make the POST request to Twilio API for Call
     try {
-      await axios.post(`https://studio.twilio.com/v2/Flows/${process.env.REACT_APP_TWIMLBIN_ACCOUNT_SID}/Executions`, new URLSearchParams({
+      await axios.post(`https://studio.twilio.com/v2/Flows/${process.env.REACT_APP_TWIMLBIN_ACCOUNT_SID}/Executions`, {
         From: '+13374152289',
         To: phone,
-        'flow.data.name': name,
-        'flow.data.company': company,
-      }), {
+        flow: {
+          data: {
+            name: name,
+            company: company,
+            phone: phone,
+          },
+        },
+      }, {
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
+          'Content-Type': 'application/json',
         },
         auth: {
           username: process.env.REACT_APP_TWILIO_ACCOUNT_SID,
