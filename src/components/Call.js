@@ -30,14 +30,15 @@ function PhoneForm({ className }) {
       await axios.post(`https://studio.twilio.com/v2/Flows/${process.env.REACT_APP_TWIMLBIN_ACCOUNT_SID}/Executions`, {
         From: '+13374152289',
         To: phone,
-        Body: {
+        data: {
           name,
           company,
           phone,
+          message: 'Bem-vindo à Digital Solvers',
         },
       }, {
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
+          'Content-Type': 'application/json',
         },
         auth: {
           username: process.env.REACT_APP_TWILIO_ACCOUNT_SID,
