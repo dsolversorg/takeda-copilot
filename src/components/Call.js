@@ -31,10 +31,7 @@ function PhoneForm({ className }) {
       const data = qs.stringify({
         To: phone,
         From: '+13374152289',
-        'Parameters.message': 'Bem-vindo à Digital Solvers',
-        'Parameters.name': name,
-        'Parameters.company': company,
-        'Parameters.phone': phone,
+        body: 'Bem-vindo à Digital Solvers',
       });
 
       await axios.post(`https://studio.twilio.com/v2/Flows/${process.env.REACT_APP_TWIMLBIN_ACCOUNT_SID}/Executions`, data, {
@@ -163,12 +160,12 @@ export default styled(PhoneForm)`
     background: #f8d7da;
     padding: 10px;
     border-radius: 5px;
-    height: 30px;
+    height: 50px;
   }
 
   .message {
     font-weight: bold;
-    height: 30px;
+    height: 50px;
     color: red; /* You can style this message as needed */
   }
 `;
