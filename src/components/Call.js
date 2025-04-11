@@ -32,9 +32,9 @@ function PhoneForm({ className }) {
         To: phone,
         flow: {
           data: {
-            name: name,
-            company: company,
-            phone: phone,
+            name,
+            company,
+            phone,
           },
         },
       }, {
