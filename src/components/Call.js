@@ -39,7 +39,7 @@ function PhoneForm({ className }) {
         },
       }, {
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/x-www-form-urlencoded',
         },
         auth: {
           username: process.env.REACT_APP_TWILIO_ACCOUNT_SID,
