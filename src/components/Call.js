@@ -5,6 +5,7 @@ import { Send } from 'react-bootstrap-icons';
 import { useDispatch } from 'react-redux';
 import axios from 'axios'; // Import axios for making HTTP requests
 import InputMask from 'react-input-mask'; // Import InputMask for phone masking
+import qs from 'qs'; // Import qs for query string formatting
 
 function PhoneForm({ className }) {
   const [name, setName] = useState('');
@@ -27,16 +28,16 @@ function PhoneForm({ className }) {
 
     // Make the POST request to Twilio API for Call
     try {
-      await axios.post(`https://studio.twilio.com/v2/Flows/${process.env.REACT_APP_TWIMLBIN_ACCOUNT_SID}/Executions`, {
-        From: '+13374152289',
+      const data = qs.stringify({
         To: phone,
-        Parameters: {
-          message: 'Bem-vindo à Digital Solvers',
-          name,
-          company,
-          phone,
-        },
-      }, {
+        From: '+13374152289',
+        'Parameters.message': 'Bem-vindo à Digital Solvers',
+        'Parameters.name': name,
+        'Parameters.company': company,
+        'Parameters.phone': phone,
+      });
+
+      await axios.post(`https://studio.twilio.com/v2/Flows/${process.env.REACT_APP_TWIMLBIN_ACCOUNT_SID}/Executions`, data, {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
         },
@@ -49,7 +50,7 @@ function PhoneForm({ className }) {
       console.log('Chamada iniciada');
     } catch (error) {
       setMessage('Erro ao iniciar chamada. Por favor, tente novamente.');
-      console.error('Erro ao iniciar chamada');
+      console.error('Erro ao iniciar chamada', error);
     }
     setName('');
     setCompany('');
@@ -162,12 +163,12 @@ export default styled(PhoneForm)`
     background: #f8d7da;
     padding: 10px;
     border-radius: 5px;
-    height: auto;
+    height: 30px;
   }
 
   .message {
     font-weight: bold;
-    height: auto;
+    height: 30px;
     color: red; /* You can style this message as needed */
   }
 `;
