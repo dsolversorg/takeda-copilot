@@ -29,13 +29,13 @@ function PhoneForm({ className }) {
     try {
       await axios.post(`https://studio.twilio.com/v2/Flows/${process.env.REACT_APP_TWIMLBIN_ACCOUNT_SID}/Executions`, {
         From: '+13374152289',
-        To: phone,
-        data: {
-          name,
-          company,
-          phone,
+        To: phone,        
+        Parameters: {
           message: 'Bem-vindo à Digital Solvers',
-        },
+          name: name,
+          company: company,
+          phone: phone
+        } 
       }, {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
